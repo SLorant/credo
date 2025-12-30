@@ -1,0 +1,572 @@
+<script>
+  /////////////////////////////////////////////////////////////////////////
+  ///// IMPORT
+  import * as THREE from "three";
+  import * as TWEEN from "@tweenjs/tween.js";
+  import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+  import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+  import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+  import { MeshSurfaceSampler } from "three/examples/jsm/math/MeshSurfaceSampler.js";
+  import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+  import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+  import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
+  import { LensDistortionShader } from "./LensDistortionShader.js";
+
+  /////////////////////////////////////////////////////////////////////////
+  //// DRACO LOADER TO LOAD DRACO COMPRESSED MODELS FROM BLENDER
+  const dracoLoader = new DRACOLoader();
+  const loader = new GLTFLoader();
+  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+  dracoLoader.setDecoderConfig({ type: "js" });
+  loader.setDRACOLoader(dracoLoader);
+  const pos = 1.5;
+  const color = 0x2d2e08;
+  /////////////////////////////////////////////////////////////////////////
+  ///// DIV CONTAINER CREATION TO HOLD THREEJS EXPERIENCE
+  const container = document.createElement("div");
+  container.style = "position:fixed; top:0; left:0;";
+  document.body.appendChild(container);
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// SCENE CREATION
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xc0c0c);
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// LIGHTING
+  // Ambient light for base illumination
+  const ambientLight = new THREE.PointLight(0x172640, 10000);
+  ambientLight.position.set(0, 5, -2);
+  scene.add(ambientLight);
+
+  // Point light that will follow the cursor
+  const cursorLight = new THREE.PointLight(0x172640, 20, 10);
+  cursorLight.position.set(0, pos, 0);
+  scene.add(cursorLight);
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// RENDERER CONFIG
+  const renderer = new THREE.WebGLRenderer({
+    antialias: false,
+    powerPreference: "high-performance",
+  }); // turn on antialias
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //set pixel ratio
+  renderer.setSize(window.innerWidth, window.innerHeight); // make it full screen
+  renderer.outputColorSpace = THREE.SRGBColorSpace; // set color encoding
+  container.appendChild(renderer.domElement); // add the renderer to html div
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// CAMERAS CONFIG
+  const camera = new THREE.PerspectiveCamera(
+    35,
+    window.innerWidth / window.innerHeight,
+    1,
+    100
+  );
+  camera.position.set(1, 2, 3);
+  scene.add(camera);
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// MAKE EXPERIENCE FULL SCREEN
+  window.addEventListener("resize", () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width, height);
+    composer.setSize(width, height);
+    renderer.setPixelRatio(2);
+  });
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// CREATE ORBIT CONTROLS
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 1.5, 0); // Set the target to look at the center where emberke is
+  controls.update(); // Update the controls to apply the target
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// LOADING GLB/GLTF MODEL FROM BLENDER
+  let emberkeModel: THREE.Group | null = null;
+
+  // Load the korte model (for particle sampling only - not added to scene)
+  loader.load("models/korte.glb", function (gltf) {
+    gltf.scene.traverse((obj) => {
+      if (obj instanceof THREE.Mesh) {
+        sampler = new MeshSurfaceSampler(obj).build();
+      }
+    });
+
+    transformMesh();
+  });
+
+  // Load the emberke model (smaller)
+  loader.load("models/emberke.glb", function (gltf) {
+    gltf.scene.scale.set(1.0, 1.0, 1.0); // Keep emberke smaller
+    gltf.scene.position.set(0, 0.1, 0); // Center it at the same position
+
+    // Apply MeshPhongMaterial to all meshes in the model
+    gltf.scene.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        child.material = new THREE.MeshPhongMaterial({
+          color: 0x1a1a1a, // Dark black-ish color
+          shininess: 20,
+          specular: 0x444444, // Specular highlight color
+        });
+      }
+    });
+
+    emberkeModel = gltf.scene;
+    scene.add(gltf.scene);
+  });
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// AMBIENT FLOATING PARTICLES
+  const ambientParticlesGeometry = new THREE.BufferGeometry();
+  const ambientParticleCount = 2000;
+  const ambientParticlePositions: number[] = [];
+  const ambientParticleVelocities: number[] = [];
+
+  // Create random particles spread throughout the scene
+  for (let i = 0; i < ambientParticleCount; i++) {
+    // Random positions in a large sphere around the scene
+    const x = (Math.random() - 0.5) * 20;
+    const y = (Math.random() - 0.5) * 15;
+    const z = (Math.random() - 0.5) * 20;
+
+    ambientParticlePositions.push(x, y, z);
+
+    // Random velocities for floating motion
+    ambientParticleVelocities.push(
+      (Math.random() - 0.5) * 0.002,
+      (Math.random() - 0.5) * 0.001,
+      (Math.random() - 0.5) * 0.002
+    );
+  }
+
+  ambientParticlesGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(ambientParticlePositions, 3)
+  );
+
+  const ambientParticlesMaterial = new THREE.PointsMaterial({
+    color: 0x9db6df,
+    size: 0.1,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+    opacity: 0.8,
+    depthWrite: false,
+    sizeAttenuation: true,
+    alphaMap: new THREE.TextureLoader().load("particle-texture.jpg"),
+  });
+
+  const ambientParticles = new THREE.Points(
+    ambientParticlesGeometry,
+    ambientParticlesMaterial
+  );
+  scene.add(ambientParticles);
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// TRANSFORM MESH INTO POINTS
+  let sampler: MeshSurfaceSampler | null = null;
+  let uniforms = {
+    mousePos: { value: new THREE.Vector3() },
+    time: { value: 0.0 }, // Add time uniform for animation
+  };
+  let pointsGeometry = new THREE.BufferGeometry();
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  const vertices: number[] = [];
+  const tempPosition = new THREE.Vector3();
+  let pointsObject: THREE.Points | null = null; // Store reference to points object
+  const targetMousePos = new THREE.Vector3(); // Target position for smooth interpolation
+  const lerpFactor = 0.1; // Smoothing factor (lower = smoother, 0.1 = 10% per frame)
+  const targetLightPos = new THREE.Vector3(); // Target position for light
+  const lightLerpFactor = 0.15; // Light follows slightly faster than particle effect
+
+  // Scroll-based camera rotation and model movement
+  let scrollY = 0;
+  let targetScrollRotation = 0;
+  let currentScrollPosition = 0;
+  let targetModelX = 0;
+  const scrollSensitivity = 0.0002; // Much smaller for subtle rotation
+  const scrollLerpFactor = 0.05; // Smooth camera rotation
+  const maxRotation = 0.3; // Limit rotation to about 17 degrees each direction
+  const modelMovementAmount = 0.003; // How much models move right per scroll pixel
+  const maxModelX = 2.0; // Maximum X position for models
+
+  function transformMesh() {
+    if (!sampler) return;
+
+    // Loop to sample a coordinate for each points
+    for (let i = 0; i < 99000; i++) {
+      // Sample a random position in the model
+      sampler.sample(tempPosition);
+      // Push the coordinates of the sampled coordinates into the array
+      vertices.push(tempPosition.x, tempPosition.y, tempPosition.z);
+    }
+
+    // Define all points positions from the previously created array
+    pointsGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+
+    /*    // Add gradient colors based on Y position
+    const colors: number[] = [];
+
+    // First, find the min and max Y values
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (let i = 0; i < vertices.length; i += 3) {
+      const y = vertices[i + 1];
+      if (y < minY) minY = y;
+      if (y > maxY) maxY = y;
+    }
+
+    const color1 = new THREE.Color(0x091c30);
+    const color2 = new THREE.Color(0x2c2e0b);
+
+    for (let i = 0; i < vertices.length; i += 3) {
+      const y = vertices[i + 1]; // Get Y coordinate
+
+      // Normalize Y position to 0-1 range based on actual min/max
+      const normalizedY = (y - minY) / (maxY - minY);
+
+      let color = new THREE.Color();
+
+      color.lerpColors(color1, color2, normalizedY);
+
+      colors.push(color.r, color.g, color.b);
+    }
+
+    pointsGeometry.setAttribute(
+      "color",
+      new THREE.Float32BufferAttribute(colors, 3)
+    ); */
+
+    // Define the material of the points
+    const pointsMaterial = new THREE.PointsMaterial({
+      color: 0x172640,
+      size: 0.1,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      opacity: 0.8,
+      depthWrite: false,
+      sizeAttenuation: true,
+      alphaMap: new THREE.TextureLoader().load("particle-texture.jpg"),
+    });
+
+    // Create the custom vertex shader injection
+    pointsMaterial.onBeforeCompile = function (shader) {
+      shader.uniforms.mousePos = uniforms.mousePos;
+      shader.uniforms.time = uniforms.time;
+
+      shader.vertexShader = `
+          uniform vec3 mousePos;
+          uniform float time;
+          varying float vNormal;
+          
+          ${shader.vertexShader}`.replace(
+        `#include <begin_vertex>`,
+        `#include <begin_vertex>
+            // Floating animation - add subtle wave motion
+            float wave1 = sin(position.x * 2.0 + time * 0.5) * 0.04;
+            float wave2 = cos(position.y * 2.5 + time * 0.4) * 0.01;
+            float wave3 = sin(position.z * 1.5 + time * 0.3) * 0.03;
+            transformed += vec3(wave1, wave2, wave3);
+            
+            // Mouse interaction
+            vec3 seg = position - mousePos;
+            vec3 dir = normalize(seg);
+            float dist = length(seg);
+            if (dist < 1.5){
+              float force = clamp(1.0 / (1.0 + dist * 2.0), 0.0, 1.0);
+              force = pow(force, 2.0); // Smooth falloff
+              transformed += dir * force * 0.15;
+              vNormal = force;
+            }
+          `
+      );
+    };
+
+    // Create an instance of points based on the geometry & material
+    const points = new THREE.Points(pointsGeometry, pointsMaterial);
+    points.position.set(0, pos, 0);
+    /* points.scale.set(3.0, 3.0, 3.0);  */
+    points.scale.set(1.0, 0.75, 1.0);
+    points.rotateX(0.5);
+    points.rotateY(0.2);
+    points.rotateZ(0.2);
+    // Add them into the main group
+    scene.add(points);
+
+    // Store reference for raycasting
+    pointsObject = points;
+  }
+
+  /////////////////////////////////////////////////////////////////////////
+  //// DEFINE ORBIT CONTROLS LIMITS
+  function setOrbitControlsLimits() {
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.04;
+    controls.minDistance = 2;
+    controls.maxDistance = 10;
+    controls.enableRotate = false;
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.zoomSpeed = 0.5;
+    controls.autoRotate = false;
+  }
+
+  setOrbitControlsLimits();
+
+  /////////////////////////////////////////////////////////////////////////
+  ///// POST PROCESSING EFFECTS
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  const renderPass = new RenderPass(scene, camera);
+  const renderTarget = new THREE.WebGLRenderTarget(width, height, {
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
+    format: THREE.RGBAFormat,
+  });
+
+  const composer = new EffectComposer(renderer, renderTarget);
+  composer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  /////DISTORT PASS //////////////////////////////////////////////////////////////
+  const distortPass = new ShaderPass(LensDistortionShader);
+  distortPass.material.defines.CHROMA_SAMPLES = 4;
+  distortPass.enabled = true;
+  distortPass.material.uniforms.baseIor.value = 0.72;
+  distortPass.material.uniforms.bandOffset.value = 0.0019; // 0.0019
+  distortPass.material.uniforms.jitterIntensity.value = 10.7;
+  distortPass.material.defines.BAND_MODE = 2;
+
+  composer.addPass(renderPass);
+  composer.addPass(distortPass);
+
+  /////////////////////////////////////////////////////////////////////////
+  //// RENDER LOOP FUNCTION
+  const clock = new THREE.Clock();
+  let isAnimationPaused = false; // Flag to control animation state
+
+  function rendeLoop() {
+    TWEEN.update(); // update animations
+
+    controls.update(); // update orbit controls
+
+    // Skip rendering if animation is paused
+    if (isAnimationPaused) {
+      requestAnimationFrame(rendeLoop);
+      return;
+    }
+
+    // Update time uniform for floating animation
+    const time = clock.getElapsedTime();
+    uniforms.time.value = time;
+
+    ////////////////////////////////////////
+    // Animate ambient particles
+    const positions = ambientParticlesGeometry.attributes.position
+      .array as Float32Array;
+    for (let i = 0; i < ambientParticleCount; i++) {
+      const i3 = i * 3;
+
+      // Update positions with velocities
+      positions[i3] += ambientParticleVelocities[i3];
+      positions[i3 + 1] += ambientParticleVelocities[i3 + 1];
+      positions[i3 + 2] += ambientParticleVelocities[i3 + 2];
+
+      // Add some sine wave motion for more organic movement
+      positions[i3] += Math.sin(time * 0.2 + i * 0.1) * 0.0003;
+      positions[i3 + 1] += Math.cos(time * 0.15 + i * 0.15) * 0.0003;
+      positions[i3 + 2] += Math.sin(time * 0.18 + i * 0.2) * 0.0003;
+
+      // Wrap particles around when they go too far
+      if (positions[i3] > 10) positions[i3] = -10;
+      if (positions[i3] < -10) positions[i3] = 10;
+      if (positions[i3 + 1] > 7.5) positions[i3 + 1] = -7.5;
+      if (positions[i3 + 1] < -7.5) positions[i3 + 1] = 7.5;
+      if (positions[i3 + 2] > 10) positions[i3 + 2] = -10;
+      if (positions[i3 + 2] < -10) positions[i3 + 2] = 10;
+    }
+    ambientParticlesGeometry.attributes.position.needsUpdate = true;
+    ////////////////////////////////////////
+
+    // Smoothly interpolate mouse position for gentler interaction
+    uniforms.mousePos.value.lerp(targetMousePos, lerpFactor);
+
+    // Smoothly move the light to follow the cursor
+    cursorLight.position.lerp(targetLightPos, lightLerpFactor);
+
+    // Smoothly rotate camera based on scroll (only if scrolled past top)
+    scrollY += (targetScrollRotation - scrollY) * scrollLerpFactor;
+
+    // Calculate camera position on a sphere around the target
+    const targetLookAt = new THREE.Vector3(0, 1.5, 0);
+    const radius = camera.position.distanceTo(targetLookAt);
+
+    // Get initial angles from starting position (1, 2, 3)
+    const initialTheta = Math.atan2(1, 3); // azimuthal angle (around Y axis)
+    const initialPhi = Math.acos(2 / radius); // polar angle (from Y axis)
+
+    // Apply scroll rotation to theta (horizontal rotation)
+    const theta = initialTheta + scrollY * 3;
+    const phi = initialPhi;
+
+    /*  console.log(scrollY); */
+    /*  camera.position.y = targetLookAt.y + radius * Math.cos(phi);
+    camera.position.z =
+      targetLookAt.z + radius * Math.sin(phi) * Math.cos(theta); */
+    // Convert spherical to cartesian coordinates
+    if (scrollY < 0.18) {
+      camera.position.x =
+        targetLookAt.x + radius * Math.sin(phi) * Math.sin(theta);
+
+      camera.lookAt(targetLookAt);
+
+      // Smoothly move models to the right based on scroll
+      if (pointsObject) {
+        const currentX = pointsObject.position.x;
+        pointsObject.position.x += (targetModelX - currentX) * scrollLerpFactor;
+      }
+      if (emberkeModel) {
+        const currentX = emberkeModel.position.x;
+        emberkeModel.position.x += (targetModelX - currentX) * scrollLerpFactor;
+      }
+    }
+
+    composer.render(); //render the scene with the composer
+    distortPass.material.uniforms.jitterOffset.value += 0.01;
+
+    requestAnimationFrame(rendeLoop); //loop the render function
+  }
+
+  rendeLoop(); //start rendering
+
+  //////////////////////////////////////////////////
+  //// ON MOUSE MOVE TO GET CAMERA POSITION
+  document.addEventListener(
+    "mousemove",
+    (event) => {
+      event.preventDefault();
+
+      if (!pointsObject) return; // Wait until points are loaded
+
+      // Convert mouse position to normalized device coordinates (-1 to +1)
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      // Update raycaster with camera and mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      // Create an invisible plane at the points' position for accurate intersection
+      const targetPosition = new THREE.Vector3(0, pos, 0);
+      const plane = new THREE.Plane();
+
+      // Set plane normal to face the camera for better interaction from all angles
+      const normalVector = new THREE.Vector3();
+      normalVector.subVectors(camera.position, targetPosition).normalize();
+      plane.setFromNormalAndCoplanarPoint(normalVector, targetPosition);
+
+      // Find intersection point with the plane
+      const intersectPoint = new THREE.Vector3();
+      raycaster.ray.intersectPlane(plane, intersectPoint);
+
+      // Transform the intersection point to the local space of the points object
+      // This accounts for the rotation and position of the points
+      const localPoint = pointsObject.worldToLocal(intersectPoint.clone());
+
+      // Update the target mouse position (will be smoothly interpolated in render loop)
+      targetMousePos.copy(localPoint);
+
+      const intersectPoint2 = new THREE.Vector3(
+        intersectPoint.x,
+        intersectPoint.y,
+        intersectPoint.z + 0.4
+      );
+
+      // Update the light position in world space (not local space)
+      targetLightPos.copy(intersectPoint2);
+    },
+    false
+  );
+
+  //////////////////////////////////////////////////
+  //// ON SCROLL TO ROTATE CAMERA AND MOVE MODELS
+  window.addEventListener(
+    "scroll",
+    () => {
+      currentScrollPosition = window.scrollY || window.pageYOffset;
+
+      // Only apply rotation if scrolled past the top (more than 10px)
+      if (currentScrollPosition > 10) {
+        const scrollDelta = currentScrollPosition - 10; // Start from 0 after 10px threshold
+        targetScrollRotation = scrollDelta * scrollSensitivity;
+        targetScrollRotation = Math.max(
+          -maxRotation,
+          Math.min(maxRotation, targetScrollRotation)
+        );
+
+        // Move models to the right based on scroll
+        targetModelX = (scrollDelta * modelMovementAmount) / 4; //Math.min((scrollDelta * modelMovementAmount) / 4, 0);
+      } else {
+        // At the top, reset rotation and position
+        targetScrollRotation = 0;
+        targetModelX = 0;
+      }
+    },
+    { passive: true }
+  );
+
+  //////////////////////////////////////////////////
+  //// INTERSECTION OBSERVER TO PAUSE ANIMATION AT PILLARS PAGE
+  // Function to setup observer once element is found
+  function setupPillarsObserver() {
+    // Try to find the Pillars component using data attribute first, then fallback to other selectors
+    const pillarsElement =
+      document.querySelector('[data-section="pillars"]') ||
+      document.body.querySelector('div[style*="z-index: 30"]') ||
+      document.body.querySelector('div[style*="z-index:30"]') ||
+      Array.from(document.querySelectorAll("div")).find((div) => {
+        const style = window.getComputedStyle(div);
+        return style.zIndex === "30" && style.background.includes("black");
+      });
+
+    if (pillarsElement) {
+      console.log("Pillars element found, setting up observer");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // If Pillars is intersecting with viewport (visible)
+            if (entry.isIntersecting) {
+              isAnimationPaused = true;
+              console.log("Three.js animation paused - Pillars visible");
+            } else {
+              isAnimationPaused = false;
+              console.log("Three.js animation resumed - Pillars not visible");
+            }
+          });
+        },
+        {
+          threshold: 0.8, // Trigger when 10% of the element is visible
+          rootMargin: "0px",
+        }
+      );
+
+      observer.observe(pillarsElement);
+    } else {
+      // Retry after a short delay if element not found
+      setTimeout(setupPillarsObserver, 100);
+    }
+  }
+
+  // Start trying to find the element
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupPillarsObserver);
+  } else {
+    setupPillarsObserver();
+  }
+</script>

@@ -1,0 +1,158 @@
+<div class="container">
+  <h2 class="first animate-header">hitvallásunk</h2>
+  <h2 class="second animate-header">a marketing.</h2>
+  <p class="animate-text">
+    Hiszünk abban, hogy a marketingkommunikáció valódi partnerséget jelent.
+    Olyan kiszámítható megoldásokat kínálunk vállalkozások számára, amelyek
+    hosszú távon segítik márkájuk üzleti növekedését.
+  </p>
+  <div class="buttoncontainer">
+    <button class="hover">
+      <img src="icons/arrow.svg" alt="" class="arrow" />
+      <span class="button-text">NÉZD MEG MUNKÁINK</span>
+    </button>
+    <button class="hover">
+      <img src="icons/arrow.svg" alt="" class="arrow" />
+      <span class="button-text">ISMERJ MEG MINKET</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  import { animate, onScroll } from "animejs";
+
+  animate(".first", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    delay: 300,
+    autoplay: onScroll({
+      enter: "bottom-=500 top",
+      leave: "top-=0 bottom",
+      /*  sync: "play pause reverse reset", */
+    }),
+  });
+
+  animate(".second", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    delay: 600,
+    autoplay: onScroll({
+      enter: "bottom-=500 top",
+      leave: "top-=0 bottom",
+      /* sync: "play pause reverse reset", */
+    }),
+  });
+
+  animate(".animate-text", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    delay: 800,
+    autoplay: onScroll({
+      enter: "bottom-=300 top",
+      leave: "top-=0 bottom",
+    }),
+  });
+
+  animate(".hover", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    delay: 800,
+    autoplay: onScroll({
+      enter: "bottom-=200 top",
+      leave: "top-=0 bottom",
+    }),
+  });
+</script>
+
+<style>
+  .container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: start;
+    font-family: "AktivGrotesk Light";
+    color: white;
+    position: relative;
+    z-index: 40;
+    padding-left: 15%;
+    padding-bottom: 0%;
+  }
+  .first {
+    font-family: "AktivGrotesk Semibold";
+    font-size: 100pt;
+    letter-spacing: -10px;
+    line-height: 40pt;
+    margin: 0;
+  }
+  .second {
+    font-family: "Kepler";
+    font-size: 150pt;
+    font-weight: 400;
+    letter-spacing: -10px;
+    margin: 0;
+  }
+  p {
+    margin-top: 0px;
+    margin-left: 0rem;
+    line-height: 30px;
+    width: 35vw;
+  }
+  .buttoncontainer {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  button {
+    font-family: "AktivGrotesk Light";
+    background: none;
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 40px;
+    border-radius: 100px;
+    font-size: 12pt;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    transition: padding 0.3s ease;
+  }
+
+  .arrow {
+    opacity: 0;
+    transform: translateX(0px);
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  button.hover {
+    padding-left: 0px;
+  }
+
+  button.hover:hover {
+    padding-left: 50px;
+    cursor: pointer;
+  }
+
+  button.hover:hover .arrow {
+    opacity: 1;
+    transform: translateX(20);
+  }
+
+  .button-text {
+    white-space: nowrap;
+  }
+</style>
