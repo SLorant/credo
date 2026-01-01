@@ -212,7 +212,7 @@
       new THREE.Float32BufferAttribute(vertices, 3)
     );
 
-    /*    // Add gradient colors based on Y position
+    // Add gradient colors based on Y position
     const colors: number[] = [];
 
     // First, find the min and max Y values
@@ -224,8 +224,8 @@
       if (y > maxY) maxY = y;
     }
 
-    const color1 = new THREE.Color(0x091c30);
-    const color2 = new THREE.Color(0x2c2e0b);
+    const color2 = new THREE.Color(0x112c38);
+    const color1 = new THREE.Color(0x252b10);
 
     for (let i = 0; i < vertices.length; i += 3) {
       const y = vertices[i + 1]; // Get Y coordinate
@@ -243,17 +243,18 @@
     pointsGeometry.setAttribute(
       "color",
       new THREE.Float32BufferAttribute(colors, 3)
-    ); */
+    );
 
     // Define the material of the points
     const pointsMaterial = new THREE.PointsMaterial({
-      color: 0x172640,
+      /* color: 0x172640, */
       size: 0.1,
       blending: THREE.AdditiveBlending,
       transparent: true,
       opacity: 0.8,
       depthWrite: false,
       sizeAttenuation: true,
+      vertexColors: true,
       alphaMap: new THREE.TextureLoader().load("particle-texture.jpg"),
     });
 

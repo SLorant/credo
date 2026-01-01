@@ -26,11 +26,10 @@
     translateY: [30, 0],
     ease: "inOutSine",
     duration: 600,
-    delay: 300,
     autoplay: onScroll({
-      enter: "bottom-=500 top",
-      leave: "top-=0 bottom",
-      /*  sync: "play pause reverse reset", */
+      enter: "bottom-=400 top",
+      leave: "top bottom",
+      sync: "play reverse",
     }),
   });
 
@@ -39,11 +38,10 @@
     translateY: [30, 0],
     ease: "inOutSine",
     duration: 600,
-    delay: 600,
     autoplay: onScroll({
       enter: "bottom-=500 top",
-      leave: "top-=0 bottom",
-      /* sync: "play pause reverse reset", */
+      leave: "top bottom",
+      sync: "play reverse",
     }),
   });
 
@@ -52,10 +50,10 @@
     translateY: [30, 0],
     ease: "inOutSine",
     duration: 600,
-    delay: 800,
     autoplay: onScroll({
       enter: "bottom-=300 top",
-      leave: "top-=0 bottom",
+      leave: "top bottom",
+      sync: "play reverse",
     }),
   });
 
@@ -64,18 +62,19 @@
     translateY: [30, 0],
     ease: "inOutSine",
     duration: 600,
-    delay: 800,
     autoplay: onScroll({
       enter: "bottom-=200 top",
-      leave: "top-=0 bottom",
+      leave: "top bottom",
+      sync: "play reverse",
     }),
   });
 </script>
 
 <style>
   .container {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
+    padding: 200px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;

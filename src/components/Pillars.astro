@@ -1,16 +1,213 @@
-<div data-section="pillars">
-  <!-- <img src="dark.png" alt="" /> -->
+---
+import Preciz from "./svg/preciz.astro";
+import Krea from "./svg/krea.astro";
+import Stonks from "./svg/stonks.astro";
+---
+
+<div class="background"></div>
+<div data-section="pillars" class="container">
+  <h2 class="header">
+    együttműködésünk <br />
+    <span class="three">három</span> pillérre épül:
+  </h2>
+  <div class="grid">
+    <div class="griditem">
+      <img class="korte" src="kreakorte.svg" alt="second pillar" />
+      <Krea />
+      <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
+    </div>
+    <div class="griditem">
+      <img class="korte" src="precizkorte.svg" alt="second pillar" />
+      <Preciz />
+      <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
+    </div>
+    <div class="griditem">
+      <img class="korte" src="stonkskorte.svg" alt="second pillar" />
+      <Stonks />
+      <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
+    </div>
+  </div>
+  <div class="box">
+    <p class="uppercase">
+      A vízión túl a teljes márkatervezéstől, <br /> a napi megvalósításon át egészen
+      az időszerű megújulásig, <br />
+      <span class="bold"
+        >a fejlődés minden fázisában segítjük ügyfeleinket.</span
+      >
+    </p>
+  </div>
 </div>
 
+<script>
+  import { animate, onScroll } from "animejs";
+
+  animate(".header", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=400 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".korte", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=300 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".info", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=100 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".box", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=100 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  // Trigger SVG animations when they come into view
+  const svgs = document.querySelectorAll("#Layer_2");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("start");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.9, // Trigger when 90% of the SVG is visible
+    }
+  );
+
+  svgs.forEach((svg, index) => {
+    // Add staggered delay: 0ms, 200ms, 400ms
+    const delay = index * 800;
+
+    const delayedObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("start");
+            }, delay);
+            delayedObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 1,
+      }
+    );
+
+    delayedObserver.observe(svg);
+  });
+</script>
+
 <style>
-  div {
+  .container {
     width: 100vw;
     height: 100vh;
     position: relative;
     z-index: 30;
-    background: black;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: start;
+    background-image: url("gradient2.webp");
+    background-size: cover;
+    color: white;
+    padding-top: 600px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 100px;
+    margin-bottom: 20px;
+  }
+  .griditem {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .korte {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*    backdrop-filter: blur(20px); */
+  }
+  object {
+    position: relative;
+    z-index: 30;
   }
   img {
-    width: 100vw;
+    width: 300px;
+  }
+  h2 {
+    font-weight: 400;
+    font-family: "AktivGrotesk Regular";
+    font-size: 65pt;
+    text-align: center;
+    line-height: 110px;
+    margin-bottom: 20px;
+  }
+  p {
+    text-align: center;
+    font-family: "AktivGrotesk Medium";
+  }
+  .three {
+    font-family: "Kepler";
+    font-size: 80pt;
+  }
+  .box {
+    width: 50%;
+    padding: 0px;
+    border-radius: 30px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    background: rgb(255 255 255 / 0.1);
+    color: white;
+    border: 2px solid white;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1); /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    /*  filter: drop-shadow(#333333 1rem 1rem 10px); */
+  }
+  .uppercase {
+    font-size: 14pt;
+    font-family: "AktivGrotesk Regular";
+    line-height: 30px;
+    text-transform: uppercase !important;
+  }
+  .bold {
+    font-family: "AktivGrotesk Bold";
   }
 </style>

@@ -12,7 +12,8 @@
     "@tweenjs/tween.js": "^25.0.0",
     "animejs": "^4.2.2",
     "astro": "^5.16.6",
-    "three": "^0.182.0"
+    "three": "^0.182.0",
+    "vivus": "^0.4.6"
   },
   "devDependencies": {
     "@types/three": "^0.182.0"
