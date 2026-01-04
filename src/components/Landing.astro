@@ -1,25 +1,37 @@
 <div class="container">
-  <img class="gif" src="landing3.gif" alt="We are credo" />
-  <div class="footer">
-    <p>hello@credodigital.hu</p>
-    <div class="icons">
-      <img class="icon" src="icons/linkedin.svg" alt="linkedin" />
-      <img class="icon" src="icons/facebook.svg" alt="facebook" />
-      <img class="icon" src="icons/instagram.svg" alt="instagram" />
-    </div>
+  <img class="gif" src="/landing3.gif" alt="We are credo" />
+</div>
+
+<div class="footer">
+  <a class="hello2" href="mailto:hello@credodigital.hu">hello@credodigital.hu</a
+  >
+  <div class="icons">
+    <a
+      href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
+      target="_blank"
+      ><img class="icon" src="icons/linkedin.svg" alt="linkedin" /></a
+    >
+    <a
+      href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
+      target="_blank"
+      ><img class="icon" src="icons/facebook.svg" alt="facebook" /></a
+    >
+    <a href="https://www.instagram.com/weare_credo/" target="_blank"
+      ><img class="icon" src="icons/instagram.svg" alt="instagram" /></a
+    >
   </div>
 </div>
 
 <style>
   .container {
-    height: 100vh;
+    height: 1000px;
     width: 100vw;
     display: flex;
     justify-content: center;
     place-items: center;
     font-family: "AktivGrotesk Light";
     position: relative;
-    z-index: 20;
+    z-index: 30;
   }
   .gif {
     width: 75%;
@@ -34,9 +46,10 @@
   .icons {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
     margin-right: 4rem;
     margin-bottom: 1rem;
+    z-index: 50;
   }
   .icon {
     width: 25px;
@@ -52,11 +65,40 @@
     color: white;
     font-size: 14pt;
     margin-bottom: 2rem;
+    z-index: 45;
+    font-family: "AktivGrotesk Light";
   }
-  p {
+  .hello2 {
+    text-decoration: none;
+    color: white;
+    transition: all;
+    transition-duration: 400ms;
     margin-left: 4rem;
+    margin-bottom: 2rem;
     line-height: 0;
     z-index: 20;
+    display: flex;
+    justify-content: start;
+    place-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      height: 100vh;
+    }
+    .gif {
+      width: 90%;
+      /*   margin-bottom: 20vh; */
+    }
+    p {
+      display: none;
+    }
+    .icons {
+      display: none;
+    }
+    .hello2 {
+      display: none;
+    }
   }
 </style>
 
@@ -64,6 +106,9 @@
   const gif = document.querySelector(".gif");
 
   if (gif) {
+    // Set different threshold based on viewport width
+    const threshold = window.innerWidth <= 800 ? 0.5 : 1;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -75,7 +120,7 @@
         });
       },
       {
-        threshold: 1,
+        threshold: threshold,
       }
     );
 

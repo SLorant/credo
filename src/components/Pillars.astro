@@ -4,8 +4,8 @@ import Krea from "./svg/krea.astro";
 import Stonks from "./svg/stonks.astro";
 ---
 
-<div class="background"></div>
 <div data-section="pillars" class="container">
+  <div class="background3"></div>
   <h2 class="header">
     együttműködésünk <br />
     <span class="three">három</span> pillérre épül:
@@ -52,42 +52,43 @@ import Stonks from "./svg/stonks.astro";
       sync: "play reverse",
     }),
   });
+  if (window.innerWidth >= 768) {
+    animate(".korte", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=300 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".korte", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=300 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".info", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".info", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=100 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
-
-  animate(".box", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=100 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".box", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
 
   // Trigger SVG animations when they come into view
   const svgs = document.querySelectorAll("#Layer_2");
@@ -133,23 +134,34 @@ import Stonks from "./svg/stonks.astro";
 <style>
   .container {
     width: 100vw;
-    height: 100vh;
+    height: 1000px;
     position: relative;
     z-index: 30;
     display: flex;
     flex-direction: column;
     place-items: center;
     justify-content: start;
-    background-image: url("gradient2.webp");
-    background-size: cover;
+    /*  background-image: url("gradient.webp");
+    background-size: cover; */
     color: white;
     padding-top: 600px;
+  }
+  .background3 {
+    position: absolute;
+    width: 100vw;
+    height: 2000px;
+    top: -150px;
+    left: 0;
+    background-image: url("/gradient.webp");
+    background-size: cover;
+    z-index: 20;
   }
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 300px);
     gap: 100px;
     margin-bottom: 20px;
+    z-index: 30;
   }
   .griditem {
     display: flex;
@@ -178,6 +190,7 @@ import Stonks from "./svg/stonks.astro";
     text-align: center;
     line-height: 110px;
     margin-bottom: 20px;
+    z-index: 30;
   }
   p {
     text-align: center;
@@ -186,6 +199,7 @@ import Stonks from "./svg/stonks.astro";
   .three {
     font-family: "Kepler";
     font-size: 80pt;
+    letter-spacing: -5px;
   }
   .box {
     width: 50%;
@@ -195,6 +209,7 @@ import Stonks from "./svg/stonks.astro";
     backdrop-filter: blur(10px);
     background: rgb(255 255 255 / 0.1);
     color: white;
+    z-index: 30;
     border: 2px solid white;
     box-shadow:
       0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -209,5 +224,106 @@ import Stonks from "./svg/stonks.astro";
   }
   .bold {
     font-family: "AktivGrotesk Bold";
+  }
+  @media (max-width: 1400px) {
+    .box {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .box {
+      width: 70%;
+    }
+    .uppercase {
+      font-size: 12pt;
+      line-height: 27px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 200px);
+      gap: 100px;
+      margin-bottom: 20px;
+    }
+    .korte {
+      width: 100%;
+    }
+    h2 {
+      font-size: 40pt;
+      text-align: center;
+      line-height: 80px;
+    }
+    .three {
+      font-size: 60pt;
+    }
+  }
+  @media (max-width: 1000px) {
+    .box {
+      width: 70%;
+    }
+    .uppercase {
+      font-size: 10pt;
+      line-height: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      gap: 60px;
+      margin-bottom: 20px;
+    }
+    .korte {
+      width: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    .box {
+      width: 70%;
+    }
+    .uppercase {
+      font-size: 10pt;
+      line-height: 24px;
+    }
+    .background3 {
+      left: -10px;
+      width: 105vw;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(1, 250px);
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .korte {
+      width: 100%;
+    }
+    h2 {
+      font-size: 20pt;
+      text-align: center;
+      line-height: 40px;
+    }
+    .three {
+      font-size: 30pt;
+      letter-spacing: -2px;
+    }
+
+    .container {
+      height: 1300px;
+      padding-top: 400px;
+      /*   margin-left: -10px;
+      width: 120vw; */
+    }
+    .box {
+      width: 70%;
+      padding: 0px 20px;
+      border: none;
+      /*  margin-top: ; */
+    }
+    .uppercase {
+      font-size: 8pt;
+      line-height: 23px;
+    }
+    .info {
+      font-size: 10pt;
+    }
   }
 </style>

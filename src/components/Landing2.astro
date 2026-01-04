@@ -21,53 +21,79 @@
 <script>
   import { animate, onScroll } from "animejs";
 
-  animate(".first", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=400 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+  if (window.innerWidth >= 768) {
+    animate(".first", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=400 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".second", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=500 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".second", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=500 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".animate-text", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=300 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".animate-text", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=300 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".hover", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=200 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".hover", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=200 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animate(".first", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=200 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+
+    animate(".second", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=200 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
 </script>
 
 <style>
@@ -153,5 +179,83 @@
 
   .button-text {
     white-space: nowrap;
+  }
+
+  @media (max-width: 1400px) {
+    .first {
+      font-size: 80pt;
+    }
+    .second {
+      font-size: 120pt;
+    }
+    .container {
+      padding-left: 10%;
+    }
+  }
+  @media (max-width: 1200px) {
+    .first {
+      font-size: 70pt;
+    }
+    .second {
+      font-size: 110pt;
+    }
+    p {
+      font-size: 10pt;
+      width: 45vw;
+    }
+    button {
+      padding: 10px 20px;
+      padding-right: 30px;
+      font-size: 10pt;
+      gap: 10px;
+    }
+    .arrow {
+      width: 30px;
+      height: 20px;
+    }
+    button.hover:hover {
+      padding-left: 30px;
+    }
+  }
+  @media (max-width: 768px) {
+    .first {
+      font-size: 35pt;
+      letter-spacing: -3px;
+      line-height: 30pt;
+    }
+    .second {
+      font-size: 55pt;
+      letter-spacing: -3px;
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 10pt;
+      line-height: 25px;
+      width: 70vw;
+      text-shadow: 2px 2px black;
+    }
+    button {
+      padding: 10px 30px;
+      padding-right: 40px;
+      font-size: 10pt;
+      gap: 10px;
+    }
+    .arrow {
+      width: 40px;
+      height: 20px;
+    }
+    button.hover:hover {
+      padding-left: 30px;
+    }
+    .buttoncontainer {
+      display: flex;
+      flex-direction: column;
+      /*  justify-content: center;
+      place-items: start; */
+      gap: 20px;
+      margin-top: 10px;
+      width: 70vw;
+    }
   }
 </style>

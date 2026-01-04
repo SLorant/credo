@@ -1,4 +1,6 @@
 ---
+export const prerender = true; // Makes this page static for better SEO and performance
+
 import Header from "../components/header/Header.astro";
 import Scene from "../components/Scene.astro";
 import Welcome from "../components/Welcome.astro";
@@ -7,9 +9,9 @@ import Landing from "../components/Landing.astro";
 import Landing2 from "../components/Landing2.astro";
 import Pillars from "../components/Pillars.astro";
 import Services from "../components/services/Services.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Achievements from "../components/Achievements.astro";
+import Work from "../components/Work.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout>
@@ -17,14 +19,9 @@ import Services from "../components/services/Services.astro";
   <Scene />
   <Landing />
   <Landing2 />
-  <div></div>
   <Pillars />
   <Services />
+  <Achievements />
+  <Work />
+  <Contact />
 </Layout>
-
-<style>
-  div {
-    width: 100vw;
-    /*   height: 150px; */
-  }
-</style>

@@ -1,72 +1,10 @@
 ---
-const cardData = [
-  {
-    id: 0,
-    title: "Credo performance",
-    items: [
-      {
-        icon: "icons/list/Group.svg",
-        text: "Hirdetési, médiamegjelenési stratégia",
-      },
-      {
-        icon: "icons/list/Group(1).svg",
-        text: "PPC kampánykezelés",
-      },
-      {
-        icon: "icons/list/Group(2).svg",
-        text: "Hírlevél automatizáció, eDM stratégia",
-      },
-      {
-        icon: "icons/list/Group(3).svg",
-        text: "Keresőmarketing",
-      },
-      {
-        icon: "icons/list/Group(4).svg",
-        text: "Konverzióoptimalizálás",
-      },
-      {
-        icon: "icons/list/Group(5).svg",
-        text: "Enhanced Ecommerce beállítás",
-      },
-      {
-        icon: "icons/list/Group(6).svg",
-        text: "Auditálás és stratégiai tanácsadás",
-      },
-      {
-        icon: "icons/list/Group(7).svg",
-        text: "E-kereskedelem menedzsment",
-      },
-    ],
-    image: "gradientblack2.png",
-    infotext: `Adat-, és teljesítményalapú marketing,<br/>
-ahol minden döntés mögött számszerű tények, valamint stratégiai döntések állnak és minden elköltött forint útja követhető. 
-<br/><br/>
-Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a performance marketing legmodernebb eszközeit, miközben eredményeinknek megfelelően skálázzuk azokat. Munkafolyamatunk során a folyamatos mérés, elemzés és finomhangolás alapfeltétel.`,
-  },
-  {
-    id: 1,
-    title: "Card 2",
-    items: [],
-    image: "gradientblack2.png",
-  },
-  {
-    id: 2,
-    title: "Card 3",
-    items: [],
-    image: "gradientblack2.png",
-  },
-  {
-    id: 3,
-    title: "Card 4",
-    items: [],
-    image: "gradientblack2.png",
-  },
-];
+import cardData from "./utils/cardData";
 ---
 
 <div class="services-wrapper" id="services-wrapper">
   <div class="background"></div>
-  <h2 class="header">
+  <h2 class="serviceheader">
     üzletági <br />
     <span class="three">szolgáltatásaink</span>
   </h2>
@@ -76,6 +14,10 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
         <div class="card" data-card={card.id}>
           <div class="info2">
             <h2 class="cardheader">{card.title}</h2>
+            <button class="mobilebutton">
+              <img src="icons/arrowbutton.svg" alt="arrow" />
+            </button>
+
             {card.items.length > 0 && (
               <div class="list-wrapper">
                 <ul class="card-list">
@@ -92,49 +34,106 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
                   <button class="close-button" aria-label="Close">
                     ×
                   </button>
+                  <h2 class="cardheader">{card.title}</h2>
+                  <button class="mobile-close-button" aria-label="Close">
+                    <img src="icons/arrowbutton.svg" alt="close" />
+                  </button>
                   <p class="infotext" set:html={card.infotext} />
                 </div>
               </div>
             )}
             <button class="toggle-button">Bővebben</button>
           </div>
-          <img class="cardimg" src={card.image} alt={card.title} />
+          <div class="cardimgbox">
+            <img
+              class="cardimg mobileimg"
+              src={card.mobileImage}
+              alt={card.title}
+            />
+            <img class="cardimg desktopimg" src={card.image} alt={card.title} />
+            <img class="cardimgtop" src={card.imageTop} alt={card.title} />
+          </div>
         </div>
       ))
     }
   </div>
 </div>
 
+<script>
+  import { animate, onScroll } from "animejs";
+  import { cardAnimations } from "./utils/cardAnimations";
+  import { imageAnimations } from "./utils/imageAnimations";
+  import { handleButtons } from "./utils/handleButtons";
+
+  if (window.innerWidth >= 1200) {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=300 top",
+        leave: "top+=400 bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else if (window.innerWidth >= 768) {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=0 top",
+        leave: "top+=300 bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top+=300 bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
+
+  cardAnimations();
+
+  imageAnimations();
+
+  handleButtons();
+</script>
+
 <style>
   .services-wrapper {
     position: relative;
-    /* Height for all cards + buffer for smooth scrolling */
-    height: 500vh;
+    height: 5000px;
     width: 100vw;
-    z-index: 40;
-    /*   background-image: url("gradient2.webp");
-    background-size: cover; */
-    /* Clip the fixed background to only show within this wrapper */
+    z-index: 0;
     overflow: hidden;
     display: flex;
     justify-content: start;
     place-items: center;
     flex-direction: column;
+    margin-top: 100px;
+  }
+  .serviceheader {
+    text-align: center;
+    line-height: 100px;
   }
   .background {
-    height: 500vh;
+    height: 1000px;
     width: 100vw;
     z-index: 10;
-    /* background-image: url("gradientblack.png");
-    background-size: cover; */
-    background: #0a2330;
-    background: linear-gradient(
-      211deg,
-      rgba(10, 35, 48, 1) 0%,
-      rgba(114, 171, 137, 1) 50%,
-      rgba(199, 188, 91, 1) 100%
-    );
-    position: absolute;
+
+    background-image: url("/gradient__background2.webp");
+    position: fixed;
     top: 0;
     left: 0;
   }
@@ -142,7 +141,7 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
   .services-container {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 1000px;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -155,15 +154,17 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
   .card {
     position: fixed;
     z-index: 20;
+    opacity: 0;
     top: 50%;
     left: 50%;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 1);
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     display: flex;
     width: 1000px;
     height: 600px;
+    overflow: hidden;
   }
 
   .cardheader {
@@ -172,6 +173,13 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     color: #333;
     font-family: "Kepler";
     font-size: 50pt;
+    letter-spacing: -3px;
+  }
+  .mobilebutton {
+    display: none;
+  }
+  .mobileimg {
+    display: none;
   }
   .info2 {
     display: flex;
@@ -186,9 +194,33 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
   .listicon {
     width: 25px;
   }
-  .cardimg {
+  .cardimgbox {
     width: 45%;
     border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cardimg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 20px;
+    height: 100%;
+    object-fit: cover;
+  }
+  .overlay-box h2 {
+    display: none !important;
+  }
+  .cardimgtop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    height: 100%;
+
+    object-fit: cover;
   }
 
   .list-wrapper {
@@ -201,6 +233,7 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     display: flex;
     flex-direction: column;
     padding-inline-start: 10px;
+    padding-inline-end: 80px;
   }
 
   li {
@@ -219,12 +252,11 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     left: 0;
     width: 90%;
     height: 100%;
-    background: #062938;
+    background: #4e8a67;
     background: linear-gradient(
-      185deg,
-      rgba(6, 41, 56, 1) 0%,
-      rgba(34, 60, 77, 1) 50%,
-      rgba(51, 74, 51, 1) 99%
+      180deg,
+      rgba(78, 138, 103, 1) 0%,
+      rgba(172, 176, 62, 1) 100%
     );
     border-radius: 10px;
     display: flex;
@@ -239,6 +271,24 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
   .overlay-box.active {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      transform: translate(-50%, -50%) translateX(100%);
+    }
+    to {
+      transform: translate(-50%, -50%) translateX(0);
+    }
+  }
+
+  @keyframes slideOutToRight {
+    from {
+      transform: translate(-50%, -50%) translateX(0);
+    }
+    to {
+      transform: translate(-50%, -50%) translateX(100%);
+    }
   }
 
   .overlay-box p {
@@ -268,6 +318,10 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     font-family: "AktivGrotesk Light";
   }
 
+  .mobile-close-button {
+    display: none;
+  }
+
   h2 {
     font-weight: 400;
     font-family: "AktivGrotesk Regular";
@@ -277,17 +331,19 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     margin-bottom: 20px;
     position: relative;
     z-index: 30;
-    opacity: 1 !important;
     text-align: left;
     color: white;
   }
   .three {
     font-family: "Kepler";
     font-size: 80pt;
+    letter-spacing: -5px;
   }
   .toggle-button {
-    font-family: "AktivGrotesk Light";
-    background: #172640;
+    font-family: "AktivGrotesk Regular";
+    /* background: #172640; */
+    background: #dbe120;
+    color: #1c1b22 !important;
     width: 240px;
     height: 45px;
     border: none;
@@ -301,188 +357,159 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     margin-top: 20px;
     cursor: pointer;
   }
+
+  .displaynone {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute;
+  }
+
+  .background {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      width: 100vw;
+      /* height: 550px; */
+      max-height: 75vh;
+      margin-top: 5vh;
+      flex-direction: column;
+      justify-content: start;
+      place-items: left;
+      padding-left: 100px;
+      padding-top: 30px;
+      padding-bottom: 20px;
+    }
+    ul.card-list {
+      margin: 20px 0px;
+      gap: 5px;
+      padding-inline-start: 5px;
+    }
+    li {
+      font-size: 8pt;
+      justify-content: start;
+      place-items: center;
+      gap: 10px;
+    }
+    .toggle-button {
+      display: none;
+    }
+    .info2 {
+      flex: 0;
+    }
+    .cardimgbox {
+      width: 80%;
+      height: 250px;
+    }
+    .cardimg {
+      object-fit: cover;
+    }
+    .cardimgtop {
+      /* height: 50%; */
+      object-fit: cover;
+    }
+    .cardheader {
+      margin: 0;
+      font-family: "Kepler";
+      font-size: 30pt;
+      line-height: 40px;
+      letter-spacing: -2px;
+    }
+    .serviceheader {
+      margin-top: 150px;
+      font-size: 40pt;
+      line-height: 60px;
+    }
+    .three {
+      font-size: 40pt;
+      letter-spacing: -3px;
+    }
+    .mobilebutton {
+      display: flex !important;
+      justify-content: center;
+      place-items: center;
+      height: 40px;
+      padding-left: 10px;
+      width: 40px;
+      position: absolute;
+      right: 110px;
+      top: 30px;
+      border-radius: 100px;
+      border: none;
+      z-index: 30;
+      background: #dbe120;
+      box-shadow: inset 4px 10px 10px #b9c241;
+    }
+
+    .overlay-box {
+      position: fixed;
+      top: calc(50%);
+      left: 50%;
+      width: 100vw;
+      height: calc(75vh);
+      max-height: 75vh;
+      transform: translate(-50%, -50%) translateX(100%);
+      opacity: 1;
+      z-index: 50;
+      padding: 3rem;
+      padding-left: 100px;
+      padding-top: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-items: start;
+    }
+    .overlay-box h2 {
+      color: white !important;
+      display: block !important;
+      margin-right: 40px;
+      margin-top: 40px;
+    }
+    .desktopimg {
+      display: none;
+    }
+    .mobileimg {
+      display: block;
+    }
+    .cardimgtop {
+      display: none;
+    }
+
+    .overlay-box p {
+      font-size: 10pt;
+      line-height: 1.6;
+      padding: 1rem 4rem 1rem 2rem;
+    }
+
+    .overlay-box.slide-in {
+      animation: slideInFromRight 0.3s ease-out forwards;
+    }
+
+    .overlay-box.slide-out {
+      animation: slideOutToRight 0.3s ease-in forwards;
+    }
+
+    .close-button {
+      display: none;
+    }
+
+    .mobile-close-button {
+      display: flex !important;
+      justify-content: center;
+      place-items: center;
+      position: absolute;
+      left: 110px;
+      border-radius: 100px;
+      border: none;
+      z-index: 51;
+      background: #dbe120;
+      transform: scaleX(-1);
+      cursor: pointer;
+      height: 40px;
+      padding-left: 10px;
+      width: 40px;
+      box-shadow: inset 4px 10px 10px #b9c241;
+    }
+  }
 </style>
-
-<script>
-  const wrapper = document.getElementById("services-wrapper");
-  const container = document.getElementById("services-container");
-  const cards = document.querySelectorAll<HTMLElement>(".card");
-  const totalCards = cards.length;
-
-  let currentCard = 0;
-  let scrollProgress = 0;
-
-  function updateCards() {
-    if (!wrapper || !container) return;
-
-    const rect = wrapper.getBoundingClientRect();
-    const wrapperTop = rect.top;
-    const wrapperHeight = rect.height;
-    const viewportHeight = window.innerHeight;
-
-    // Only start when wrapper enters viewport
-    if (wrapperTop > 0) {
-      // Haven't reached the section yet
-      cards.forEach((card) => {
-        card.style.opacity = "0";
-        card.style.transform =
-          "translate(-50%, calc(-50% + 100px)) scale(0.85)";
-        card.style.pointerEvents = "none";
-      });
-      return;
-    }
-
-    // Calculate how far we've scrolled into the wrapper
-    const scrolledIntoWrapper = Math.abs(wrapperTop);
-    const totalScrollDistance = wrapperHeight - viewportHeight;
-
-    // Calculate progress (0 to 1)
-    scrollProgress = Math.max(
-      0,
-      Math.min(1, scrolledIntoWrapper / totalScrollDistance)
-    );
-
-    // Each card gets equal scroll space
-    const progressPerCard = 1 / totalCards;
-
-    // Update each card based on scroll progress
-    cards.forEach((card, index) => {
-      const cardStartProgress = index * progressPerCard;
-      const cardEndProgress = (index + 1) * progressPerCard;
-
-      // Calculate how far through this card's transition we are
-      let cardProgress = 0;
-      let opacity = 0;
-      let scale = 0.85;
-      let yOffset = 100;
-      let isExiting = false;
-
-      if (scrollProgress < cardStartProgress) {
-        // Card hasn't started yet - hidden below
-        cardProgress = 0;
-        opacity = 0;
-        scale = 0.85;
-        yOffset = 300;
-      } else if (scrollProgress > cardEndProgress) {
-        // Card has finished - fading out while staying in place
-        isExiting = true;
-        const fadeOutProgress = Math.min(
-          1,
-          (scrollProgress - cardEndProgress) / (progressPerCard * 0.3)
-        );
-        opacity = 1 - fadeOutProgress;
-        scale = 1 - fadeOutProgress * 0.15; // Shrink slightly while fading
-        yOffset = 0; // Stay centered
-      } else {
-        // Card is active - calculate its phase
-        const localProgress =
-          (scrollProgress - cardStartProgress) / progressPerCard;
-
-        // Split into phases: fade-in (0-0.3), hold (0.3-0.7), prepare-exit (0.7-1.0)
-        if (localProgress < 0.3) {
-          // Fading in
-          const fadeInProgress = localProgress / 0.3;
-          /*      opacity = fadeInProgress; */
-          opacity = 1;
-          /*  scale = 0.85 + fadeInProgress * 0.15; */
-          scale = 1;
-          yOffset = 300 - fadeInProgress * 100;
-        } else if (localProgress < 0.7) {
-          // Full visibility - hold steady
-          opacity = 1;
-          scale = 1;
-          yOffset = 0;
-        } else {
-          // Preparing to exit but still fully visible
-          opacity = 1;
-          scale = 1;
-          yOffset = 0;
-        }
-      }
-
-      // Apply styles
-      card.style.opacity = opacity.toString();
-      card.style.transform = `translate(-50%, calc(-50% + ${yOffset}px)) scale(${scale})`;
-      card.style.transition = "opacity 0.3s ease-out, transform 0.3s ease-out";
-      card.style.pointerEvents = opacity > 0.5 && !isExiting ? "auto" : "none";
-
-      // Set z-index - each subsequent card should be higher
-      // Base z-index on card index, so newer cards are always on top
-      card.style.zIndex = (index * 10).toString();
-    });
-
-    // Debug log to see what's happening
-    const currentCardIndex = Math.floor(scrollProgress / progressPerCard);
-    console.log({
-      scrollProgress: scrollProgress.toFixed(3),
-      currentCardIndex: Math.min(currentCardIndex, totalCards - 1),
-      wrapperTop: wrapperTop.toFixed(0),
-    });
-  }
-
-  // Throttle function to improve performance
-  let ticking = false;
-  function handleScroll() {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateCards();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
-  // Initialize
-  window.addEventListener("scroll", handleScroll);
-  window.addEventListener("resize", updateCards);
-
-  // Initial update
-  setTimeout(updateCards, 100);
-
-  // Handle button clicks to toggle overlay
-  const toggleButtons =
-    document.querySelectorAll<HTMLButtonElement>(".toggle-button");
-
-  toggleButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const card = button.closest(".card");
-      if (card) {
-        const overlayBox = card.querySelector<HTMLElement>(".overlay-box");
-        if (overlayBox) {
-          overlayBox.classList.toggle("active");
-
-          // Update button text
-          if (overlayBox.classList.contains("active")) {
-            button.textContent = "Bezárás";
-          } else {
-            button.textContent = "Bővebben";
-          }
-        }
-      }
-    });
-  });
-
-  // Handle close button clicks
-  const closeButtons =
-    document.querySelectorAll<HTMLButtonElement>(".close-button");
-
-  closeButtons.forEach((closeBtn) => {
-    closeBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const overlayBox = closeBtn.closest(".overlay-box");
-      const card = closeBtn.closest(".card");
-
-      if (overlayBox && card) {
-        overlayBox.classList.remove("active");
-
-        // Reset the toggle button text
-        const toggleButton =
-          card.querySelector<HTMLButtonElement>(".toggle-button");
-        if (toggleButton) {
-          toggleButton.textContent = "Bővebben";
-        }
-      }
-    });
-  });
-</script>

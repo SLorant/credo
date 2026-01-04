@@ -1,0 +1,556 @@
+---
+const options = [
+  "PPC Kampánykezelés",
+  "Email marketing",
+  "Stratégiai tanácsadás",
+  "Arculattervezés",
+  "Szövegírás",
+  "Közösségi média menedzsment",
+  "Weboldal fejlesztés",
+  "Imázsfotózás",
+  "Videó-produkció",
+  "Egyéb",
+];
+---
+
+<div class="container" id="contact">
+  <img class="wearecredo" src="icons/wearecredo.png" alt="we are credo" />
+  <div class="contactbg"></div>
+  <div class="contactbox" id="contactbox">
+    <h2 class="contactheader">Lépj velünk kapcsolatba!</h2>
+    <p class="subheader">
+      Kapcsolatfelvétel. Megbeszélés. Ajánlattervezés. Rendszerépítés.
+      Megvalósítás. Eredmény. <span>Ez a sorrend nálunk.</span>
+    </p>
+    <div class="options" id="options-container">
+      {
+        options.map((opt) => (
+          <div class="optionbox" data-option={opt}>
+            {opt}
+          </div>
+        ))
+      }
+    </div>
+    <form class="contact-form" id="contact-form">
+      <input type="hidden" name="selectedOptions" id="selected-options" />
+      <div class="form-row">
+        <input
+          type="text"
+          name="name"
+          placeholder="Név"
+          class="form-input"
+          required
+        />
+        <input
+          type="text"
+          name="company"
+          placeholder="Cégnév"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-row">
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Telefonszám"
+          class="form-input"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="E-mail cím"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-row">
+        <input
+          type="text"
+          name="message"
+          placeholder="Üzenet"
+          class="form-input"
+          required
+        />
+      </div>
+      <button type="submit" class="submit-button">KÜLDÉS</button>
+    </form>
+    <div class="form-message" id="form-message"></div>
+  </div>
+  <div class="contactfooter">
+    <div class="contacticons">
+      <a
+        href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
+        target="_blank"
+        ><img class="icon2" src="icons/linkedin.svg" alt="linkedin" /></a
+      >
+      <a
+        href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
+        target="_blank"
+        ><img class="icon2" src="icons/facebook.svg" alt="facebook" /></a
+      >
+      <a href="https://www.instagram.com/weare_credo/" target="_blank"
+        ><img class="icon2" src="icons/instagram.svg" alt="instagram" /></a
+      >
+    </div>
+    <div class="iii">
+      <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
+      <p>Copyright © 2025 Credo Digital</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    height: 1000px;
+    width: 100vw;
+    background: #2b2a33;
+    background: radial-gradient(
+      circle,
+      rgba(43, 42, 51, 1) 0%,
+      rgba(0, 0, 0, 1) 86%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    font-family: "AktivGrotesk Light";
+    color: white;
+    position: relative;
+    z-index: 20;
+    padding-bottom: 0%;
+    overflow: hidden;
+  }
+  .contactbox {
+    z-index: 30;
+    width: 75%;
+    height: 680px;
+    border-radius: 30px;
+    margin-top: 150px;
+    padding-top: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    background: rgb(255 255 255 / 0.05);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    border: 2px solid white;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    margin-bottom: 120px;
+  }
+  .contactheader {
+    font-family: "Kepler";
+    font-size: 80pt;
+    font-weight: 400;
+    letter-spacing: 0px;
+    letter-spacing: -5px;
+
+    margin: 0;
+  }
+  .contactbg {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 110vw;
+    height: 200px;
+    background: #000000;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+    filter: blur(20px);
+  }
+  .subheader {
+    margin-left: 0rem;
+    line-height: 30px;
+  }
+  .subheader span {
+    font-family: "AktivGrotesk Medium";
+  }
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 10px;
+    padding-left: 180px;
+    padding-right: 180px;
+    margin-top: 20px;
+    width: 75%;
+    overflow: hidden;
+  }
+  .optionbox {
+    padding: 8px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    /*   background: rgb(255 255 255 / 0.15); */
+    color: white;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border: 2px solid white;
+    text-transform: uppercase;
+    font-size: 10pt;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-family: "AktivGrotesk Regular";
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+  }
+  .optionbox:hover {
+    background: rgb(255 255 255 / 0.1);
+    transform: scale(1.05);
+  }
+  .optionbox.selected {
+    background: #dbe120;
+    color: #1c1b22;
+    border-color: #dbe120;
+  }
+  .contact-form {
+    width: 75%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-row {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+  }
+  .form-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    padding: 5px 0;
+    font-family: "AktivGrotesk Light";
+    font-size: 12pt;
+    outline: none;
+    padding-left: 15px;
+  }
+  .form-input::placeholder {
+    color: rgba(255, 255, 255, 1);
+  }
+  .submit-button {
+    align-self: flex-end;
+    background: #dbe120;
+    color: #1c1b22;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 80px;
+    font-family: "AktivGrotesk Light";
+    font-size: 12pt;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(13, 10, 27, 0.5);
+    transition: all 0.3s ease;
+  }
+  .submit-button:hover {
+    transform: scale(1.03);
+  }
+  .form-message {
+    text-align: center;
+    margin-top: 0px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14pt;
+  }
+  .form-message.success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid #22c55e;
+  }
+  .form-message.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+  }
+  .wearecredo {
+    position: absolute;
+    bottom: -10px;
+    right: -80px;
+    width: 1000px;
+  }
+  .contactfooter {
+    display: flex;
+    justify-content: start;
+    place-items: center;
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    left: 0;
+    color: white;
+    font-size: 14pt;
+    margin-bottom: 2rem;
+    margin-left: 4rem;
+    gap: 150px;
+  }
+  .contacticons {
+    display: flex;
+    gap: 10px;
+  }
+  .iii {
+    display: flex;
+    gap: 150px;
+  }
+  @media (max-width: 1400px) {
+    .contactbox {
+      width: 90%;
+    }
+  }
+  @media (max-width: 1200px) {
+    .subheader {
+      font-size: 10pt;
+    }
+    .contactheader {
+      font-size: 60pt;
+    }
+    .optionbox {
+      font-size: 8pt;
+    }
+    input {
+      font-size: 8pt;
+    }
+    .contactfooter {
+      font-size: 12pt;
+      gap: 100px;
+    }
+    .iii {
+      gap: 100px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .subheader {
+      word-wrap: wrap;
+      padding: 0px 100px;
+    }
+    .contactheader {
+      font-size: 40pt;
+    }
+    .submit-button {
+      padding: 12px 60px;
+      font-size: 10pt;
+      margin-top: 30px;
+    }
+    .optionbox {
+      padding: 4px 10px;
+      font-size: 8pt;
+    }
+    .contactfooter {
+      font-size: 12pt;
+      gap: 50px;
+    }
+    .iii {
+      gap: 50px;
+    }
+  }
+  @media (max-width: 768px) {
+    .container {
+      height: 1000px;
+    }
+    .wearecredo {
+      display: none;
+    }
+    .contactbox {
+      width: 100%;
+      border-radius: 0;
+      height: 100%;
+      background: none;
+      border: none;
+    }
+    .contactheader {
+      font-size: 25pt;
+      letter-spacing: -2px;
+    }
+    .subheader {
+      word-wrap: wrap;
+      padding: 0px 40px;
+      font-size: 8pt;
+      line-height: 25px;
+      margin-top: 20px;
+    }
+    p span {
+      display: block;
+    }
+    .options {
+      gap: 12px 10px;
+      padding-left: 100px;
+      padding-right: 100px;
+      margin-top: 20px;
+      width: 80%;
+      overflow: hidden;
+    }
+    .optionbox {
+      padding: 4px 10px;
+      font-size: 6pt;
+      border: 1px solid white;
+    }
+    .contact-form {
+      width: 75%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+    .form-input {
+      border-bottom: 1px solid white;
+      padding: 5px 0;
+      font-size: 9pt;
+    }
+    .submit-button {
+      padding: 10px 60px;
+      font-size: 9pt;
+      margin-top: 10px;
+    }
+    .contactfooter {
+      display: flex;
+      justify-content: space-between;
+      place-items: end;
+      position: absolute;
+      width: 85vw;
+      bottom: 0;
+      left: 0;
+      color: white;
+      font-size: 8pt;
+      margin-bottom: 2rem;
+      margin-left: 2rem;
+      gap: 10px;
+    }
+    .contacticons {
+      flex-direction: column;
+      margin-bottom: 0rem;
+    }
+    .iii {
+      flex-direction: column;
+      gap: 0px;
+    }
+    .contactbg {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { animate, onScroll } from "animejs";
+
+  animate(".wearecredo", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 3000,
+    autoplay: onScroll({
+      enter: "bottom-=100 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const messageDiv = document.getElementById("form-message") as HTMLDivElement;
+  const optionsContainer = document.getElementById("options-container");
+  const selectedOptionsInput = document.getElementById(
+    "selected-options"
+  ) as HTMLInputElement;
+  const selectedOptions = new Set<string>();
+
+  // Handle option selection
+  optionsContainer?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains("optionbox")) {
+      const option = target.dataset.option;
+      if (option) {
+        if (selectedOptions.has(option)) {
+          selectedOptions.delete(option);
+          target.classList.remove("selected");
+        } else {
+          selectedOptions.add(option);
+          target.classList.add("selected");
+        }
+        // Update hidden input
+        selectedOptionsInput.value = Array.from(selectedOptions).join(", ");
+      }
+    }
+  });
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      company: formData.get("company") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+      selectedOptions: Array.from(selectedOptions),
+    };
+
+    // Disable submit button and show loading state
+    const submitButton = form.querySelector(
+      ".submit-button"
+    ) as HTMLButtonElement;
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "KÜLDÉS...";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        messageDiv.textContent =
+          "Üzenet sikeresen elküldve! Hamarosan jelentkezünk.";
+        messageDiv.className = "form-message success";
+        form.reset();
+        // Clear selected options
+        selectedOptions.clear();
+        document.querySelectorAll(".optionbox.selected").forEach((el) => {
+          el.classList.remove("selected");
+        });
+      } else {
+        messageDiv.textContent =
+          "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
+        messageDiv.className = "form-message error";
+      }
+    } catch (error) {
+      messageDiv.textContent =
+        "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
+      messageDiv.className = "form-message error";
+      console.error("Form submission error:", error);
+    } finally {
+      // Re-enable submit button
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
+  });
+</script>

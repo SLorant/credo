@@ -1,0 +1,186 @@
+---
+import Anim from "./anim.astro";
+---
+
+<div class="container">
+  <div class="bg"></div>
+  <div class="aboutmain">
+    <h1>rólunk</h1>
+    <p class="sub">
+      A Credo egyet jelent az <br /> értékalapú marketinggel. <br />
+      <span>Nem hiszünk a varázspirulákban.</span>
+    </p>
+    <p class="info">
+      Válaszként a marketing klisékre, a túlhasznált panelekre, a középszerű,
+      futószalagon érkezett ötletekre… alapítóink úgy döntöttek, hogy másképp
+      csinálják: <br />olyan rendszert építenek, ahol a stratégia az origó.
+      Nálunk a kreativitás a kommerciális célok eszköze, a mérhető eredmény
+      pedig az egyetlen elfogadható visszajelzés. Ezzel a szemlélettel dolgozunk
+      ma minden partnerünk sikeréért.
+    </p>
+  </div>
+  <img class="quote" src="/illustrations/quote.svg" alt="quote" />
+  <div class="second">
+    <div class="domecont">
+      <div class="dome">
+        <img class="domeimg" src="/illustrations/dom_base.svg" alt="dome" />
+        <!--    <img class="anim" src="/illustrations/dom_anim.svg" alt="dome" /> -->
+        <!--    <div class="anim"> -->
+        <Anim />
+        <!--    </div> -->
+      </div>
+      <img class="korte" src="/stonkskorte.svg" alt="sss" />
+    </div>
+    <div class="righttext">
+      <p>
+        A Credo egy szegedi alapítású integrált marketingügynökség, amelyet
+        olyan tapasztalt szakértők hoztak létre és alkotnak, akik a szakma
+        minden oldalát ismerik.
+        <br />
+        <br />
+        Ezt a tudást most arra használjuk, hogy valós kommunikációs alapokra helyezett,
+        kézzelfogható segítséget nyújtsunk ügyfeleinknek – a hazai KKV-szektortól
+        a nagyvállalati partnerekig.
+        <br />
+        <br />
+        Célkitűzésünk, hogy üzleti problémákra valós marketing alapokon fekvő szakmai
+        segítséget biztosítsunk széles körű üzletágainkkal.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Trigger SVG animations when they come into view
+  const svgs = document.querySelector("#Layer_3") as HTMLElement;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("start");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.6,
+    }
+  );
+
+  observer.observe(svgs);
+</script>
+
+<style>
+  .container {
+    height: 100%;
+    width: 100vw;
+    display: relative;
+    overflow: hidden;
+  }
+  .bg {
+    background-image: url("/gradient__background2.webp");
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .aboutmain {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: start;
+    margin-right: 50%;
+    margin-left: 20%;
+    margin-top: 8%;
+    color: white;
+    width: 500px;
+    height: 100%;
+  }
+  h1 {
+    font-family: "Kepler";
+    font-size: 80pt;
+    letter-spacing: -5px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 100px;
+  }
+  .sub {
+    font-family: "AktivGrotesk Light";
+    font-size: 16pt;
+    text-transform: uppercase;
+    line-height: 35px;
+  }
+  .sub span {
+    font-family: "AktivGrotesk Medium" !important;
+  }
+  .info {
+    font-family: "AktivGrotesk Light";
+    font-size: 14pt;
+    line-height: 35px;
+  }
+  .quote {
+    position: absolute;
+    right: 8%;
+    top: 15%;
+    font-family: "Kepler";
+    /*  font-size: 2000pt; */
+    width: 900px;
+    line-height: 5px;
+    margin: 0;
+    font-weight: 400;
+    margin: 0;
+    z-index: 40;
+    color: white;
+    opacity: 0.5;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .second {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    position: relative;
+    z-index: 40;
+    margin-top: 200px;
+  }
+  .domecont {
+    width: 50%;
+  }
+  .righttext {
+    font-family: "AktivGrotesk Light";
+    font-size: 14pt;
+    line-height: 35px;
+    color: white;
+    margin-top: 300px;
+
+    width: 650px;
+  }
+  .korte {
+    position: absolute;
+    bottom: -40%;
+    left: -22%;
+    width: 75%;
+    opacity: 0.8;
+  }
+  .dome {
+    position: relative;
+    height: 600px;
+    padding-left: 300px;
+    padding-top: 100px;
+  }
+  .domeimg {
+    height: 700px;
+  }
+  .anim {
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    height: 700px;
+  }
+</style>

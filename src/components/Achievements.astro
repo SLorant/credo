@@ -1,0 +1,587 @@
+<div class="container">
+  <div class="achibg"></div>
+  <div class="achibg2">
+    <img class="achibgimg" src="illustrations/pattern2.png" alt="" />
+  </div>
+  <h2 class="achiheader">kiemelt szakmai</h2>
+  <h2 class="achiheader2">mérföldköveink</h2>
+
+  <div class="slider-container">
+    <div class="slider-track"></div>
+    <div class="slider-fill"></div>
+    <div class="slider-points">
+      <div class="slider-point" data-index="0">
+        <div class="tooltip">
+          Egy kézben tartjuk az ország piacvezető IT refurb, ITAD cégének
+          kommunikációját, legyen szó digitális kampányról vagy a multiknak
+          szánt vállalati anyagokról.
+        </div>
+      </div>
+      <div class="slider-point" data-index="1">
+        <div class="tooltip">
+          Megoldottuk az ügyfélszerzést <br /> a nehezen megközelíthető önkormányzati
+          és B2B szektorban <br /> egy játszótér-kivitelező cég számára, egyedi automatizációval.
+        </div>
+      </div>
+      <div class="slider-point" data-index="2">
+        <div class="tooltip">
+          Márkát teremtettünk: egy facility management cég teljes márkaarculatát
+          és nyomdai anyagait hoztuk létre <br />a semmiből.
+        </div>
+      </div>
+      <div class="slider-point" data-index="3">
+        <div class="tooltip">
+          Újrapozicionáltunk egy magyar szemüvegmárkát, ahol a social media
+          kommunikációt hangoltuk össze stúdió-, illetve termékfotózással és <br
+          />a nyereményjátékokkal a vevőkör-bővítés érdekében.
+        </div>
+      </div>
+      <div class="slider-point" data-index="4">
+        <div class="tooltip">
+          Prémium megjelenést adtunk egy vezető vidéki fogászati centrumnak, <br
+          /> a weboldal-fejlesztéstől a napi social média jelenlétig.
+        </div>
+      </div>
+    </div>
+    <div class="slider-handle"></div>
+  </div>
+
+  <div class="achibox">
+    <p class="uppercase">
+      Gyakorlati tapasztalatunk <br />
+      <span class="bold">több, mint 20 különböző szektorra rúg,</span>
+      <br />
+      a hazai KKV-któl az európai piacokig.
+    </p>
+  </div>
+</div>
+
+<script>
+  import { animate, onScroll } from "animejs";
+
+  animate(".achiheader", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=250 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".achiheader2", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=350 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".achibox", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=0 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".slider-container", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=100 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate(".achibgimg", {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 3000,
+    autoplay: onScroll({
+      enter: "bottom-=500 top",
+      leave: "top bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  // Slider functionality
+  const sliderHandle = document.querySelector(".slider-handle") as HTMLElement;
+  const sliderFill = document.querySelector(".slider-fill") as HTMLElement;
+  const sliderPoints = document.querySelectorAll(".slider-point");
+  const sliderContainer = document.querySelector(
+    ".slider-container"
+  ) as HTMLElement;
+  const sliderTrack = document.querySelector(".slider-track") as HTMLElement;
+
+  let isDragging = false;
+  let currentPoint = 0;
+  const totalPoints = 5;
+
+  function updateSlider(pointIndex: number) {
+    currentPoint = Math.max(0, Math.min(totalPoints - 1, pointIndex));
+    let percentage = (currentPoint / (totalPoints - 1)) * 100;
+    if (window.innerWidth < 500 && percentage === 0) percentage = 4;
+    if (percentage === 0) percentage = 1;
+    if (percentage === 100) percentage = 99;
+
+    if (sliderHandle) {
+      sliderHandle.style.left = `${percentage}%`;
+    }
+    if (sliderFill) {
+      sliderFill.style.width = `${percentage}%`;
+    }
+
+    // Update active states - only current point gets 'current' class
+    sliderPoints.forEach((point, index) => {
+      if (index <= currentPoint) {
+        point.classList.add("active");
+      } else {
+        point.classList.remove("active");
+      }
+
+      // Only the exact current point shows tooltip
+      if (index === currentPoint) {
+        point.classList.add("current");
+      } else {
+        point.classList.remove("current");
+      }
+    });
+  }
+
+  function getPointFromPosition(clientX: number) {
+    if (!sliderTrack) return 0;
+    const rect = sliderTrack.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(1, x / rect.width));
+    return Math.round(percentage * (totalPoints - 1));
+  }
+
+  function handleMouseDown(e: MouseEvent) {
+    isDragging = true;
+    const pointIndex = getPointFromPosition(e.clientX);
+    updateSlider(pointIndex);
+  }
+
+  function handleMouseMove(e: MouseEvent) {
+    if (isDragging) {
+      const pointIndex = getPointFromPosition(e.clientX);
+      updateSlider(pointIndex);
+    }
+  }
+
+  function handleMouseUp() {
+    isDragging = false;
+  }
+
+  // Event listeners
+  if (sliderHandle) {
+    sliderHandle.addEventListener("mousedown", handleMouseDown);
+  }
+
+  if (sliderTrack) {
+    sliderTrack.addEventListener("mousedown", handleMouseDown);
+  }
+
+  sliderPoints.forEach((point, index) => {
+    point.addEventListener("mousedown", () => {
+      isDragging = true;
+      updateSlider(index);
+    });
+  });
+
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseup", handleMouseUp);
+
+  // Initialize slider
+  updateSlider(1);
+</script>
+
+<style>
+  .container {
+    height: 100%;
+    width: 100vw;
+    padding: 170px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    place-items: center;
+    font-family: "AktivGrotesk Light";
+    color: white;
+    position: relative;
+    z-index: 20;
+    /*  padding-left: 15%; */
+    background: #2b2a33;
+    padding-bottom: 0%;
+    /*  overflow-x: hidden; */
+  }
+  .achibg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2b2a33;
+    background: radial-gradient(
+      circle,
+      rgba(43, 42, 51, 1) 0%,
+      rgba(0, 0, 0, 1) 86%
+    );
+    z-index: 10;
+  }
+  .achibg2 {
+    position: absolute;
+    /* top: 32%; */
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    /*  background: #737373;
+    background: linear-gradient(
+      180deg,
+      rgba(115, 115, 115, 1) 0%,
+      rgba(217, 217, 217, 0) 100%
+    ); */
+    z-index: 30;
+  }
+  .achibgimg {
+    opacity: 1;
+    z-index: 30;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /*   background: #737373;
+    background: linear-gradient(
+      180deg,
+      rgba(115, 115, 115, 1) 0%,
+      rgba(217, 217, 217, 0) 100%
+    ); */
+  }
+  .achiheader {
+    font-size: 65pt;
+    text-align: center;
+    line-height: 110px;
+    line-height: 40pt;
+    margin: 0;
+    font-weight: 400;
+    z-index: 30;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .achiheader2 {
+    font-family: "Kepler";
+    font-size: 80pt;
+    letter-spacing: -5px;
+    font-weight: 400;
+    margin: 0;
+    z-index: 30;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .slider-container {
+    z-index: 30;
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    height: 150px;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+  }
+
+  .slider-track {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  .slider-fill {
+    position: absolute;
+    height: 25px;
+    background: #889e2e;
+    background: linear-gradient(
+      90deg,
+      rgba(136, 158, 46, 1) 0%,
+      rgba(51, 94, 51, 1) 50%,
+      rgba(41, 68, 77, 1) 99%
+    );
+    /*   background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899); */
+    border-radius: 20px;
+    width: 0%;
+    transition: width 0.3s ease;
+    pointer-events: none;
+  }
+
+  .slider-points {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .slider-point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    pointer-events: auto;
+  }
+
+  .slider-point[data-index="0"] {
+    left: 1%;
+  }
+  .slider-point[data-index="1"] {
+    left: 25%;
+  }
+  .slider-point[data-index="2"] {
+    left: 50%;
+  }
+  .slider-point[data-index="3"] {
+    left: 75%;
+  }
+  .slider-point[data-index="4"] {
+    left: 99.2%;
+  }
+
+  .slider-point:hover {
+    transform: translate(-50%, -50%) scale(1);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .slider-point.active {
+    background: white;
+    border-color: white;
+    box-shadow: 0 0 20px rgba(13, 10, 27, 0.5);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /*   .slider-point.current {
+    opacity: 0;
+    pointer-events: none;
+  } */
+
+  .tooltip {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 1);
+    color: black;
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    /*  white-space: nowrap; */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    font-family: "AktivGrotesk Regular";
+    width: 300px;
+    height: 150px;
+    line-height: 24px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 14px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* First tooltip - align left */
+  .slider-point[data-index="0"] .tooltip {
+    left: -30px;
+    transform: translateX(0);
+  }
+
+  .slider-point[data-index="0"] .tooltip::after {
+    left: 25px;
+    transform: translateX(0);
+  }
+
+  /* Last tooltip - align right */
+  .slider-point[data-index="4"] .tooltip {
+    left: auto;
+    right: -30px;
+    transform: translateX(0);
+  }
+
+  .slider-point[data-index="4"] .tooltip::after {
+    left: auto;
+    right: 30px;
+    transform: translateX(0);
+  }
+
+  .slider-point:hover .tooltip {
+    opacity: 1;
+  }
+
+  .slider-point.current .tooltip {
+    opacity: 1;
+  }
+
+  .slider-handle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    /*    background: linear-gradient(135deg, #6366f1, #ec4899); */
+    background: white;
+    border: 4px solid white;
+    border-radius: 50%;
+    cursor: grab;
+    transition: left 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+
+  .slider-handle:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .achibox {
+    z-index: 30;
+    width: 50%;
+    padding: 0px;
+    border-radius: 30px;
+    margin-top: 50px;
+    backdrop-filter: blur(15px);
+    background: rgb(255 255 255 / 0.05);
+    color: white;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border: 2px solid white;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    margin-bottom: 120px;
+  }
+  .uppercase {
+    font-size: 14pt;
+    font-family: "AktivGrotesk Regular";
+    line-height: 35px;
+    text-transform: uppercase !important;
+    text-align: center;
+  }
+  .bold {
+    font-family: "AktivGrotesk Bold";
+  }
+
+  @media (max-width: 1200px) {
+    .uppercase {
+      font-size: 12pt;
+      line-height: 30px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .achiheader {
+      font-size: 50pt;
+    }
+    .achiheader2 {
+      font-size: 70pt;
+    }
+    .achibox {
+      width: 70%;
+    }
+  }
+  @media (max-width: 768px) {
+    .achiheader {
+      font-size: 25pt;
+    }
+    .achiheader2 {
+      font-size: 30pt;
+      letter-spacing: -2px;
+    }
+    .tooltip {
+      padding: 20px 30px;
+      font-size: 12px;
+      width: 250px;
+      height: 150px;
+      line-height: 24px;
+    }
+    .achibox {
+      width: 70%;
+      padding: 0px 20px;
+    }
+    .uppercase {
+      font-size: 8pt;
+      line-height: 25px;
+    }
+    .slider-point[data-index="0"] {
+      left: 4%;
+    }
+    .slider-point[data-index="4"] {
+      left: 98%;
+    }
+
+    .slider-point[data-index="1"] .tooltip {
+      left: -70px;
+      transform: translateX(0);
+    }
+
+    .slider-point[data-index="1"] .tooltip::after {
+      left: 65px;
+      transform: translateX(0);
+    }
+
+    /* Last tooltip - align right */
+    .slider-point[data-index="3"] .tooltip {
+      left: auto;
+      right: -70px;
+      transform: translateX(0);
+    }
+
+    .slider-point[data-index="3"] .tooltip::after {
+      left: auto;
+      right: 65px;
+      transform: translateX(0);
+    }
+  }
+</style>

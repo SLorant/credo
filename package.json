@@ -4,18 +4,23 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:mobile": "astro dev --host & node -e \"setTimeout(() => require('ngrok').connect(4321).then(url => console.log('\\n\\n🔗 Mobile URL:', url, '\\n\\n')), 3000)\"",
     "build": "astro build",
     "preview": "astro preview",
+    "preview:mobile": "astro preview --host & node -e \"setTimeout(() => require('ngrok').connect(4321).then(url => console.log('\\n\\n🔗 Mobile URL:', url, '\\n\\n')), 3000)\"",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.1",
     "@tweenjs/tween.js": "^25.0.0",
     "animejs": "^4.2.2",
     "astro": "^5.16.6",
+    "resend": "^6.6.0",
     "three": "^0.182.0",
     "vivus": "^0.4.6"
   },
   "devDependencies": {
-    "@types/three": "^0.182.0"
+    "@types/three": "^0.182.0",
+    "ngrok": "^5.0.0-beta.2"
   }
 }

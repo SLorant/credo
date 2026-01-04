@@ -1,3 +1,7 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,29 +24,32 @@
     scroll-behavior: smooth;
     background-color: black;
   }
+  /*   * {
+    overflow-x: hidden;
+  } */
 
   @font-face {
     font-family: "AktivGrotesk Regular";
-    src: url("fonts/AktivGroteskEx_Rg.ttf");
+    src: url("/fonts/AktivGroteskEx_Rg.ttf");
   }
   @font-face {
     font-family: "AktivGrotesk Light";
-    src: url("fonts/AktivGroteskEx_Lt.ttf");
+    src: url("/fonts/AktivGroteskEx_Lt.ttf");
   }
   @font-face {
     font-family: "AktivGrotesk Semibold";
-    src: url("fonts/AktivGroteskEx_SBd.ttf");
+    src: url("/fonts/AktivGroteskEx_SBd.ttf");
   }
   @font-face {
     font-family: "AktivGrotesk Medium";
-    src: url("fonts/AktivGroteskEx_Md.ttf");
+    src: url("/fonts/AktivGroteskEx_Md.ttf");
   }
   @font-face {
     font-family: "AktivGrotesk Bold";
-    src: url("fonts/AktivGroteskEx_Bd.ttf");
+    src: url("/fonts/AktivGroteskEx_Bd.ttf");
   }
   @font-face {
     font-family: "Kepler";
-    src: url("fonts/Kepler.otf");
+    src: url("/fonts/Kepler.otf");
   }
 </style>
