@@ -59,29 +59,65 @@
 <script>
   import { animate, onScroll } from "animejs";
 
-  animate(".achiheader", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=250 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+  if (window.innerWidth < 768) {
+    animate(".achiheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=50 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
 
-  animate(".achiheader2", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=350 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+    animate(".achiheader2", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animate(".achiheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=250 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+
+    animate(".achiheader2", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=350 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+    animate(".achibgimg", {
+      opacity: [0, 1],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=500 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
 
   animate(".achibox", {
     opacity: [0, 1],
@@ -102,18 +138,6 @@
     duration: 600,
     autoplay: onScroll({
       enter: "bottom-=100 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
-
-  animate(".achibgimg", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 3000,
-    autoplay: onScroll({
-      enter: "bottom-=500 top",
       leave: "top bottom",
       sync: "play reverse",
     }),
@@ -288,7 +312,7 @@
   .achiheader2 {
     font-family: "Kepler";
     font-size: 80pt;
-    letter-spacing: -5px;
+    letter-spacing: -4px;
     font-weight: 400;
     margin: 0;
     z-index: 30;
@@ -397,7 +421,7 @@
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 1);
-    color: black;
+    color: #2b2a33;
     padding: 20px 30px;
     border-radius: 20px;
     font-size: 14px;
@@ -532,12 +556,19 @@
     }
   }
   @media (max-width: 768px) {
+    .container {
+      padding: 50px 0px;
+    }
     .achiheader {
       font-size: 25pt;
     }
     .achiheader2 {
       font-size: 30pt;
       letter-spacing: -2px;
+    }
+    .achibgimg {
+      height: 400px;
+      width: auto;
     }
     .tooltip {
       padding: 20px 30px;
@@ -549,6 +580,7 @@
     .achibox {
       width: 70%;
       padding: 0px 20px;
+      margin-bottom: 50px;
     }
     .uppercase {
       font-size: 8pt;

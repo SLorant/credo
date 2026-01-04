@@ -93,9 +93,8 @@ import Anim from "./anim.astro";
     flex-direction: column;
     justify-content: center;
     place-items: start;
-    margin-right: 50%;
-    margin-left: 20%;
-    margin-top: 8%;
+    margin-left: 20vw;
+    margin-top: 150px;
     color: white;
     width: 500px;
     height: 100%;
@@ -182,5 +181,57 @@ import Anim from "./anim.astro";
     left: 300px;
     top: 100px;
     height: 700px;
+  }
+  @media (max-width: 1600px) {
+    .dome {
+      padding-left: 200px;
+    }
+  }
+  @media (max-width: 1400px) {
+    .aboutmain {
+      margin-left: 15vw;
+    }
+    .dome {
+      position: relative;
+      height: 600px;
+      padding-left: 100px;
+      padding-top: 100px;
+    }
+    .righttext {
+      font-size: 12pt;
+      line-height: 35px;
+      margin-top: 300px;
+      margin-left: 100px;
+      width: 450px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .aboutmain {
+      margin-left: 10vw;
+    }
+    .righttext {
+      margin-top: 300px;
+      margin-left: 50px;
+      width: 450px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .dome {
+      height: 600px;
+      padding-top: 280px;
+    }
+    .info {
+      font-family: "AktivGrotesk Light";
+      font-size: 12pt;
+      line-height: 35px;
+    }
+    .domeimg {
+      height: 500px;
+    }
+    .righttext {
+      font-size: 10pt;
+      line-height: 30px;
+      width: 300px;
+    }
   }
 </style>

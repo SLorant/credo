@@ -598,43 +598,42 @@
 
     const footerElement = document.querySelector(".footer") as HTMLElement;
 
-    console.log(footerElement);
+    const checkElements = () => {
+      if (pillarsElement && footerElement) {
+        const rect = pillarsElement.getBoundingClientRect();
+        const isPillarsAtOrBelowTop =
+          rect.top + window.innerHeight * 1.5 <= window.innerHeight;
+
+        const isPillarsAtOrBelowTop2 =
+          rect.top + window.innerHeight / 2 <= window.innerHeight;
+
+        if (isPillarsAtOrBelowTop) {
+          container.style.display = "none";
+        } else {
+          container.style.display = "block";
+        }
+
+        if (isPillarsAtOrBelowTop2) {
+          footerElement.style.opacity = "0";
+          footerElement.style.pointerEvents = "none";
+        } else {
+          footerElement.style.opacity = "1";
+          footerElement.style.pointerEvents = "auto";
+        }
+      }
+    };
 
     if (pillarsElement && footerElement) {
-      window.addEventListener(
-        "scroll",
-        () => {
-          const rect = pillarsElement.getBoundingClientRect();
-          const isPillarsAtOrBelowTop =
-            rect.top + window.innerHeight * 1.5 <= window.innerHeight;
+      // Add transition CSS to footer element
+      footerElement.style.transition = "opacity 0.5s ease-in-out";
 
-          const isPillarsAtOrBelowTop2 =
-            rect.top + window.innerHeight / 2 <= window.innerHeight;
-
-          if (isPillarsAtOrBelowTop) {
-            container.style.display = "none";
-          } else {
-            container.style.display = "block";
-          }
-
-          if (isPillarsAtOrBelowTop2) {
-            footerElement.style.display = "none";
-          } else {
-            footerElement.style.display = "flex";
-          }
-        },
-        { passive: true }
-      );
+      window.addEventListener("scroll", checkElements, { passive: true });
+      checkElements();
     } else {
       // Retry after a short delay if element not found
       setTimeout(setupPillarsObserver, 100);
     }
   }
 
-  // Start trying to find the element
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupPillarsObserver);
-  } else {
-    setupPillarsObserver();
-  }
+  setupPillarsObserver();
 </script>
