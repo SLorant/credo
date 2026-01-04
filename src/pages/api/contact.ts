@@ -1,13 +1,16 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const data = await request.json();
     const { name, company, phone, email, message, selectedOptions } = data;
 
-    // Initialize Resend with your API key
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    // Initialize Resend with your API key from Cloudflare runtime environment
+    const resendApiKey =
+      (locals as any).runtime?.env?.RESEND_API_KEY ||
+      import.meta.env.RESEND_API_KEY;
+    const resend = new Resend(resendApiKey);
 
     // Format selected options for email
     const optionsHtml =
@@ -19,9 +22,13 @@ export const POST: APIRoute = async ({ request }) => {
         : "";
 
     // Send email
+    const recipientEmail =
+      (locals as any).runtime?.env?.RECIPIENT_EMAIL ||
+      import.meta.env.RECIPIENT_EMAIL ||
+      "your-email@example.com";
     const emailResponse = await resend.emails.send({
       from: "onboarding@resend.dev", // You'll need to change this to your verified domain
-      to: import.meta.env.RECIPIENT_EMAIL || "your-email@example.com",
+      to: recipientEmail,
       subject: `Credo weboldal új kapcsolatfelvétel: ${name}`,
       html: `
         <h2>Új kapcsolatfelvétel a Credo weboldalról</h2>
