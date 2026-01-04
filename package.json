@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/node": "^9.5.1",
     "@tweenjs/tween.js": "^25.0.0",
     "animejs": "^4.2.2",
