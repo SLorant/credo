@@ -76,7 +76,6 @@ const options = [
       </div>
       <button type="submit" class="submit-button">KÜLDÉS</button>
     </form>
-    <div class="form-message" id="form-message"></div>
   </div>
   <div class="contactfooter">
     <div class="contacticons">
@@ -264,23 +263,6 @@ const options = [
   }
   .submit-button:hover {
     transform: scale(1.03);
-  }
-  .form-message {
-    text-align: center;
-    margin-top: 0px;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 14pt;
-  }
-  .form-message.success {
-    background: rgba(34, 197, 94, 0.2);
-    color: #22c55e;
-    border: 1px solid #22c55e;
-  }
-  .form-message.error {
-    background: rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    border: 1px solid #ef4444;
   }
   .wearecredo {
     position: absolute;
@@ -470,7 +452,6 @@ const options = [
   });
 
   const form = document.getElementById("contact-form") as HTMLFormElement;
-  const messageDiv = document.getElementById("form-message") as HTMLDivElement;
   const optionsContainer = document.getElementById("options-container");
   const selectedOptionsInput = document.getElementById(
     "selected-options"
@@ -529,9 +510,7 @@ const options = [
       const result = await response.json();
 
       if (response.ok) {
-        messageDiv.textContent =
-          "Üzenet sikeresen elküldve! Hamarosan jelentkezünk.";
-        messageDiv.className = "form-message success";
+        alert("Üzenet sikeresen elküldve! Hamarosan jelentkezünk.");
         form.reset();
         // Clear selected options
         selectedOptions.clear();
@@ -539,14 +518,14 @@ const options = [
           el.classList.remove("selected");
         });
       } else {
-        messageDiv.textContent =
-          "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
-        messageDiv.className = "form-message error";
+        alert(
+          "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később."
+        );
       }
     } catch (error) {
-      messageDiv.textContent =
-        "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
-      messageDiv.className = "form-message error";
+      alert(
+        "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később."
+      );
       console.error("Form submission error:", error);
     } finally {
       // Re-enable submit button
