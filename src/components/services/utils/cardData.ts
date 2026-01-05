@@ -36,9 +36,9 @@ const cardData = [
         text: "E-kereskedelem menedzsment",
       },
     ],
-    image: "illustrations/performance_bottom.png",
-    imageTop: "illustrations/performance_top.png",
-    mobileImage: "illustrations/performance_phone.png",
+    image: "illustrations/performance_bottom.webp",
+    imageTop: "illustrations/performance_top.webp",
+    mobileImage: "illustrations/performance_phone.webp",
     infotext: `Adat-, és teljesítményalapú marketing,<br/>
 ahol minden döntés mögött számszerű tények, valamint stratégiai döntések állnak és minden elköltött forint útja követhető. 
 <br/><br/>
@@ -73,9 +73,9 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
         text: "Kiadványszerkesztés, nyomdai előkészítés",
       },
     ],
-    image: "illustrations/creative_bottom.png",
-    imageTop: "illustrations/creative_top.png",
-    mobileImage: "illustrations/creative_phone.png",
+    image: "illustrations/creative_bottom.webp",
+    imageTop: "illustrations/creative_top.webp",
+    mobileImage: "illustrations/creative_phone.webp",
     infotext: `A stratégia önmagában láthatatlan – a kreatív munka és az erős vizuális jelenlét teszi azt kézzelfoghatóvá. Kreatív csapatunk márkádból történetet formál. Olyan koncepciót, rendszert épít, ami egyértelművé és egyedivé teszi, ki vagy és mit képviselsz. 
 <br/> <br/>
 Formába öntjük üzleti céljaidat, hogy branded 
@@ -110,9 +110,9 @@ ne csak egy legyen a sok közül, hanem az az egy, amire emlékeznek.`,
         text: "Digitális PR",
       },
     ],
-    image: "illustrations/digital_bottom.png",
-    imageTop: "illustrations/digital_top.png",
-    mobileImage: "illustrations/digital_phone.png",
+    image: "illustrations/digital_bottom.webp",
+    imageTop: "illustrations/digital_top.webp",
+    mobileImage: "illustrations/digital_phone.webp",
     infotext: `A digitális jelenléted vállalkozásod motorja, 
 így nem lehet kompromisszum kérdése. Weboldalakat, dedikált landing oldalakat és webshopokat építünk, amelyek eladnak, konvertálnak. 
 <br/> <br/>
@@ -147,9 +147,9 @@ A tervezéstől a kivitelezésen át az üzemeltetésig mindent kézben tartunk,
         text: "Drónfelvételek, werk anyagok",
       },
     ],
-    image: "illustrations/production_bottom.png",
-    imageTop: "illustrations/production_top.png",
-    mobileImage: "illustrations/production_phone.png",
+    image: "illustrations/production_bottom.webp",
+    imageTop: "illustrations/production_top.webp",
+    mobileImage: "illustrations/production_phone.webp",
     infotext: `A legerősebb üzenet is elvész, ha nincs mögötte minőségi látványvilág. Napjaink “marketing-üzemanyagát” a videós és fotós tartalmak teszik 
 ki, így mi biztosítjuk a produkciós hátteret 
 a stratégiához:a stúdiófotózástól a drónfelvételekig mindent egy kézben tartunk. Igényed szerint akár komplett vizuális csomagokat készítünk, 
