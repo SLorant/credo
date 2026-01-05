@@ -1,7 +1,7 @@
 <div class="container">
   <div class="achibg"></div>
   <div class="achibg2">
-    <img class="achibgimg" src="illustrations/pattern2.png" alt="" />
+    <img class="achibgimg" src="illustrations/pattern4.png" alt="" />
   </div>
   <h2 class="achiheader">kiemelt szakmai</h2>
   <h2 class="achiheader2">mérföldköveink</h2>
@@ -108,7 +108,7 @@
       }),
     });
     animate(".achibgimg", {
-      opacity: [0, 1],
+      opacity: [0, 0.6],
       ease: "inOutSine",
       duration: 3000,
       autoplay: onScroll({
@@ -270,7 +270,8 @@
   .achibg2 {
     position: absolute;
     /* top: 32%; */
-    bottom: 0px;
+    bottom: -200px;
+    /*  opacity: 0.6; */
     left: 0;
     width: 100%;
     /*  background: #737373;
@@ -282,7 +283,7 @@
     z-index: 30;
   }
   .achibgimg {
-    opacity: 1;
+    opacity: 0.6;
     z-index: 30;
     width: 100%;
     user-select: none;
