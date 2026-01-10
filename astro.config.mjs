@@ -6,4 +6,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   output: "server", // Required for API routes, but pages can be prerendered
   adapter: cloudflare(),
+  server: {
+    port: 4322,
+  },
 });

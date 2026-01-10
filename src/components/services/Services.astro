@@ -15,7 +15,7 @@ import cardData from "./utils/cardData";
           <div class="info2">
             <h2 class="cardheader">{card.title}</h2>
             <button class="mobilebutton">
-              <img src="icons/arrowbutton.svg" alt="arrow" />
+              <img src="/icons/arrowbutton.svg" alt="arrow" />
             </button>
 
             {card.items.length > 0 && (
@@ -36,7 +36,7 @@ import cardData from "./utils/cardData";
                   </button>
                   <h2 class="cardheader">{card.title}</h2>
                   <button class="mobile-close-button" aria-label="Close">
-                    <img src="icons/arrowbutton.svg" alt="close" />
+                    <img src="/icons/arrowbutton.svg" alt="close" />
                   </button>
                   <p class="infotext" set:html={card.infotext} />
                 </div>
@@ -158,9 +158,18 @@ import cardData from "./utils/cardData";
     top: 50%;
     left: 50%;
     padding: 3rem;
-    background: rgba(255, 255, 255, 1);
+    /*  background: rgba(255, 255, 255, 0.3); */
+    /*  background: rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(40px) saturate(100%);
+    -webkit-backdrop-filter: blur(40px) saturate(100%);
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.37),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
     display: flex;
     width: 1000px;
     height: 600px;
@@ -170,7 +179,8 @@ import cardData from "./utils/cardData";
   .cardheader {
     margin: 0;
     font-size: 2.5rem;
-    color: #333;
+    /*  color: #333; */
+    color: white;
     font-family: "Kepler";
     font-size: 50pt;
     letter-spacing: -3px;
@@ -185,10 +195,11 @@ import cardData from "./utils/cardData";
     display: flex;
     flex-direction: column;
     flex: 1;
-    color: #333;
+    color: white;
+    /*     color: #333; */
   }
   .info2 p {
-    color: #333;
+    /*   color: #333; */
     font-size: 1.2rem;
   }
   .listicon {

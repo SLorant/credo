@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         <p><strong>E-mail cím:</strong> ${email}</p>
         ${optionsHtml}
         <p><strong>Üzenet:</strong></p>
-        <p>${message}</p>
+        <p style="white-space: pre-wrap;">${message}</p>
       `,
     });
 

@@ -4,10 +4,10 @@
 
 <nav>
   <div class="navbg"></div>
-  <a href="/"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
+  <a href="/#start"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
   <ul id="nav-menu">
     <li><a href="/#services-container" target="_self">ÜZLETÁGAK</a></li>
-    <li><a href="/">PROJEKTEK</a></li>
+    <!--    <li><a href="/">PROJEKTEK</a></li> -->
     <li><a href="/about/">RÓLUNK</a></li>
     <li><a href="/#contact" target="_self">KAPCSOLAT</a></li>
   </ul>
@@ -19,13 +19,15 @@
 </nav>
 
 <div id="mobile-menu" class="mobile-menu">
-  <a href="/"> <img src="/logo.png" alt="" class="logo mobile-logo" /></a>
+  <a href="/#start" class="mobile-logo">
+    <img src="/logo.png" alt="logo" class="logo" /></a
+  >
   <button id="close-menu" class="close-btn" aria-label="Close menu">
     <span>&times;</span>
   </button>
   <ul class="mobile-nav">
     <li><a href="/#services-container" target="_self">ÜZLETÁGAK</a></li>
-    <li><a href="/">PROJEKTEK</a></li>
+    <!-- <li><a href="/">PROJEKTEK</a></li> -->
     <li><a href="/about/">RÓLUNK</a></li>
     <li><a href="/#contact" target="_self">KAPCSOLAT</a></li>
   </ul>
@@ -98,11 +100,13 @@
   a {
     text-decoration: none;
     color: white;
+    display: inline-block;
     transition: all;
     transition-duration: 400ms;
   }
   a:hover {
     color: #dbe120;
+    transform: scale(1.1);
   }
 
   .hamburger {
@@ -267,7 +271,7 @@
     }
 
     .mobile-logo {
-      left: 2rem;
+      left: -2rem;
     }
 
     .hamburger {
@@ -280,7 +284,8 @@
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
   const closeBtn = document.getElementById("close-menu");
-  const mobileLinks = document.querySelectorAll(".mobile-nav a, a .logo");
+  const mobileLinks = document.querySelectorAll(".mobile-nav a");
+  const mobileLogo = document.querySelector(".mobile-logo");
 
   hamburger?.addEventListener("click", () => {
     mobileMenu?.classList.add("active");
@@ -298,6 +303,33 @@
       mobileMenu?.classList.remove("active");
       document.body.style.overflow = "";
     });
+  });
+
+  // Close menu when clicking on mobile logo
+  mobileLogo?.addEventListener("click", () => {
+    mobileMenu?.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  // Handle cross-page navigation to prevent smooth scrolling
+  // When navigating from a different page, disable smooth scroll temporarily
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if there's a hash in the URL
+    if (window.location.hash) {
+      // Disable smooth scrolling temporarily
+      document.documentElement.style.scrollBehavior = "auto";
+
+      // Jump to the target immediately
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        target.scrollIntoView();
+      }
+
+      // Re-enable smooth scrolling after a short delay for future same-page navigation
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = "smooth";
+      }, 100);
+    }
   });
 
   // Close menu when clicking outside

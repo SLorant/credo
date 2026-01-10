@@ -39,7 +39,7 @@
   /////////////////////////////////////////////////////////////////////////
   ///// LIGHTING
   // Ambient light for base illumination
-  const ambientLight = new THREE.PointLight(0x172640, 10000);
+  const ambientLight = new THREE.PointLight(0x0e2426, 10000);
   ambientLight.position.set(0, 5, -2);
   scene.add(ambientLight);
 
@@ -51,7 +51,7 @@
   /////////////////////////////////////////////////////////////////////////
   ///// RENDERER CONFIG
   const renderer = new THREE.WebGLRenderer({
-    antialias: false,
+    antialias: true,
     powerPreference: "high-performance",
   }); // turn on antialias
   // Lower pixel ratio on mobile for better performance
@@ -422,6 +422,13 @@
     const time = clock.getElapsedTime();
     uniforms.time.value = time;
 
+    if (time < 1.5 && emberkeModel) {
+      // Ease out cubic easing function for smooth deceleration
+      const progress = time / 1.5; // Normalize to 0-1
+      const eased = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
+      emberkeModel.position.y = eased * 0.05 + 0.05; // Target position (1.5 / 4000 * 1000)
+    }
+
     ////////////////////////////////////////
     // Animate ambient particles - reduce updates on mobile
     if (!isMobile) {
@@ -494,8 +501,29 @@
         const currentX = emberkeModel.position.x;
         emberkeModel.position.x += (targetModelX - currentX) * scrollLerpFactor;
       }
-    }
+    } /* else if (scrollY > 0.18 && scrollY < 0.3 && window.innerWidth > 768) {
+      camera.position.x =
+        targetLookAt.x + radius * Math.sin(phi) * Math.sin(theta);
 
+      camera.lookAt(targetLookAt);
+
+      // Smoothly move models to the right based on scroll
+      if (pointsObject) {
+        const currentX = pointsObject.position.x;
+        pointsObject.position.x += (targetModelX - currentX) * scrollLerpFactor;
+
+        pointsObject.position.y -=
+          ((targetModelX - currentX) * scrollLerpFactor) / 2;
+      }
+      if (emberkeModel) {
+        const currentX = emberkeModel.position.x;
+        emberkeModel.position.x += (targetModelX - currentX) * scrollLerpFactor;
+
+        emberkeModel.position.y -=
+          ((targetModelX - currentX) * scrollLerpFactor) / 2;
+      }
+    }
+ */
     composer.render(); //render the scene with the composer
     distortPass.material.uniforms.jitterOffset.value += 0.01;
 

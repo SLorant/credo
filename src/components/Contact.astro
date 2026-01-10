@@ -14,7 +14,7 @@ const options = [
 ---
 
 <div class="container" id="contact">
-  <img class="wearecredo" src="icons/wearecredo.png" alt="we are credo" />
+  <img class="wearecredo" src="/icons/wearecredo.png" alt="we are credo" />
   <div class="contactbg"></div>
   <div class="contactbox" id="contactbox">
     <h2 class="contactheader">Lépj velünk kapcsolatba!</h2>
@@ -66,13 +66,11 @@ const options = [
         />
       </div>
       <div class="form-row">
-        <input
-          type="text"
+        <textarea
           name="message"
           placeholder="Üzenet"
           class="form-input"
-          required
-        />
+          required></textarea>
       </div>
       <button type="submit" class="submit-button">KÜLDÉS</button>
     </form>
@@ -82,20 +80,20 @@ const options = [
       <a
         href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
         target="_blank"
-        ><img class="icon2" src="icons/linkedin.svg" alt="linkedin" /></a
+        ><img class="icon2" src="/icons/linkedin.svg" alt="linkedin" /></a
       >
       <a
         href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
         target="_blank"
-        ><img class="icon2" src="icons/facebook.svg" alt="facebook" /></a
+        ><img class="icon2" src="/icons/facebook.svg" alt="facebook" /></a
       >
       <a href="https://www.instagram.com/weare_credo/" target="_blank"
-        ><img class="icon2" src="icons/instagram.svg" alt="instagram" /></a
+        ><img class="icon2" src="/icons/instagram.svg" alt="instagram" /></a
       >
     </div>
     <div class="iii">
       <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
-      <p>Copyright © 2025 Credo Digital</p>
+      <p>Copyright © 2026 Credo Digital</p>
     </div>
   </div>
 </div>
@@ -124,7 +122,7 @@ const options = [
   .contactbox {
     z-index: 30;
     width: 75%;
-    height: 680px;
+    height: 700px;
     border-radius: 30px;
     margin-top: 150px;
     padding-top: 20px;
@@ -141,6 +139,7 @@ const options = [
       0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);
     margin-bottom: 120px;
+    padding-bottom: 30px;
   }
   .contactheader {
     font-family: "Kepler";
@@ -240,6 +239,12 @@ const options = [
     font-size: 12pt;
     outline: none;
     padding-left: 15px;
+  }
+  textarea.form-input {
+    resize: vertical;
+    min-height: 40px;
+    max-height: 100px;
+    overflow-y: auto;
   }
   .form-input::placeholder {
     color: rgba(255, 255, 255, 1);
@@ -348,7 +353,11 @@ const options = [
       height: 900px;
     }
     .wearecredo {
-      display: none;
+      /*   display: none; */
+      position: absolute;
+      bottom: -10px;
+      right: -60px;
+      width: 100vw;
     }
     .contactbox {
       width: 100%;
@@ -357,6 +366,7 @@ const options = [
       margin-top: 50px;
       background: none;
       border: none;
+      backdrop-filter: none;
     }
     .contactheader {
       font-size: 25pt;
@@ -428,10 +438,15 @@ const options = [
     }
     .iii {
       flex-direction: column;
-      gap: 0px;
+      gap: 4px;
+      text-shadow: 1px 1px #858585;
+      font-size: 10pt;
     }
     .contactbg {
       display: none;
+    }
+    textarea.form-input {
+      min-height: 60px;
     }
   }
 </style>
@@ -439,17 +454,31 @@ const options = [
 <script>
   import { animate, onScroll } from "animejs";
 
-  animate(".wearecredo", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 3000,
-    autoplay: onScroll({
-      enter: "bottom-=100 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+  if (window.innerWidth < 768) {
+    animate(".wearecredo", {
+      opacity: [0, 0.2],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=0 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animate(".wearecredo", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
 
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const optionsContainer = document.getElementById("options-container");

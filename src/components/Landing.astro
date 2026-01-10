@@ -1,5 +1,22 @@
-<div class="container">
-  <img class="gif" src="/landing3.gif" alt="We are credo" />
+<div class="container" id="start">
+  <!-- Primary: WebM video with transparency -->
+  <video
+    class="gif video-animation"
+    muted
+    playsinline
+    preload="auto"
+    data-webm="/landing34.webm"
+  >
+    <source src="/landing34.webm" type="video/webm" />
+  </video>
+
+  <!-- Fallback: APNG for browsers that don't support WebM with alpha -->
+  <img
+    src="/landing3.gif"
+    alt="We are credo"
+    class="gif image-animation"
+    style="display: none;"
+  />
 </div>
 
 <div class="footer">
@@ -9,15 +26,15 @@
     <a
       href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
       target="_blank"
-      ><img class="icon" src="icons/linkedin.svg" alt="linkedin" /></a
+      ><img class="icon" src="/icons/linkedin.svg" alt="linkedin" /></a
     >
     <a
       href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
       target="_blank"
-      ><img class="icon" src="icons/facebook.svg" alt="facebook" /></a
+      ><img class="icon" src="/icons/facebook.svg" alt="facebook" /></a
     >
     <a href="https://www.instagram.com/weare_credo/" target="_blank"
-      ><img class="icon" src="icons/instagram.svg" alt="instagram" /></a
+      ><img class="icon" src="/icons/instagram.svg" alt="instagram" /></a
     >
   </div>
 </div>
@@ -88,7 +105,7 @@
       height: 100vh;
     }
     .gif {
-      width: 90%;
+      width: 100%;
       /*   margin-bottom: 20vh; */
     }
     p {
@@ -104,9 +121,33 @@
 </style>
 
 <script>
-  const gif = document.querySelector(".gif");
+  const video = document.querySelector(".video-animation") as HTMLVideoElement;
+  const img = document.querySelector(".image-animation") as HTMLImageElement;
 
-  if (gif) {
+  // Detect if browser supports WebM with alpha channel
+  const supportsWebMAlpha = () => {
+    const video = document.createElement("video");
+    return (
+      video.canPlayType('video/webm; codecs="vp8,vorbis"') !== "" ||
+      video.canPlayType('video/webm; codecs="vp9"') !== ""
+    );
+  };
+
+  let activeElement: HTMLVideoElement | HTMLImageElement | null = null;
+
+  if (supportsWebMAlpha() && video) {
+    // Use WebM video
+    video.style.display = "block";
+    if (img) img.style.display = "none";
+    activeElement = video;
+  } else if (img) {
+    // Fallback to APNG/image
+    if (video) video.style.display = "none";
+    img.style.display = "block";
+    activeElement = img;
+  }
+
+  if (activeElement) {
     // Set different threshold based on viewport width
     const threshold = window.innerWidth <= 800 ? 0.5 : 1;
 
@@ -114,9 +155,26 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            gif.classList.remove("fade-out");
+            activeElement!.classList.remove("fade-out");
+
+            // Restart video from beginning when scrolling back into view
+            if (activeElement instanceof HTMLVideoElement) {
+              activeElement.currentTime = 0;
+              activeElement
+                .play()
+                .catch((err) => console.log("Video play failed:", err));
+            } else if (activeElement instanceof HTMLImageElement) {
+              // For APNG: force reload by resetting src
+              const currentSrc = activeElement.src;
+              activeElement.src = "";
+              activeElement.src = currentSrc;
+            }
           } else {
-            gif.classList.add("fade-out");
+            activeElement!.classList.add("fade-out");
+            // Pause video when out of view to save resources
+            if (activeElement instanceof HTMLVideoElement) {
+              activeElement.pause();
+            }
           }
         });
       },
@@ -125,6 +183,6 @@
       }
     );
 
-    observer.observe(gif);
+    observer.observe(activeElement);
   }
 </script>

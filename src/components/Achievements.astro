@@ -1,58 +1,82 @@
-<div class="container">
-  <div class="achibg"></div>
-  <div class="achibg2">
-    <img class="achibgimg" src="illustrations/pattern.webp" alt="" />
-  </div>
-  <h2 class="achiheader">kiemelt szakmai</h2>
-  <h2 class="achiheader2">mérföldköveink</h2>
+<div class="contcont">
+  <div class="topgradient"></div>
 
-  <div class="slider-container">
-    <div class="slider-track"></div>
-    <div class="slider-fill"></div>
-    <div class="slider-points">
-      <div class="slider-point" data-index="0">
-        <div class="tooltip">
-          Egy kézben tartjuk az ország piacvezető IT refurb, ITAD cégének
-          kommunikációját, legyen szó digitális kampányról vagy a multiknak
-          szánt vállalati anyagokról.
-        </div>
-      </div>
-      <div class="slider-point" data-index="1">
-        <div class="tooltip">
-          Megoldottuk az ügyfélszerzést <br /> a nehezen megközelíthető önkormányzati
-          és B2B szektorban <br /> egy játszótér-kivitelező cég számára, egyedi automatizációval.
-        </div>
-      </div>
-      <div class="slider-point" data-index="2">
-        <div class="tooltip">
-          Márkát teremtettünk: egy facility management cég teljes márkaarculatát
-          és nyomdai anyagait hoztuk létre <br />a semmiből.
-        </div>
-      </div>
-      <div class="slider-point" data-index="3">
-        <div class="tooltip">
-          Újrapozicionáltunk egy magyar szemüvegmárkát, ahol a social media
-          kommunikációt hangoltuk össze stúdió-, illetve termékfotózással és <br
-          />a nyereményjátékokkal a vevőkör-bővítés érdekében.
-        </div>
-      </div>
-      <div class="slider-point" data-index="4">
-        <div class="tooltip">
-          Prémium megjelenést adtunk egy vezető vidéki fogászati centrumnak, <br
-          /> a weboldal-fejlesztéstől a napi social média jelenlétig.
-        </div>
-      </div>
+  <div class="container">
+    <div class="achibg"></div>
+    <div class="achibg2">
+      <img class="achibgimg" src="/illustrations/pattern.webp" alt="" />
     </div>
-    <div class="slider-handle"></div>
-  </div>
+    <h2 class="achiheader">kiemelt szakmai</h2>
+    <h2 class="achiheader2">mérföldköveink</h2>
 
-  <div class="achibox">
-    <p class="uppercase">
-      Gyakorlati tapasztalatunk <br />
-      <span class="bold">több, mint 20 különböző szektorra rúg,</span>
-      <br />
-      a hazai KKV-któl az európai piacokig.
-    </p>
+    <div class="slider-container">
+      <div class="slider-track"></div>
+      <div class="slider-fill"></div>
+      <div class="slider-points">
+        <div class="slider-point" data-index="0">
+          <div class="tooltip">
+            <p>
+              Egy kézben tartjuk az ország piacvezető <span class="bold"
+                >IT refurb, ITAD</span
+              > cégének kommunikációját, legyen szó digitális kampányról vagy a multiknak
+              szánt vállalati anyagokról.
+            </p>
+          </div>
+        </div>
+        <div class="slider-point" data-index="1">
+          <div class="tooltip">
+            <p>
+              Megoldottuk az ügyfélszerzést <br /> a nehezen megközelíthető <span
+                class="bold">önkormányzati és B2B szektorban</span
+              >
+              <br /> egy játszótér-kivitelező cég számára, <span class="bold"
+                >egyedi automatizációval.</span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="slider-point" data-index="2">
+          <div class="tooltip">
+            <p>
+              <span class="bold">Márkát teremtettünk:</span>
+              egy facility management cég teljes márkaarculatát és nyomdai anyagait
+              hoztuk létre <br />a semmiből.
+            </p>
+          </div>
+        </div>
+        <div class="slider-point" data-index="3">
+          <div class="tooltip">
+            <p>
+              <span class="bold">Újrapozicionáltunk </span> egy magyar szemüvegmárkát,
+              ahol a social media kommunikációt hangoltuk össze stúdió-, illetve termékfotózással
+              és <br />a nyereményjátékokkal <br />a <span class="bold"
+                >vevőkör-bővítés érdekében.</span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="slider-point" data-index="4">
+          <div class="tooltip">
+            <p>
+              Prémium megjelenést adtunk egy vezető vidéki fogászati centrumnak, <br
+              /> a <span class="bold"
+                >weboldal-fejlesztéstől a napi social média jelenlétig.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slider-handle"></div>
+    </div>
+
+    <div class="achibox">
+      <p class="uppercase">
+        Gyakorlati tapasztalatunk <br />
+        <span class="bold">több, mint 20 különböző szektorra rúg,</span>
+        <br />
+        a hazai KKV-któl az európai piacokig.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -112,7 +136,7 @@
       ease: "inOutSine",
       duration: 3000,
       autoplay: onScroll({
-        enter: "bottom-=500 top",
+        enter: "bottom-=300 top",
         leave: "top bottom",
         sync: "play reverse",
       }),
@@ -253,6 +277,50 @@
     padding-bottom: 0%;
     /*  overflow-x: hidden; */
   }
+  .contcont {
+    position: relative;
+  }
+  .topgradient {
+    position: absolute;
+    top: -200px;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /*     background: #25252b;
+    background: linear-gradient(
+      180deg,
+      rgba(37, 37, 43, 0) 0%,
+      rgba(39, 39, 46, 0.65) 27%,
+      rgba(22, 22, 26, 0.81) 40%,
+      rgba(22, 22, 26, 0.83) 59%,
+      rgba(16, 16, 18, 0.63) 75%,
+      rgba(0, 0, 0, 0) 100%
+    ); */
+    /*     background: #25252b;
+    background: linear-gradient(
+      180deg,
+      rgba(37, 37, 43, 0) 0%,
+      rgba(39, 39, 46, 0.58) 27%,
+      rgba(22, 22, 26, 0.61) 40%,
+      rgba(22, 22, 26, 0.67) 59%,
+      rgba(16, 16, 18, 0.53) 75%,
+      rgba(0, 0, 0, 0) 100%
+    ); */
+    background: #25252b;
+    background: linear-gradient(
+      180deg,
+      rgba(37, 37, 43, 0) 0%,
+      rgba(39, 39, 46, 0.42) 34%,
+      rgba(22, 22, 26, 0.61) 46%,
+      rgba(22, 22, 26, 0.67) 59%,
+      rgba(16, 16, 18, 0.53) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    backdrop-filter: blur(20px);
+    filter: blur(20px);
+    mix-blend-mode: color-dodge;
+    z-index: 30;
+  }
   .achibg {
     position: absolute;
     top: 0;
@@ -269,17 +337,12 @@
   }
   .achibg2 {
     position: absolute;
-    /* top: 32%; */
+
     bottom: -200px;
-    /*  opacity: 0.6; */
+
     left: 0;
     width: 100%;
-    /*  background: #737373;
-    background: linear-gradient(
-      180deg,
-      rgba(115, 115, 115, 1) 0%,
-      rgba(217, 217, 217, 0) 100%
-    ); */
+
     z-index: 30;
   }
   .achibgimg {
@@ -559,6 +622,9 @@
   @media (max-width: 768px) {
     .container {
       padding: 50px 0px;
+    }
+    .topgradient {
+      display: none;
     }
     .achiheader {
       font-size: 25pt;

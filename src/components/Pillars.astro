@@ -12,17 +12,17 @@ import Stonks from "./svg/stonks.astro";
   </h2>
   <div class="grid">
     <div class="griditem">
-      <img class="korte" src="kreakorte.svg" alt="second pillar" />
+      <img class="korte" src="/kreakorte.svg" alt="second pillar" />
       <Krea />
       <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
     </div>
     <div class="griditem">
-      <img class="korte" src="precizkorte.svg" alt="second pillar" />
+      <img class="korte" src="/precizkorte.svg" alt="second pillar" />
       <Preciz />
       <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
     </div>
     <div class="griditem">
-      <img class="korte" src="stonkskorte.svg" alt="second pillar" />
+      <img class="korte" src="/stonkskorte.svg" alt="second pillar" />
       <Stonks />
       <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
     </div>
@@ -129,6 +129,27 @@ import Stonks from "./svg/stonks.astro";
 
     delayedObserver.observe(svg);
   });
+
+  // Animate underline for bold text
+  const boldText = document.querySelector(".bold");
+
+  const boldObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-underline");
+          boldObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  if (boldText && window.innerWidth > 768) {
+    boldObserver.observe(boldText);
+  }
 </script>
 
 <style>
@@ -203,7 +224,7 @@ import Stonks from "./svg/stonks.astro";
   }
   .box {
     width: 50%;
-    padding: 0px;
+    padding: 10px 0px;
     border-radius: 30px;
     margin-top: 20px;
     backdrop-filter: blur(10px);
@@ -219,11 +240,28 @@ import Stonks from "./svg/stonks.astro";
   .uppercase {
     font-size: 14pt;
     font-family: "AktivGrotesk Regular";
-    line-height: 30px;
+    line-height: 33px;
     text-transform: uppercase !important;
+    color: rgb(219, 219, 219);
   }
   .bold {
     font-family: "AktivGrotesk Bold";
+    position: relative;
+    display: inline-block;
+    color: white;
+  }
+  .bold::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #dbe120;
+    transition: width 0.8s ease-in-out;
+  }
+  .bold.animate-underline::after {
+    width: 100%;
   }
   @media (max-width: 1400px) {
     .box {

@@ -1,4 +1,5 @@
 ---
+import Contact from "../Contact.astro";
 import Anim from "./anim.astro";
 ---
 
@@ -32,25 +33,62 @@ import Anim from "./anim.astro";
       <img class="korte" src="/stonkskorte.svg" alt="sss" />
     </div>
     <div class="righttext">
-      <p>
+      <p class="p1">
         A Credo egy szegedi alapítású integrált marketingügynökség, amelyet
         olyan tapasztalt szakértők hoztak létre és alkotnak, akik a szakma
         minden oldalát ismerik.
-        <br />
-        <br />
-        Ezt a tudást most arra használjuk, hogy valós kommunikációs alapokra helyezett,
-        kézzelfogható segítséget nyújtsunk ügyfeleinknek – a hazai KKV-szektortól
-        a nagyvállalati partnerekig.
-        <br />
-        <br />
-        Célkitűzésünk, hogy üzleti problémákra valós marketing alapokon fekvő szakmai
-        segítséget biztosítsunk széles körű üzletágainkkal.
+      </p>
+      <p class="p2">
+        Ezt a tudást most arra használjuk, hogy valós kommunikációs alapokra
+        helyezett, kézzelfogható segítséget nyújtsunk ügyfeleinknek – a hazai
+        KKV-szektortól a nagyvállalati partnerekig.
+      </p>
+      <p class="p3">
+        Célkitűzésünk, hogy üzleti problémákra valós marketing alapokon fekvő
+        szakmai segítséget biztosítsunk széles körű üzletágainkkal.
+      </p>
+      <br />
+      <p class="p4">
+        A marketing olyan, mint egy sport: bár egy kimagasló játékos sokat
+        számít, ha bajnokságot akarsz nyerni, egy összeszokott csapatra van
+        szükséged – amit persze kiemelkedő egyéniségek alkotnak. <br />
+        <br /> Akár most kezded a történeted, akár már hosszú évek óta formálod vállalkozásod,
+        mi ugyanazzal a stratégiai élességgel és kreatív lendülettel állunk mögéd,
+        mint marketing partner.
       </p>
     </div>
   </div>
 </div>
 
+<Contact />
+
 <script>
+  import { animate, onScroll } from "animejs";
+
+  animate([".p1", ".p2", ".p3"], {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=300 top",
+      leave: "top+=0 bottom",
+      sync: "play reverse",
+    }),
+  });
+
+  animate([".p4"], {
+    opacity: [0, 1],
+    translateY: [30, 0],
+    ease: "inOutSine",
+    duration: 600,
+    autoplay: onScroll({
+      enter: "bottom-=300 top",
+      leave: "top+=0 bottom",
+      sync: "play reverse",
+    }),
+  });
+
   // Trigger SVG animations when they come into view
   const svgs = document.querySelector("#Layer_3") as HTMLElement;
 
@@ -147,16 +185,17 @@ import Anim from "./anim.astro";
     position: relative;
     z-index: 40;
     margin-top: 200px;
+    margin-bottom: 100px;
   }
   .domecont {
     width: 50%;
   }
   .righttext {
     font-family: "AktivGrotesk Light";
-    font-size: 14pt;
+    font-size: 13pt;
     line-height: 35px;
     color: white;
-    margin-top: 300px;
+    margin-top: 130px;
 
     width: 650px;
   }
@@ -252,6 +291,7 @@ import Anim from "./anim.astro";
     }
     .second {
       margin-top: 100px;
+      margin-bottom: 150px;
     }
     .sub {
       font-family: "AktivGrotesk Light";
@@ -279,7 +319,7 @@ import Anim from "./anim.astro";
 
     .domeimg {
       height: 700px;
-      opacity: 0.3;
+      opacity: 0.2;
       transform: translateX(-10%);
     }
     .righttext {
