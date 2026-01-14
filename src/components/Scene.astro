@@ -392,8 +392,8 @@
   distortPass.material.defines.CHROMA_SAMPLES = isMobile ? 2 : 4; // Reduce samples on mobile
   distortPass.enabled = true;
   distortPass.material.uniforms.baseIor.value = 0.72;
-  distortPass.material.uniforms.bandOffset.value = isMobile ? 0.0025 : 0.0019; // Reduce distortion on mobile
-  distortPass.material.uniforms.jitterIntensity.value = isMobile ? 10.7 : 10.7; // Reduce jitter on mobile
+  distortPass.material.uniforms.bandOffset.value = isMobile ? 0.002 : 0.0019; // Reduce distortion on mobile
+  distortPass.material.uniforms.jitterIntensity.value = isMobile ? 7.5 : 10.7; // Reduce jitter on mobile
   distortPass.material.defines.BAND_MODE = 2;
 
   composer.addPass(renderPass);
