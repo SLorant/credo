@@ -4,7 +4,7 @@
 
 <nav>
   <div class="navbg"></div>
-  <a href="/#start"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
+  <a href="/"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
   <ul id="nav-menu">
     <li><a href="/#uzletagak" target="_self">ÜZLETÁGAK</a></li>
     <!--    <li><a href="/">PROJEKTEK</a></li> -->
@@ -19,7 +19,7 @@
 </nav>
 
 <div id="mobile-menu" class="mobile-menu">
-  <a href="/#start" class="mobile-logo">
+  <a href="/" class="mobile-logo">
     <img src="/logo.png" alt="logo" class="logo" /></a
   >
   <button id="close-menu" class="close-btn" aria-label="Close menu">
@@ -287,6 +287,29 @@
   const closeBtn = document.getElementById("close-menu");
   const mobileLinks = document.querySelectorAll(".mobile-nav a");
   const mobileLogo = document.querySelector(".mobile-logo");
+  const desktopLogo = document.querySelector("nav a[href='/']");
+
+  // Handle desktop logo click
+  desktopLogo?.addEventListener("click", (e) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Clean the URL by removing any hash
+      history.replaceState(null, "", "/");
+    }
+  });
+
+  // Handle mobile logo click
+  mobileLogo?.addEventListener("click", (e) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Clean the URL by removing any hash
+      history.replaceState(null, "", "/");
+    }
+    mobileMenu?.classList.remove("active");
+    document.body.style.overflow = "";
+  });
 
   hamburger?.addEventListener("click", () => {
     mobileMenu?.classList.add("active");
@@ -304,12 +327,6 @@
       mobileMenu?.classList.remove("active");
       document.body.style.overflow = "";
     });
-  });
-
-  // Close menu when clicking on mobile logo
-  mobileLogo?.addEventListener("click", () => {
-    mobileMenu?.classList.remove("active");
-    document.body.style.overflow = "";
   });
 
   // Handle cross-page navigation to prevent smooth scrolling

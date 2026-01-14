@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       import.meta.env.RECIPIENT_EMAIL ||
       "your-email@example.com";
     const emailResponse = await resend.emails.send({
-      from: "onboarding@resend.dev", // You'll need to change this to your verified domain
+      from: "hello@credodigital.hu", // You'll need to change this to your verified domain
       to: recipientEmail,
       subject: `Credo weboldal új kapcsolatfelvétel: ${name}`,
       html: `
