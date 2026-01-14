@@ -1,6 +1,6 @@
 export const cardAnimations = () => {
   const wrapper = document.getElementById("services-wrapper");
-  const container = document.getElementById("services-container");
+  const container = document.getElementById("uzletagak");
   const cards = document.querySelectorAll<HTMLElement>(".card");
   const totalCards = cards.length;
 

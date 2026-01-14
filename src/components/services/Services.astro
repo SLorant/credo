@@ -8,7 +8,7 @@ import cardData from "./utils/cardData";
     üzletági <br />
     <span class="three">szolgáltatásaink</span>
   </h2>
-  <div class="services-container" id="services-container">
+  <div class="services-container" id="uzletagak">
     {
       cardData.map((card) => (
         <div class="card" data-card={card.id}>
@@ -111,7 +111,7 @@ import cardData from "./utils/cardData";
 
   // Hide background when Contact section is in view
   const background = document.querySelector(".background") as HTMLElement;
-  const contactSection = document.getElementById("contact");
+  const contactSection = document.getElementById("kapcsolat");
 
   if (background && contactSection) {
     const observer = new IntersectionObserver(
