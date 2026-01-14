@@ -163,17 +163,31 @@
     });
 
     // Attach scroll trigger
-    onScroll({
-      target: notusContainer,
-      enter: "bottom-=600 top",
-      leave: "top bottom",
-      onEnter: () => {
-        tl.play();
-      },
-      onLeave: () => {
-        tl.reverse();
-      },
-    });
+    if (window.innerWidth < 768) {
+      onScroll({
+        target: notusContainer,
+        enter: "bottom-=300 top",
+        leave: "top bottom",
+        onEnter: () => {
+          tl.play();
+        },
+        onLeave: () => {
+          tl.reverse();
+        },
+      });
+    } else {
+      onScroll({
+        target: notusContainer,
+        enter: "bottom-=450 top",
+        leave: "top bottom",
+        onEnter: () => {
+          tl.play();
+        },
+        onLeave: () => {
+          tl.reverse();
+        },
+      });
+    }
   }
 
   // Stripe scroll animation
@@ -185,6 +199,10 @@
   let translateX = 0;
 
   if (stripeContent && container) {
+    // Calculate the width of one repetition (one span element)
+    const singleSpan = stripeContent.querySelector("span");
+    const spanWidth = singleSpan ? singleSpan.offsetWidth : 0;
+
     window.addEventListener("scroll", () => {
       const currentScroll = window.scrollY;
       const scrollDelta = currentScroll - lastScroll;
@@ -196,6 +214,14 @@
       if (isInView) {
         // Update translateX based on scroll direction
         translateX -= scrollDelta * 0.5; // Adjust multiplier for speed
+
+        // Loop the animation - reset when one full span has scrolled past
+        if (translateX <= -spanWidth) {
+          translateX += spanWidth;
+        } else if (translateX > 0) {
+          translateX -= spanWidth;
+        }
+
         stripeContent.style.transform = `translateX(${translateX}px)`;
       }
 
@@ -269,6 +295,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    z-index: 40;
     /* background: #2b2a33; */
   }
 
@@ -280,6 +307,7 @@
     font-size: 28pt;
     letter-spacing: 2px;
     will-change: transform;
+    color: white;
   }
 
   .stripe-content span {

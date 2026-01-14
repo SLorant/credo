@@ -11,94 +11,102 @@ const options = [
   "Videó-produkció",
   "Egyéb",
 ];
+
+const { needGradient } = Astro.props;
 ---
 
-<div class="container" id="contact">
-  <img class="wearecredo" src="/icons/wearecredo.png" alt="we are credo" />
-  <div class="contactbg"></div>
-  <div class="contactbox" id="contactbox">
-    <h2 class="contactheader">Lépj velünk kapcsolatba!</h2>
-    <p class="subheader">
-      Kapcsolatfelvétel. Megbeszélés. Ajánlattervezés. Rendszerépítés.
-      Megvalósítás. Eredmény. <span>Ez a sorrend nálunk.</span>
-    </p>
-    <div class="options" id="options-container">
-      {
-        options.map((opt) => (
-          <div class="optionbox" data-option={opt}>
-            {opt}
-          </div>
-        ))
-      }
+<div class="contcont">
+  {needGradient ? <div class="topgradient" /> : null}
+  <div class="container" id="contact">
+    <img class="wearecredo" src="/icons/wearecredo.png" alt="we are credo" />
+    <div class="contactbg"></div>
+    <div class="contactbox" id="contactbox">
+      <h2 class="contactheader">Lépj velünk kapcsolatba!</h2>
+      <p class="subheader">
+        Kapcsolatfelvétel. Megbeszélés. Ajánlattervezés. Rendszerépítés.
+        Megvalósítás. Eredmény. <span>Ez a sorrend nálunk.</span>
+      </p>
+      <div class="options" id="options-container">
+        {
+          options.map((opt) => (
+            <div class="optionbox" data-option={opt}>
+              {opt}
+            </div>
+          ))
+        }
+      </div>
+      <form class="contact-form" id="contact-form">
+        <input type="hidden" name="selectedOptions" id="selected-options" />
+        <div class="form-row">
+          <input
+            type="text"
+            name="name"
+            placeholder="Név"
+            class="form-input"
+            required
+          />
+          <input
+            type="text"
+            name="company"
+            placeholder="Cégnév"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Telefonszám"
+            class="form-input"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail cím"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <textarea
+            name="message"
+            placeholder="Üzenet"
+            class="form-input"
+            required></textarea>
+        </div>
+        <button type="submit" class="submit-button">KÜLDÉS</button>
+      </form>
     </div>
-    <form class="contact-form" id="contact-form">
-      <input type="hidden" name="selectedOptions" id="selected-options" />
-      <div class="form-row">
-        <input
-          type="text"
-          name="name"
-          placeholder="Név"
-          class="form-input"
-          required
-        />
-        <input
-          type="text"
-          name="company"
-          placeholder="Cégnév"
-          class="form-input"
-          required
-        />
+    <div class="contactfooter">
+      <div class="contacticons">
+        <a
+          href="https://www.linkedin.com/company/credo-digital-agency"
+          target="_blank"
+          ><img class="icon2" src="/icons/linkedin.svg" alt="linkedin" /></a
+        >
+        <a
+          href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
+          target="_blank"
+          ><img class="icon2" src="/icons/facebook.svg" alt="facebook" /></a
+        >
+        <a href="https://www.instagram.com/weare_credo/" target="_blank"
+          ><img class="icon2" src="/icons/instagram.svg" alt="instagram" /></a
+        >
       </div>
-      <div class="form-row">
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Telefonszám"
-          class="form-input"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail cím"
-          class="form-input"
-          required
-        />
+      <div class="iii">
+        <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
+        <p>Copyright © 2026 Credo Digital</p>
       </div>
-      <div class="form-row">
-        <textarea
-          name="message"
-          placeholder="Üzenet"
-          class="form-input"
-          required></textarea>
-      </div>
-      <button type="submit" class="submit-button">KÜLDÉS</button>
-    </form>
-  </div>
-  <div class="contactfooter">
-    <div class="contacticons">
-      <a
-        href="https://www.linkedin.com/company/credo-digital-agency"
-        target="_blank"
-        ><img class="icon2" src="/icons/linkedin.svg" alt="linkedin" /></a
-      >
-      <a
-        href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
-        target="_blank"
-        ><img class="icon2" src="/icons/facebook.svg" alt="facebook" /></a
-      >
-      <a href="https://www.instagram.com/weare_credo/" target="_blank"
-        ><img class="icon2" src="/icons/instagram.svg" alt="instagram" /></a
-      >
-    </div>
-    <div class="iii">
-      <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
-      <p>Copyright © 2026 Credo Digital</p>
     </div>
   </div>
 </div>
-
 <style>
+  .contcont {
+    position: relative;
+    overscroll-behavior-y: none;
+  }
   .container {
     height: 1000px;
     width: 100vw;
@@ -118,6 +126,7 @@ const options = [
     z-index: 20;
     padding-bottom: 0%;
     overflow: hidden;
+    overscroll-behavior-y: none;
   }
   .contactbox {
     z-index: 30;
@@ -128,6 +137,7 @@ const options = [
     padding-top: 20px;
     overflow: hidden;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     background: rgb(255 255 255 / 0.05);
     color: white;
     display: flex;
@@ -183,10 +193,31 @@ const options = [
     width: 75%;
     overflow: hidden;
   }
+  .topgradient {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 110%;
+    height: 20%;
+    background: #25252b;
+    background: linear-gradient(
+      180deg,
+      rgba(37, 37, 43, 0) 0%,
+      rgba(39, 39, 46, 0.42) 17%,
+      rgba(22, 22, 26, 0.56) 46%,
+      rgba(22, 22, 26, 0.56) 59%,
+      rgba(16, 16, 18, 0.42) 84%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 40;
+  }
   .optionbox {
     padding: 8px 20px;
     border-radius: 30px;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     /*   background: rgb(255 255 255 / 0.15); */
     color: white;
     display: flex;
@@ -367,6 +398,7 @@ const options = [
       background: none;
       border: none;
       backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .contactheader {
       font-size: 25pt;
@@ -431,6 +463,13 @@ const options = [
       margin-bottom: 2rem;
       margin-left: 2rem;
       gap: 10px;
+    }
+    .topgradient {
+      opacity: 1;
+      height: 15%;
+      top: -70px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
     }
     .contacticons {
       flex-direction: column;

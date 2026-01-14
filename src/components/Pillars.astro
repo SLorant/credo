@@ -12,17 +12,29 @@ import Stonks from "./svg/stonks.astro";
   </h2>
   <div class="grid">
     <div class="griditem">
-      <img class="korte" src="/kreakorte.svg" alt="second pillar" />
+      <img
+        class="korte"
+        src="/illustrations/kreakorte.svg"
+        alt="second pillar"
+      />
       <Krea />
       <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
     </div>
     <div class="griditem">
-      <img class="korte" src="/precizkorte.svg" alt="second pillar" />
+      <img
+        class="korte"
+        src="/illustrations/precizkorte.svg"
+        alt="second pillar"
+      />
       <Preciz />
       <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
     </div>
     <div class="griditem">
-      <img class="korte" src="/stonkskorte.svg" alt="second pillar" />
+      <img
+        class="korte"
+        src="/illustrations/stonkskorte.svg"
+        alt="second pillar"
+      />
       <Stonks />
       <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
     </div>
@@ -147,7 +159,7 @@ import Stonks from "./svg/stonks.astro";
     }
   );
 
-  if (boldText && window.innerWidth > 768) {
+  if (boldText) {
     boldObserver.observe(boldText);
   }
 </script>
@@ -228,6 +240,7 @@ import Stonks from "./svg/stonks.astro";
     border-radius: 30px;
     margin-top: 20px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     background: rgb(255 255 255 / 0.1);
     color: white;
     z-index: 30;
@@ -247,21 +260,17 @@ import Stonks from "./svg/stonks.astro";
   .bold {
     font-family: "AktivGrotesk Bold";
     position: relative;
-    display: inline-block;
+    display: inline;
     color: white;
+    background-image: linear-gradient(to right, #dbe120 0%, #dbe120 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: left bottom;
+    transition: background-size 0.8s ease-in-out;
+    padding-bottom: 2px;
   }
-  .bold::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0%;
-    height: 2px;
-    background-color: #dbe120;
-    transition: width 0.8s ease-in-out;
-  }
-  .bold.animate-underline::after {
-    width: 100%;
+  .bold.animate-underline {
+    background-size: 100% 2px;
   }
   @media (max-width: 1400px) {
     .box {
@@ -352,7 +361,7 @@ import Stonks from "./svg/stonks.astro";
     }
     .box {
       width: 70%;
-      padding: 0px 20px;
+      padding: 10px 20px;
       border: none;
       /*  margin-top: ; */
     }

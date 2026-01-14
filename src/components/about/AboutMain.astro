@@ -1,6 +1,7 @@
 ---
 import Contact from "../Contact.astro";
 import Anim from "./anim.astro";
+import Team from "./Team.astro";
 ---
 
 <div class="container">
@@ -25,12 +26,9 @@ import Anim from "./anim.astro";
     <div class="domecont">
       <div class="dome">
         <img class="domeimg" src="/illustrations/dom_base.svg" alt="dome" />
-        <!--    <img class="anim" src="/illustrations/dom_anim.svg" alt="dome" /> -->
-        <!--    <div class="anim"> -->
         <Anim />
-        <!--    </div> -->
       </div>
-      <img class="korte" src="/stonkskorte.svg" alt="sss" />
+      <img class="korte" src="/illustrations/stonkskorte.svg" alt="sss" />
     </div>
     <div class="righttext">
       <p class="p1">
@@ -48,47 +46,26 @@ import Anim from "./anim.astro";
         szakmai segítséget biztosítsunk széles körű üzletágainkkal.
       </p>
       <br />
-      <p class="p4">
-        A marketing olyan, mint egy sport: bár egy kimagasló játékos sokat
-        számít, ha bajnokságot akarsz nyerni, egy összeszokott csapatra van
-        szükséged – amit persze kiemelkedő egyéniségek alkotnak. <br />
-        <br /> Akár most kezded a történeted, akár már hosszú évek óta formálod vállalkozásod,
-        mi ugyanazzal a stratégiai élességgel és kreatív lendülettel állunk mögéd,
-        mint marketing partner.
-      </p>
     </div>
+  </div>
+  <div class="third">
+    <div class="puzzle">
+      <Team />
+    </div>
+    <p class="righttext lasttext">
+      A marketing olyan, mint egy sport: bár egy kimagasló játékos sokat számít,
+      ha bajnokságot akarsz nyerni, egy összeszokott csapatra van szükséged –
+      amit persze kiemelkedő egyéniségek alkotnak. <br />
+      <br /> Akár most kezded a történeted, akár már hosszú évek óta formálod vállalkozásod,
+      mi ugyanazzal a stratégiai élességgel és kreatív lendülettel állunk mögéd, mint
+      marketing partner.
+    </p>
   </div>
 </div>
 
-<Contact />
+<Contact needGradient />
 
 <script>
-  import { animate, onScroll } from "animejs";
-
-  animate([".p1", ".p2", ".p3"], {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=300 top",
-      leave: "top+=0 bottom",
-      sync: "play reverse",
-    }),
-  });
-
-  animate([".p4"], {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=300 top",
-      leave: "top+=0 bottom",
-      sync: "play reverse",
-    }),
-  });
-
   // Trigger SVG animations when they come into view
   const svgs = document.querySelector("#Layer_3") as HTMLElement;
 
@@ -107,6 +84,25 @@ import Anim from "./anim.astro";
   );
 
   observer.observe(svgs);
+
+  // Trigger SVG animations when they come into view
+  const svgs2 = document.querySelector("#Lay") as HTMLElement;
+
+  const observer2 = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("start");
+          observer2.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.6,
+    }
+  );
+
+  observer2.observe(svgs2);
 </script>
 
 <style>
@@ -117,7 +113,7 @@ import Anim from "./anim.astro";
     overflow: hidden;
   }
   .bg {
-    background-image: url("/gradient__background2.webp");
+    background-image: url("/gradient__background.webp");
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -187,15 +183,26 @@ import Anim from "./anim.astro";
     margin-top: 200px;
     margin-bottom: 100px;
   }
+  .third {
+    height: 85vh;
+    width: 100vw;
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    z-index: 40;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    gap: 100px;
+  }
   .domecont {
     width: 50%;
   }
   .righttext {
     font-family: "AktivGrotesk Light";
-    font-size: 13pt;
+    font-size: 14pt;
     line-height: 35px;
     color: white;
-    margin-top: 130px;
+    margin-top: 300px;
 
     width: 650px;
   }
@@ -205,6 +212,13 @@ import Anim from "./anim.astro";
     left: -22%;
     width: 75%;
     opacity: 0.8;
+  }
+  .puzzle {
+    position: relative;
+    width: 30%;
+    height: 600px;
+    padding-right: 250px;
+    padding-top: 150px;
   }
   .dome {
     position: relative;
@@ -225,6 +239,10 @@ import Anim from "./anim.astro";
     .dome {
       padding-left: 200px;
     }
+    .puzzle {
+      padding-right: 150px;
+      padding-top: 200px;
+    }
   }
   @media (max-width: 1400px) {
     .aboutmain {
@@ -235,6 +253,10 @@ import Anim from "./anim.astro";
       height: 600px;
       padding-left: 100px;
       padding-top: 100px;
+    }
+    .puzzle {
+      padding-right: 100px;
+      padding-top: 250px;
     }
     .righttext {
       font-size: 12pt;
@@ -253,11 +275,21 @@ import Anim from "./anim.astro";
       margin-left: 50px;
       width: 450px;
     }
+    .puzzle {
+      padding-right: 100px;
+      padding-top: 300px;
+    }
+    .third {
+      gap: 50px;
+    }
   }
   @media (max-width: 1000px) {
     .dome {
       height: 600px;
       padding-top: 280px;
+    }
+    .puzzle {
+      padding-top: 350px;
     }
     .info {
       font-family: "AktivGrotesk Light";
@@ -291,7 +323,7 @@ import Anim from "./anim.astro";
     }
     .second {
       margin-top: 100px;
-      margin-bottom: 150px;
+      margin-bottom: 50px;
     }
     .sub {
       font-family: "AktivGrotesk Light";
@@ -333,6 +365,27 @@ import Anim from "./anim.astro";
     }
     .domecont {
       width: 0%;
+    }
+    .third {
+      flex-direction: column-reverse;
+      gap: 40px;
+      padding: 0px 40px;
+      width: 75vw;
+      height: 500px;
+      margin-top: 30vh;
+      margin-bottom: 150px;
+      justify-content: center;
+      place-items: center;
+    }
+    .lasttext {
+      margin: 0px !important;
+      width: 100% !important;
+      display: flex;
+    }
+    .puzzle {
+      padding-top: 0px;
+      width: 70%;
+      padding-right: 0px;
     }
   }
 </style>

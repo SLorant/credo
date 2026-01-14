@@ -39,7 +39,7 @@
   /////////////////////////////////////////////////////////////////////////
   ///// LIGHTING
   // Ambient light for base illumination
-  const ambientLight = new THREE.PointLight(0x0e2426, 10000);
+  const ambientLight = new THREE.PointLight(0x1a2140, 10000);
   ambientLight.position.set(0, 5, -2);
   scene.add(ambientLight);
 
@@ -165,7 +165,7 @@
     opacity: 0.8,
     depthWrite: false,
     sizeAttenuation: true,
-    alphaMap: new THREE.TextureLoader().load("particle-texture.jpg"),
+    alphaMap: new THREE.TextureLoader().load("/models/particle-texture.jpg"),
   });
 
   const ambientParticles = new THREE.Points(
@@ -197,6 +197,11 @@
   let targetScrollRotation = 0;
   let currentScrollPosition = 0;
   let targetModelX = 0;
+  let targetModelY = 0; // Target Y position for models
+
+  // Store initial Y positions
+  const initialPointsY = pos; // 1.5
+  const initialEmberkeY = 0.1;
 
   // Check if mobile device (less than 768px)
 
@@ -251,8 +256,8 @@
       if (y > maxY) maxY = y;
     }
 
-    const color2 = new THREE.Color(0x112c38);
-    const color1 = new THREE.Color(0x252b10);
+    const color2 = new THREE.Color(0x13192e);
+    const color1 = new THREE.Color(0x0d2624);
 
     for (let i = 0; i < vertices.length; i += 3) {
       const y = vertices[i + 1]; // Get Y coordinate
@@ -282,7 +287,7 @@
       depthWrite: false,
       sizeAttenuation: true,
       vertexColors: true,
-      alphaMap: new THREE.TextureLoader().load("particle-texture.jpg"),
+      alphaMap: new THREE.TextureLoader().load("/models/particle-texture.jpg"),
     });
 
     // Create the custom vertex shader injection
@@ -385,8 +390,8 @@
   distortPass.material.defines.CHROMA_SAMPLES = isMobile ? 2 : 4; // Reduce samples on mobile
   distortPass.enabled = true;
   distortPass.material.uniforms.baseIor.value = 0.72;
-  distortPass.material.uniforms.bandOffset.value = isMobile ? 0.001 : 0.0019; // Reduce distortion on mobile
-  distortPass.material.uniforms.jitterIntensity.value = isMobile ? 5.0 : 10.7; // Reduce jitter on mobile
+  distortPass.material.uniforms.bandOffset.value = isMobile ? 0.0025 : 0.0019; // Reduce distortion on mobile
+  distortPass.material.uniforms.jitterIntensity.value = isMobile ? 10.7 : 10.7; // Reduce jitter on mobile
   distortPass.material.defines.BAND_MODE = 2;
 
   composer.addPass(renderPass);
@@ -426,7 +431,7 @@
       // Ease out cubic easing function for smooth deceleration
       const progress = time / 1.5; // Normalize to 0-1
       const eased = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
-      emberkeModel.position.y = eased * 0.05 + 0.05; // Target position (1.5 / 4000 * 1000)
+      emberkeModel.position.y = eased * 0.1 + 0; // Target position (1.5 / 4000 * 1000)
     }
 
     ////////////////////////////////////////
@@ -481,12 +486,8 @@
     const theta = initialTheta + scrollY * 3;
     const phi = initialPhi;
 
-    /*  console.log(scrollY); */
-    /*  camera.position.y = targetLookAt.y + radius * Math.cos(phi);
-    camera.position.z =
-      targetLookAt.z + radius * Math.sin(phi) * Math.cos(theta); */
     // Convert spherical to cartesian coordinates
-    if (scrollY < 0.18) {
+    if (scrollY < 0.32) {
       camera.position.x =
         targetLookAt.x + radius * Math.sin(phi) * Math.sin(theta);
 
@@ -495,35 +496,20 @@
       // Smoothly move models to the right based on scroll
       if (pointsObject) {
         const currentX = pointsObject.position.x;
+        const currentY = pointsObject.position.y;
         pointsObject.position.x += (targetModelX - currentX) * scrollLerpFactor;
+        pointsObject.position.y +=
+          (initialPointsY - currentY) * scrollLerpFactor;
       }
       if (emberkeModel) {
         const currentX = emberkeModel.position.x;
+        const currentY = emberkeModel.position.y;
         emberkeModel.position.x += (targetModelX - currentX) * scrollLerpFactor;
-      }
-    } /* else if (scrollY > 0.18 && scrollY < 0.3 && window.innerWidth > 768) {
-      camera.position.x =
-        targetLookAt.x + radius * Math.sin(phi) * Math.sin(theta);
-
-      camera.lookAt(targetLookAt);
-
-      // Smoothly move models to the right based on scroll
-      if (pointsObject) {
-        const currentX = pointsObject.position.x;
-        pointsObject.position.x += (targetModelX - currentX) * scrollLerpFactor;
-
-        pointsObject.position.y -=
-          ((targetModelX - currentX) * scrollLerpFactor) / 2;
-      }
-      if (emberkeModel) {
-        const currentX = emberkeModel.position.x;
-        emberkeModel.position.x += (targetModelX - currentX) * scrollLerpFactor;
-
-        emberkeModel.position.y -=
-          ((targetModelX - currentX) * scrollLerpFactor) / 2;
+        emberkeModel.position.y +=
+          (initialEmberkeY - currentY) * scrollLerpFactor;
       }
     }
- */
+
     composer.render(); //render the scene with the composer
     distortPass.material.uniforms.jitterOffset.value += 0.01;
 
@@ -600,11 +586,16 @@
         );
 
         // Move models to the right based on scroll
-        targetModelX = (scrollDelta * getModelMovementAmount()) / 4; //Math.min((scrollDelta * modelMovementAmount) / 4, 0);
+        targetModelX = (scrollDelta * getModelMovementAmount()) / 4;
+
+        // Calculate target Y position (move down as we scroll)
+        targetModelY =
+          initialPointsY - (scrollDelta * getModelMovementAmount()) / 8;
       } else {
         // At the top, reset rotation and position
         targetScrollRotation = 0;
         targetModelX = 0;
+        targetModelY = initialPointsY; // Reset to initial Y
       }
     },
     { passive: true }

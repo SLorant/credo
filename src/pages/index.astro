@@ -3,7 +3,6 @@ export const prerender = true; // Makes this page static for better SEO and perf
 
 import Header from "../components/header/Header.astro";
 import Scene from "../components/Scene.astro";
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Landing from "../components/Landing.astro";
 import Landing2 from "../components/Landing2.astro";
@@ -23,5 +22,5 @@ import Contact from "../components/Contact.astro";
   <Services />
   <Achievements />
   <Work />
-  <Contact />
+  <Contact needGradient={false} />
 </Layout>
