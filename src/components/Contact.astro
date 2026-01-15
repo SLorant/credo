@@ -97,7 +97,8 @@ const { needGradient } = Astro.props;
       </div>
       <div class="iii">
         <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
-        <p>Copyright © 2026 Credo Digital</p>
+        <p class="copy">Copyright © 2026 Credo Digital</p>
+        <a href="/adatkezeles/">Adatkezelési szabályzat</a>
       </div>
     </div>
   </div>
@@ -106,6 +107,9 @@ const { needGradient } = Astro.props;
   .contcont {
     position: relative;
     overscroll-behavior-y: none;
+  }
+  .copy {
+    margin: 0;
   }
   .container {
     height: 1000px;
@@ -317,8 +321,8 @@ const { needGradient } = Astro.props;
     color: white;
     font-size: 14pt;
     margin-bottom: 2rem;
-    margin-left: 4rem;
-    gap: 150px;
+    margin-left: 2rem;
+    gap: 50px;
   }
   .contacticons {
     display: flex;
@@ -326,7 +330,9 @@ const { needGradient } = Astro.props;
   }
   .iii {
     display: flex;
-    gap: 150px;
+    gap: 50px;
+    font-size: 12pt;
+    text-shadow: 1px 1px #858585;
   }
   @media (max-width: 1400px) {
     .contactbox {
@@ -343,6 +349,7 @@ const { needGradient } = Astro.props;
     .optionbox {
       font-size: 8pt;
     }
+
     input {
       font-size: 8pt;
     }
@@ -351,7 +358,8 @@ const { needGradient } = Astro.props;
       gap: 100px;
     }
     .iii {
-      gap: 100px;
+      font-size: 10pt;
+      gap: 50px;
     }
   }
   @media (max-width: 1000px) {
@@ -373,10 +381,10 @@ const { needGradient } = Astro.props;
     }
     .contactfooter {
       font-size: 12pt;
-      gap: 50px;
+      gap: 20px;
     }
     .iii {
-      gap: 50px;
+      gap: 30px;
     }
   }
   @media (max-width: 768px) {
@@ -477,8 +485,9 @@ const { needGradient } = Astro.props;
     }
     .iii {
       flex-direction: column;
-      gap: 4px;
-      text-shadow: 1px 1px #858585;
+      gap: 15px;
+      padding-right: 1rem;
+
       font-size: 10pt;
     }
     .contactbg {
@@ -498,7 +507,7 @@ const { needGradient } = Astro.props;
       opacity: [0, 0.2],
       translateY: [30, 0],
       ease: "inOutSine",
-      duration: 3000,
+      duration: 2000,
       autoplay: onScroll({
         enter: "bottom-=0 top",
         leave: "top bottom",
@@ -507,7 +516,7 @@ const { needGradient } = Astro.props;
     });
   } else {
     animate(".wearecredo", {
-      opacity: [0, 1],
+      opacity: [0, 0.7],
       translateY: [30, 0],
       ease: "inOutSine",
       duration: 3000,
