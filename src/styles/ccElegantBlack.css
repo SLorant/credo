@@ -70,3 +70,8 @@
 .cm__footer {
   padding-bottom: 10px !important;
 }
+
+.cm__btn[data-role="necessary"],
+.pm__btn[data-role="necessary"] {
+  background-color: #b1b6c3 !important;
+}
