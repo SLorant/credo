@@ -77,8 +77,8 @@ const { needGradient } = Astro.props;
             required></textarea>
         </div>
         <button type="submit" class="submit-button">KÜLDÉS</button>
-        <div id="form-message" class="form-message"></div>
       </form>
+      <div id="form-message" class="form-message"></div>
     </div>
     <div class="contactfooter">
       <div class="contacticons">
@@ -197,6 +197,15 @@ const { needGradient } = Astro.props;
     margin-top: 20px;
     width: 75%;
     overflow: hidden;
+    opacity: 1;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .options.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
   }
   .topgradient {
     position: absolute;
@@ -258,6 +267,10 @@ const { needGradient } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    opacity: 1;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
   }
   .form-row {
     display: flex;
@@ -308,24 +321,35 @@ const { needGradient } = Astro.props;
   .form-message {
     font-size: 14pt;
     text-align: center;
-    font-family: "AktivGrotesk Regular";
+    font-family: "AktivGrotesk Medium";
     opacity: 0;
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-20px);
     transition:
-      opacity 0.3s ease,
-      margin-top 0.3s ease;
-    margin-top: 0;
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    pointer-events: none;
   }
   .form-message.show {
     opacity: 1;
-    margin-top: 20px;
+    transform: translate(-50%, -50%) translateY(0);
+    pointer-events: auto;
   }
   .form-message.success {
-    color: #37be68;
-    text-shadow: 1px 1px #278f4d;
+    color: #ffffff;
+    /*     text-shadow: 1px 1px #afafaf; */
   }
   .form-message.error {
     color: #ef4444;
     text-shadow: 1px 1px #9b2a2a;
+  }
+  .contact-form.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
   }
   .wearecredo {
     position: absolute;
@@ -616,11 +640,15 @@ const { needGradient } = Astro.props;
       if (response.ok) {
         if (messageDiv) {
           messageDiv.textContent =
-            "Üzenet sikeresen elküldve! Hamarosan jelentkezünk.";
+            "Köszönjük, megkaptuk üzeneted! Megkeresésedre tulajdonosaink válaszolnak, legkésőbb 24 órán belül. Hamarosan jelentkezünk!";
           messageDiv.className = "form-message show success";
-          // Hide message after 5 seconds
+          form.classList.add("hidden");
+          optionsContainer?.classList.add("hidden");
+          // Restore form after 10 seconds
           setTimeout(() => {
             messageDiv.classList.remove("show");
+            form.classList.remove("hidden");
+            optionsContainer?.classList.remove("hidden");
           }, 10000);
         }
         form.reset();
@@ -634,9 +662,13 @@ const { needGradient } = Astro.props;
           messageDiv.textContent =
             "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
           messageDiv.className = "form-message show error";
-          // Hide message after 5 seconds
+          form.classList.add("hidden");
+          optionsContainer?.classList.add("hidden");
+          // Restore form after 10 seconds
           setTimeout(() => {
             messageDiv.classList.remove("show");
+            form.classList.remove("hidden");
+            optionsContainer?.classList.remove("hidden");
           }, 10000);
         }
       }
@@ -646,9 +678,13 @@ const { needGradient } = Astro.props;
         messageDiv.textContent =
           "Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.";
         messageDiv.className = "form-message show error";
-        // Hide message after 5 seconds
+        form.classList.add("hidden");
+        optionsContainer?.classList.add("hidden");
+        // Restore form after 10 seconds
         setTimeout(() => {
           messageDiv.classList.remove("show");
+          form.classList.remove("hidden");
+          optionsContainer?.classList.remove("hidden");
         }, 10000);
       }
       console.error("Form submission error:", error);
