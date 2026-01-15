@@ -1,5 +1,6 @@
 ---
 export const prerender = true; // Makes this page static for better SEO and performance
+import CookieConsent from "../components/CookieConsent.astro";
 ---
 
 <!doctype html>
@@ -13,6 +14,7 @@ export const prerender = true; // Makes this page static for better SEO and perf
   </head>
   <body>
     <slot />
+    <CookieConsent />
   </body>
 </html>
 

@@ -463,6 +463,16 @@ import Layout from "../layouts/Layout.astro";
           >
         </p>
       </section>
+
+      <div class="cookie-settings-wrapper">
+        <button
+          type="button"
+          class="cookie-settings-btn"
+          data-cc="show-preferencesModal"
+        >
+          Süti beállítások módosítása
+        </button>
+      </div>
     </div>
   </main>
 </Layout>
@@ -542,6 +552,33 @@ import Layout from "../layouts/Layout.astro";
     color: #ffffff;
   }
 
+  .cookie-settings-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .cookie-settings-btn {
+    background: #dbe120;
+    color: black;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-family: "AktivGrotesk Medium";
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cookie-settings-btn:hover {
+    transform: scale(1.03);
+  }
+
+  .cookie-settings-btn:active {
+    transform: translateY(0);
+  }
+
   /* Responsive Design */
   @media (max-width: 768px) {
     .privacy-policy {
@@ -571,6 +608,11 @@ import Layout from "../layouts/Layout.astro";
     ul {
       margin-left: 1.5rem;
     }
+
+    .cookie-settings-btn {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+    }
   }
 
   @media (max-width: 480px) {
@@ -595,6 +637,11 @@ import Layout from "../layouts/Layout.astro";
 
     ul {
       margin-left: 1rem;
+    }
+
+    .cookie-settings-btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
     }
   }
 </style>

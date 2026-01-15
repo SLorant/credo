@@ -18,6 +18,7 @@
     "astro": "^5.16.6",
     "resend": "^6.6.0",
     "three": "^0.182.0",
+    "vanilla-cookieconsent": "^3.1.0",
     "vivus": "^0.4.6"
   },
   "devDependencies": {
