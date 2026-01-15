@@ -62,6 +62,16 @@
   renderer.outputColorSpace = THREE.SRGBColorSpace; // set color encoding
   container.appendChild(renderer.domElement); // add the renderer to html div
 
+  // Prevent zoom on iOS/Safari - disable pinch zoom on canvas
+  renderer.domElement.style.touchAction = "pan-y";
+  renderer.domElement.addEventListener("gesturestart", (e) =>
+    e.preventDefault()
+  );
+  renderer.domElement.addEventListener("gesturechange", (e) =>
+    e.preventDefault()
+  );
+  renderer.domElement.addEventListener("gestureend", (e) => e.preventDefault());
+
   /////////////////////////////////////////////////////////////////////////
   ///// CAMERAS CONFIG
   const camera = new THREE.PerspectiveCamera(

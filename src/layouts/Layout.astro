@@ -6,7 +6,10 @@ export const prerender = true; // Makes this page static for better SEO and perf
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="icon" type="image/svg+xml" href="/credo_favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Credo Digital</title>
@@ -23,6 +26,7 @@ export const prerender = true; // Makes this page static for better SEO and perf
     overflow-x: hidden;
     scroll-behavior: smooth;
     background-color: #151518;
+    touch-action: pan-y;
   }
   /*   * {
     overflow-x: hidden;
