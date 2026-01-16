@@ -74,4 +74,17 @@
 .cm__btn[data-role="necessary"],
 .pm__btn[data-role="necessary"] {
   background-color: #b1b6c3 !important;
+  border-color: #b1b6c3 !important;
+}
+
+.cm__btn:hover[data-role="all"],
+.pm__btn:hover[data-role="all"] {
+  background-color: #a7beff !important;
+  border-color: #a7beff !important;
+}
+
+.cm__btn[data-role="necessary"]:hover,
+.pm__btn[data-role="necessary"]:hover {
+  background-color: #ccd0da !important;
+  border-color: #ccd0da !important;
 }
