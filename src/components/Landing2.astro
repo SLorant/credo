@@ -1,24 +1,26 @@
 <div class="container">
-  <h2 class="first animate-header">hitvallásunk</h2>
-  <h2 class="second animate-header">a marketing.</h2>
-  <p class="animate-text">
-    Hiszünk abban, hogy a marketingkommunikáció valódi partnerséget jelent.
-    Olyan kiszámítható megoldásokat kínálunk vállalkozások számára, amelyek
-    hosszú távon segítik márkájuk üzleti növekedését.
-  </p>
-  <div class="buttoncontainer">
-    <a href="/#uzletagak">
-      <button class="hover">
-        <img src="icons/arrow.svg" alt="" class="arrow" />
-        <span class="button-text">SZOLGÁLTATÁSAINK</span>
-      </button>
-    </a>
-    <a href="/rolunk/">
-      <button class="hover">
-        <img src="icons/arrow.svg" alt="" class="arrow" />
-        <span class="button-text">ISMERJ MEG MINKET</span>
-      </button>
-    </a>
+  <div class="mobileanim">
+    <h2 class="first animate-header">hitvallásunk</h2>
+    <h2 class="second animate-header">a marketing.</h2>
+    <p class="animate-text">
+      Hiszünk abban, hogy a marketingkommunikáció valódi partnerséget jelent.
+      Olyan kiszámítható megoldásokat kínálunk vállalkozások számára, amelyek
+      hosszú távon segítik márkájuk üzleti növekedését.
+    </p>
+    <div class="buttoncontainer">
+      <a href="/#uzletagak">
+        <button class="hover">
+          <img src="icons/arrow.svg" alt="" class="arrow" />
+          <span class="button-text">SZOLGÁLTATÁSAINK</span>
+        </button>
+      </a>
+      <a href="/rolunk/">
+        <button class="hover">
+          <img src="icons/arrow.svg" alt="" class="arrow" />
+          <span class="button-text">ISMERJ MEG MINKET</span>
+        </button>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -26,33 +28,60 @@
   import { animate, onScroll } from "animejs";
 
   const isMobile = window.innerWidth < 768;
-  const isShortScreen = window.innerHeight < 900;
+  const isShortScreen = window.innerHeight < 800;
+  const isSmallScreen = isMobile || isShortScreen;
 
   const getEnterValue = (desktopRem: number, mobileRem: number) => {
-    if (isMobile || isShortScreen) return `bottom-=${mobileRem}rem top`;
+    if (isSmallScreen) return `bottom-=${mobileRem}rem top`;
     return `bottom-=${desktopRem}rem top`;
   };
 
   const animations = [
     { selector: ".first", enter: getEnterValue(25, 12.5) },
-    { selector: ".second", enter: getEnterValue(28, 8) },
-    { selector: ".animate-text", enter: getEnterValue(18.75, 18) },
-    { selector: ".hover", enter: getEnterValue(12.5, 5) },
+    { selector: ".second", enter: getEnterValue(28, 12.5) },
+    { selector: ".animate-text", enter: getEnterValue(18.75, 12.5) },
+    { selector: ".hover", enter: getEnterValue(12.5, 12.5) },
   ];
 
-  animations.forEach(({ selector, enter }) => {
-    animate(selector, {
+  if (isShortScreen) {
+    animate(".mobileanim", {
       opacity: [0, 1],
       translateY: [30, 0],
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter,
+        enter: "bottom-=100 top",
         leave: "top bottom",
         sync: "play reverse",
       }),
     });
-  });
+  } else if (isMobile) {
+    animate(".mobileanim", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=200 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animations.forEach(({ selector, enter }) => {
+      animate(selector, {
+        opacity: [0, 1],
+        translateY: [30, 0],
+        ease: "inOutSine",
+        duration: 600,
+        autoplay: onScroll({
+          enter,
+          leave: "top bottom",
+          sync: "play reverse",
+        }),
+      });
+    });
+  }
 </script>
 
 <style>
