@@ -25,79 +25,34 @@
 <script>
   import { animate, onScroll } from "animejs";
 
-  if (window.innerWidth >= 768) {
-    animate(".first", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=400 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
+  const isMobile = window.innerWidth < 768;
+  const isShortScreen = window.innerHeight < 900;
 
-    animate(".second", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=500 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
+  const getEnterValue = (desktopRem: number, mobileRem: number) => {
+    if (isMobile || isShortScreen) return `bottom-=${mobileRem}rem top`;
+    return `bottom-=${desktopRem}rem top`;
+  };
 
-    animate(".animate-text", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=300 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
+  const animations = [
+    { selector: ".first", enter: getEnterValue(25, 12.5) },
+    { selector: ".second", enter: getEnterValue(28, 12.5) },
+    { selector: ".animate-text", enter: getEnterValue(18.75, 12.5) },
+    { selector: ".hover", enter: getEnterValue(12.5, 5) },
+  ];
 
-    animate(".hover", {
+  animations.forEach(({ selector, enter }) => {
+    animate(selector, {
       opacity: [0, 1],
       translateY: [30, 0],
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=200 top",
+        enter,
         leave: "top bottom",
         sync: "play reverse",
       }),
     });
-  } else {
-    animate(".first", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=200 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-
-    animate(".second", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=200 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-  }
+  });
 </script>
 
 <style>
@@ -118,22 +73,22 @@
   }
   .first {
     font-family: "AktivGrotesk Semibold";
-    font-size: 100pt;
-    letter-spacing: -10px;
-    line-height: 40pt;
+    font-size: 8.333rem;
+    letter-spacing: calc(0px - var(--10px));
+    line-height: 3.333rem;
     margin: 0;
   }
   .second {
     font-family: "Kepler";
-    font-size: 150pt;
+    font-size: 12.5rem;
     font-weight: 400;
-    letter-spacing: -10px;
+    letter-spacing: calc(0px - var(--10px));
     margin: 0;
   }
   p {
     margin-top: 0px;
     margin-left: 0rem;
-    line-height: 30px;
+    line-height: var(--30px);
     width: 35vw;
   }
   .buttoncontainer {
@@ -154,7 +109,7 @@
     border: 2px solid white;
     padding: 10px 40px;
     border-radius: 100px;
-    font-size: 12pt;
+    font-size: var(--text-md);
     display: flex;
     place-items: center;
     justify-content: center;
@@ -192,30 +147,32 @@
 
   @media (max-width: 1400px) {
     .first {
-      font-size: 80pt;
+      font-size: var(--header-xl);
     }
     .second {
-      font-size: 120pt;
+      font-size: var(--header-2xl);
     }
     .container {
       padding-left: 10%;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1200px), (max-height: 800px) {
     .first {
-      font-size: 70pt;
+      font-size: var(--header-lg);
+      letter-spacing: -0.4rem;
     }
     .second {
-      font-size: 110pt;
+      font-size: var(--header-xl);
+      letter-spacing: -0.4rem;
     }
     p {
-      font-size: 10pt;
+      font-size: var(--var(--text-base));
       width: 45vw;
     }
     button {
       padding: 10px 20px;
       padding-right: 30px;
-      font-size: 10pt;
+      font-size: var(--var(--text-base));
       gap: 10px;
     }
     .arrow {
@@ -226,28 +183,43 @@
       padding-left: 30px;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-height: 700px) {
     .first {
-      font-size: 35pt;
-      letter-spacing: -3px;
-      line-height: 30pt;
+      font-size: var(--header-md);
+      letter-spacing: -4px;
     }
     .second {
-      font-size: 55pt;
+      font-size: var(--header-xl);
+      letter-spacing: -4px;
+    }
+    p {
+      font-size: var(--12px);
+      width: 45vw;
+    }
+  }
+  @media (max-width: 768px), (max-height: 500px) {
+    .first {
+      font-size: var(--header-sm);
+      letter-spacing: -3px;
+      line-height: 2.5rem;
+    }
+    .second {
+      font-size: var(--header-md);
       letter-spacing: -3px;
     }
     p {
       margin-top: 10px;
       margin-bottom: 10px;
-      font-size: 10pt;
+      font-size: var(--var(--text-base));
       line-height: 25px;
       width: 70vw;
       text-shadow: 2px 2px #2b2a33;
+      max-width: 25rem;
     }
     button {
       padding: 10px 30px;
       padding-right: 40px;
-      font-size: 10pt;
+      font-size: var(--var(--text-base));
       gap: 10px;
     }
     .arrow {
@@ -257,6 +229,8 @@
     button.hover:hover {
       padding-left: 30px;
     }
+  }
+  @media (max-width: 768px) {
     .buttoncontainer {
       display: flex;
       flex-direction: column;

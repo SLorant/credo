@@ -107,7 +107,7 @@ const { needGradient } = Astro.props;
 <style>
   .contcont {
     position: relative;
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: contain;
   }
   .copy {
     margin: 0;
@@ -131,7 +131,7 @@ const { needGradient } = Astro.props;
     z-index: 20;
     padding-bottom: 0%;
     overflow: hidden;
-    overscroll-behavior-y: none;
+    /*  overscroll-behavior-y: none; */
   }
   .contactbox {
     z-index: 30;
@@ -158,7 +158,7 @@ const { needGradient } = Astro.props;
   }
   .contactheader {
     font-family: "Kepler";
-    font-size: 80pt;
+    font-size: var(--header-lg);
     font-weight: 400;
     letter-spacing: 0px;
     letter-spacing: -5px;
@@ -196,8 +196,8 @@ const { needGradient } = Astro.props;
     padding-right: 180px;
     margin-top: 20px;
     width: 75%;
-    overflow: hidden;
     opacity: 1;
+    overflow: auto;
     transition:
       opacity 0.5s ease,
       transform 0.5s ease;
@@ -239,7 +239,7 @@ const { needGradient } = Astro.props;
     place-items: center;
     border: 2px solid white;
     text-transform: uppercase;
-    font-size: 10pt;
+    font-size: var(--text-base);
     cursor: pointer;
     transition: all 0.3s ease;
     user-select: none;
@@ -285,7 +285,7 @@ const { needGradient } = Astro.props;
     color: white;
     padding: 5px 0;
     font-family: "AktivGrotesk Light";
-    font-size: 12pt;
+    font-size: var(--text-md);
     outline: none;
     padding-left: 15px;
   }
@@ -306,7 +306,7 @@ const { needGradient } = Astro.props;
     border-radius: 50px;
     padding: 12px 80px;
     font-family: "AktivGrotesk Light";
-    font-size: 12pt;
+    font-size: var(--text-md);
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 30px;
@@ -319,7 +319,7 @@ const { needGradient } = Astro.props;
     transform: scale(1.03);
   }
   .form-message {
-    font-size: 14pt;
+    font-size: var(--text-lg);
     text-align: center;
     font-family: "AktivGrotesk Medium";
     opacity: 0;
@@ -366,7 +366,7 @@ const { needGradient } = Astro.props;
     bottom: 0;
     left: 0;
     color: white;
-    font-size: 14pt;
+    font-size: var(--text-lg);
     margin-bottom: 2rem;
     margin-left: 2rem;
     gap: 50px;
@@ -378,7 +378,7 @@ const { needGradient } = Astro.props;
   .iii {
     display: flex;
     gap: 50px;
-    font-size: 12pt;
+    font-size: var(--text-md);
     text-shadow: 1px 1px #858585;
   }
   @media (max-width: 1400px) {
@@ -388,24 +388,24 @@ const { needGradient } = Astro.props;
   }
   @media (max-width: 1200px) {
     .subheader {
-      font-size: 10pt;
+      font-size: var(--text-base);
     }
     .contactheader {
-      font-size: 60pt;
+      font-size: var(--header-lg);
     }
     .optionbox {
-      font-size: 8pt;
+      font-size: var(--text-sm);
     }
 
     input {
-      font-size: 8pt;
+      font-size: var(--text-sm);
     }
     .contactfooter {
-      font-size: 12pt;
+      font-size: var(--text-md);
       gap: 100px;
     }
     .iii {
-      font-size: 10pt;
+      font-size: var(--text-base);
       gap: 50px;
     }
   }
@@ -415,23 +415,68 @@ const { needGradient } = Astro.props;
       padding: 0px 100px;
     }
     .contactheader {
-      font-size: 40pt;
+      font-size: var(--header-md);
     }
     .submit-button {
       padding: 12px 60px;
-      font-size: 10pt;
+      font-size: var(--text-base);
       margin-top: 30px;
     }
     .optionbox {
       padding: 4px 10px;
-      font-size: 8pt;
+      font-size: var(--text-sm);
     }
     .contactfooter {
-      font-size: 12pt;
+      font-size: var(--text-md);
       gap: 20px;
     }
     .iii {
       gap: 30px;
+    }
+  }
+  @media (max-height: 500px) {
+    .wearecredo {
+      position: absolute;
+      bottom: -10px;
+      right: -60px;
+      width: 70vw;
+    }
+    .subheader {
+      word-wrap: wrap;
+      padding: 0px 100px;
+    }
+    .contactheader {
+      font-size: var(--header-md);
+      letter-spacing: -3px;
+    }
+    .submit-button {
+      padding: 12px 60px;
+      font-size: var(--text-base);
+      margin-top: 30px;
+    }
+    .optionbox {
+      padding: 4px 10px;
+      font-size: var(--text-sm);
+    }
+    .contactfooter {
+      font-size: var(--text-md);
+      gap: 20px;
+    }
+    .iii {
+      gap: 30px;
+    }
+    .options {
+      gap: 12px 10px;
+      padding-left: 120px;
+      padding-right: 100px;
+      margin-top: 20px;
+      width: 80%;
+      overflow: hidden;
+    }
+    .form-input {
+      border-bottom: 1px solid white;
+      padding: 5px 0;
+      font-size: var(--text-base);
     }
   }
   @media (max-width: 768px) {
@@ -439,7 +484,6 @@ const { needGradient } = Astro.props;
       height: 900px;
     }
     .wearecredo {
-      /*   display: none; */
       position: absolute;
       bottom: -10px;
       right: -60px;
@@ -456,13 +500,13 @@ const { needGradient } = Astro.props;
       -webkit-backdrop-filter: none;
     }
     .contactheader {
-      font-size: 25pt;
+      font-size: calc(var(--header-sm) - 0.417rem);
       letter-spacing: -2px;
     }
     .subheader {
       word-wrap: wrap;
       padding: 0px 40px;
-      font-size: 8pt;
+      font-size: var(--text-sm);
       line-height: 25px;
       margin-top: 20px;
     }
@@ -479,7 +523,7 @@ const { needGradient } = Astro.props;
     }
     .optionbox {
       padding: 4px 10px;
-      font-size: 6pt;
+      font-size: 0.5rem;
       border: 1px solid white;
     }
     .contact-form {
@@ -498,11 +542,11 @@ const { needGradient } = Astro.props;
     .form-input {
       border-bottom: 1px solid white;
       padding: 5px 0;
-      font-size: 9pt;
+      font-size: var(--text-base);
     }
     .submit-button {
       padding: 10px 60px;
-      font-size: 9pt;
+      font-size: var(--text-sm);
       margin-top: 10px;
     }
     .contactfooter {
@@ -514,7 +558,7 @@ const { needGradient } = Astro.props;
       bottom: 0;
       left: 0;
       color: white;
-      font-size: 8pt;
+      font-size: var(--text-sm);
       margin-bottom: 2rem;
       margin-left: 2rem;
       gap: 10px;
@@ -535,7 +579,7 @@ const { needGradient } = Astro.props;
       gap: 15px;
       padding-right: 1rem;
 
-      font-size: 10pt;
+      font-size: var(--text-base);
     }
     .contactbg {
       display: none;
@@ -544,7 +588,7 @@ const { needGradient } = Astro.props;
       min-height: 60px;
     }
     .form-message {
-      font-size: 10pt;
+      font-size: var(--text-base);
     }
   }
 </style>
@@ -581,7 +625,7 @@ const { needGradient } = Astro.props;
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const optionsContainer = document.getElementById("options-container");
   const selectedOptionsInput = document.getElementById(
-    "selected-options"
+    "selected-options",
   ) as HTMLInputElement;
   const selectedOptions = new Set<string>();
 
@@ -619,7 +663,7 @@ const { needGradient } = Astro.props;
 
     // Disable submit button and show loading state
     const submitButton = form.querySelector(
-      ".submit-button"
+      ".submit-button",
     ) as HTMLButtonElement;
     const originalText = submitButton.textContent;
     submitButton.disabled = true;

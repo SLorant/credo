@@ -66,6 +66,7 @@ import Team from "./Team.astro";
 <Contact needGradient />
 
 <script>
+  const isScreenSmall = window.innerHeight < 800;
   // Trigger SVG animations when they come into view
   const svgs = document.querySelector("#Layer_3") as HTMLElement;
 
@@ -79,8 +80,8 @@ import Team from "./Team.astro";
       });
     },
     {
-      threshold: 0.6,
-    }
+      threshold: isScreenSmall ? 0.1 : 0.6,
+    },
   );
 
   observer.observe(svgs);
@@ -98,8 +99,8 @@ import Team from "./Team.astro";
       });
     },
     {
-      threshold: 0.6,
-    }
+      threshold: isScreenSmall ? 0.3 : 0.6,
+    },
   );
 
   observer2.observe(svgs2);
@@ -135,7 +136,7 @@ import Team from "./Team.astro";
   }
   h1 {
     font-family: "Kepler";
-    font-size: 80pt;
+    font-size: var(--header-xl);
     letter-spacing: -5px;
     font-weight: 400;
     margin: 0;
@@ -143,7 +144,7 @@ import Team from "./Team.astro";
   }
   .sub {
     font-family: "AktivGrotesk Light";
-    font-size: 16pt;
+    font-size: 1.333rem;
     text-transform: uppercase;
     line-height: 35px;
   }
@@ -152,7 +153,7 @@ import Team from "./Team.astro";
   }
   .info {
     font-family: "AktivGrotesk Light";
-    font-size: 14pt;
+    font-size: var(--text-lg);
     line-height: 35px;
   }
   .quote {
@@ -175,23 +176,24 @@ import Team from "./Team.astro";
     -ms-user-select: none;
   }
   .second {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     position: relative;
     z-index: 40;
     margin-top: 200px;
-    margin-bottom: 100px;
+    /*  margin-bottom: 100px; */
   }
   .third {
-    height: 85vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     position: relative;
     flex-direction: row-reverse;
+    place-items: start;
     z-index: 40;
     margin-top: 100px;
-    margin-bottom: 0px;
+    margin-bottom: 100px;
     gap: 100px;
   }
   .domecont {
@@ -199,7 +201,7 @@ import Team from "./Team.astro";
   }
   .righttext {
     font-family: "AktivGrotesk Light";
-    font-size: 14pt;
+    font-size: var(--text-lg);
     line-height: 35px;
     color: white;
     margin-top: 300px;
@@ -208,7 +210,7 @@ import Team from "./Team.astro";
   }
   .korte {
     position: absolute;
-    bottom: -40%;
+    bottom: -60%;
     left: -22%;
     width: 75%;
     opacity: 0.8;
@@ -259,14 +261,14 @@ import Team from "./Team.astro";
       padding-top: 250px;
     }
     .righttext {
-      font-size: 12pt;
+      font-size: var(--text-md);
       line-height: 35px;
       margin-top: 300px;
       margin-left: 100px;
       width: 450px;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1200px), (max-height: 800px) {
     .aboutmain {
       margin-left: 10vw;
     }
@@ -281,6 +283,11 @@ import Team from "./Team.astro";
     }
     .third {
       gap: 50px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .second {
+      margin-top: 50px;
     }
   }
   @media (max-width: 1000px) {
@@ -293,14 +300,14 @@ import Team from "./Team.astro";
     }
     .info {
       font-family: "AktivGrotesk Light";
-      font-size: 12pt;
+      font-size: var(--text-md);
       line-height: 35px;
     }
     .domeimg {
       height: 500px;
     }
     .righttext {
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 30px;
       width: 300px;
     }
@@ -313,12 +320,12 @@ import Team from "./Team.astro";
     }
     h1 {
       font-family: "Kepler";
-      font-size: 50pt;
+      font-size: var(--header-md);
       letter-spacing: -5px;
       line-height: 100px;
     }
     .info {
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 30px;
     }
     .second {
@@ -327,7 +334,7 @@ import Team from "./Team.astro";
     }
     .sub {
       font-family: "AktivGrotesk Light";
-      font-size: 12pt;
+      font-size: var(--text-md);
       text-transform: uppercase;
       line-height: 35px;
     }
@@ -356,7 +363,7 @@ import Team from "./Team.astro";
     }
     .righttext {
       font-family: "AktivGrotesk Light";
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 30px;
       color: white;
       margin-top: 0px;

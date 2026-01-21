@@ -18,7 +18,7 @@ const loadClarity = () => {
     r: string,
     i: string,
     t?: any,
-    y?: any
+    y?: any,
   ) {
     c[a] =
       c[a] ||
@@ -106,11 +106,11 @@ export const config: CookieConsentConfig = {
           label:
             '<a href="https://clarity.microsoft.com/" target="_blank">Microsoft Clarity</a>',
           onAccept: () => {
-            console.log("clarity accepted");
+            /*   console.log("clarity accepted"); */
             loadClarity();
           },
           onReject: () => {
-            console.log("clarity rejected");
+            /*  console.log("clarity rejected"); */
           },
           cookies: [
             {
@@ -141,11 +141,11 @@ export const config: CookieConsentConfig = {
           label:
             '<a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank">Google Analytics 4</a>',
           onAccept: () => {
-            console.log("ga4 accepted");
+            /*    console.log("ga4 accepted"); */
             loadGoogleAnalytics();
           },
           onReject: () => {
-            console.log("ga4 rejected");
+            /* console.log("ga4 rejected"); */
           },
           cookies: [
             {

@@ -52,50 +52,42 @@ import Stonks from "./svg/stonks.astro";
 
 <script>
   import { animate, onScroll } from "animejs";
+  const isShortScreen = window.innerHeight < 900;
 
-  animate(".header", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=400 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+  const getEnterValue = (desktopRem: number, mobileRem: number) => {
+    if (isShortScreen) return `bottom-=${mobileRem}rem top`;
+    return `bottom-=${desktopRem}rem top`;
+  };
+
+  const animations = [
+    { selector: ".header", enter: getEnterValue(25, 8) },
+    { selector: ".korte", enter: getEnterValue(18.75, 6) },
+    { selector: ".info", enter: getEnterValue(6.25, 1) },
+    { selector: ".box", enter: getEnterValue(6.25, 1) },
+  ];
+
   if (window.innerWidth >= 768) {
-    animate(".korte", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=300 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
+    animations.forEach(({ selector, enter }) => {
+      animate(selector, {
+        opacity: [0, 1],
+        translateY: [30, 0],
+        ease: "inOutSine",
+        duration: 600,
+        autoplay: onScroll({
+          enter,
+          leave: "top bottom",
+          sync: "play reverse",
+        }),
+      });
     });
-
-    animate(".info", {
+  } else {
+    animate(".header", {
       opacity: [0, 1],
       translateY: [30, 0],
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-
-    animate(".box", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=100 top",
+        enter: "bottom-=20rem top",
         leave: "top bottom",
         sync: "play reverse",
       }),
@@ -116,7 +108,7 @@ import Stonks from "./svg/stonks.astro";
     },
     {
       threshold: 0.9, // Trigger when 90% of the SVG is visible
-    }
+    },
   );
 
   svgs.forEach((svg, index) => {
@@ -136,7 +128,7 @@ import Stonks from "./svg/stonks.astro";
       },
       {
         threshold: 1,
-      }
+      },
     );
 
     delayedObserver.observe(svg);
@@ -156,7 +148,7 @@ import Stonks from "./svg/stonks.astro";
     },
     {
       threshold: 0.5,
-    }
+    },
   );
 
   if (boldText) {
@@ -167,7 +159,7 @@ import Stonks from "./svg/stonks.astro";
 <style>
   .container {
     width: 100vw;
-    height: 1000px;
+    height: 100%;
     position: relative;
     z-index: 30;
     display: flex;
@@ -177,13 +169,14 @@ import Stonks from "./svg/stonks.astro";
     /*  background-image: url("gradient.webp");
     background-size: cover; */
     color: white;
-    padding-top: 600px;
+    padding-top: 37.5rem;
+    padding-bottom: 8rem;
   }
   .background3 {
     position: absolute;
     width: 100vw;
-    height: 2000px;
-    top: -150px;
+    height: 125rem;
+    top: -9.375rem;
     left: 0;
     background-image: url("/gradient.webp");
     background-size: cover;
@@ -191,8 +184,8 @@ import Stonks from "./svg/stonks.astro";
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 300px);
-    gap: 100px;
+    grid-template-columns: repeat(3, 18.75rem);
+    gap: 6.25rem;
     margin-bottom: 20px;
     z-index: 30;
   }
@@ -214,14 +207,14 @@ import Stonks from "./svg/stonks.astro";
     z-index: 30;
   }
   img {
-    width: 300px;
+    width: 18.75rem;
   }
   h2 {
     font-weight: 400;
     font-family: "AktivGrotesk Regular";
-    font-size: 65pt;
+    font-size: var(--header-lg);
     text-align: center;
-    line-height: 110px;
+    line-height: var(--header-xl);
     margin-bottom: 20px;
     z-index: 30;
   }
@@ -231,7 +224,7 @@ import Stonks from "./svg/stonks.astro";
   }
   .three {
     font-family: "Kepler";
-    font-size: 80pt;
+    font-size: var(--header-xl);
     letter-spacing: -5px;
   }
   .box {
@@ -251,9 +244,9 @@ import Stonks from "./svg/stonks.astro";
     /*  filter: drop-shadow(#333333 1rem 1rem 10px); */
   }
   .uppercase {
-    font-size: 14pt;
+    font-size: var(--text-lg);
     font-family: "AktivGrotesk Regular";
-    line-height: 33px;
+    line-height: var(--30px);
     text-transform: uppercase !important;
     color: rgb(219, 219, 219);
   }
@@ -278,12 +271,12 @@ import Stonks from "./svg/stonks.astro";
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1400px), (max-height: 800px) {
     .box {
       width: 70%;
     }
     .uppercase {
-      font-size: 12pt;
+      font-size: var(--text-md);
       line-height: 27px;
     }
     .grid {
@@ -304,12 +297,13 @@ import Stonks from "./svg/stonks.astro";
       font-size: 60pt;
     }
   }
-  @media (max-width: 1000px) {
+  @media (max-width: 1000px), (max-height: 600px) {
     .box {
       width: 70%;
+      max-width: 50rem;
     }
     .uppercase {
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 24px;
     }
     .grid {
@@ -327,7 +321,7 @@ import Stonks from "./svg/stonks.astro";
       width: 70%;
     }
     .uppercase {
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 24px;
     }
     .background3 {
@@ -344,12 +338,12 @@ import Stonks from "./svg/stonks.astro";
       width: 100%;
     }
     h2 {
-      font-size: 20pt;
+      font-size: var(--header-xs);
       text-align: center;
-      line-height: 40px;
+      line-height: var(--header-sm);
     }
     .three {
-      font-size: 30pt;
+      font-size: calc(var(--header-sm) - 0.417rem);
       letter-spacing: -2px;
     }
 
@@ -366,11 +360,11 @@ import Stonks from "./svg/stonks.astro";
       /*  margin-top: ; */
     }
     .uppercase {
-      font-size: 8pt;
+      font-size: var(--text-sm);
       line-height: 23px;
     }
     .info {
-      font-size: 10pt;
+      font-size: var(--text-base);
     }
   }
 </style>

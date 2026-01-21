@@ -65,10 +65,10 @@
   // Prevent zoom on iOS/Safari - disable pinch zoom on canvas
   renderer.domElement.style.touchAction = "pan-y";
   renderer.domElement.addEventListener("gesturestart", (e) =>
-    e.preventDefault()
+    e.preventDefault(),
   );
   renderer.domElement.addEventListener("gesturechange", (e) =>
-    e.preventDefault()
+    e.preventDefault(),
   );
   renderer.domElement.addEventListener("gestureend", (e) => e.preventDefault());
 
@@ -78,16 +78,31 @@
     35,
     window.innerWidth / window.innerHeight,
     1,
-    100
+    100,
   );
   camera.position.set(1, 2, isMobile ? 4 : 3);
   scene.add(camera);
 
   /////////////////////////////////////////////////////////////////////////
   ///// MAKE EXPERIENCE FULL SCREEN
+  // Store initial dimensions to prevent mobile browser chrome resize issues
+  let lastWidth = window.innerWidth;
+  let lastHeight = window.innerHeight;
+  const initialHeight = window.innerHeight; // Lock initial height on mobile
+
   window.addEventListener("resize", () => {
     const width = window.innerWidth;
-    const height = window.innerHeight;
+    // On mobile, use fixed initial height to prevent jumping when address bar hides/shows
+    const height = isMobile ? initialHeight : window.innerHeight;
+
+    // On mobile, only resize if width actually changed (orientation change or similar)
+    if (isMobile && Math.abs(width - lastWidth) < 10) {
+      return; // Ignore minor width changes and all height changes
+    }
+
+    lastWidth = width;
+    lastHeight = height;
+
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
@@ -160,13 +175,13 @@
     ambientParticleVelocities.push(
       (Math.random() - 0.5) * 0.002,
       (Math.random() - 0.5) * 0.001,
-      (Math.random() - 0.5) * 0.002
+      (Math.random() - 0.5) * 0.002,
     );
   }
 
   ambientParticlesGeometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(ambientParticlePositions, 3)
+    new THREE.Float32BufferAttribute(ambientParticlePositions, 3),
   );
 
   const ambientParticlesMaterial = new THREE.PointsMaterial({
@@ -182,7 +197,7 @@
 
   const ambientParticles = new THREE.Points(
     ambientParticlesGeometry,
-    ambientParticlesMaterial
+    ambientParticlesMaterial,
   );
   if (!isMobile) scene.add(ambientParticles);
 
@@ -253,7 +268,7 @@
     // Define all points positions from the previously created array
     pointsGeometry.setAttribute(
       "position",
-      new THREE.Float32BufferAttribute(vertices, 3)
+      new THREE.Float32BufferAttribute(vertices, 3),
     );
 
     // Add gradient colors based on Y position
@@ -286,7 +301,7 @@
 
     pointsGeometry.setAttribute(
       "color",
-      new THREE.Float32BufferAttribute(colors, 3)
+      new THREE.Float32BufferAttribute(colors, 3),
     );
 
     // Define the material of the points
@@ -348,7 +363,7 @@
             `
                 : ""
             }
-          `
+          `,
       );
     };
 
@@ -571,13 +586,13 @@
         const intersectPoint2 = new THREE.Vector3(
           intersectPoint.x,
           intersectPoint.y,
-          intersectPoint.z + 0.4
+          intersectPoint.z + 0.4,
         );
 
         // Update the light position in world space (not local space)
         targetLightPos.copy(intersectPoint2);
       },
-      false
+      false,
     );
   }
 
@@ -594,7 +609,7 @@
         targetScrollRotation = scrollDelta * getScrollSensitivity();
         targetScrollRotation = Math.max(
           -getMaxRotation(),
-          Math.min(getMaxRotation(), targetScrollRotation)
+          Math.min(getMaxRotation(), targetScrollRotation),
         );
 
         // Move models to the right based on scroll
@@ -610,7 +625,7 @@
         targetModelY = initialPointsY; // Reset to initial Y
       }
     },
-    { passive: true }
+    { passive: true },
   );
 
   //////////////////////////////////////////////////

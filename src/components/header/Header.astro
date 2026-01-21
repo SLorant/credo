@@ -58,7 +58,7 @@
     top: 0;
     left: 0;
     color: white;
-    font-size: 14pt;
+    font-size: var(--text-lg);
     margin-top: 1rem;
     z-index: 50;
   }
@@ -191,7 +191,7 @@
 
   .mobile-nav li {
     font-family: "AktivGrotesk Light";
-    font-size: 14pt;
+    font-size: var(--text-lg);
     opacity: 0;
     transform: translateY(30px);
     transition:
@@ -235,7 +235,16 @@
 
   @media (max-width: 1000px) {
     nav {
-      font-size: 10pt;
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (max-height: 500px) {
+    nav {
+      font-size: var(--text-base);
+    }
+    .logo2 {
+      margin-left: 2rem !important;
     }
   }
 

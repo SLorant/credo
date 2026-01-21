@@ -24,21 +24,21 @@
 
 <style>
   .container {
-    height: 1000px;
-    width: 100vw;
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
-    place-items: center;
+    align-items: center;
     font-family: "AktivGrotesk Light";
     position: relative;
     z-index: 30;
   }
   .gif {
     width: 70%;
-    margin-bottom: 5%;
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.6s ease-in-out;
+    max-width: 85rem;
   }
   .gif.fade-out {
     opacity: 0;
@@ -46,25 +46,25 @@
   .icons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-right: 4rem;
+    gap: var(--10px);
+    margin-right: 3rem;
     margin-bottom: 1rem;
     z-index: 50;
   }
   .icon {
-    width: 25px;
+    width: 1.5rem;
   }
   .footer {
     display: flex;
     justify-content: space-between;
     place-items: end;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     bottom: 0;
     left: 0;
     /*    opacity: 0; */
     color: white;
-    font-size: 14pt;
+    font-size: var(--text-lg);
     margin-bottom: 2rem;
     z-index: 45;
     font-family: "AktivGrotesk Light";
@@ -82,14 +82,23 @@
     justify-content: start;
     place-items: start;
   }
-
+  @media (max-height: 500px) {
+    .hello2 {
+      font-size: var(--text-md);
+    }
+    .icon {
+      width: 1.3rem;
+    }
+    .footer {
+      margin-bottom: 1rem;
+    }
+  }
   @media (max-width: 768px) {
     .container {
       height: 100vh;
     }
     .gif {
       width: 90%;
-      /*   margin-bottom: 20vh; */
     }
     p {
       display: none;
@@ -115,10 +124,9 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             gif.classList.remove("fade-out");
-            // Force GIF to restart by reloading it
-            const currentSrc = gif.src;
-            gif.src = "";
-            gif.src = currentSrc;
+            // Force GIF to restart by reloading it with a timestamp to bypass cache
+            const baseSrc = gif.src.split("?")[0];
+            gif.src = baseSrc + "?t=" + new Date().getTime();
           } else {
             gif.classList.add("fade-out");
           }
@@ -126,7 +134,7 @@
       },
       {
         threshold: threshold,
-      }
+      },
     );
 
     observer.observe(gif);

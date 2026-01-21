@@ -9,8 +9,21 @@ export const cardAnimations = () => {
 
   // Helper function to get responsive scale
   const getResponsiveScale = (baseScale: number) => {
-    if (window.innerWidth <= 1200 && window.innerWidth > 768) {
+    if (window.innerHeight <= 450 && window.innerWidth > 768) {
+      return baseScale * 0.5;
+    }
+    if (window.innerHeight <= 600 && window.innerWidth > 768) {
+      return baseScale * 0.6;
+    }
+
+    if (
+      (window.innerWidth <= 1200 && window.innerWidth > 768) ||
+      (window.innerHeight <= 800 && window.innerWidth > 768)
+    ) {
       return baseScale * 0.7;
+    }
+    if (window.innerHeight <= 900 && window.innerWidth > 768) {
+      return baseScale * 0.9;
     }
     return baseScale;
   };
@@ -58,7 +71,7 @@ export const cardAnimations = () => {
     // Calculate progress (0 to 1)
     scrollProgress = Math.max(
       0,
-      Math.min(1, scrolledIntoWrapper / totalScrollDistance)
+      Math.min(1, scrolledIntoWrapper / totalScrollDistance),
     );
 
     // Each card gets equal scroll space
@@ -89,7 +102,7 @@ export const cardAnimations = () => {
         isExiting = true;
         const fadeOutProgress = Math.min(
           1,
-          (scrollProgress - cardEndProgress) / (progressPerCard * 0.5)
+          (scrollProgress - cardEndProgress) / (progressPerCard * 0.5),
         );
         opacity = 1 - fadeOutProgress;
         scale = 1 - fadeOutProgress * 0.15; // Shrink slightly while fading
@@ -130,7 +143,7 @@ export const cardAnimations = () => {
       // Apply styles
       card.style.opacity = opacity.toString();
       card.style.transform = `translate(-50%, calc(-50% + ${yOffset}px)) scale(${getResponsiveScale(
-        scale
+        scale,
       )})`;
       if (index === 0) {
         card.style.transition = "opacity 0.3s ease-out";

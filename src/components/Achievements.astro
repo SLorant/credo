@@ -107,6 +107,40 @@
         sync: "play reverse",
       }),
     });
+  } else if (window.innerHeight < 800) {
+    animate(".achiheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=50 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+
+    animate(".achiheader2", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+    animate(".achibgimg", {
+      opacity: [0, 0.6],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
   } else {
     animate(".achiheader", {
       opacity: [0, 1],
@@ -161,7 +195,7 @@
     ease: "inOutSine",
     duration: 600,
     autoplay: onScroll({
-      enter: "bottom-=100 top",
+      enter: "bottom-=50 top",
       leave: "top bottom",
       sync: "play reverse",
     }),
@@ -172,7 +206,7 @@
   const sliderFill = document.querySelector(".slider-fill") as HTMLElement;
   const sliderPoints = document.querySelectorAll(".slider-point");
   const sliderContainer = document.querySelector(
-    ".slider-container"
+    ".slider-container",
   ) as HTMLElement;
   const sliderTrack = document.querySelector(".slider-track") as HTMLElement;
 
@@ -395,10 +429,10 @@
     ); */
   }
   .achiheader {
-    font-size: 65pt;
+    font-size: var(--header-lg);
     text-align: center;
     line-height: 110px;
-    line-height: 40pt;
+    line-height: var(--header-md);
     margin: 0;
     font-weight: 400;
     z-index: 30;
@@ -409,7 +443,7 @@
   }
   .achiheader2 {
     font-family: "Kepler";
-    font-size: 80pt;
+    font-size: var(--header-xl);
     letter-spacing: -4px;
     font-weight: 400;
     margin: 0;
@@ -627,7 +661,7 @@
     margin-bottom: 120px;
   }
   .uppercase {
-    font-size: 14pt;
+    font-size: var(--text-lg);
     font-family: "AktivGrotesk Regular";
     line-height: 35px;
     text-transform: uppercase !important;
@@ -639,19 +673,59 @@
 
   @media (max-width: 1200px) {
     .uppercase {
-      font-size: 12pt;
+      font-size: var(--text-md);
       line-height: 30px;
     }
   }
   @media (max-width: 1000px) {
     .achiheader {
-      font-size: 50pt;
+      font-size: var(--header-md);
     }
     .achiheader2 {
-      font-size: 70pt;
+      font-size: var(--header-lg);
     }
     .achibox {
       width: 70%;
+    }
+  }
+  @media (max-height: 800px) {
+    .uppercase {
+      font-size: var(--text-md);
+      line-height: 30px;
+    }
+    .achiheader {
+      font-size: var(--header-md);
+    }
+    .achiheader2 {
+      font-size: var(--header-xl);
+    }
+    .achibox {
+      width: 70%;
+      max-width: 50rem;
+    }
+  }
+  @media (max-height: 500px) {
+    .uppercase {
+      font-size: var(--text-base);
+      line-height: 25px;
+    }
+    .achiheader {
+      font-size: var(--header-sm);
+    }
+    .achiheader2 {
+      font-size: var(--header-md);
+    }
+
+    .achibox {
+      width: 70%;
+      max-width: 50rem;
+    }
+    .tooltip {
+      padding: 20px 30px;
+      font-size: var(--text-base);
+      width: 250px;
+      height: 150px;
+      line-height: var(--text-lg);
     }
   }
   @media (max-width: 768px) {
@@ -666,10 +740,10 @@
       -webkit-backdrop-filter: blur(5px);
     }
     .achiheader {
-      font-size: 25pt;
+      font-size: calc(var(--header-sm) - 0.417rem);
     }
     .achiheader2 {
-      font-size: 30pt;
+      font-size: var(--header-sm);
       letter-spacing: -2px;
     }
     .achibgimg {
@@ -689,7 +763,7 @@
       margin-bottom: 50px;
     }
     .uppercase {
-      font-size: 8pt;
+      font-size: var(--text-sm);
       line-height: 25px;
     }
     .slider-point[data-index="0"] {

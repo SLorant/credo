@@ -72,8 +72,32 @@ import cardData from "./utils/cardData";
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=300 top",
+        enter: "bottom-=350 top",
         leave: "top+=400 bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else if (window.innerHeight < 500) {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=150 top",
+        leave: "top+=0 bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else if (window.innerHeight < 800) {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=0 top",
+        leave: "top+=100 bottom",
         sync: "play reverse",
       }),
     });
@@ -84,7 +108,7 @@ import cardData from "./utils/cardData";
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=0 top",
+        enter: "bottom-=100 top",
         leave: "top+=300 bottom",
         sync: "play reverse",
       }),
@@ -128,7 +152,7 @@ import cardData from "./utils/cardData";
       },
       {
         threshold: 0.1, // Trigger when 10% of contact is visible
-      }
+      },
     );
 
     observer.observe(contactSection);
@@ -153,7 +177,7 @@ import cardData from "./utils/cardData";
     line-height: 100px;
   }
   .background {
-    min-height: 1000px;
+    min-height: 62.5rem;
     height: 100vh;
     width: 100vw;
     z-index: 10;
@@ -168,7 +192,7 @@ import cardData from "./utils/cardData";
   .services-container {
     position: sticky;
     top: 0;
-    height: 1000px;
+    height: 62.5rem;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -198,7 +222,7 @@ import cardData from "./utils/cardData";
       0 8px 32px 0 rgba(0, 0, 0, 0.37),
       inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
     display: flex;
-    width: 1000px;
+    width: 62.5rem;
     height: 600px;
     overflow: hidden;
   }
@@ -209,7 +233,7 @@ import cardData from "./utils/cardData";
     /*  color: #333; */
     color: white;
     font-family: "Kepler";
-    font-size: 50pt;
+    font-size: var(--header-md);
     letter-spacing: -3px;
   }
   .mobilebutton {
@@ -275,7 +299,7 @@ import cardData from "./utils/cardData";
 
   li {
     font-family: "AktivGrotesk Regular";
-    font-size: 12pt;
+    font-size: var(--text-md);
     text-transform: uppercase !important;
     display: flex;
     justify-content: start;
@@ -335,7 +359,7 @@ import cardData from "./utils/cardData";
     line-height: 1.8;
     padding: 2rem;
     font-family: "AktivGrotesk Regular";
-    font-size: 12pt;
+    font-size: var(--text-md);
   }
 
   .close-button {
@@ -344,7 +368,7 @@ import cardData from "./utils/cardData";
     right: 10px;
     color: white;
     border: none;
-    font-size: 38pt;
+    font-size: var(--header-sm);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -363,9 +387,9 @@ import cardData from "./utils/cardData";
   h2 {
     font-weight: 400;
     font-family: "AktivGrotesk Regular";
-    font-size: 65pt;
+    font-size: var(--header-lg);
     text-align: center;
-    line-height: 110px;
+    line-height: var(--header-xl);
     margin-bottom: 20px;
     position: relative;
     z-index: 30;
@@ -374,7 +398,7 @@ import cardData from "./utils/cardData";
   }
   .three {
     font-family: "Kepler";
-    font-size: 80pt;
+    font-size: var(--header-xl);
     letter-spacing: -5px;
   }
   .toggle-button {
@@ -386,7 +410,7 @@ import cardData from "./utils/cardData";
     height: 45px;
     border: none;
     border-radius: 40px;
-    font-size: 12pt;
+    font-size: var(--text-md);
     display: flex;
     place-items: center;
     justify-content: center;
@@ -404,6 +428,29 @@ import cardData from "./utils/cardData";
 
   .background {
     transition: opacity 0.3s ease-in-out;
+  }
+  @media (max-height: 800px) {
+    .serviceheader {
+      margin-top: 150px;
+      font-size: var(--header-md);
+      line-height: 60px;
+    }
+    .three {
+      font-size: var(--header-md);
+      letter-spacing: -3px;
+    }
+  }
+
+  @media (max-height: 500px) {
+    .serviceheader {
+      margin-top: 120px;
+      font-size: var(--header-sm);
+      line-height: 50px;
+    }
+    .three {
+      font-size: var(--header-sm);
+      letter-spacing: -3px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -425,7 +472,7 @@ import cardData from "./utils/cardData";
       padding-inline-start: 5px;
     }
     li {
-      font-size: 8pt;
+      font-size: var(--text-sm);
       justify-content: start;
       place-items: center;
       gap: 10px;
@@ -450,17 +497,17 @@ import cardData from "./utils/cardData";
     .cardheader {
       margin: 0;
       font-family: "Kepler";
-      font-size: 30pt;
-      line-height: 40px;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
       letter-spacing: -2px;
     }
     .serviceheader {
       margin-top: 150px;
-      font-size: 40pt;
+      font-size: var(--header-sm);
       line-height: 60px;
     }
     .three {
-      font-size: 40pt;
+      font-size: var(--header-sm);
       letter-spacing: -3px;
     }
     .mobilebutton {
@@ -515,7 +562,7 @@ import cardData from "./utils/cardData";
     }
 
     .overlay-box p {
-      font-size: 10pt;
+      font-size: var(--text-base);
       line-height: 1.6;
       padding: 1rem 4rem 1rem 2rem;
     }
