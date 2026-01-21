@@ -31,6 +31,8 @@
   container.id = "threejs-container"; // Add ID for easy reference
   document.body.appendChild(container);
 
+  const HEIGHT = isMobile ? window.screen.height : window.innerHeight;
+
   /////////////////////////////////////////////////////////////////////////
   ///// SCENE CREATION
   const scene = new THREE.Scene();
@@ -58,7 +60,7 @@
   }); // turn on antialias
   // Lower pixel ratio on mobile for better performance
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //set pixel ratio
-  renderer.setSize(window.innerWidth, window.innerHeight); // make it full screen
+  renderer.setSize(window.innerWidth, HEIGHT); // make it full screen
   renderer.outputColorSpace = THREE.SRGBColorSpace; // set color encoding
   container.appendChild(renderer.domElement); // add the renderer to html div
 
@@ -76,7 +78,7 @@
   ///// CAMERAS CONFIG
   const camera = new THREE.PerspectiveCamera(
     35,
-    window.innerWidth / window.innerHeight,
+    window.innerWidth / HEIGHT,
     1,
     100,
   );
@@ -86,28 +88,28 @@
   /////////////////////////////////////////////////////////////////////////
   ///// MAKE EXPERIENCE FULL SCREEN
   // Store initial dimensions to prevent mobile browser chrome resize issues
-  let lastWidth = window.innerWidth;
-  let lastHeight = window.innerHeight;
-  const initialHeight = window.innerHeight; // Lock initial height on mobile
+  /* let lastWidth = window.innerWidth;
+  let lastHeight = HEIGHT;
+  const initialHeight = HEIGHT;  */ // Lock initial height on mobile
 
   window.addEventListener("resize", () => {
     const width = window.innerWidth;
     // On mobile, use fixed initial height to prevent jumping when address bar hides/shows
-    const height = isMobile ? initialHeight : window.innerHeight;
+    const height2 = HEIGHT;
 
     // On mobile, only resize if width actually changed (orientation change or similar)
-    if (isMobile && Math.abs(width - lastWidth) < 10) {
+    /*    if (isMobile && Math.abs(width - lastWidth) < 10) {
       return; // Ignore minor width changes and all height changes
-    }
+    } */
 
-    lastWidth = width;
-    lastHeight = height;
+    /* lastWidth = width;
+    lastHeight = height; */
 
-    camera.aspect = width / height;
+    camera.aspect = width / height2;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(width, height);
-    composer.setSize(width, height);
+    renderer.setSize(width, height2);
+    composer.setSize(width, height2);
     // Adjust pixel ratio on resize
     const pixelRatio = Math.min(window.devicePixelRatio, 2);
     renderer.setPixelRatio(pixelRatio);
@@ -401,9 +403,8 @@
   /////////////////////////////////////////////////////////////////////////
   ///// POST PROCESSING EFFECTS
   let width = window.innerWidth;
-  let height = window.innerHeight;
   const renderPass = new RenderPass(scene, camera);
-  const renderTarget = new THREE.WebGLRenderTarget(width, height, {
+  const renderTarget = new THREE.WebGLRenderTarget(width, HEIGHT, {
     minFilter: THREE.LinearFilter,
     magFilter: THREE.LinearFilter,
     format: THREE.RGBAFormat,
@@ -558,7 +559,7 @@
 
         // Convert mouse position to normalized device coordinates (-1 to +1)
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        mouse.y = -(event.clientY / HEIGHT) * 2 + 1;
 
         // Update raycaster with camera and mouse position
         raycaster.setFromCamera(mouse, camera);
@@ -647,11 +648,9 @@
     const checkElements = () => {
       if (pillarsElement && footerElement) {
         const rect = pillarsElement.getBoundingClientRect();
-        const isPillarsAtOrBelowTop =
-          rect.top + window.innerHeight * 1.5 <= window.innerHeight;
+        const isPillarsAtOrBelowTop = rect.top + HEIGHT * 1.5 <= HEIGHT;
 
-        const isPillarsAtOrBelowTop2 =
-          rect.top + window.innerHeight / 2 <= window.innerHeight;
+        const isPillarsAtOrBelowTop2 = rect.top + HEIGHT / 2 <= HEIGHT;
 
         if (isPillarsAtOrBelowTop) {
           container.style.display = "none";
