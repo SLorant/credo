@@ -65,6 +65,41 @@
           class="highlight">ismétlünk.</span
         >&nbsp;&nbsp;&nbsp;</span
       >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
+      <span
+        >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
+          class="highlight">ismétlünk.</span
+        >&nbsp;&nbsp;&nbsp;</span
+      >
     </div>
   </div>
 </div>
@@ -251,6 +286,10 @@
     const singleSpan = stripeContent.querySelector("span");
     const spanWidth = singleSpan ? singleSpan.offsetWidth : 0;
 
+    // Initialize with offset to ensure content is visible
+    translateX = -spanWidth;
+    stripeContent.style.transform = `translateX(${translateX}px)`;
+
     window.addEventListener("scroll", () => {
       const currentScroll = window.scrollY;
       const scrollDelta = currentScroll - lastScroll;
@@ -263,10 +302,12 @@
         // Update translateX based on scroll direction
         translateX -= scrollDelta * 0.5; // Adjust multiplier for speed
 
-        // Loop the animation - reset when one full span has scrolled past
-        if (translateX <= -spanWidth) {
+        // Seamless looping - reset when one full span has scrolled past
+        // This keeps the animation within a safe range
+        while (translateX <= -spanWidth * 2) {
           translateX += spanWidth;
-        } else if (translateX > 0) {
+        }
+        while (translateX > -spanWidth) {
           translateX -= spanWidth;
         }
 

@@ -65,19 +65,7 @@ import cardData from "./utils/cardData";
   import { imageAnimations } from "./utils/imageAnimations";
   import { handleButtons } from "./utils/handleButtons";
 
-  if (window.innerWidth >= 1200) {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=350 top",
-        leave: "top+=400 bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else if (window.innerHeight < 500) {
+  if (window.innerHeight < 500) {
     animate(".serviceheader", {
       opacity: [0, 1],
       translateY: [30, 0],
@@ -85,7 +73,7 @@ import cardData from "./utils/cardData";
       duration: 600,
       autoplay: onScroll({
         enter: "bottom-=150 top",
-        leave: "top+=0 bottom",
+        leave: "top+=50 bottom",
         sync: "play reverse",
       }),
     });
@@ -96,8 +84,20 @@ import cardData from "./utils/cardData";
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=0 top",
+        enter: "bottom+=0 top",
         leave: "top+=100 bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else if (window.innerWidth >= 1200) {
+    animate(".serviceheader", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=350 top",
+        leave: "top+=400 bottom",
         sync: "play reverse",
       }),
     });
@@ -120,8 +120,8 @@ import cardData from "./utils/cardData";
       ease: "inOutSine",
       duration: 600,
       autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top+=300 bottom",
+        enter: "bottom-=150 top",
+        leave: "top+=250 bottom",
         sync: "play reverse",
       }),
     });
