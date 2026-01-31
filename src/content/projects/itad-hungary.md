@@ -15,6 +15,8 @@ project-text-1: >
   piacvezető szoftverekkel (Blancco, Certus, Securase) dolgoznak, a
   szolgáltatásuk alapja a megkérdőjelezhetetlen bizalom.
 
+
+
   A közös munka kihívását az jelentette, hogy bár a cég technológiai
   felkészültsége nemzetközi színvonalú, a piaci pozicionálásuk nem tükrözte ezt
   a professzionalizmust. A feladatunk az volt, hogy a száraz "elektronikai
