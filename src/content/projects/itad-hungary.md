@@ -1,7 +1,7 @@
 ---
 title: ITAD Hungary
 showcased: true
-cover: ../images/cover.png
+cover: ../images/marseuscover.png
 card-subheadline: LOREM IPSUM vdolor
 category: Performance
 keywords:
@@ -23,10 +23,11 @@ project-text-1: >
   hulladékkezelés" helyett egy stratégiai partnert mutassunk be, aki nemcsak
   biztonságot garantál, hanem a fenntarthatósági (ESG) célokat is támogatja az
   eszközök újrahasznosításával.
-square-image: ../images/square.png
+square-image: ../images/marseuscover.png
 gallery:
-  - ../images/slide1.png
-  - ../images/slide2.png
+  - ../images/marseusmockup2.png
+  - ../images/marseusmockup3.png
+  - ../images/marseuscover.png
 project-subheadline-2: |
   LINKEDIN STRATÉGIA ÉS SALES TÁMOGATÁS
 project-text-2: >
