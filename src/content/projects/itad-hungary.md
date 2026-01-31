@@ -1,7 +1,7 @@
 ---
 title: ITAD Hungary
 showcased: true
-cover: ./images/cover.png
+cover: src/content/projects/images/slide2-1.png
 card-subheadline: LOREM IPSUM vdolor
 category: Performance
 keywords:
