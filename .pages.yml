@@ -1,6 +1,6 @@
 media:
-  input: src/content/projects/images
-  output: src/content/projects/images
+  input: src/content/images
+  output: ../images
   extensions: [ png, webp, jpeg, jpg, gif ]
 content:
   - name: projects
