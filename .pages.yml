@@ -1,13 +1,13 @@
 media:
-  input: src/assets/images
-  output: /images
+  input: src/content/projects/images
+  output: src/content/projects/images
   extensions: [ png, webp, jpeg, jpg, gif ]
 content:
   - name: projects
     label: Projects
     type: collection
     filename: '{primary}.md'
-    path: 'src/projects'
+    path: 'src/content/projects'
     view:
       fields: [ title, showcased, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
     fields:
