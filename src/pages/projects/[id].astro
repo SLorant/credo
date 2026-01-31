@@ -1,0 +1,43 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+import { getCollection, render, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/header/Header.astro";
+import { Image } from "astro:assets";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Image alt={"as"} src={project.data.cover} width={1600} height={900} />
+    <h1>{project.data["project-text-1"]}</h1>
+  </main>
+</Layout>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  main {
+    width: 100%;
+    padding: 0% 10%;
+  }
+  h1 {
+    color: white;
+  }
+</style>
