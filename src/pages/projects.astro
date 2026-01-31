@@ -1,0 +1,14 @@
+---
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const entry = await getEntry("projects", "2026-01-31-itad-hungary");
+
+console.log(entry);
+---
+
+<Layout>
+  <main></main>
+</Layout>
