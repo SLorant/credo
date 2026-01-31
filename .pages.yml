@@ -6,6 +6,7 @@ content:
   - name: projects
     label: Projects
     type: collection
+    filename: '{primary}.md'
     path: 'src/projects'
     view:
       fields: [ title, showcased, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
