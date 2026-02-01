@@ -22,6 +22,7 @@ content:
         required: true
       - name: cover
         label: Cover Image
+        description: This shows up on the landing page, in the project card, and in the cover image. It is 16:9 ratio, except on larger desktop views, where it is 21:9 ratio
         type: image
         required: true
       - name: card-subheadline
