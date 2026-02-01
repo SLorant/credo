@@ -28,11 +28,9 @@ project-text-1: >+
   egy olyan hirdetési rendszert építsünk, ami mérhetően hozza az elvárt
   értékesítési számokat.
 
-square-image: ../images/marseuscover.png
+square-image: ../images/02FB_Minőségkiemelésv2.png
 gallery:
-  - ../images/marseusmockup2.png
-  - ../images/marseusmockup3.png
-  - ../images/marseuscover.png
+  - ../images/marseusmockup2.webp
 project-subheadline-2: |
   MEGTÉRÜLÉS-FÓKUSZÚ ÖKOSZISZTÉMA
 project-text-2: >
