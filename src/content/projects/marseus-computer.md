@@ -3,7 +3,10 @@ title: Marseus Computer
 showcased: true
 cover: ../images/marseuscover.png
 card-subheadline: EGY TÁNYÉR KRUMPLIS TÉSZTA
-category: Performance
+category:
+  - Performance
+  - Creative
+  - Digital
 keywords:
   - PPC
   - "GRAFIKAI TERVEZÉS "
