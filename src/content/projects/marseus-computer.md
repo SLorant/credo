@@ -29,6 +29,8 @@ project-text-1: >+
   értékesítési számokat.
 
 square-image: ../images/02FB_Minőségkiemelésv2.png
+gallery:
+  - ../images/marseusmockup2.webp
 project-subheadline-2: |
   MEGTÉRÜLÉS-FÓKUSZÚ ÖKOSZISZTÉMA
 project-text-2: >
