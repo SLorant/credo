@@ -15,4 +15,10 @@ project-text-1: |-
 
   asdads
 square-image: ../images/gradient__backgound2-1.webp
+project-subheadline-2: Second subheadline
+project-text-2: >-
+  LLLorem IPSUM
+
+
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ---
