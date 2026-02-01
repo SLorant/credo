@@ -22,6 +22,7 @@ content:
         required: true
       - name: cover
         label: Cover Image
+        description: This shows up on the landing page, in the project card, and in the cover image. It is 16:9 ratio, except on larger desktop views, where it is 21:9 ratio
         type: image
         required: true
       - name: card-subheadline
@@ -69,6 +70,7 @@ content:
           maxlength: 70
       - name: project-text-2
         label: Second main text
+        description: Enters will be separated into columns in desktop view.
         type: text
       - name: quote
         label: Quote
