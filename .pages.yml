@@ -28,7 +28,7 @@ content:
         label: Card Subheadline
         type: text
         options:
-          maxlength: 140
+          maxlength: 35
       - name: category
         label: Category
         type: select
@@ -47,7 +47,7 @@ content:
         type: text
         required: true
         options:
-          maxlength: 140
+          maxlength: 70
       - name: project-text-1
         label: First main text
         type: text
@@ -66,7 +66,7 @@ content:
         label: Second subheadline
         type: text
         options:
-          maxlength: 140
+          maxlength: 70
       - name: project-text-2
         label: Second main text
         type: text
@@ -78,7 +78,7 @@ content:
             label: Author
             type: string
             options:
-              maxlength: 100
+              maxlength: 50
           - name: quote-text
             label: Quote Text
             type: text
