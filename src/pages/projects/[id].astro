@@ -4,6 +4,7 @@ import { getCollection, render, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/header/Header.astro";
 import { Image } from "astro:assets";
+import "@splidejs/splide/css/core";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -16,16 +17,91 @@ export async function getStaticPaths() {
 }
 // 2. For your template, you can get the entry directly from the prop
 const { project } = Astro.props;
-const { Content } = await render(project);
+const keywords = [project.data.category, ...project.data.keywords];
+
+const splitTextIntoFlex = (text: string) => {
+  if (!text) return null;
+  const [col1, ...rest] = text.split(/\n/);
+  const col2 = rest.join("\n");
+  return { col1, col2 };
+};
 ---
 
 <Layout>
   <Header />
-  <main>
-    <Image alt={"as"} src={project.data.cover} width={1600} height={900} />
-    <h1>{project.data["project-text-1"]}</h1>
-  </main>
+  <div class="container">
+    <main>
+      <Image
+        class={"cover"}
+        alt={"Cover"}
+        src={project.data.cover}
+        layout="full-width"
+      />
+      <h1>{project.data["title"]}</h1>
+      <div class="keywords" id="keywords-container">
+        {keywords.map((k) => <div class="keyword">{k}</div>)}
+      </div>
+      <section class="firstSection">
+        <div class="left">
+          <h2>{project.data["project-subheadline-1"]}</h2>
+          <p
+            class="firstP"
+            set:html={project.data["project-text-1"].replace(/\n/g, "<br />")}
+          />
+        </div>
+
+        <Image
+          alt={"Side Image"}
+          src={project.data["square-image"]}
+          layout="constrained"
+          class={"sideImg"}
+        />
+      </section>
+      <section class="splide" aria-label="Image Gallery">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {
+              project.data.gallery?.map((pic) => (
+                <li class="splide__slide">
+                  <Image
+                    alt={"Cover"}
+                    class={"sliderImg"}
+                    src={pic}
+                    layout="full-width"
+                  />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+      <section class="lastSection">
+        <div class="full">
+          <h2 class="lasth2">{project.data["project-subheadline-2"]}</h2>
+          {
+            (() => {
+              if (!project.data["project-text-2"]) return null;
+              const flex = splitTextIntoFlex(project.data["project-text-2"]);
+              if (!flex) return null;
+              return (
+                <div class="two-col-flex">
+                  <p class="firstP">{flex.col1}</p>
+                  <p class="firstP">{flex.col2}</p>
+                </div>
+              );
+            })()
+          }
+        </div>
+      </section>
+    </main>
+  </div>
 </Layout>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  new Splide(".splide").mount();
+</script>
 
 <style>
   *,
@@ -33,11 +109,259 @@ const { Content } = await render(project);
   *::after {
     box-sizing: border-box;
   }
+
+  .container {
+    width: 100%;
+    padding: 6rem 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+  }
   main {
     width: 100%;
-    padding: 0% 10%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   h1 {
-    color: white;
+    font-size: var(--header-lg);
+    text-align: center;
+    font-weight: 400;
+    margin: 30px 0px;
   }
+  h2 {
+    font-size: var(--text-lg);
+    margin: 0;
+    text-align: left;
+    font-family: "AktivGrotesk Medium";
+    font-weight: 400;
+    margin: 0px 0px 30px 0px;
+  }
+  .lasth2 {
+    margin: 0px 0px 20px 0px;
+  }
+
+  .firstSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    gap: 30px;
+  }
+  .left {
+    width: 50%;
+  }
+  .firstP {
+    width: 100%;
+    font-size: var(--text-md);
+    line-height: 1.7rem;
+    text-wrap: pretty !important;
+  }
+  .sideImg {
+    width: 50%;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 40px;
+    height: auto;
+    align-self: flex-start;
+  }
+  .lastSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+  }
+  .full {
+    width: 100%;
+  }
+  .two-col-flex {
+    display: flex;
+    gap: 30px;
+  }
+  .two-col-flex .firstP {
+    width: 50%;
+  }
+  /* IMG */
+  .cover {
+    border-radius: 40px;
+    aspect-ratio: 21 / 9 !important;
+    height: auto;
+  }
+  :where([data-astro-image]) {
+    object-fit: var(--fit);
+    object-position: var(--pos);
+  }
+  :where([data-astro-image="full-width"]) {
+    width: 100%;
+  }
+  :where([data-astro-image="constrained"]) {
+    max-width: 100%;
+  }
+  .sliderImg {
+    aspect-ratio: 16 / 9 !important;
+    height: auto;
+  }
+  /* ---------------------- */
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+    opacity: 1;
+    justify-content: center;
+    overflow: auto;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .keyword {
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border: 2px solid white;
+    text-transform: uppercase;
+    font-size: var(--text-base);
+  }
+
+  @media (max-width: 1300px) {
+    main {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .firstP {
+      font-size: var(--text-base);
+      line-height: 1.6rem;
+    }
+  }
+  @media (max-width: 1050px) {
+    main {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .firstP {
+      font-size: var(--text-base);
+      line-height: 1.6rem;
+    }
+    .firstSection {
+      flex-direction: column-reverse;
+    }
+    .left {
+      width: 100%;
+    }
+    .sideImg {
+      display: none;
+    }
+    .cover {
+      border-radius: 40px;
+      aspect-ratio: 16 / 9 !important;
+      height: auto;
+    }
+  }
+  @media (max-width: 768px) {
+    main {
+      width: 100%;
+      max-width: auto;
+      padding: 0 8%;
+      margin: 0 auto;
+    }
+    .firstSection {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .lastSection {
+      margin-top: 40px;
+    }
+    .cover {
+      border-radius: 0px;
+      margin-left: -10%;
+      margin-right: -10%;
+      width: 120%;
+      aspect-ratio: 16 / 9 !important;
+      height: auto;
+    }
+    h1 {
+      font-size: var(--header-sm);
+      text-align: center;
+      font-weight: 400;
+      margin: 30px 0px;
+      line-height: 3rem;
+    }
+    h2 {
+      font-size: var(--text-base);
+      margin: 0px 0px 30px 0px;
+    }
+    .firstP {
+      font-size: var(--text-sm);
+      line-height: 1.5rem;
+      width: 100% !important;
+    }
+    .two-col-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 0rem;
+    }
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 10px;
+    }
+    .keyword {
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      place-items: center;
+      border: 1px solid white;
+      text-transform: uppercase;
+      font-size: var(--text-sm);
+    }
+  }
+</style>
+
+<style is:global>
+  /* -------------------------------------- */
+  /* OVERWRITING SLIDE */
+  .splide__arrows {
+    display: none !important;
+  }
+
+  .splide__track {
+    border-radius: 40px;
+  }
+
+  .splide__pagination {
+    margin-top: 30px;
+    padding-inline-start: 0px;
+  }
+  .splide__pagination button {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+  .splide__pagination button[aria-selected="true"] {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  @media (max-width: 768px) {
+    .splide__track {
+      border-radius: 20px;
+    }
+    .splide__pagination {
+      margin-top: 25px;
+    }
+    .splide__pagination button {
+      border-radius: 10px;
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+  }
+  /* -------------------------------------- */
 </style>

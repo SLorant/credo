@@ -3,12 +3,22 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/header/Header.astro";
 
-const entry = await getEntry("projects", "2026-01-31-itad-hungary");
-
-console.log(entry);
+const projects = await getCollection("projects");
 ---
 
 <Layout>
-  <main></main>
+  <Header />
+  <main>
+    <ul>
+      {
+        projects.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
 </Layout>

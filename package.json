@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/node": "^9.5.1",
+    "@splidejs/splide": "^4.1.4",
     "@tweenjs/tween.js": "^25.0.0",
     "animejs": "^4.2.2",
     "astro": "^5.16.6",
