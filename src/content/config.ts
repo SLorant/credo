@@ -9,8 +9,8 @@ const projects = defineCollection({
       title: z.string(),
       showcased: z.boolean().default(false),
       "card-subheadline": z.string().optional(),
-      category: z.string(),
-      keywords: z.array(z.string()),
+      category: z.array(z.string()),
+      keywords: z.array(z.string()).optional(),
       cover: image(),
       "square-image": image(),
       gallery: z.array(image()).optional(),
@@ -18,10 +18,12 @@ const projects = defineCollection({
       "project-subheadline-2": z.string().optional(),
       "project-text-1": z.string(),
       "project-text-2": z.string().optional(),
-      quote: z.object({
-        author: z.string(),
-        "quote-text": z.string(),
-      }),
+      quote: z
+        .object({
+          author: z.string().optional(),
+          "quote-text": z.string().optional(),
+        })
+        .optional(),
     }),
 });
 

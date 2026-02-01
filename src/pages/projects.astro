@@ -6,19 +6,149 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header.astro";
 
 const projects = await getCollection("projects");
+const options = [
+  "Mutasd mindet",
+  "Performance",
+  "Creative",
+  "Digital",
+  "Production",
+];
 ---
 
 <Layout>
   <Header />
-  <main>
-    <ul>
+  <div class="container">
+    <main>
+      <div class="options" id="options-container">
+        {
+          options.map((opt) => (
+            <div class="optionbox" data-option={opt}>
+              {opt}
+            </div>
+          ))
+        }
+      </div>
       {
         projects.map((post) => (
-          <li>
+          <div class="card">
             <a href={`/blog/${post.id}`}>{post.data.title}</a>
-          </li>
+          </div>
         ))
       }
-    </ul>
-  </main>
+    </main>
+  </div>
 </Layout>
+
+<script>
+  const optionsContainer = document.getElementById("options-container");
+  const selectedOptions = new Set<string>();
+  const showAll = "Mutasd mindet";
+
+  selectedOptions.add(showAll);
+  document.querySelector(".optionbox")?.classList.add("selected");
+
+  // Handle option selection
+  optionsContainer?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains("optionbox")) {
+      const option = target.dataset.option;
+      if (option) {
+        if (selectedOptions.has(option) && option !== showAll) {
+          selectedOptions.delete(option);
+          target.classList.remove("selected");
+        } else if (option === showAll) {
+          selectedOptions.clear();
+          selectedOptions.add(option);
+          // Remove selected class from all other optionboxes
+          document.querySelectorAll(".optionbox").forEach((box) => {
+            if (box !== target) {
+              box.classList.remove("selected");
+            }
+          });
+          target.classList.add("selected");
+        } else if (option !== showAll) {
+          selectedOptions.delete(showAll);
+          selectedOptions.add(option);
+          document.querySelector(".optionbox")?.classList.remove("selected");
+          target.classList.add("selected");
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding: 6rem 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+  }
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+    width: 100%;
+    opacity: 1;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .optionbox {
+    padding: 8px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border: 2px solid white;
+    text-transform: uppercase;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-family: "AktivGrotesk Regular";
+  }
+  .optionbox:hover {
+    background: rgb(255 255 255 / 0.1);
+    transform: scale(1.05);
+  }
+  .optionbox.selected {
+    background: #dbe120;
+    color: #1c1b22;
+    border-color: #dbe120;
+  }
+
+  .card {
+  }
+  @media (max-width: 1000px) {
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 10px;
+    }
+    .optionbox {
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      place-items: center;
+      border: 1px solid white;
+      text-transform: uppercase;
+      font-size: var(--text-sm);
+    }
+  }
+</style>

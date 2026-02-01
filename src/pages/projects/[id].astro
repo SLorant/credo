@@ -17,7 +17,10 @@ export async function getStaticPaths() {
 }
 // 2. For your template, you can get the entry directly from the prop
 const { project } = Astro.props;
-const keywords = [project.data.category, ...project.data.keywords];
+const keywords = [
+  ...(project.data.category || []),
+  ...(project.data.keywords || []),
+];
 
 const splitTextIntoFlex = (text: string) => {
   if (!text) return null;
@@ -57,24 +60,27 @@ const splitTextIntoFlex = (text: string) => {
           class={"sideImg"}
         />
       </section>
-      <section class="splide" aria-label="Image Gallery">
-        <div class="splide__track">
-          <ul class="splide__list">
-            {
-              project.data.gallery?.map((pic) => (
-                <li class="splide__slide">
-                  <Image
-                    alt={"Cover"}
-                    class={"sliderImg"}
-                    src={pic}
-                    layout="full-width"
-                  />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </section>
+      {
+        project.data.gallery && project.data.gallery.length > 0 ? (
+          <section class="splide" aria-label="Image Gallery">
+            <div class="splide__track">
+              <ul class="splide__list">
+                {project.data.gallery?.map((pic) => (
+                  <li class="splide__slide">
+                    <Image
+                      alt={"Cover"}
+                      class={"sliderImg"}
+                      src={pic}
+                      layout="full-width"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null
+      }
+
       <section class="lastSection">
         <div class="full">
           <h2 class="lasth2">{project.data["project-subheadline-2"]}</h2>
@@ -120,12 +126,14 @@ const splitTextIntoFlex = (text: string) => {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    word-wrap: break-word;
   }
   h1 {
     font-size: var(--header-lg);
     text-align: center;
     font-weight: 400;
     margin: 30px 0px;
+    line-height: 6rem;
   }
   h2 {
     font-size: var(--text-lg);
@@ -203,7 +211,7 @@ const splitTextIntoFlex = (text: string) => {
   .keywords {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px 20px;
+    gap: 20px 15px;
     opacity: 1;
     justify-content: center;
     overflow: auto;
@@ -217,7 +225,7 @@ const splitTextIntoFlex = (text: string) => {
     display: flex;
     justify-content: center;
     place-items: center;
-    border: 2px solid white;
+    border: 1px solid white;
     text-transform: uppercase;
     font-size: var(--text-base);
   }
@@ -338,7 +346,8 @@ const splitTextIntoFlex = (text: string) => {
     border-radius: 10px;
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
@@ -357,7 +366,8 @@ const splitTextIntoFlex = (text: string) => {
       border-radius: 10px;
       width: 18px;
       height: 18px;
-      margin-right: 8px;
+      margin-right: 4px;
+      margin-left: 4px;
       border: none;
       background-color: rgba(255, 255, 255, 0.2);
       cursor: pointer;
