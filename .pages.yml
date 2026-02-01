@@ -69,6 +69,7 @@ content:
           maxlength: 70
       - name: project-text-2
         label: Second main text
+        description: Enters will be separated into columns in desktop view.
         type: text
       - name: quote
         label: Quote
