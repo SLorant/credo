@@ -2,14 +2,17 @@
 title: Marseus Computer
 showcased: true
 cover: ../images/marseuscover.png
-card-subheadline: EGY TÁNYÉR KRUMPLIS TÉSZTA
+card-subheadline: HIRDETÉSI STRATÉGIA ÉS KREATÍVOK
 category:
   - Performance
   - Creative
   - Digital
 keywords:
   - PPC
-  - "GRAFIKAI TERVEZÉS "
+  - HIRDETÉSI KREATÍVOK
+  - META
+  - LINKEDIN
+  - STRATÉGIA
 project-subheadline-1: A "HASZNÁLT" FOGALMÁNAK ÚJRADEFINIÁLÁSA
 project-text-1: >+
   A Marseus Computer Kft. 2001 óta a hazai informatikai piac egyik
@@ -30,6 +33,7 @@ project-text-1: >+
 
 square-image: ../images/02FB_Minőségkiemelésv2.png
 gallery:
+  - ../images/marseusmockup3.webp
   - ../images/marseusmockup2.webp
 project-subheadline-2: |
   MEGTÉRÜLÉS-FÓKUSZÚ ÖKOSZISZTÉMA
