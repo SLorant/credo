@@ -99,6 +99,12 @@ const splitTextIntoFlex = (text: string) => {
           }
         </div>
       </section>
+      <Image
+        alt={"Side Image"}
+        src={project.data["square-image"]}
+        layout="constrained"
+        class={"mobileImg"}
+      />
     </main>
   </div>
 </Layout>
@@ -119,6 +125,7 @@ const splitTextIntoFlex = (text: string) => {
   .container {
     width: 100%;
     padding: 6rem 0;
+    padding-bottom: 3rem;
     color: white;
     font-family: "AktivGrotesk Regular";
   }
@@ -150,7 +157,7 @@ const splitTextIntoFlex = (text: string) => {
   .firstSection {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 50px;
     gap: 30px;
   }
@@ -169,6 +176,9 @@ const splitTextIntoFlex = (text: string) => {
     border-radius: 40px;
     height: auto;
     align-self: flex-start;
+  }
+  .mobileImg {
+    display: none;
   }
   .lastSection {
     display: flex;
@@ -247,49 +257,9 @@ const splitTextIntoFlex = (text: string) => {
       max-width: 700px;
       margin: 0 auto;
     }
-    .firstP {
-      font-size: var(--text-base);
-      line-height: 1.6rem;
-    }
-    .firstSection {
-      flex-direction: column-reverse;
-    }
-    .left {
-      width: 100%;
-    }
-    .sideImg {
-      display: none;
-    }
-    .cover {
-      border-radius: 40px;
-      aspect-ratio: 16 / 9 !important;
-      height: auto;
-    }
-  }
-  @media (max-width: 768px) {
-    main {
-      width: 100%;
-      max-width: auto;
-      padding: 0 8%;
-      margin: 0 auto;
-    }
-    .firstSection {
-      margin-top: 40px;
-      margin-bottom: 40px;
-    }
-    .lastSection {
-      margin-top: 40px;
-    }
-    .cover {
-      border-radius: 0px;
-      margin-left: -10%;
-      margin-right: -10%;
-      width: 120%;
-      aspect-ratio: 16 / 9 !important;
-      height: auto;
-    }
+
     h1 {
-      font-size: var(--header-sm);
+      font-size: var(--header-sm2);
       text-align: center;
       font-weight: 400;
       margin: 30px 0px;
@@ -304,25 +274,68 @@ const splitTextIntoFlex = (text: string) => {
       line-height: 1.5rem;
       width: 100% !important;
     }
-    .two-col-flex {
-      display: flex;
-      flex-direction: column;
-      gap: 0rem;
+    .firstSection {
+      margin-top: 60px;
+    }
+
+    .cover {
+      border-radius: 40px;
+      aspect-ratio: 16 / 9 !important;
+      height: auto;
     }
     .keywords {
-      display: flex;
-      flex-wrap: wrap;
       gap: 10px 10px;
     }
     .keyword {
       padding: 6px 14px;
       border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      place-items: center;
       border: 1px solid white;
-      text-transform: uppercase;
       font-size: var(--text-sm);
+    }
+  }
+  @media (max-width: 768px) {
+    main {
+      max-width: auto;
+      padding: 0 8%;
+      margin: 0 auto;
+    }
+    .sideImg {
+      display: none;
+    }
+    .left {
+      width: 100%;
+    }
+    .firstSection {
+      flex-direction: column-reverse;
+
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .lastSection {
+      margin-top: 40px;
+    }
+    .cover {
+      border-radius: 0px;
+      margin-left: -10%;
+      margin-right: -10%;
+      width: 120%;
+    }
+
+    .two-col-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 0rem;
+    }
+
+    .mobileImg {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 40px;
+      height: auto;
+      margin-top: 20px;
+      max-width: 450px;
+      margin: 20px auto;
     }
   }
 </style>

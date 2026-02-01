@@ -4,6 +4,7 @@ import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header.astro";
+import Image from "astro/components/Image.astro";
 
 const projects = await getCollection("projects");
 const options = [
@@ -28,13 +29,21 @@ const options = [
           ))
         }
       </div>
-      {
-        projects.map((post) => (
-          <div class="card">
-            <a href={`/blog/${post.id}`}>{post.data.title}</a>
-          </div>
-        ))
-      }
+      <div class="cardcont">
+        {
+          projects.map((project) => (
+            <div class="card">
+              <a href={`/projects/${project.id}`}>{project.data.title}</a>
+              <Image
+                alt={"Side Image"}
+                src={project.data["cover"]}
+                layout="constrained"
+                class={"cardImg"}
+              />
+            </div>
+          ))
+        }
+      </div>
     </main>
   </div>
 </Layout>
@@ -56,6 +65,11 @@ const options = [
         if (selectedOptions.has(option) && option !== showAll) {
           selectedOptions.delete(option);
           target.classList.remove("selected");
+
+          if (selectedOptions.size === 0) {
+            selectedOptions.add(showAll);
+            document.querySelector(".optionbox")?.classList.add("selected");
+          }
         } else if (option === showAll) {
           selectedOptions.clear();
           selectedOptions.add(option);
@@ -132,9 +146,36 @@ const options = [
     border-color: #dbe120;
   }
 
-  .card {
+  .cardcont {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
   }
-  @media (max-width: 1000px) {
+  .card {
+    width: 100%;
+    border-radius: 40px;
+    position: relative;
+  }
+  .cardImg {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 40px;
+    filter: brightness(0.5);
+  }
+  .card a {
+    margin: 0;
+    text-decoration: none;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+    font-size: var(--text-lg);
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 40;
+    text-transform: uppercase;
+  }
+  .car @media (max-width: 1000px) {
     .options {
       display: flex;
       flex-wrap: wrap;
@@ -151,4 +192,18 @@ const options = [
       font-size: var(--text-sm);
     }
   }
+  /* IMG */
+
+  :where([data-astro-image]) {
+    object-fit: var(--fit);
+    object-position: var(--pos);
+  }
+  :where([data-astro-image="full-width"]) {
+    width: 100%;
+  }
+  :where([data-astro-image="constrained"]) {
+    max-width: 100%;
+  }
+
+  /* ---------------------- */
 </style>
