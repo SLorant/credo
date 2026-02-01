@@ -1,47 +1,50 @@
 ---
-title: ITAD Hungary
+title: Marseus Computer
 showcased: true
 cover: ../images/marseuscover.png
-card-subheadline: LOREM IPSUM vdolor
+card-subheadline: EGY TÁNYÉR KRUMPLIS TÉSZTA
 category: Performance
 keywords:
   - PPC
-project-subheadline-1: AZ ADATBIZTONSÁG ÉS A FENNTARTHATÓSÁG METSZETÉBEN
-project-text-1: >
-  Az ITAD Hungary az IT-eszközgazdálkodás (IT Asset Disposition) specialistája.
-  Tevékenységük kritikus fontosságú a vállalati szektorban: a leselejtezett
-  eszközök (PC-k, szerverek, adathordozók) biztonságos kezelését végzik. Mivel
-  az adatmegsemmisítés során az EU és az USA legszigorúbb szabványai szerint,
-  piacvezető szoftverekkel (Blancco, Certus, Securase) dolgoznak, a
-  szolgáltatásuk alapja a megkérdőjelezhetetlen bizalom.
+  - "GRAFIKAI TERVEZÉS "
+project-subheadline-1: A "HASZNÁLT" FOGALMÁNAK ÚJRADEFINIÁLÁSA
+project-text-1: >+
+  A Marseus Computer Kft. 2001 óta a hazai informatikai piac egyik
+  megkerülhetetlen szereplője. Nem egyszerűen használt eszközöket árulnak, hanem
+  a világmárkák (Apple, Dell, HP, Lenovo) vállalati kategóriás gépeit juttatják
+  el a piacra, professzionális szervízháttérrel, teszteléssel és egyedi
+  csomagolással. Az országos szinten is kiemelkedő raktárkészletük lehetővé
+  teszi, hogy a B2B nagyrendeléseket és az egyéni vásárlókat is azonnal
+  kiszolgálják.
 
 
+  A közös munka apropóját egy stratégiai ellentmondás adta: miközben a cég
+  logisztikai és műszaki színvonala európai mércével is kiemelkedő, a
+  marketingkommunikációjuk nem tükrözte ezt a kivételes minőséget. A feladatunk
+  az volt, hogy a kommunikációt felzárkóztassuk a szolgáltatás színvonalához, és
+  egy olyan hirdetési rendszert építsünk, ami mérhetően hozza az elvárt
+  értékesítési számokat.
 
-  A közös munka kihívását az jelentette, hogy bár a cég technológiai
-  felkészültsége nemzetközi színvonalú, a piaci pozicionálásuk nem tükrözte ezt
-  a professzionalizmust. A feladatunk az volt, hogy a száraz "elektronikai
-  hulladékkezelés" helyett egy stratégiai partnert mutassunk be, aki nemcsak
-  biztonságot garantál, hanem a fenntarthatósági (ESG) célokat is támogatja az
-  eszközök újrahasznosításával.
 square-image: ../images/marseuscover.png
 gallery:
   - ../images/marseusmockup2.png
   - ../images/marseusmockup3.png
   - ../images/marseuscover.png
 project-subheadline-2: |
-  LINKEDIN STRATÉGIA ÉS SALES TÁMOGATÁS
+  MEGTÉRÜLÉS-FÓKUSZÚ ÖKOSZISZTÉMA
 project-text-2: >
-  A megoldás fókuszába a LinkedIn márkaépítést helyeztük, hiszen ebben a
-  szektorban itt érhetők el a vállalati döntéshozók. A kommunikációt edukatív
-  tartalmakra építettük, bemutatva az olyan egyedi megoldásokat is, amik
-  nagyvállalati körökben talán még ismeretlenek is. Ezt támogattuk meg egységes
-  online és nyomdai grafikai anyagokkal, cégbemutató prospektussal.
+  A stratégiai tanácsadást követően a kivitelezés a multi-channel megközelítésre
+  épült. Nem "egy kaptafára" készítjük a kampányokat. A Google, Meta és LinkedIn
+  felületeire specifikus, az adott platform felhasználói szokásaira hangolt
+  dedikált hirdetési kreatívokat gyártunk. A tartalomgyártás és az adatvezérelt
+  PPC menedzsment így kéz a kézben jár.
 
-  A vizuális és tartalmi megújulás mellett beindítottuk a PPC leadgenerálást is.
-  A hirdetési stratégiánk nem a tömegeket, hanem a hiperszegmentálásnak
-  köszönhető, releváns B2B szereplőket célozza, biztosítva, hogy a sales csapat
-  asztalára már minősített, valódi üzleti potenciállal rendelkező érdeklődők
-  kerüljenek.
+
+  Az eredmény egy olyan skálázható rendszer lett, ahol a minőségi tartalom
+  bizalmat épít, a precízen optimalizált hirdetések pedig folyamatos, releváns
+  forgalmat terelnek a webáruházba. Kampányaink sikerét kiemelkedő, 15-20x ROAS
+  (hirdetési megtérülés) mutatók igazolják. A készletforgási sebesség
+  maximalizálásával valós, mérhető profitot termelünk az ügyfélnek.
 quote:
   author: SANYI
   quote-text: "A social media felületeken a transzparencia a kulcs: tematikusan
