@@ -34,6 +34,7 @@ content:
         type: select
         required: true
         options:
+          multiple: true
           values: [ Performance, Creative, Digital, Production ]
       - name: keywords
         label: Keywords
@@ -81,23 +82,3 @@ content:
           - name: quote-text
             label: Quote Text
             type: text
-  - name: site
-    label: Site settings
-    path: src/_data/site.json
-    type: file
-    fields:
-      - name: title
-        label: Website title
-        type: string
-      - name: description
-        label: Website description
-        type: string
-        description: Will be provused for any page with no description.
-      - name: url
-        label: Website URL
-        type: string
-        pattern: ^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$
-      - name: cover
-        label: Preview image
-        type: image
-        description: Image used in the social preview on social networks (e.g. Facebook, Twitter...)
