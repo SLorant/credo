@@ -20,6 +20,12 @@ content:
         type: boolean
         default: false
         required: true
+      - name: order
+        label: Project Order on landing page
+        type: number
+        description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
+        options:
+          max: 4
       - name: cover
         label: Cover Image
         description: This shows up on the landing page, in the project card, and in the cover image. It is 16:9 ratio, except on larger desktop views, where it is 21:9 ratio
@@ -84,3 +90,13 @@ content:
           - name: quote-text
             label: Quote Text
             type: text
+          - name: quote-showcased
+            label: Showcased on landing page
+            type: boolean
+            default: false
+          - name: order
+            label: Quote Order on landing page
+            type: number
+            description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
+            options:
+              max: 7
