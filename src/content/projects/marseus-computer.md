@@ -1,6 +1,7 @@
 ---
 title: Marseus Computer
 showcased: true
+icon: ../images/1.png
 cover: ../images/marseuscover.png
 card-subheadline: HIRDETÉSI STRATÉGIA ÉS KREATÍVOK
 category:
@@ -56,4 +57,5 @@ quote:
     mutatjuk be a szakorvosi csapatot, és közérthető, de profi tartalmakkal
     demisztifikáljuk a kezeléseket, például azt, hogy pontosan mire számíthat a
     páciens az első konzultáción"
+  quote-showcased: false
 ---
