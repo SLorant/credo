@@ -20,6 +20,10 @@ content:
         type: boolean
         default: false
         required: true
+      - name: icon
+        label: Project icon or logo
+        description: This shows up on the landing page, if the project is showcased. Use transparent images with white colors.
+        type: image
       - name: order
         label: Project Order on landing page
         type: number
