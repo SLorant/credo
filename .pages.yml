@@ -22,7 +22,7 @@ content:
         required: true
       - name: icon
         label: Project icon or logo
-        description: This shows up on the landing page, if the project is showcased. Use transparent images with white colors.
+        description: This shows up on the landing page, if the project is showcased. Use transparent images with white colors. Resolution should be 150x60, the logo should fit in this.
         type: image
       - name: order
         label: Project Order on landing page
