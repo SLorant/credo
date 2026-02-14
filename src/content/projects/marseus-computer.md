@@ -1,7 +1,7 @@
 ---
 title: Marseus Computer
 showcased: true
-icon: ../images/1.png
+icon: ../images/marseus_computer_logo.png
 cover: ../images/marseuscover.png
 card-subheadline: HIRDETÉSI STRATÉGIA ÉS KREATÍVOK
 category:
