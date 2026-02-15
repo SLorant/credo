@@ -9,7 +9,7 @@ content:
     filename: '{primary}.md'
     path: 'src/content/projects'
     view:
-      fields: [ title, showcased, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
+      fields: [ title, showcased, icon, order, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
     fields:
       - name: title
         label: Title
@@ -104,3 +104,23 @@ content:
             description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
             options:
               max: 7
+  - name: team
+    label: Team
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/team'
+    view:
+      fields: [ name, picture, role ]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: picture
+        label: Picture
+        type: image
+        required: true
+      - name: role
+        label: Job role
+        type: string
+        required: true
