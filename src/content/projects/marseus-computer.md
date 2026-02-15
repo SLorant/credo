@@ -15,8 +15,9 @@ keywords:
   - META
   - LINKEDIN
   - STRATÉGIA
+  - GOOGLE
 project-subheadline-1: A "HASZNÁLT" FOGALMÁNAK ÚJRADEFINIÁLÁSA
-project-text-1: >+
+project-text-1: >-
   A Marseus Computer Kft. 2001 óta a hazai informatikai piac egyik
   megkerülhetetlen szereplője. Nem egyszerűen használt eszközöket árulnak, hanem
   a világmárkák (Apple, Dell, HP, Lenovo) vállalati kategóriás gépeit juttatják
@@ -32,14 +33,13 @@ project-text-1: >+
   az volt, hogy a kommunikációt felzárkóztassuk a szolgáltatás színvonalához, és
   egy olyan hirdetési rendszert építsünk, ami mérhetően hozza az elvárt
   értékesítési számokat.
-
 square-image: ../images/02FB_Minőségkiemelésv2.png
 gallery:
   - ../images/marseusmockup3.webp
   - ../images/marseusmockup2.webp
 project-subheadline-2: |
   MEGTÉRÜLÉS-FÓKUSZÚ ÖKOSZISZTÉMA
-project-text-2: >
+project-text-2: >-
   A stratégiai tanácsadást követően a kivitelezés a multi-channel megközelítésre
   épült. Nem "egy kaptafára" készítjük a kampányokat. A Google, Meta és LinkedIn
   felületeire specifikus, az adott platform felhasználói szokásaira hangolt
