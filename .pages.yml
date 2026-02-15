@@ -118,6 +118,7 @@ content:
         required: true
       - name: picture
         label: Picture
+        description: The picture of the person should be 1:1 aspect ratio, like a box. The bottom part of the picture is designed to be cut off.
         type: image
         required: true
       - name: role
