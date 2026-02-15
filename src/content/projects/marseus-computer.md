@@ -1,7 +1,8 @@
 ---
-title: Marseus Computer
+title: Marseus Computer Kft.
 showcased: true
 icon: ../images/marseus_computer_logo.png
+order: 1
 cover: ../images/marseuscover.png
 card-subheadline: HIRDETÉSI STRATÉGIA ÉS KREATÍVOK
 category:
@@ -52,10 +53,29 @@ project-text-2: >
   (hirdetési megtérülés) mutatók igazolják. A készletforgási sebesség
   maximalizálásával valós, mérhető profitot termelünk az ügyfélnek.
 quote:
-  author: SANYI
-  quote-text: "A social media felületeken a transzparencia a kulcs: tematikusan
-    mutatjuk be a szakorvosi csapatot, és közérthető, de profi tartalmakkal
-    demisztifikáljuk a kezeléseket, például azt, hogy pontosan mire számíthat a
-    páciens az első konzultáción"
-  quote-showcased: false
+  author: Újvári Péter - ügyvezető igazgató, tulajdonos
+  quote-text: >-
+    Hiteles, szakmai partner marketingben
+
+
+    Amikor először elkezdtünk együtt dolgozni a Credo Digital csapatával,
+    őszintén szólva nem volt még teljesen összeállva a fejemben, milyen irányba
+    szeretnénk a kampányainkat vinni. A kapcsolatfelvételük már az első perctől
+    gördülékeny volt: nem csak gyorsan válaszoltak, de tényleg értették is, amit
+    mondtunk.
+
+
+    A legjobb része az együttműködésnek, hogy nem sablonokat kaptunk, hanem
+    cégre szabott kampányokat, amelyek valóban ránk, a termékeinkre és az
+    ügyfeleinkre reflektáltak. Minden egyes ötlet mögött érezhető volt egy
+    szakértői gondolkodás — nem csak „marketinges blabla”, hanem tényleg működő,
+    gyakorlati megoldások.
+
+
+    Külön hálás vagyok azért, hogy nem hagyták, hogy elvesszünk a részletekben,
+    hanem segítettek fókuszálni, mérni és javítani. Ha marketingben keresel
+    partnert, aki nem csak beszél róla, hanem valóban ért hozzá — a CredoDigital
+    az.
+  quote-showcased: true
+  order: 1
 ---
