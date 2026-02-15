@@ -1,5 +1,5 @@
 ---
-name: Bogi
+name: Mészáros Boglárka
 picture: ../images/bogi.png
-role: Munkatars
+role: Junior Sales Manager
 ---
