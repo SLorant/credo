@@ -1,5 +1,5 @@
 ---
-title: Marseus Computer Kft.
+title: Marseus Computer
 showcased: true
 icon: ../images/marseus_computer_logo.png
 order: 1
