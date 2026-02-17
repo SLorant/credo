@@ -33,7 +33,7 @@ project-text-1: >-
   az volt, hogy a kommunikációt felzárkóztassuk a szolgáltatás színvonalához, és
   egy olyan hirdetési rendszert építsünk, ami mérhetően hozza az elvárt
   értékesítési számokat.
-square-image: ../images/02FB_Minőségkiemelésv2.png
+square-image: ../images/01FB_fujitsu.webp
 gallery:
   - ../images/marseusmockup3.webp
   - ../images/marseusmockup2.webp
