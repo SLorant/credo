@@ -1,5 +1,5 @@
 ---
 name: Bodré Szonja
 picture: ../images/szonja.png
-role: Szövegíró
+role: Social Media Manager
 ---
