@@ -76,6 +76,11 @@ quote:
     hanem segítettek fókuszálni, mérni és javítani. Ha marketingben keresel
     partnert, aki nem csak beszél róla, hanem valóban ért hozzá — a CredoDigital
     az.
+  quote-text-landing: A legjobb része az együttműködésnek, hogy nem sablonokat
+    kaptunk, hanem cégre szabott kampányokat, amelyek valóban ránk, a
+    termékeinkre és az ügyfeleinkre reflektáltak. Minden egyes ötlet mögött
+    érezhető volt egy szakértői gondolkodás — nem csak „marketinges blabla”,
+    hanem tényleg működő, gyakorlati megoldások.
   quote-showcased: true
   order: 1
 ---
