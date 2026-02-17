@@ -1,5 +1,5 @@
 ---
-title: Acer Kft. - Biztonságos játszóterek
+title: Acer Kft.
 showcased: true
 icon: ../images/acert_logo.png
 order: 4
