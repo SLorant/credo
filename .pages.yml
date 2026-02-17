@@ -83,7 +83,7 @@ content:
         description: Enters will be separated into columns in desktop view.
         type: text
       - name: quote
-        label: Quote
+        label: Review
         type: object
         fields:
           - name: author
@@ -92,14 +92,17 @@ content:
             options:
               maxlength: 50
           - name: quote-text
-            label: Quote Text
+            label: Review Text
+            type: text
+          - name: quote-text-landing
+            label: Review Text Shown In Landing Page
             type: text
           - name: quote-showcased
             label: Showcased on landing page
             type: boolean
             default: false
           - name: order
-            label: Quote Order on landing page
+            label: Review Order on landing page
             type: number
             description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
             options:
