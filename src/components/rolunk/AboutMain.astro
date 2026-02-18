@@ -164,6 +164,7 @@ const team = await getCollection("team");
     padding-top: 6rem;
     scrollbar-gutter: stable;
   }
+
   .bg {
     background-image: url("/gradient__background.webp");
     background-size: cover;
@@ -235,6 +236,8 @@ const team = await getCollection("team");
     width: 100%;
     object-fit: cover;
     max-height: 100%;
+    height: 100%;
+    min-height: 0;
   }
   .name {
     margin-left: 4px;
@@ -491,6 +494,7 @@ const team = await getCollection("team");
       padding-top: 0;
     }
   }
+
   @media (max-width: 768px) {
     #parallax-hand {
       display: none;
@@ -505,7 +509,7 @@ const team = await getCollection("team");
       width: 80%;
     }
     .box {
-      height: 220px;
+      height: 310px;
       width: 100%;
     }
     .personcard {
@@ -516,7 +520,7 @@ const team = await getCollection("team");
       align-items: center;
     }
     .box img {
-      width: 220px;
+      width: 310px;
     }
     .people {
       width: 80%;
@@ -524,6 +528,16 @@ const team = await getCollection("team");
       margin-top: 50px;
       gap: 0px;
     }
+
+    .name {
+      font-size: var(--text-base);
+      padding-bottom: 2px;
+    }
+    .role {
+      font-size: 0.7rem;
+      padding-top: 2px;
+    }
+
     .name,
     .role {
       line-height: 1.6rem;
@@ -608,6 +622,24 @@ const team = await getCollection("team");
       object-fit: cover;
       opacity: 0.5;
       display: block;
+    }
+  }
+  @media (max-width: 500px) {
+    .box {
+      height: 220px;
+      width: 100%;
+    }
+
+    .box img {
+      width: 220px;
+    }
+    .name {
+      font-size: var(--text-sm);
+      padding-bottom: 0px;
+    }
+    .role {
+      font-size: 0.55rem;
+      padding-top: 0px;
     }
   }
 

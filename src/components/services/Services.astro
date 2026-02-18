@@ -147,6 +147,7 @@ import cardData from "./utils/cardData";
     place-items: center;
     flex-direction: column;
     margin-top: -100px;
+    overscroll-behavior: none;
   }
   /*  .serviceheader {
     text-align: center;
@@ -429,6 +430,11 @@ import cardData from "./utils/cardData";
   .background {
     transition: opacity 0.3s ease-in-out;
   }
+
+  /* Prevent iOS bounce/overscroll */
+  /*  body {
+    overscroll-behavior-y: none;
+  } */
   /*   @media (max-height: 800px) {
     .serviceheader {
       margin-top: 150px;
