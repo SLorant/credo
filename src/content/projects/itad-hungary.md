@@ -1,5 +1,6 @@
 ---
 title: ITAD Hungary
+website-link: https://www.linkedin.com/company/itad-hungary
 showcased: true
 icon: ../images/itad_hungary_logo.png
 order: 3
