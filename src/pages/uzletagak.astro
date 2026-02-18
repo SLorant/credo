@@ -11,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <Header />
   <div class="container">
-    <div class="bgfooter"></div>
+    <!--  <div class="bgfooter"></div> -->
     <main>
       <img class="m" src="/u1.png" />
       <img class="m" id="parallax-hand" src="/uzletagak.webp" />
@@ -45,6 +45,10 @@ import Layout from "../layouts/Layout.astro";
 </script>
 
 <style>
+  /* body {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  } */
   .container {
     width: 100%;
     padding: 6rem 0 0 0;
@@ -53,7 +57,7 @@ import Layout from "../layouts/Layout.astro";
     position: relative;
     z-index: 30;
     background: rgb(0, 0, 0);
-    overscroll-behavior: none;
+    scrollbar-gutter: stable;
   }
   .bgfooter {
     position: absolute;

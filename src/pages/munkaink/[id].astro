@@ -38,7 +38,21 @@ const splitTextIntoFlex = (text: string) => {
         src={project.data.cover}
         layout="full-width"
       />
-      <h1>{project.data["title"]}</h1>
+      {
+        project.data["website-link"] &&
+        project.data["website-link"].length > 0 ? (
+          <a
+            href={project.data["website-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h1 class="clickable">{project.data["title"]}</h1>
+          </a>
+        ) : (
+          <h1 class="nolink">{project.data["title"]}</h1>
+        )
+      }
+
       <div class="keywords" id="keywords-container">
         {keywords.map((k) => <div class="keyword">{k}</div>)}
       </div>
@@ -146,9 +160,46 @@ const splitTextIntoFlex = (text: string) => {
     font-size: var(--header-lg);
     text-align: center;
     font-weight: 400;
-    margin: 30px 0px;
+    margin: 0;
     line-height: 6rem;
   }
+  .nolink {
+    margin: 30px auto;
+  }
+  a {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration: none;
+    color: inherit;
+    margin: 30px auto;
+  }
+
+  .clickable {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .clickable::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -2.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dbe120' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'/%3E%3Cpath d='M7 7h10v10'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .clickable:hover::after {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
   h2 {
     font-size: var(--text-lg);
     margin: 0;
@@ -269,8 +320,16 @@ const splitTextIntoFlex = (text: string) => {
       font-size: var(--header-sm2);
       text-align: center;
       font-weight: 400;
-      margin: 30px 0px;
+      margin: 0;
       line-height: 3rem;
+    }
+    a {
+      margin: 30px auto;
+    }
+    .clickable::after {
+      width: 1.4rem;
+      height: 1.4rem;
+      right: -1.6rem;
     }
     h2 {
       font-size: var(--text-base);
@@ -305,6 +364,11 @@ const splitTextIntoFlex = (text: string) => {
       max-width: auto;
       padding: 0 8%;
       margin: 0 auto;
+    }
+    .clickable::after {
+      width: 1.4rem;
+      height: 1.4rem;
+      right: -1.6rem;
     }
     .sideImg {
       display: none;

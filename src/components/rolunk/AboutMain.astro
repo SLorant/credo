@@ -7,7 +7,9 @@ import Team from "./Team.astro";
 import { getCollection } from "astro:content";
 import Achievements from "../main/Achievements.astro";
 
-const team = await getCollection("team");
+const loadedTeam = await getCollection("team");
+
+const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
 ---
 
 <div class="container">
@@ -146,6 +148,11 @@ const team = await getCollection("team");
 </script>
 
 <style>
+  /* body {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
+ */
   img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -160,7 +167,7 @@ const team = await getCollection("team");
     height: 100%;
     width: 100vw;
     display: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     padding-top: 6rem;
     scrollbar-gutter: stable;
   }
@@ -278,6 +285,7 @@ const team = await getCollection("team");
     width: 100vw;
     transition: transform 0.1s ease-out;
     aspect-ratio: 16 / 9 !important;
+
     /*  object-fit: cover; */
   }
   #phone {

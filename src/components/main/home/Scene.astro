@@ -13,7 +13,12 @@
   import { LensDistortionShader } from "./LensDistortionShader.js";
 
   // Check mobile once at load time to prevent issues with dynamic checks
-  const isMobile = window.innerWidth < 768;
+  // Use matchMedia for more reliable mobile detection including tablets
+  const isMobile =
+    window.matchMedia("(max-width: 768px)").matches ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
 
   /////////////////////////////////////////////////////////////////////////
   //// DRACO LOADER TO LOAD DRACO COMPRESSED MODELS FROM BLENDER
@@ -27,12 +32,16 @@
   /////////////////////////////////////////////////////////////////////////
   ///// DIV CONTAINER CREATION TO HOLD THREEJS EXPERIENCE
   const container = document.createElement("div");
-  container.style = "position:fixed; top:0; left:0;";
+  /*   container.style = "position:fixed; top:0; left:0;"; */
+  container.style =
+    "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none;";
+
   container.id = "threejs-container"; // Add ID for easy reference
   document.body.appendChild(container);
 
+  // Use visualViewport for better mobile support, fallback to innerHeight
+  /*  const HEIGHT = window.visualViewport?.height || window.innerHeight; */
   const HEIGHT = isMobile ? window.screen.height : window.innerHeight;
-
   /////////////////////////////////////////////////////////////////////////
   ///// SCENE CREATION
   const scene = new THREE.Scene();
@@ -60,6 +69,7 @@
   }); // turn on antialias
   // Lower pixel ratio on mobile for better performance
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //set pixel ratio
+  console.log(HEIGHT, window.innerWidth);
   renderer.setSize(window.innerWidth, HEIGHT); // make it full screen
   renderer.outputColorSpace = THREE.SRGBColorSpace; // set color encoding
   container.appendChild(renderer.domElement); // add the renderer to html div

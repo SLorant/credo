@@ -7,6 +7,7 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      "website-link": z.string().optional(),
       showcased: z.boolean().default(false),
       order: z.number().optional(),
       icon: image().optional(),
@@ -39,6 +40,7 @@ const team = defineCollection({
       name: z.string(),
       picture: image(),
       role: z.string(),
+      order: z.number(),
     }),
 });
 
