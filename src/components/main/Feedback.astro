@@ -29,7 +29,7 @@ const projects = loadedProjects
               <li class="splide__slide">
                 <div class="quote-content">
                   <p class="quote-text">
-                    „{testimonial.data.quote?.["quote-text-landing"]}”
+                    „ {testimonial.data.quote?.["quote-text-landing"]}”
                   </p>
                   <p class="quote-author">— {testimonial.data.quote?.author}</p>
                   {testimonial.data.icon ? (
@@ -106,11 +106,11 @@ const projects = loadedProjects
   }
 
   .quote-text {
-    font-family: "Kepler";
-    font-size: var(--header-sm);
-    line-height: 1.4;
+    font-family: "CrimsonText Italic";
+    font-size: var(--header-sm2);
+    line-height: 1.2;
     margin-bottom: 1rem;
-    font-style: italic;
+    /*     font-style: italic; */
   }
 
   .quote-author {
