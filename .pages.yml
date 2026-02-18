@@ -131,3 +131,7 @@ content:
         label: Job role
         type: string
         required: true
+      - name: order
+        label: Order of the person, starting from left to right.
+        type: number
+        required: true
