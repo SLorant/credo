@@ -16,8 +16,7 @@ const { needGradient } = Astro.props;
 ---
 
 <div class="contcont">
-  {needGradient ? <div class="topgradient" /> : null}
-  <div class="container" id="kapcsolat">
+  <div class={`container ${needGradient ? "with-image" : ""}`} id="kapcsolat">
     <img class="wearecredo" src="/icons/wearecredo.png" alt="we are credo" />
     <div class="contactbg"></div>
     <div class="contactbox" id="contactbox">
@@ -82,22 +81,24 @@ const { needGradient } = Astro.props;
     </div>
     <div class="contactfooter">
       <div class="contacticons">
-        <a
-          href="https://www.linkedin.com/company/credo-digital-agency"
-          target="_blank"
-          ><img class="icon2" src="/icons/linkedin.svg" alt="linkedin" /></a
+        <a href="https://www.instagram.com/weare_credo/" target="_blank"
+          ><img class="icon2" src="/icons/instagram.svg" alt="instagram" /></a
         >
         <a
           href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
           target="_blank"
           ><img class="icon2" src="/icons/facebook.svg" alt="facebook" /></a
         >
-        <a href="https://www.instagram.com/weare_credo/" target="_blank"
-          ><img class="icon2" src="/icons/instagram.svg" alt="instagram" /></a
+        <a
+          href="https://www.linkedin.com/company/credo-digital-agency"
+          target="_blank"
+          ><img class="icon2" src="/icons/linkedin.svg" alt="linkedin" /></a
         >
       </div>
       <div class="iii">
         <a href="mailto:hello@credodigital.hu">hello@credodigital.hu</a>
+        <a href="tel:+36202930657">+36 20 293 0657</a>
+        <p>6721 Szeged, Tímár utca 7.</p>
         <p class="copy">Copyright © 2026 Credo Digital</p>
         <a href="/adatkezeles/">Adatkezelési szabályzat</a>
       </div>
@@ -108,18 +109,19 @@ const { needGradient } = Astro.props;
   .contcont {
     position: relative;
     overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
   }
-  .copy {
+  /*   .copy {
     margin: 0;
-  }
+  } */
   .container {
     height: 1000px;
     width: 100vw;
     background: #2b2a33;
     background: radial-gradient(
       circle,
-      rgba(43, 42, 51, 1) 0%,
-      rgba(0, 0, 0, 1) 86%
+      rgb(36, 36, 43) 0%,
+      rgba(0, 0, 0, 1) 45%
     );
     display: flex;
     flex-direction: column;
@@ -133,14 +135,19 @@ const { needGradient } = Astro.props;
     overflow: hidden;
     /*  overscroll-behavior-y: none; */
   }
+  .container.with-image {
+    background: transparent !important;
+    background-image: url("/u3.png") !important;
+    background-size: cover;
+    background-position: center;
+  }
   .contactbox {
     z-index: 30;
-    width: 75%;
+    width: 1200px;
     height: 700px;
     border-radius: 30px;
     margin-top: 150px;
     padding-top: 20px;
-    overflow: hidden;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     background: rgb(255 255 255 / 0.05);
@@ -153,7 +160,7 @@ const { needGradient } = Astro.props;
     box-shadow:
       0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);
-    margin-bottom: 120px;
+    margin-bottom: 150px;
     padding-bottom: 30px;
   }
   .contactheader {
@@ -192,12 +199,12 @@ const { needGradient } = Astro.props;
     display: flex;
     flex-wrap: wrap;
     gap: 20px 10px;
+    margin-top: 20px;
     padding-left: 180px;
     padding-right: 180px;
-    margin-top: 20px;
-    width: 75%;
+    width: 85%;
     opacity: 1;
-    overflow: auto;
+    /*    overflow: auto; */
     transition:
       opacity 0.5s ease,
       transform 0.5s ease;
@@ -237,9 +244,9 @@ const { needGradient } = Astro.props;
     display: flex;
     justify-content: center;
     place-items: center;
-    border: 2px solid white;
+    border: 1px solid white;
     text-transform: uppercase;
-    font-size: var(--text-base);
+    font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.3s ease;
     user-select: none;
@@ -262,7 +269,7 @@ const { needGradient } = Astro.props;
     border-color: #dbe120;
   }
   .contact-form {
-    width: 75%;
+    width: 85%;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
@@ -377,9 +384,15 @@ const { needGradient } = Astro.props;
   }
   .iii {
     display: flex;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 20px 80px;
+    padding-right: 60px;
+    align-items: center;
     font-size: var(--text-md);
-    text-shadow: 1px 1px #858585;
+    text-shadow: 1px 1px #333333;
+  }
+  .iii p {
+    margin: 0;
   }
   @media (max-width: 1400px) {
     .contactbox {
@@ -406,7 +419,7 @@ const { needGradient } = Astro.props;
     }
     .iii {
       font-size: var(--text-base);
-      gap: 50px;
+      gap: 20px;
     }
   }
   @media (max-width: 1000px) {
@@ -498,6 +511,7 @@ const { needGradient } = Astro.props;
       border: none;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+      margin-bottom: 250px;
     }
     .contactheader {
       font-size: calc(var(--header-sm) - 0.417rem);
@@ -527,7 +541,7 @@ const { needGradient } = Astro.props;
       border: 1px solid white;
     }
     .contact-form {
-      width: 75%;
+      width: 80%;
       margin-top: 20px;
       display: flex;
       flex-direction: column;
@@ -578,8 +592,9 @@ const { needGradient } = Astro.props;
       flex-direction: column;
       gap: 15px;
       padding-right: 1rem;
-
+      text-align: right;
       font-size: var(--text-base);
+      align-items: flex-end;
     }
     .contactbg {
       display: none;
@@ -610,10 +625,10 @@ const { needGradient } = Astro.props;
     });
   } else {
     animate(".wearecredo", {
-      opacity: [0, 0.7],
+      opacity: [0, 0.2],
       translateY: [30, 0],
       ease: "inOutSine",
-      duration: 3000,
+      duration: 2000,
       autoplay: onScroll({
         enter: "bottom-=100 top",
         leave: "top bottom",

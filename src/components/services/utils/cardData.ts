@@ -39,10 +39,7 @@ const cardData = [
     image: "illustrations/performance_bottom.webp",
     imageTop: "illustrations/performance_top.webp",
     mobileImage: "illustrations/performance_phone.webp",
-    infotext: `Adat-, és teljesítményalapú marketing,<br/>
-ahol minden döntés mögött számszerű tények, valamint stratégiai döntések állnak és minden elköltött forint útja követhető. 
-<br/><br/>
-Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a performance marketing legmodernebb eszközeit, miközben eredményeinknek megfelelően skálázzuk azokat. Munkafolyamatunk során a folyamatos mérés, elemzés és finomhangolás alapfeltétel.`,
+    infotext: `Adatból Dunát lehet rekeszteni, tiszta következtetésből viszont kevés van. Mi a számok mögötti emberi viselkedést, fogyasztói magatartást térképezzük fel, hogy a büdzséd valós üzleti értéket teremtsen.`,
   },
   {
     id: 1,
@@ -76,10 +73,7 @@ Tevékenységünk túlmutat a kampányok kezelésén, céljaidhoz illesztjük a 
     image: "illustrations/creative_bottom.webp",
     imageTop: "illustrations/creative_top.webp",
     mobileImage: "illustrations/creative_phone.webp",
-    infotext: `A stratégia önmagában láthatatlan – a kreatív munka és az erős vizuális jelenlét teszi azt kézzelfoghatóvá. Kreatív csapatunk márkádból történetet formál. Olyan koncepciót, rendszert épít, ami egyértelművé és egyedivé teszi, ki vagy és mit képviselsz. 
-<br/> <br/>
-Formába öntjük üzleti céljaidat, hogy branded 
-ne csak egy legyen a sok közül, hanem az az egy, amire emlékeznek.`,
+    infotext: `A fogyasztó érző ember, aki átlát a manipuláción. Kerüljük a dobozos ötleteket. Olyan kulturálisan releváns vizuális nyelvet alkotunk, ami párbeszédet indít a márkád és közönsége között.`,
   },
   {
     id: 2,
@@ -113,10 +107,7 @@ ne csak egy legyen a sok közül, hanem az az egy, amire emlékeznek.`,
     image: "illustrations/digital_bottom.webp",
     imageTop: "illustrations/digital_top.webp",
     mobileImage: "illustrations/digital_phone.webp",
-    infotext: `A digitális jelenléted vállalkozásod motorja, 
-így nem lehet kompromisszum kérdése. Weboldalakat, dedikált landing oldalakat és webshopokat építünk, amelyek eladnak, konvertálnak. 
-<br/> <br/>
-A tervezéstől a kivitelezésen át az üzemeltetésig mindent kézben tartunk, hogy a rendszered valódi üzleti értéket termeljen.`,
+    infotext: `Nem hagyjuk, hogy a digitális hitelesség növekedésed gátja legyen. Felhasználói élményre, bizalomépítésre kihegyezett rendszereket tervezünk, kivitelezünk, amelyek egyszerűen teszik a dolgukat: eladnak, konvertálnak.`,
   },
   {
     id: 3,
@@ -150,12 +141,7 @@ A tervezéstől a kivitelezésen át az üzemeltetésig mindent kézben tartunk,
     image: "illustrations/production_bottom.webp",
     imageTop: "illustrations/production_top.webp",
     mobileImage: "illustrations/production_phone.webp",
-    infotext: `A legerősebb üzenet is elvész, ha nincs mögötte minőségi látványvilág. Napjaink “marketing-üzemanyagát” a videós és fotós tartalmak teszik 
-ki, így mi biztosítjuk a produkciós hátteret 
-a stratégiához:a stúdiófotózástól a drónfelvételekig mindent egy kézben tartunk. Igényed szerint akár komplett vizuális csomagokat készítünk, 
-hogy a weboldaladnak, a hirdetéseidnek, illetve 
-a közösségi médiádnak mindig legyen 
-egységes, friss megjelenése.`,
+    infotext: `Marketinged üzemanyaga a tartalom, mi pedig biztosítjuk az utánpótlást. Fotó, videó, drónfelvétel… Házon belül gyártjuk le a teljes vizualitást, mert hiszünk abban, hogy a hitelesség az apró részletekben – a fényekben, a vágás ritmusában és a képkockák minőségében – dől el.`,
   },
 ];
 

@@ -1,0 +1,88 @@
+---
+const { text } = Astro.props;
+---
+
+<button class="hover">
+  <img src="icons/arrow.svg" alt="" class="arrow" />
+  <span class="button-text">{text}</span>
+</button>
+
+<style>
+  button {
+    font-family: "AktivGrotesk Light";
+    background: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 50px 8px 40px;
+    border-radius: 100px;
+    font-size: var(--text-md);
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    transition: padding 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  button.hover {
+    padding-left: 0px;
+  }
+
+  button.hover:hover {
+    padding-left: 50px;
+    cursor: pointer;
+  }
+
+  button.hover:hover .arrow {
+    opacity: 1;
+    transform: translateX(20);
+  }
+
+  .button-text {
+    white-space: nowrap;
+  }
+
+  .arrow {
+    opacity: 0;
+    transform: translateX(0px);
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1200px), (max-height: 800px) {
+    button {
+      padding: 10px 20px;
+      padding-right: 40px;
+      font-size: var(--text-base);
+      gap: 10px;
+    }
+    .arrow {
+      width: 30px;
+      height: 20px;
+    }
+    button.hover:hover {
+      padding-left: 30px;
+    }
+  }
+
+  @media (max-width: 768px), (max-height: 500px) {
+    button {
+      padding: 10px 30px;
+      padding-right: 40px;
+      font-size: var(--text-base);
+      gap: 10px;
+    }
+    .arrow {
+      width: 40px;
+      height: 20px;
+    }
+    button.hover:hover {
+      padding-left: 30px;
+    }
+  }
+</style>

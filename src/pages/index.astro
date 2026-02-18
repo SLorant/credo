@@ -2,15 +2,19 @@
 export const prerender = true; // Makes this page static for better SEO and performance
 
 import Header from "../components/header/Header.astro";
-import Scene from "../components/Scene.astro";
+import Scene from "../components/main/home/Scene.astro";
 import Layout from "../layouts/Layout.astro";
-import Landing from "../components/Landing.astro";
-import Landing2 from "../components/Landing2.astro";
-import Pillars from "../components/Pillars.astro";
-import Services from "../components/services/Services.astro";
-import Achievements from "../components/Achievements.astro";
-import Work from "../components/Work.astro";
-import Contact from "../components/Contact.astro";
+import Landing from "../components/main/home/Landing.astro";
+import Landing2 from "../components/main/Landing2.astro";
+import Pillars from "../components/main/Pillars.astro";
+import Achievements from "../components/main/Achievements.astro";
+import Work from "../components/main/Work.astro";
+import Contact from "../components/general/Contact.astro";
+import Serv from "../components/main/Serv.astro";
+import Projects from "../components/main/Projects.astro";
+import Proj from "../components/main/hover/Proj.astro";
+import Insta from "../components/main/Insta.astro";
+import Feedback from "../components/main/Feedback.astro";
 ---
 
 <Layout>
@@ -19,8 +23,11 @@ import Contact from "../components/Contact.astro";
   <Landing />
   <Landing2 />
   <Pillars />
-  <Services />
-  <Achievements />
+  <Serv />
+  <Projects />
+  <!--  <Achievements /> -->
   <Work />
+  <Feedback />
+  <Insta />
   <Contact needGradient={false} />
 </Layout>

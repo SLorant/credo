@@ -1,19 +1,19 @@
 ---
+import ArrowButton from "../general/ArrowButton.astro";
 import cardData from "./utils/cardData";
 ---
 
 <div class="services-wrapper" id="services-wrapper">
   <div class="background"></div>
-  <h2 class="serviceheader">
-    üzletági <br />
-    <span class="three">szolgáltatásaink</span>
-  </h2>
+
   <div class="services-container" id="uzletagak">
     {
       cardData.map((card) => (
         <div class="card" data-card={card.id}>
           <div class="info2">
-            <h2 class="cardheader">{card.title}</h2>
+            <h2 class="cardheader" id={card.title.split(" ")[1]}>
+              {card.title}
+            </h2>
             <button class="mobilebutton">
               <img src="/icons/arrowbutton.svg" alt="arrow" />
             </button>
@@ -42,7 +42,12 @@ import cardData from "./utils/cardData";
                 </div>
               </div>
             )}
-            <button class="toggle-button">Bővebben</button>
+            <div class="btcont">
+              <button class="toggle-button">Bővebben</button>
+              <a href={`/munkaink?filter=${card.title.split(" ")[1]}`}>
+                <button class="link-button">KAPCSOLÓDÓ MUNKÁINK</button>
+              </a>
+            </div>
           </div>
           <div class="cardimgbox">
             <img
@@ -60,72 +65,10 @@ import cardData from "./utils/cardData";
 </div>
 
 <script>
-  import { animate, onScroll } from "animejs";
   import { cardAnimations } from "./utils/cardAnimations";
   import { imageAnimations } from "./utils/imageAnimations";
   import { handleButtons } from "./utils/handleButtons";
-
-  if (window.innerHeight < 500) {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=150 top",
-        leave: "top+=50 bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else if (window.innerHeight < 800) {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom+=0 top",
-        leave: "top+=100 bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else if (window.innerWidth >= 1200) {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=350 top",
-        leave: "top+=400 bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else if (window.innerWidth >= 768) {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top+=300 bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else {
-    animate(".serviceheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=150 top",
-        leave: "top+=250 bottom",
-        sync: "play reverse",
-      }),
-    });
-  }
+  import cardData from "./utils/cardData";
 
   cardAnimations();
 
@@ -137,52 +80,85 @@ import cardData from "./utils/cardData";
   const background = document.querySelector(".background") as HTMLElement;
   const contactSection = document.getElementById("kapcsolat");
 
-  if (background && contactSection) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Contact is in view, hide background
-            background.style.opacity = "0";
-          } else {
-            // Contact is out of view, show background
-            background.style.opacity = "1";
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of contact is visible
-      },
-    );
+  // Handle anchor links to specific cards
+  function scrollToCard() {
+    const hash = window.location.hash.substring(1); // Remove the # symbol
+    if (!hash) return;
 
-    observer.observe(contactSection);
+    // Find the card index that matches the hash
+    const cardIndex = cardData.findIndex((card) => {
+      const cardId = card.title.split(" ")[1];
+      return cardId === hash;
+    });
+
+    if (cardIndex === -1) return;
+
+    // Wait for layout to be ready
+    setTimeout(() => {
+      const wrapper = document.getElementById("services-wrapper");
+      if (!wrapper) return;
+
+      const totalCards = cardData.length;
+      const wrapperHeight = wrapper.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Calculate the scroll position for the desired card
+      // Each card takes up 1/totalCards of the scroll distance
+      const progressPerCard = 1 / totalCards;
+      const targetProgress =
+        cardIndex * progressPerCard + progressPerCard * 0.4; // Show card in the middle of its animation
+
+      // Calculate total scrollable distance
+      const startThreshold =
+        viewportHeight >= 800 ? viewportHeight * 0.6 : viewportHeight * 0.65;
+      const totalScrollDistance =
+        wrapperHeight - viewportHeight + startThreshold;
+
+      // Calculate the absolute scroll position
+      const targetScrollInWrapper = targetProgress * totalScrollDistance;
+      const wrapperTop = wrapper.offsetTop;
+      const targetScrollPosition =
+        wrapperTop + targetScrollInWrapper - viewportHeight * 0.2;
+
+      // Smooth scroll to the position
+      window.scrollTo({
+        top: targetScrollPosition,
+        behavior: "smooth",
+      });
+    }, 300);
   }
+
+  // Run on page load
+  scrollToCard();
+
+  // Also run when hash changes (for navigation within the same page)
+  window.addEventListener("hashchange", scrollToCard);
 </script>
 
 <style>
   .services-wrapper {
     position: relative;
     height: 5000px;
-    width: 100vw;
+    width: 100%;
     z-index: 0;
     overflow: hidden;
     display: flex;
     justify-content: start;
     place-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: -100px;
   }
-  .serviceheader {
+  /*  .serviceheader {
     text-align: center;
     line-height: 100px;
-  }
+  } */
   .background {
     min-height: 62.5rem;
     height: 100vh;
     width: 100vw;
-    z-index: 10;
+    z-index: 0;
 
-    background-image: url("/gradient__background.webp");
+    background-image: url("/u2.png");
     position: fixed;
     top: 0;
     left: 0;
@@ -216,14 +192,15 @@ import cardData from "./utils/cardData";
     /*  background: rgb(255 255 255 / 0.05);
     backdrop-filter: blur(30px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); */
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(40px) saturate(100%);
     -webkit-backdrop-filter: blur(40px) saturate(100%);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
+    border-radius: 30px;
+    /*     border: 1px solid rgba(255, 255, 255, 0.18); */
+    /*     box-shadow:
       0 8px 32px 0 rgba(0, 0, 0, 0.37),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.1); */
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
     display: flex;
     width: 62.5rem;
     height: 600px;
@@ -291,6 +268,10 @@ import cardData from "./utils/cardData";
     position: relative;
   }
 
+  a {
+    height: min-content;
+    margin-top: 30px;
+  }
   ul.card-list {
     list-style-type: none;
     gap: 20px;
@@ -316,14 +297,8 @@ import cardData from "./utils/cardData";
     left: 0;
     width: 90%;
     height: 100%;
-    /*     background: #4e8a67;
-    background: linear-gradient(
-      180deg,
-      rgba(78, 138, 103, 1) 0%,
-      rgba(172, 176, 62, 1) 100%
-    ); */
-    background: #1c1c22;
-    border-radius: 10px;
+    background: #000000;
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,7 +335,7 @@ import cardData from "./utils/cardData";
     color: white;
     text-align: left;
     line-height: 1.8;
-    padding: 2rem;
+    padding: 2rem 3rem;
     font-family: "AktivGrotesk Regular";
     font-size: var(--text-md);
   }
@@ -409,8 +384,9 @@ import cardData from "./utils/cardData";
     /* background: #172640; */
     background: #dbe120;
     color: #1c1b22 !important;
-    width: 240px;
-    height: 45px;
+    /*  width: 240px;
+    height: 45px; */
+    padding: 12px 30px;
     border: none;
     border-radius: 40px;
     font-size: var(--text-md);
@@ -419,8 +395,29 @@ import cardData from "./utils/cardData";
     justify-content: center;
     color: white;
     text-transform: uppercase !important;
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
+  }
+
+  .link-button {
+    font-family: "AktivGrotesk Regular";
+    background: transparent;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 40px;
+    font-size: var(--text-md);
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    color: white;
+    text-transform: uppercase !important;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+  .btcont {
+    display: flex;
+    gap: 20px;
   }
 
   .displaynone {
@@ -432,7 +429,7 @@ import cardData from "./utils/cardData";
   .background {
     transition: opacity 0.3s ease-in-out;
   }
-  @media (max-height: 800px) {
+  /*   @media (max-height: 800px) {
     .serviceheader {
       margin-top: 150px;
       font-size: var(--header-md);
@@ -443,8 +440,8 @@ import cardData from "./utils/cardData";
       letter-spacing: -3px;
     }
   }
-
-  @media (max-height: 500px) {
+ */
+  /*   @media (max-height: 500px) {
     .serviceheader {
       margin-top: 120px;
       font-size: var(--header-sm);
@@ -454,7 +451,7 @@ import cardData from "./utils/cardData";
       font-size: var(--header-sm);
       letter-spacing: -3px;
     }
-  }
+  } */
 
   @media (max-width: 768px) {
     .card {
@@ -468,6 +465,9 @@ import cardData from "./utils/cardData";
       padding-left: 100px;
       padding-top: 30px;
       padding-bottom: 20px;
+    }
+    .services-wrapper {
+      margin-top: -300px;
     }
     ul.card-list {
       margin: 20px 0px;
@@ -504,7 +504,7 @@ import cardData from "./utils/cardData";
       line-height: 2.5rem;
       letter-spacing: -2px;
     }
-    .serviceheader {
+    /*     .serviceheader {
       margin-top: 150px;
       font-size: var(--header-sm);
       line-height: 60px;
@@ -512,7 +512,7 @@ import cardData from "./utils/cardData";
     .three {
       font-size: var(--header-sm);
       letter-spacing: -3px;
-    }
+    } */
     .mobilebutton {
       display: flex !important;
       justify-content: center;
@@ -598,6 +598,27 @@ import cardData from "./utils/cardData";
       padding-left: 10px;
       width: 40px;
       box-shadow: inset 4px 10px 10px #b9c241;
+    }
+
+    .link-button {
+      font-family: "AktivGrotesk Regular";
+      background: transparent;
+      color: white;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 40px;
+      font-size: var(--text-base);
+      display: flex;
+      place-items: center;
+      justify-content: center;
+      color: white;
+      text-transform: uppercase !important;
+      cursor: pointer;
+      border: 2px solid white;
+    }
+    a {
+      margin-top: 0;
+      margin-bottom: 30px;
     }
   }
 </style>

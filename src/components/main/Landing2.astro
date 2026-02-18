@@ -1,3 +1,7 @@
+---
+import ArrowButton from "../general/ArrowButton.astro";
+---
+
 <div class="container">
   <div class="mobileanim">
     <h2 class="first animate-header">hitvallásunk</h2>
@@ -8,17 +12,11 @@
       hosszú távon segítik márkájuk üzleti növekedését.
     </p>
     <div class="buttoncontainer">
-      <a href="/#uzletagak">
-        <button class="hover">
-          <img src="icons/arrow.svg" alt="" class="arrow" />
-          <span class="button-text">SZOLGÁLTATÁSAINK</span>
-        </button>
+      <a class="buttonlanding" href="/uzletagak/">
+        <ArrowButton text="SZOLGÁLTATÁSAINK" />
       </a>
-      <a href="/rolunk/">
-        <button class="hover">
-          <img src="icons/arrow.svg" alt="" class="arrow" />
-          <span class="button-text">ISMERJ MEG MINKET</span>
-        </button>
+      <a class="buttonlanding" href="/rolunk/">
+        <ArrowButton text="ISMERJ MEG MINKET" />
       </a>
     </div>
   </div>
@@ -40,7 +38,7 @@
     { selector: ".first", enter: getEnterValue(25, 12.5) },
     { selector: ".second", enter: getEnterValue(28, 12.5) },
     { selector: ".animate-text", enter: getEnterValue(18.75, 12.5) },
-    { selector: ".hover", enter: getEnterValue(12.5, 12.5) },
+    { selector: ".buttonlanding", enter: getEnterValue(12.5, 12.5) },
   ];
 
   if (isShortScreen) {
@@ -68,7 +66,19 @@
       }),
     });
   } else {
-    animations.forEach(({ selector, enter }) => {
+    animate(".mobileanim", {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      ease: "inOutSine",
+      duration: 600,
+      autoplay: onScroll({
+        enter: "bottom-=500 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+
+    /* animations.forEach(({ selector, enter }) => {
       animate(selector, {
         opacity: [0, 1],
         translateY: [30, 0],
@@ -80,7 +90,7 @@
           sync: "play reverse",
         }),
       });
-    });
+    }); */
   }
 </script>
 
@@ -92,13 +102,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    place-items: start;
+    place-items: center;
     font-family: "AktivGrotesk Light";
     color: white;
     position: relative;
     z-index: 40;
-    padding-left: 15%;
-    padding-bottom: 0%;
+    /*   padding-left: 15%;
+    padding-bottom: 0%; */
   }
   .first {
     font-family: "AktivGrotesk Semibold";
@@ -129,63 +139,12 @@
     text-decoration: none;
     color: inherit;
   }
-  button {
-    font-family: "AktivGrotesk Light";
-    background: none;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    border: 2px solid white;
-    padding: 10px 40px;
-    border-radius: 100px;
-    font-size: var(--text-md);
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    transition: padding 0.3s ease;
+  .mobileanim {
+    max-width: 1200px;
+    width: 1200px;
   }
 
-  .arrow {
-    opacity: 0;
-    transform: translateX(0px);
-    transition: all 0.2s ease;
-    width: 40px;
-    height: 30px;
-    flex-shrink: 0;
-  }
-
-  button.hover {
-    padding-left: 0px;
-  }
-
-  button.hover:hover {
-    padding-left: 50px;
-    cursor: pointer;
-  }
-
-  button.hover:hover .arrow {
-    opacity: 1;
-    transform: translateX(20);
-  }
-
-  .button-text {
-    white-space: nowrap;
-  }
-
-  @media (max-width: 1400px) {
-    .first {
-      font-size: var(--header-xl);
-    }
-    .second {
-      font-size: var(--header-2xl);
-    }
-    .container {
-      padding-left: 10%;
-    }
-  }
-  @media (max-width: 1200px), (max-height: 800px) {
+  @media (max-width: 1300px) {
     .first {
       font-size: var(--header-lg);
       letter-spacing: -0.4rem;
@@ -195,23 +154,49 @@
       letter-spacing: -0.4rem;
     }
     p {
-      font-size: var(--var(--text-base));
+      font-size: var(--text-base);
       width: 45vw;
     }
-    button {
-      padding: 10px 20px;
-      padding-right: 30px;
-      font-size: var(--var(--text-base));
-      gap: 10px;
-    }
-    .arrow {
-      width: 30px;
-      height: 20px;
-    }
-    button.hover:hover {
-      padding-left: 30px;
+    .mobileanim {
+      max-width: 1000px;
+      width: 1000px;
     }
   }
+
+  @media (max-width: 1050px) {
+    .first {
+      font-size: var(--header-lg);
+      letter-spacing: -0.4rem;
+    }
+    .second {
+      font-size: var(--header-xl);
+      letter-spacing: -0.4rem;
+    }
+    p {
+      font-size: var(--text-base);
+      width: 45vw;
+    }
+    .mobileanim {
+      max-width: 700px;
+      width: 700px;
+    }
+  }
+
+  @media (max-height: 800px) {
+    .first {
+      font-size: var(--header-lg);
+      letter-spacing: -0.4rem;
+    }
+    .second {
+      font-size: var(--header-xl);
+      letter-spacing: -0.4rem;
+    }
+    p {
+      font-size: var(--text-base);
+      width: 45vw;
+    }
+  }
+
   @media (max-height: 700px) {
     .first {
       font-size: var(--header-md);
@@ -239,13 +224,13 @@
     p {
       margin-top: 10px;
       margin-bottom: 10px;
-      font-size: var(--var(--text-base));
+      font-size: var(--text-base);
       line-height: 25px;
       width: 70vw;
       text-shadow: 2px 2px #2b2a33;
       max-width: 25rem;
     }
-    button {
+    /*  button {
       padding: 10px 30px;
       padding-right: 40px;
       font-size: var(--var(--text-base));
@@ -257,7 +242,7 @@
     }
     button.hover:hover {
       padding-left: 30px;
-    }
+    } */
   }
   @media (max-width: 768px) {
     .buttoncontainer {
@@ -266,8 +251,14 @@
       /*  justify-content: center;
       place-items: start; */
       gap: 20px;
-      margin-top: 10px;
+      margin-top: 20px;
       width: 70vw;
+    }
+
+    .mobileanim {
+      max-width: 100%;
+      width: 100%;
+      padding-left: 20%;
     }
   }
 </style>

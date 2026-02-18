@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/header/Header.astro";
 import { Image } from "astro:assets";
 import "@splidejs/splide/css/core";
+import Quote from "../../components/general/Quote.astro";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -17,10 +18,7 @@ export async function getStaticPaths() {
 }
 // 2. For your template, you can get the entry directly from the prop
 const { project } = Astro.props;
-const keywords = [
-  ...(project.data.category || []),
-  ...(project.data.keywords || []),
-];
+const keywords = [...(project.data.keywords || [])];
 
 const splitTextIntoFlex = (text: string) => {
   if (!text) return null;
@@ -31,7 +29,7 @@ const splitTextIntoFlex = (text: string) => {
 ---
 
 <Layout>
-  <Header />
+  <Header noContact />
   <div class="container">
     <main>
       <Image
@@ -105,6 +103,15 @@ const splitTextIntoFlex = (text: string) => {
         layout="constrained"
         class={"mobileImg"}
       />
+      {
+        project.data["quote"]?.["quote-text"] &&
+        project.data["quote"]?.["quote-text"].length > 0 ? (
+          <Quote
+            text={project.data.quote["quote-text"]}
+            author={project.data.quote["author"]}
+          />
+        ) : null
+      }
     </main>
   </div>
 </Layout>
@@ -125,7 +132,7 @@ const splitTextIntoFlex = (text: string) => {
   .container {
     width: 100%;
     padding: 6rem 0;
-    padding-bottom: 3rem;
+    padding-bottom: 6rem;
     color: white;
     font-family: "AktivGrotesk Regular";
   }
@@ -271,7 +278,7 @@ const splitTextIntoFlex = (text: string) => {
     }
     .firstP {
       font-size: var(--text-sm);
-      line-height: 1.5rem;
+      line-height: 1.4rem;
       width: 100% !important;
     }
     .firstSection {

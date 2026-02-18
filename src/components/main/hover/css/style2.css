@@ -1,0 +1,112 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link img {
+  display: none;
+  position: relative;
+  z-index: 50;
+}
+img {
+  width: 400px !important;
+  max-width: 400px !important;
+}
+
+h1 {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: "Le murmure", sans-serif;
+  font-size: 7rem;
+  line-height: 7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.body {
+  background-color: #f1e9db;
+}
+
+.app {
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.text {
+  margin-top: 0.2rem;
+  line-height: 1rem;
+}
+
+.h1 {
+  padding-top: 0.9rem;
+  line-height: 5.3rem;
+}
+
+.grid {
+  position: relative;
+  z-index: 50;
+}
+
+.italic {
+  text-transform: none;
+  color: #333;
+  font-style: italic;
+}
+
+.credit-wrap {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.italic {
+  text-transform: none;
+}
+
+.image {
+  width: 1rem !important;
+}
+
+@font-face {
+  font-family: "Le murmure";
+  src: url("../fonts/Le-Murmure.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}

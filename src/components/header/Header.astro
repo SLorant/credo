@@ -1,15 +1,21 @@
 ---
-
+const { noContact } = Astro.props;
 ---
 
 <nav>
   <div class="navbg"></div>
   <a href="/"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
   <ul id="nav-menu">
-    <li><a href="/#uzletagak" target="_self">ÜZLETÁGAK</a></li>
-    <!--    <li><a href="/">PROJEKTEK</a></li> -->
     <li><a href="/rolunk/">RÓLUNK</a></li>
-    <li><a href="/#kapcsolat" target="_self">KAPCSOLAT</a></li>
+    <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
+    <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
+    <!--     <li><a href="/karrier" target="_self">KARRIER</a></li> -->
+    <li>
+      <a
+        class="contact"
+        href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"}
+        target="_self">KAPCSOLAT</a>
+    </li>
   </ul>
   <button id="hamburger" class="hamburger" aria-label="Toggle menu">
     <span></span>
@@ -26,24 +32,28 @@
     <span>&times;</span>
   </button>
   <ul class="mobile-nav">
-    <li><a href="/#uzletagak" target="_self">ÜZLETÁGAK</a></li>
-    <!-- <li><a href="/">PROJEKTEK</a></li> -->
     <li><a href="/rolunk/">RÓLUNK</a></li>
-    <li><a href="/#kapcsolat" target="_self">KAPCSOLAT</a></li>
+    <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
+    <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
+    <!--    <li><a href="/karrier" target="_self">KARRIER</a></li> -->
+    <li class="contact">
+      <a href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"} target="_self"
+        >KAPCSOLAT</a>
+    </li>
   </ul>
   <div class="icons">
-    <a
-      href="https://www.linkedin.com/company/credo-digital-agency"
-      target="_blank"
-      ><img class="icon" src="/icons/linkedin.svg" alt="linkedin" /></a
+    <a href="https://www.instagram.com/weare_credo/" target="_blank"
+      ><img class="icon" src="/icons/instagram.svg" alt="instagram" /></a
     >
     <a
       href="https://www.facebook.com/people/Credo-Digital/61577578687092/#"
       target="_blank"
       ><img class="icon" src="/icons/facebook.svg" alt="facebook" /></a
     >
-    <a href="https://www.instagram.com/weare_credo/" target="_blank"
-      ><img class="icon" src="/icons/instagram.svg" alt="instagram" /></a
+    <a
+      href="https://www.linkedin.com/company/credo-digital-agency"
+      target="_blank"
+      ><img class="icon" src="/icons/linkedin.svg" alt="linkedin" /></a
     >
   </div>
 </div>
@@ -61,6 +71,13 @@
     font-size: var(--text-lg);
     margin-top: 1rem;
     z-index: 50;
+  }
+  .contact {
+    /*   border: 1px solid white;
+    border-radius: 10px;
+    padding: 0px 8px; */
+    border-bottom: #dbe120 2px solid;
+    padding-bottom: 1px;
   }
   .navbg {
     position: absolute;

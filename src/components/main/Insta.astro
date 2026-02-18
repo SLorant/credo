@@ -1,0 +1,309 @@
+---
+import Stripe from "../general/Stripe.astro";
+import "@splidejs/splide/css/core";
+
+interface Post {
+  id: string;
+  caption: string | null;
+  mediaType: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM" | "REELS";
+  mediaUrl: string;
+  thumbnailUrl: string | null;
+  permalink: string;
+  timestamp: string;
+}
+
+interface FeedframerResponse {
+  username: string;
+  profilePictureUrl: string;
+  posts: Post[];
+  pagination: {
+    nextCursor: string | null;
+    hasMore: boolean;
+    perPage: number;
+  };
+}
+
+async function fetchPosts(apiKey: string) {
+  try {
+    const response = await fetch(
+      `https://feedframer.com/api/v1/me?api_key=${apiKey}&page[size]=3&sort=-published_at`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ${JSON.stringify(response)}`);
+    }
+
+    const data: FeedframerResponse = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
+// Usage
+const data = (await fetchPosts(
+  import.meta.env.FEEDFRAMER_API_KEY,
+)) as FeedframerResponse;
+
+/* const client = new CachedFeedframerClient(import.meta.env.FEEDFRAMER_API_KEY);
+const data = (await client.getPosts({
+  "page[size]": "3",
+  sort: "-published_at",
+})) as FeedframerResponse; */
+---
+
+<section class="stripe-container">
+  <div class="profile">
+    <a
+      href={"https://www.instagram.com/" + data?.username}
+      rel="noopener noreferrer"
+      target="_blank"
+      ><img
+        class="profileImg"
+        src={data?.profilePictureUrl}
+        alt="Instagram profile image"
+      /></a
+    >
+
+    <a
+      class="h3"
+      href={"https://www.instagram.com/" + data?.username}
+      rel="noopener noreferrer"
+      target="_blank">@{data?.username}</a
+    >
+  </div>
+
+  <div class="posts">
+    {
+      data?.posts?.map((post) => (
+        <a href={post.permalink} rel="noopener noreferrer" target="_blank">
+          <img class="postimg" src={post.mediaUrl} alt="Instagram post" />
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    data?.posts?.length > 0 ? (
+      <div class="slider-wrapper">
+        <section class="splide splide-instagram" aria-label="Image Gallery">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {data?.posts?.map((post) => (
+                <li class="splide__slide">
+                  <a
+                    href={post.permalink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt={"Cover"}
+                      class={"sliderImg"}
+                      src={post.mediaUrl}
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+    ) : (
+      <div style="margin: 100px 0px;" />
+    )
+  }
+
+  <Stripe />
+</section>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  const splideElement = document.querySelector(".splide-instagram");
+  if (splideElement) {
+    new Splide(".splide-instagram").mount();
+  }
+</script>
+
+<style>
+  section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 6rem 0;
+    padding-top: 2rem;
+    background: radial-gradient(
+      circle,
+      rgb(36, 36, 43) 0%,
+      rgba(0, 0, 0, 1) 0%
+    );
+  }
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    width: 1200px;
+    height: 100%;
+    padding: 2rem 0;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+
+  .profile {
+    display: flex;
+    max-width: 1200px;
+    width: 1200px;
+    justify-content: start;
+    gap: 30px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .profileImg {
+    max-width: 100px;
+    border-radius: 100px;
+    border: 1px white solid;
+  }
+
+  .posts a {
+    max-width: 90%;
+  }
+  .postimg {
+    max-width: 100%;
+    border-radius: 30px;
+  }
+
+  .h3 {
+    color: white;
+    font-family: "AktivGrotesk Light";
+    font-weight: 400;
+    font-size: var(--header-sm2);
+  }
+  .sliderImg {
+    /*    aspect-ratio: 9 / 16 !important; */
+    height: 375px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+  .splide-instagram {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+
+  .slider-wrapper {
+    display: none;
+  }
+  @media (max-width: 1300px) {
+    .posts,
+    .profile {
+      max-width: 1000px;
+      width: 1000px;
+    }
+  }
+  @media (max-width: 1050px) {
+    .posts,
+    .profile {
+      max-width: 700px;
+      width: 700px;
+    }
+    .profileImg {
+      max-width: 80px;
+    }
+    section {
+      padding: 4rem 0;
+    }
+    .h3 {
+      font-size: var(--header-xs);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .posts,
+    .profile {
+      max-width: auto;
+      width: auto;
+    }
+    .posts {
+      display: none;
+    }
+    .slider-wrapper {
+      display: block;
+    }
+    .profile {
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .posts a {
+      display: flex;
+      width: 60%;
+      justify-content: center;
+    }
+    .postimg {
+      max-width: 100%;
+    }
+
+    .profileImg {
+      max-width: 60px;
+    }
+    section {
+      padding: 2rem 0;
+    }
+    .h3 {
+      font-size: var(--header-xs);
+    }
+  }
+</style>
+
+<style is:global>
+  /* -------------------------------------- */
+  /* OVERWRITING SLIDE */
+  .splide__arrows {
+    display: none !important;
+  }
+
+  .splide__track {
+    border-radius: 40px;
+  }
+
+  .splide__pagination {
+    margin-top: 30px;
+    padding-inline-start: 0px;
+  }
+  .splide__pagination button {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+  .splide__pagination button[aria-selected="true"] {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  @media (max-width: 768px) {
+    .splide__track {
+      border-radius: 20px;
+    }
+    .splide__pagination {
+      margin-top: 25px;
+    }
+
+    .splide__pagination button {
+      border-radius: 10px;
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+      margin-left: 4px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+  }
+  /* -------------------------------------- */
+</style>

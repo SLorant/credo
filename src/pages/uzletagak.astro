@@ -1,0 +1,105 @@
+---
+import PageLanding from "../components/general/PageLanding.astro";
+import Contact from "../components/general/Contact.astro";
+import Header from "../components/header/Header.astro";
+import Services from "../components/services/Services.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Header />
+  <div class="container">
+    <main>
+      <img class="m" src="/u1.png" />
+      <img class="m" id="parallax-hand" src="/uzletagak.webp" />
+      <div class="head">
+        <PageLanding
+          alternate
+          subText="Üzletágaink alapja,"
+          header1="az integrált "
+          header2="megközelítés"
+          text={`A siló gondolkodás a hatékonyság csendes gyilkosa. A modern marketingben a részterületek már nem léteznek önmagukban. A legjobb kreatív is elvérzik egy lassú weboldalon, és a legprecízebb hirdetési stratégia is pénzégetés, ha a vizuális tartalom hiteltelen. Mi összefüggéseiben látjuk márkádat. Az integrált működés nálunk azt jelenti, hogy minden tevékenységünk egyetlen, koherens nyelvet beszél. Így a folyamatok nem akadályozzák, erősítik egymást.`}
+        />
+      </div>
+
+      <Services />
+      <Contact needGradient />
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const parallaxHand = document.getElementById("parallax-hand");
+
+  document.addEventListener("mousemove", (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    if (parallaxHand) {
+      parallaxHand.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+    }
+  });
+</script>
+
+<style>
+  .container {
+    width: 100%;
+    padding: 6rem 0 0 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+    position: relative;
+    z-index: 30;
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .head {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .m {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
+  #parallax-hand {
+    height: 102vh;
+    top: -5vh;
+    /*    max-width: 1920px; */
+    left: 0%;
+    /*  transform: translateX(-50%); */
+    transition: transform 0.1s ease-out;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1400px) {
+    #parallax-hand {
+      left: 0%;
+      width: 120vw;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 1200px), (max-height: 800px) {
+    #parallax-hand {
+      left: -40%;
+      width: 180vw;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #parallax-hand {
+      left: 45%;
+      top: -2%;
+      width: 150vw;
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+  }
+</style>

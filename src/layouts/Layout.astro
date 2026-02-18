@@ -1,16 +1,87 @@
 ---
 export const prerender = true; // Makes this page static for better SEO and performance
-import CookieConsent from "../components/CookieConsent.astro";
+import CookieConsent from "../components/general/CookieConsent.astro";
+import { SEO } from "astro-seo";
+
+const siteUrl = Astro.site || new URL(Astro.url.href);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="hu">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/credo_favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Credo Digital</title>
+    <SEO
+      title={"Credo Digital"}
+      description={"Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés."}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: "Credo Digital",
+          type: "website",
+          image: "/credo_favicon.png",
+          url: siteUrl.href,
+        },
+        optional: {
+          description:
+            "Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés.",
+          siteName: "Credo Digital",
+          locale: "hu_HU",
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: "Credo Digital",
+        description:
+          "Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés.",
+        image: "/brand.webp",
+      }}
+      extend={{
+        link: [
+          {
+            rel: "icon",
+            type: "image/x-icon",
+            href: "/credo_favicon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: "/credo_favicon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: "/credo_favicon.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/credo_favicon.png",
+          },
+        ],
+        meta: [
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+          { name: "generator", content: Astro.generator },
+          {
+            name: "keywords",
+            content:
+              "integrált marketing ügynökség, digitális marketing, performance marketing, growth marketing, kreatív ügynökség",
+          },
+          { name: "author", content: "Credo Digital" },
+          { name: "robots", content: "index, follow" },
+          {
+            name: "language",
+            content: "Hungarian",
+          },
+          { name: "revisit-after", content: "7 days" },
+          { name: "rating", content: "general" },
+          { name: "distribution", content: "global" },
+          { name: "theme-color", content: "#1c1b22" },
+          { property: "og:locale", content: "hu_HU" },
+          { property: "og:site_name", content: "Credo Digital" },
+        ],
+      }}
+    />
   </head>
   <body>
     <slot />
@@ -57,7 +128,8 @@ import CookieConsent from "../components/CookieConsent.astro";
     margin: 0;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    background-color: #151518;
+    background: rgba(0, 0, 0, 1) 0%;
+    /*     background-color: #050505; */
   }
 
   /*  *,
@@ -102,5 +174,9 @@ import CookieConsent from "../components/CookieConsent.astro";
   }
   p {
     user-select: text;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 </style>

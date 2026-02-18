@@ -1,0 +1,345 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import ArrowButton from "../general/ArrowButton.astro";
+
+const loadedProjects = await getCollection("projects");
+
+const projects = loadedProjects
+  .filter((p) => p.data.order && p.data.order > 0 && p.data.showcased)
+  .sort((p, p2) => p.data.order! - p2.data.order!)
+  .slice(0, 4);
+---
+
+<div class="contcont">
+  <div class="container">
+    <h2 class="pheader">
+      kiemelt
+      <span class="pthree">munkáink</span>
+    </h2>
+    <div class="achibg"></div>
+    <div class="achibg2">
+      <img class="achibgimg" src="/illustrations/pattern.webp" alt="" />
+    </div>
+    <div class="projectOuter grid">
+      {
+        projects.map((proj, i) => (
+          <a class="projectBox effectlink" href={"munkaink/" + proj.id}>
+            <h3>{proj.data.title}</h3>
+            <img class="icon" src={i + 1 + ".png"} alt="logo img" />
+
+            <img
+              class="mobileImg"
+              src={
+                i % 2 === 0 ? proj.data.gallery?.[0].src : proj.data.cover.src
+              }
+              alt="img1"
+            />
+
+            <img
+              class="content__img"
+              src={
+                i % 2 === 0 ? proj.data.gallery?.[0].src : proj.data.cover.src
+              }
+              alt="img1"
+            />
+          </a>
+        ))
+      }
+    </div>
+    <div class="bt">
+      <a href="/munkaink">
+        <ArrowButton text="NÉZD MEG MUNKÁINK" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animate, onScroll } from "animejs";
+  import imagesLoaded from "imagesloaded";
+  import { TrailsEffect } from "./hover/js/TrailsEffect.ts";
+  /*  import "c:/Code/credo/src/components/main/hover/css/style2.css"; */
+
+  if (window.innerHeight < 800) {
+    animate(".achibgimg", {
+      opacity: [0, 0.4],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  } else {
+    animate(".achibgimg", {
+      opacity: [0, 0.4],
+      ease: "inOutSine",
+      duration: 3000,
+      autoplay: onScroll({
+        enter: "bottom-=100 top",
+        leave: "top bottom",
+        sync: "play reverse",
+      }),
+    });
+  }
+
+  if (window.innerWidth > 768) {
+    const container = document.querySelector(".contcont") as HTMLElement;
+    const itemsWrapper = document.querySelector(".projectOuter") as HTMLElement;
+
+    // Preload images
+    const preloadImages = (): Promise<void> => {
+      return new Promise((resolve) => {
+        imagesLoaded(document.querySelectorAll("img"), () => resolve());
+      });
+    };
+
+    // And then..
+    preloadImages().then(() => {
+      // Remove the loader
+      document.body.classList.remove("loading");
+      const effect = new TrailsEffect(container, itemsWrapper);
+    });
+  }
+</script>
+
+<style is:global>
+  .effectlink {
+    cursor: pointer;
+  }
+
+  .effectlink .content__img {
+    display: none;
+    position: relative;
+    z-index: 50;
+  }
+  .contcont canvas {
+    display: block;
+    position: absolute;
+    top: -50px;
+    left: 0px;
+    z-index: 25;
+    pointer-events: none;
+  }
+</style>
+
+<style>
+  .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    place-items: center;
+    font-family: "AktivGrotesk Light";
+    color: white;
+    position: relative;
+    z-index: 20;
+    padding-bottom: 0%;
+    background: #2b2a33;
+    background: radial-gradient(
+      circle,
+      rgb(36, 36, 43) 0%,
+      rgba(0, 0, 0, 1) 0%
+    );
+  }
+  .bt {
+    position: relative;
+    z-index: 30;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    max-width: 1200px;
+    margin-bottom: 200px;
+  }
+
+  .contcont {
+    position: relative;
+    background: transparent;
+    z-index: 30;
+  }
+
+  .achibg2 {
+    position: absolute;
+    bottom: -200px;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+  }
+  .achibgimg {
+    opacity: 0.6;
+    z-index: 10;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .projectOuter {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+    background: transparent;
+  }
+  .projectBox {
+    position: relative;
+    z-index: 40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    padding: 0 1rem;
+    border-bottom: 1px solid yellow;
+  }
+  h3 {
+    font-size: var(--header-sm);
+    margin: 0;
+    font-weight: 400;
+  }
+  .mobileImg {
+    display: none;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-family: "AktivGrotesk Regular";
+    font-size: var(--header-lg);
+    text-align: center;
+    line-height: var(--header-xl);
+    margin-bottom: 20px;
+    z-index: 30;
+  }
+  .pthree {
+    font-family: "Kepler";
+    font-size: var(--header-xl);
+    letter-spacing: -5px;
+  }
+
+  canvas {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .link {
+    cursor: pointer;
+  }
+
+  .link img {
+    display: none;
+    position: relative;
+    z-index: 50;
+  }
+
+  @media (max-width: 1300px), (max-height: 800px) {
+    h2 {
+      font-size: var(--header-md);
+      text-align: center;
+      line-height: 80px;
+    }
+    .pthree {
+      font-size: var(--header-lg);
+    }
+  }
+  @media (max-width: 1300px) {
+    .projectOuter,
+    .bt {
+      max-width: 1000px;
+    }
+  }
+  @media (max-width: 1050px) {
+    .projectOuter,
+    .bt {
+      max-width: 700px;
+    }
+
+    h3 {
+      font-size: var(--header-sm2);
+      text-align: center;
+      font-weight: 400;
+      margin: 30px 0px;
+      line-height: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 50px 0px;
+    }
+    .achibgimg {
+      height: 400px;
+      width: auto;
+    }
+    h2 {
+      font-size: var(--header-sm2);
+      text-align: center;
+      line-height: var(--header-sm);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      text-align: center;
+      font-weight: 400;
+      line-height: 2rem;
+      margin: 0;
+      margin-top: 17rem;
+    }
+    .icon {
+      margin-top: 17rem;
+      transform: scale(0.7);
+    }
+    .pthree {
+      font-size: calc(var(--header-sm) - 0rem);
+      letter-spacing: -2px;
+    }
+    .bt {
+      position: relative;
+      z-index: 30;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .projectOuter {
+      /*  display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; */
+    }
+
+    .projectBox {
+      position: relative;
+      z-index: 40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 340px;
+      max-width: 430px;
+      padding: 0 1rem;
+      padding-right: 0;
+      padding-bottom: 3rem;
+      border-top: 3px solid yellow;
+      border-bottom: none;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+    .mobileImg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      /*  max-width: 100%; */
+      width: 430px;
+      height: auto;
+      display: block;
+    }
+  }
+</style>

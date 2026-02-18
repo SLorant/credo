@@ -1,0 +1,196 @@
+---
+const { header1, header2, text, alternate, subText } = Astro.props;
+---
+
+<!-- <img src="/gradientmask.png" /> -->
+<div class="container">
+  <div class="mobileanim">
+    {alternate ? <h2 class="subHeader">{subText}</h2> : null}
+    <h1 class="first animate-header">{header1}</h1>
+    <h1
+      class={alternate ? "secondAlt animate-header" : "second animate-header"}
+    >
+      {header2}
+    </h1>
+    <p class="animate-text" set:html={text} />
+  </div>
+</div>
+
+<!-- <script>
+  const parallaxHand = document.getElementById("parallax-hand");
+
+  document.addEventListener("mousemove", (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    if (parallaxHand) {
+      parallaxHand.style.transform = `translateX(-50%) translate(${xPos}px, ${yPos}px)`;
+    }
+  });
+</script> -->
+
+<style>
+  .container {
+    height: calc(100vh - 10rem);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: start;
+    font-family: "AktivGrotesk Light";
+    color: white;
+    position: relative;
+    z-index: 40;
+  }
+  .subHeader {
+    font-family: "AktivGrotesk Medium";
+    font-size: calc(var(--header-sm) - 0.2rem);
+    line-height: 9rem;
+    margin: 0;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .first {
+    font-family: "AktivGrotesk Medium";
+    font-size: 8.333rem;
+    letter-spacing: calc(0px - var(--10px));
+    line-height: 3.333rem;
+    margin: 0;
+    font-weight: 400;
+  }
+  .second {
+    font-family: "Kepler";
+    font-size: 12.5rem;
+    font-weight: 400;
+    letter-spacing: calc(0px - var(--10px));
+    margin: 0;
+  }
+  .secondAlt {
+    font-family: "AktivGrotesk Medium";
+    font-size: 8.333rem;
+    font-weight: 400;
+    letter-spacing: calc(0px - var(--10px));
+    margin: 0;
+    line-height: 14rem;
+  }
+  p {
+    margin-top: 0px;
+    margin-left: 0rem;
+    line-height: var(--30px);
+    width: 35vw;
+    text-wrap: pretty;
+  }
+  img {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #parallax-hand {
+    height: 102vh;
+    top: -3vh;
+    max-width: 1920px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.1s ease-out;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1400px) {
+    .first,
+    .secondAlt {
+      font-size: var(--header-xl);
+    }
+    .secondAlt {
+      line-height: 10rem;
+    }
+    .second {
+      font-size: var(--header-2xl);
+    }
+    .subHeader {
+      font-size: calc(var(--header-sm2) - 0.2rem);
+      line-height: 8rem;
+    }
+    .container {
+      padding-left: 10%;
+    }
+    #parallax-hand {
+      left: 30vw;
+      width: 120vw;
+      transform: translateX(-50%);
+    }
+  }
+  @media (max-width: 1200px), (max-height: 800px) {
+    .first,
+    .secondAlt {
+      font-size: var(--header-lg);
+      letter-spacing: -0.4rem;
+    }
+    .subHeader {
+      font-size: var(--header-xs);
+      line-height: 5rem;
+    }
+    .secondAlt {
+      line-height: 8rem;
+    }
+    .second {
+      font-size: var(--header-xl);
+      letter-spacing: -0.4rem;
+    }
+    #parallax-hand {
+      left: 20vw;
+      width: 180vw;
+      transform: translateX(-50%);
+    }
+    p {
+      font-size: var(--text-base);
+      width: 45vw;
+    }
+  }
+  @media (max-height: 700px) {
+    .first,
+    .secondAlt {
+      font-size: var(--header-md);
+      letter-spacing: -4px;
+    }
+    .second {
+      font-size: var(--header-xl);
+      letter-spacing: -4px;
+    }
+    p {
+      font-size: var(--12px);
+      width: 45vw;
+    }
+  }
+  @media (max-width: 768px), (max-height: 500px) {
+    .first,
+    .secondAlt {
+      font-size: var(--header-sm);
+      letter-spacing: -3px;
+      line-height: 2.5rem;
+    }
+    .secondAlt {
+      line-height: 4rem;
+    }
+    .subHeader {
+      font-size: calc(var(--text-lg) - 0.1rem);
+      line-height: 3rem;
+    }
+    .second {
+      font-size: var(--header-md);
+      letter-spacing: -3px;
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: var(--text-base);
+      line-height: 25px;
+      width: 70vw;
+      text-shadow: 2px 2px #2b2a33;
+      max-width: 25rem;
+    }
+  }
+</style>

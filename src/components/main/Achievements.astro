@@ -1,11 +1,11 @@
 <div class="contcont">
-  <div class="topgradient"></div>
+  <!--   <div class="topgradient"></div> -->
 
   <div class="container">
     <div class="achibg"></div>
-    <div class="achibg2">
+    <!--  <div class="achibg2">
       <img class="achibgimg" src="/illustrations/pattern.webp" alt="" />
-    </div>
+    </div> -->
     <h2 class="achiheader">kiemelt szakmai</h2>
     <h2 class="achiheader2">mérföldköveink</h2>
 
@@ -16,46 +16,41 @@
         <div class="slider-point" data-index="0">
           <div class="tooltip">
             <p>
-              Egy kézben tartjuk az ország piacvezető <span class="bold"
-                >IT refurb, ITAD</span
-              > cégének kommunikációját, legyen szó digitális kampányról vagy a multiknak
-              szánt vállalati anyagokról.
+              <span class="bold">2025. február</span>
+              <br /> Elindultunk. Megszületett a Credo, és vele együtt az elhatározás,
+              hogy minőséget hozunk a piacra.
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="1">
           <div class="tooltip">
             <p>
-              Megoldottuk az ügyfélszerzést <br /> a nehezen megközelíthető <span
-                class="bold">önkormányzati és B2B szektorban</span
-              >
-              <br /> egy játszótér-kivitelező cég számára, <span class="bold"
-                >egyedi automatizációval.</span
-              >
+              <span class="bold">2025. szeptember</span>
+              <br /> Fél év alatt elértük, hogy már 5 állandó partnerrel dolgozunk
+              együtt napi szinten, közös célokért.
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="2">
           <div class="tooltip">
             <p>
-              <span class="bold">Márkát teremtettünk:</span>
-              egy facility management cég teljes márkaarculatát és nyomdai anyagait
-              hoztuk létre a semmiből.
+              <span class="bold">2025. december </span>
+              <br />
+              Kinőttük a kereteket, így csapatunk 5 főre bővült. Több kéz, több szem,
+              nagyobb kapacitás, több szakértelem.
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="3">
           <div class="tooltip">
             <p>
-              <span class="bold">Újrapozicionáltunk </span> egy magyar szemüvegmárkát,
-              ahol a social media kommunikációt hangoltuk össze stúdió-, illetve termékfotózással
-              és <br />a nyereményjátékokkal <br />a <span class="bold"
-                >vevőkör-bővítés érdekében.</span
-              >
+              <span class="bold">2026. február</span>
+              <br /> Saját bázis Szeged szívében. Beköltöztünk a Tímár utcai irodánkba,
+              hogy végre egy helyen alkothassunk.
             </p>
           </div>
         </div>
-        <div class="slider-point" data-index="4">
+        <!--   <div class="slider-point" data-index="4">
           <div class="tooltip">
             <p>
               Prémium megjelenést adtunk egy vezető vidéki fogászati centrumnak, <br
@@ -64,142 +59,24 @@
               >
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="slider-handle"></div>
     </div>
 
     <div class="achibox">
       <p class="uppercase">
-        Gyakorlati tapasztalatunk <br />
-        <span class="bold">több, mint 20 különböző szektorra rúg,</span>
-        <br />
-        a hazai KKV-któl az európai piacokig.
+        Szakterületeink ereje új irodánkban adódik össze, <br />
+        <span class="bold"
+          >hogy a legnehezebb kihívásokra is naprakész megoldást adjunk.</span
+        >
       </p>
     </div>
   </div>
 </div>
 
 <script>
-  import { animate, onScroll } from "animejs";
-
-  if (window.innerWidth < 768) {
-    animate(".achiheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=50 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-
-    animate(".achiheader2", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else if (window.innerHeight < 800) {
-    animate(".achiheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=50 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-
-    animate(".achiheader2", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-    animate(".achibgimg", {
-      opacity: [0, 0.6],
-      ease: "inOutSine",
-      duration: 3000,
-      autoplay: onScroll({
-        enter: "bottom-=100 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-  } else {
-    animate(".achiheader", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=250 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-
-    animate(".achiheader2", {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: "inOutSine",
-      duration: 600,
-      autoplay: onScroll({
-        enter: "bottom-=350 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-    animate(".achibgimg", {
-      opacity: [0, 0.6],
-      ease: "inOutSine",
-      duration: 3000,
-      autoplay: onScroll({
-        enter: "bottom-=300 top",
-        leave: "top bottom",
-        sync: "play reverse",
-      }),
-    });
-  }
-
-  animate(".achibox", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=0 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
-
-  animate(".slider-container", {
-    opacity: [0, 1],
-    translateY: [30, 0],
-    ease: "inOutSine",
-    duration: 600,
-    autoplay: onScroll({
-      enter: "bottom-=50 top",
-      leave: "top bottom",
-      sync: "play reverse",
-    }),
-  });
+  import { animate } from "animejs";
 
   // Slider functionality
   const sliderHandle = document.querySelector(".slider-handle") as HTMLElement;
@@ -212,7 +89,7 @@
 
   let isDragging = false;
   let currentPoint = 0;
-  const totalPoints = 5;
+  const totalPoints = 4;
 
   // Store animation references for each point
   const pointAnimations = new Map();
@@ -362,14 +239,15 @@
     position: relative;
     z-index: 20;
     /*  padding-left: 15%; */
-    background: #2b2a33;
+
     padding-bottom: 0%;
-    /*  overflow-x: hidden; */
+    overflow-x: hidden;
   }
   .contcont {
     position: relative;
+    overflow-x: hidden;
   }
-  .topgradient {
+  /*   .topgradient {
     position: absolute;
     top: -100px;
     right: 0;
@@ -388,19 +266,20 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 30;
-  }
+  } */
   .achibg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #2b2a33;
+    /*   background: #2b2a33;
     background: radial-gradient(
       circle,
-      rgba(43, 42, 51, 1) 0%,
-      rgba(0, 0, 0, 1) 86%
-    );
+      rgb(36, 36, 43) 0%,
+      rgba(0, 0, 0, 1) 55%
+    ); */
+    background-image: url("/u3.png");
     z-index: 10;
   }
   .achibg2 {
@@ -457,7 +336,7 @@
   .slider-container {
     z-index: 30;
     position: relative;
-    width: 80%;
+    width: 1200px;
     max-width: 1200px;
     height: 150px;
     margin-top: 200px;
@@ -518,15 +397,12 @@
     left: 1%;
   }
   .slider-point[data-index="1"] {
-    left: 25%;
+    left: 33.33%;
   }
   .slider-point[data-index="2"] {
-    left: 50%;
+    left: 66.66%;
   }
   .slider-point[data-index="3"] {
-    left: 75%;
-  }
-  .slider-point[data-index="4"] {
     left: 99.2%;
   }
 
@@ -599,13 +475,13 @@
   }
 
   /* Last tooltip - align right */
-  .slider-point[data-index="4"] .tooltip {
+  .slider-point[data-index="3"] .tooltip {
     left: auto;
     right: -30px;
     transform: translateX(0);
   }
 
-  .slider-point[data-index="4"] .tooltip::after {
+  .slider-point[data-index="3"] .tooltip::after {
     left: auto;
     right: 30px;
     transform: translateX(0);
@@ -644,7 +520,7 @@
   .achibox {
     z-index: 30;
     width: 50%;
-    padding: 0px;
+    padding: 10px 20px;
     border-radius: 30px;
     margin-top: 50px;
     backdrop-filter: blur(15px);
@@ -666,18 +542,25 @@
     line-height: 35px;
     text-transform: uppercase !important;
     text-align: center;
+    text-wrap: pretty;
   }
   .bold {
     font-family: "AktivGrotesk Bold";
+    text-transform: uppercase;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1300px) {
     .uppercase {
       font-size: var(--text-md);
       line-height: 30px;
     }
+
+    .slider-container {
+      width: 1000px;
+      max-width: 1000px;
+    }
   }
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     .achiheader {
       font-size: var(--header-md);
     }
@@ -686,6 +569,11 @@
     }
     .achibox {
       width: 70%;
+    }
+    .slider-container {
+      width: 700px;
+      max-width: 700px;
+      margin-top: 200px;
     }
   }
   @media (max-height: 800px) {
@@ -762,6 +650,11 @@
       padding: 0px 20px;
       margin-bottom: 50px;
     }
+    .slider-container {
+      width: 80%;
+      max-width: 80%;
+      margin-top: 200px;
+    }
     .uppercase {
       font-size: var(--text-sm);
       line-height: 25px;
@@ -769,8 +662,8 @@
     .slider-point[data-index="0"] {
       left: 4%;
     }
-    .slider-point[data-index="4"] {
-      left: 98%;
+    .slider-point[data-index="3"] {
+      left: 97%;
     }
 
     .slider-point[data-index="1"] .tooltip {
@@ -783,14 +676,26 @@
       transform: translateX(0);
     }
 
-    /* Last tooltip - align right */
-    .slider-point[data-index="3"] .tooltip {
+    .slider-point[data-index="2"] .tooltip {
       left: auto;
       right: -70px;
       transform: translateX(0);
     }
 
-    .slider-point[data-index="3"] .tooltip::after {
+    .slider-point[data-index="2"] .tooltip::after {
+      left: auto;
+      right: 65px;
+      transform: translateX(0);
+    }
+
+    /* Last tooltip - align right */
+    .slider-point[data-index="4"] .tooltip {
+      left: auto;
+      right: -70px;
+      transform: translateX(0);
+    }
+
+    .slider-point[data-index="4"] .tooltip::after {
       left: auto;
       right: 65px;
       transform: translateX(0);

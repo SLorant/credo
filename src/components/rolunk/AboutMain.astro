@@ -1,49 +1,67 @@
 ---
-import Contact from "../Contact.astro";
+import { Image } from "astro:assets";
+import Contact from "../general/Contact.astro";
+import PageLanding from "../general/PageLanding.astro";
 import Anim from "./anim.astro";
 import Team from "./Team.astro";
+import { getCollection } from "astro:content";
+import Achievements from "../main/Achievements.astro";
+
+const team = await getCollection("team");
 ---
 
 <div class="container">
   <div class="bg"></div>
-  <div class="aboutmain">
-    <h1>rólunk</h1>
-    <p class="sub">
-      A Credo egyet jelent az <br /> értékalapú marketinggel. <br />
-      <span>Nem hiszünk a varázspirulákban.</span>
-    </p>
-    <p class="info">
-      Válaszként a marketing klisékre, a túlhasznált panelekre, a középszerű,
-      futószalagon érkezett ötletekre… alapítóink úgy döntöttek, hogy másképp
-      csinálják: <br />olyan rendszert építenek, ahol a stratégia az origó.
-      Nálunk a kreativitás a kommerciális célok eszköze, a mérhető eredmény
-      pedig az egyetlen elfogadható visszajelzés. Ezzel a szemlélettel dolgozunk
-      ma minden partnerünk sikeréért.
-    </p>
-  </div>
-  <img class="quote" src="/illustrations/quote.svg" alt="quote" />
+  <img class="m" src="/u1.png" />
+  <img class="m" id="parallax-hand" src="/dns.webp" />
+  <img class="m" id="phone" src="/dns_phone.webp" />
+  <main>
+    <PageLanding
+      alternate
+      subText="Két különböző karakter,"
+      header1="egy közös"
+      header2="nevező."
+      text={`Ez a mondat írja le legpontosabban a Credo DNS-ét. Alapítóink a szakma eltérő pólusairól érkeztek, de a céljuk azonos volt: választ adni a marketing klisékre, a túlhasznált panelekre és a futószalagon érkező, középszerű ötletekre. <br/> Úgy döntöttek, másképp csinálják.`}
+    />
+    <div class="leaders">
+      <img class="lead" src="/rolunk1.png" alt="leader" />
+      <img class="lead" src="/rolunk2.png" alt="leader" />
+    </div>
+    <div class="people">
+      {
+        team.map((person) => (
+          <div class="personcard">
+            <div class="box">
+              <Image
+                alt={"Person Image"}
+                src={person.data["picture"]}
+                layout="constrained"
+              />
+            </div>
+            <p class="name">{person.data.name}</p>
+            <p class="role">{person.data.role}</p>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+
+  <!--   <img class="quote" src="/illustrations/quote.svg" alt="quote" /> -->
   <div class="second">
     <div class="domecont">
       <div class="dome">
         <img class="domeimg" src="/illustrations/dom_base.svg" alt="dome" />
         <Anim />
       </div>
-      <img class="korte" src="/illustrations/stonkskorte.svg" alt="sss" />
     </div>
     <div class="righttext">
-      <p class="p1">
-        A Credo egy szegedi alapítású integrált marketingügynökség, amelyet
-        olyan tapasztalt szakértők hoztak létre és alkotnak, akik a szakma
-        minden oldalát ismerik.
-      </p>
+      <p class="p1">Nem hiszünk a varázspirulákban.</p>
       <p class="p2">
-        Ezt a tudást most arra használjuk, hogy valós kommunikációs alapokra
-        helyezett, kézzelfogható segítséget nyújtsunk ügyfeleinknek – a hazai
-        KKV-szektortól a nagyvállalati partnerekig.
-      </p>
-      <p class="p3">
-        Célkitűzésünk, hogy üzleti problémákra valós marketing alapokon fekvő
-        szakmai segítséget biztosítsunk széles körű üzletágainkkal.
+        Munkamódszerünk egyet jelent az értékalapú, transzparens marketinggel.
+        Szegedi alapítású, integrált ügynökségként olyan nézőpont szerint
+        alakítjuk folyamatainkat, ahol nincsenek dobozos megoldások. Minden
+        márkára individuális, fenntartható, illetve skálázható stratégiát
+        építünk, ami mögé egy összeszokott szakértői csapat sorakozik fel.
       </p>
       <br />
     </div>
@@ -53,17 +71,27 @@ import Team from "./Team.astro";
       <Team />
     </div>
     <p class="righttext lasttext">
-      A marketing olyan, mint egy sport: bár egy kimagasló játékos sokat számít,
-      ha bajnokságot akarsz nyerni, egy összeszokott csapatra van szükséged –
-      amit persze kiemelkedő egyéniségek alkotnak. <br />
-      <br /> Akár most kezded a történeted, akár már hosszú évek óta formálod vállalkozásod,
-      mi ugyanazzal a stratégiai élességgel és kreatív lendülettel állunk mögéd, mint
-      marketing partner.
+      <span class="p1">
+        A modern marketing túl komplex ahhoz, hogy egyetlen ember a kezében
+        tartsa.</span
+      >
+      <br />
+      <br /> Bár egy kimagasló játékos sokat számít, ha bajnokságot akarsz nyerni,
+      egy összeszokott csapatra van szükséged. Mi ezt a hátországot biztosítjuk. Olyan
+      tapasztalt szakértői gárdát adunk a kezed alá, akik a szakma minden oldalát
+      ismerik, és tudásukat arra használják, hogy kézzelfogható segítséget nyújtsanak,
+      a hazai KKV-szektortól a nagyvállalati partnerekig. <br /><br />
+      <br />
+      <span class="p1"> Stratégiai élesség, kreatív lendület. </span><br /><br
+      /> Akár most kezded a történeted, akár már hosszú évek óta formálod a vállalkozásod,
+      mi nem egy külső beszállítóként, hanem a belső csapatod meghosszabbított kezeként
+      szállunk be a munkába.
     </p>
   </div>
 </div>
+<Achievements />
 
-<Contact needGradient />
+<Contact />
 
 <script>
   const isScreenSmall = window.innerHeight < 800;
@@ -104,14 +132,37 @@ import Team from "./Team.astro";
   );
 
   observer2.observe(svgs2);
+
+  const parallaxHand = document.getElementById("parallax-hand");
+
+  document.addEventListener("mousemove", (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    if (parallaxHand) {
+      parallaxHand.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+    }
+  });
 </script>
 
 <style>
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
   .container {
     height: 100%;
     width: 100vw;
     display: relative;
     overflow: hidden;
+    padding-top: 6rem;
+    scrollbar-gutter: stable;
   }
   .bg {
     background-image: url("/gradient__background.webp");
@@ -124,7 +175,14 @@ import Team from "./Team.astro";
     top: 0;
     left: 0;
   }
-  .aboutmain {
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  /*   .aboutmain {
     position: relative;
     z-index: 10;
     display: flex;
@@ -136,6 +194,90 @@ import Team from "./Team.astro";
     color: white;
     width: 500px;
     height: 100%;
+  } */
+
+  .leaders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 1;
+    gap: 80px;
+    margin-top: 100px;
+  }
+  .lead {
+    max-width: calc((100% - 80px) / 2);
+    width: 100%;
+    height: auto;
+  }
+  .people {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 70px;
+  }
+
+  .box {
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(50px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 380px;
+    overflow: hidden;
+  }
+  .box img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 100%;
+  }
+  .name {
+    margin-left: 4px;
+    font-family: "AktivGrotesk Light";
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    line-height: 35px;
+    color: white;
+    border-bottom: 1px solid #dbe120;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+  .role {
+    margin-top: 0;
+    margin-left: 4px;
+    padding-top: 5px;
+    font-family: "AktivGrotesk Light";
+    font-size: var(--text-md);
+    text-transform: uppercase;
+    line-height: 35px;
+    color: white;
+  }
+  .m {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
+
+  #parallax-hand {
+    height: 102vh;
+    top: -5vh;
+    left: 0;
+    width: 100vw;
+    transition: transform 0.1s ease-out;
+    aspect-ratio: 16 / 9 !important;
+    /*  object-fit: cover; */
+  }
+  #phone {
+    display: none;
   }
   h1 {
     font-family: "Kepler";
@@ -180,22 +322,29 @@ import Team from "./Team.astro";
   }
   .second {
     height: 100%;
-    width: 100vw;
+    max-width: 1200px;
+    width: 1200px;
+    margin: 0 auto;
     display: flex;
     position: relative;
     z-index: 40;
-    margin-top: 200px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: end;
     /*  margin-bottom: 100px; */
   }
   .third {
     height: 100%;
-    width: 100vw;
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     position: relative;
     flex-direction: row-reverse;
-    place-items: start;
+    place-items: center;
+    justify-content: center;
     z-index: 40;
-    margin-top: 100px;
+    margin-top: 200px;
     margin-bottom: 100px;
     gap: 100px;
   }
@@ -207,28 +356,22 @@ import Team from "./Team.astro";
     font-size: var(--text-lg);
     line-height: 35px;
     color: white;
-    margin-top: 300px;
-
-    width: 650px;
+    width: 50%;
   }
-  .korte {
-    position: absolute;
-    bottom: -60%;
-    left: -22%;
-    width: 75%;
-    opacity: 0.8;
+  .p1 {
+    text-transform: uppercase;
+    font-family: "AktivGrotesk Medium";
   }
   .puzzle {
     position: relative;
-    width: 30%;
+    width: 50%;
     height: 600px;
-    padding-right: 250px;
     padding-top: 150px;
   }
   .dome {
     position: relative;
     height: 600px;
-    padding-left: 300px;
+    padding-left: 0px;
     padding-top: 100px;
   }
   .domeimg {
@@ -240,66 +383,77 @@ import Team from "./Team.astro";
     top: 100px;
     height: 700px;
   }
-  @media (max-width: 1600px) {
-    .dome {
-      padding-left: 200px;
+
+  @media (max-width: 1300px) {
+    #parallax-hand {
+      height: 102vh;
+      top: -5vh;
+      left: 0;
+      width: 100vw;
+      transition: transform 0.1s ease-out;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover;
     }
-    .puzzle {
-      padding-right: 150px;
-      padding-top: 200px;
+    main {
+      width: 100%;
+      max-width: 1000px;
     }
-  }
-  @media (max-width: 1400px) {
-    .aboutmain {
-      margin-left: 15vw;
+    .second {
+      width: 100%;
+      max-width: 1000px;
     }
-    .dome {
-      position: relative;
-      height: 600px;
-      padding-left: 100px;
-      padding-top: 100px;
-    }
-    .puzzle {
-      padding-right: 100px;
-      padding-top: 250px;
-    }
-    .righttext {
-      font-size: var(--text-md);
-      line-height: 35px;
-      margin-top: 300px;
-      margin-left: 100px;
-      width: 450px;
-    }
-  }
-  @media (max-width: 1200px), (max-height: 800px) {
-    .aboutmain {
-      margin-left: 10vw;
+    .third {
+      width: 100%;
+      max-width: 1000px;
     }
     .righttext {
       margin-top: 300px;
       margin-left: 50px;
       width: 450px;
+      font-size: var(--text-md);
     }
-    .puzzle {
-      padding-right: 100px;
-      padding-top: 300px;
+    .dome {
+      padding-left: 50px;
+    }
+    .box {
+      height: 303px;
+    }
+    .name {
+      font-size: var(--text-md);
+    }
+
+    .role {
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (max-width: 1050px), (max-height: 800px) {
+    main {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .dome {
+      height: 600px;
+      padding-top: 280px;
     }
     .third {
       gap: 50px;
       margin-top: 0px;
       margin-bottom: 0px;
+      width: 100%;
+      max-width: 700px;
     }
     .second {
-      margin-top: 50px;
-    }
-  }
-  @media (max-width: 1000px) {
-    .dome {
-      height: 600px;
-      padding-top: 280px;
+      margin-top: 100px;
+      width: 100%;
+      max-width: 700px;
+      align-items: center;
     }
     .puzzle {
-      padding-top: 350px;
+      padding-right: 0px;
+      padding-top: 300px;
+      width: 30%;
     }
     .info {
       font-family: "AktivGrotesk Light";
@@ -313,13 +467,66 @@ import Team from "./Team.astro";
       font-size: var(--text-base);
       line-height: 30px;
       width: 300px;
+      margin-top: 0;
+      line-height: 25px;
+    }
+    .lasttext {
+      margin-left: 0;
+    }
+    .box {
+      height: 210px;
+    }
+    .name {
+      font-size: var(--text-sm);
+      padding-bottom: 0px;
+    }
+    .role {
+      font-size: 0.55rem;
+      padding-top: 0px;
+    }
+    .people {
+      gap: 20px;
+    }
+    .dome {
+      padding-top: 0;
     }
   }
   @media (max-width: 768px) {
-    .aboutmain {
-      width: 80vw;
-      margin-left: 0vw;
-      padding: 0px 40px;
+    #parallax-hand {
+      display: none;
+    }
+    .leaders {
+      flex-direction: column;
+      gap: 0px;
+      margin-top: 100px;
+    }
+    .lead {
+      max-width: 80%;
+      width: 80%;
+    }
+    .box {
+      height: 220px;
+      width: 100%;
+    }
+    .personcard {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .box img {
+      width: 220px;
+    }
+    .people {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 50px;
+      gap: 0px;
+    }
+    .name,
+    .role {
+      line-height: 1.6rem;
     }
     h1 {
       font-family: "Kepler";
@@ -352,11 +559,8 @@ import Team from "./Team.astro";
     }
     .dome {
       height: 600px;
-      padding-top: 200px;
+      padding-top: 0px;
       padding-left: 0vw;
-    }
-    .korte {
-      display: none;
     }
 
     .domeimg {
@@ -382,20 +586,42 @@ import Team from "./Team.astro";
       padding: 0px 40px;
       width: 75vw;
       height: 500px;
-      margin-top: 30vh;
-      margin-bottom: 150px;
+      margin-top: 400px;
+      margin-bottom: 300px;
       justify-content: center;
       place-items: center;
     }
     .lasttext {
       margin: 0px !important;
       width: 100% !important;
-      display: flex;
     }
     .puzzle {
       padding-top: 0px;
       width: 70%;
       padding-right: 0px;
+    }
+    #phone {
+      height: 102vh;
+      top: -3vh;
+      left: 0vw;
+      transition: transform 0.1s ease-out;
+      object-fit: cover;
+      opacity: 0.5;
+      display: block;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    #parallax-hand {
+      left: -20%;
+      width: 120vw;
+    }
+  }
+  @media (max-width: 1200px), (max-height: 800px) {
+    #parallax-hand {
+      left: -50%;
+      width: 180vw;
+      transform: translateX(-50%);
     }
   }
 </style>

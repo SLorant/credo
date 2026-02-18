@@ -1,0 +1,206 @@
+---
+import "@splidejs/splide/css/core";
+import { getCollection } from "astro:content";
+
+const loadedProjects = await getCollection("projects");
+
+const projects = loadedProjects
+  .filter(
+    (p) =>
+      p.data.quote &&
+      p.data.quote["quote-showcased"] &&
+      (p.data.quote["order"] ?? 0) > 0,
+  )
+  .sort((p, p2) => p.data.quote?.["order"]! - p2.data.quote?.["order"]!)
+  .slice(0, 10);
+---
+
+<div class="qcont">
+  <!--   <h2 class="qheader">rólunk mondták</h2> -->
+  <div class="q">
+    <section
+      class="splide splide-testimonials"
+      aria-label="Testimonials Gallery"
+    >
+      <div class="splide__track">
+        <ul class="splide__list">
+          {
+            projects.map((testimonial) => (
+              <li class="splide__slide">
+                <div class="quote-content">
+                  <p class="quote-text">
+                    „{testimonial.data.quote?.["quote-text-landing"]}”
+                  </p>
+                  <p class="quote-author">— {testimonial.data.quote?.author}</p>
+                  {testimonial.data.icon ? (
+                    <img src={testimonial.data.icon!.src} alt="" />
+                  ) : null}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  new Splide(".splide-testimonials", {
+    type: "loop",
+    perPage: 1,
+    autoplay: true,
+    interval: 5000,
+    pauseOnHover: true,
+  }).mount();
+</script>
+
+<style>
+  .qcont {
+    max-width: 1200px;
+    width: 1200px;
+    margin: 0 auto;
+    color: white;
+    margin-top: 150px;
+    margin-bottom: 100px;
+  }
+  .q {
+    border: 2px solid white;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding-bottom: 50px;
+    border-radius: 30px;
+    background: rgb(255 255 255 / 0.05);
+  }
+  h2 {
+    font-weight: 400;
+    font-family: "AktivGrotesk Regular";
+    font-size: var(--header-lg);
+    text-align: center;
+    line-height: var(--header-xl);
+    z-index: 30;
+  }
+  .qthree {
+    font-family: "Kepler";
+    font-size: var(--header-xl);
+    letter-spacing: -5px;
+  }
+
+  .splide-testimonials {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .quote-content {
+    text-align: center;
+    padding: 1rem 2rem;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .quote-text {
+    font-family: "Kepler";
+    font-size: var(--header-sm);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .quote-author {
+    font-family: "AktivGrotesk Light";
+    font-size: var(--text-lg);
+    opacity: 0.8;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  img {
+    max-width: 200px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  @media (max-width: 1300px), (max-height: 800px) {
+    h2 {
+      font-size: var(--header-md);
+      text-align: center;
+      line-height: 80px;
+    }
+    .qthree {
+      font-size: var(--header-lg);
+    }
+    .qcont {
+      max-width: 1000px;
+      width: 1000px;
+    }
+    .quote-text {
+      font-size: var(--header-sm2);
+    }
+
+    .quote-author {
+      font-size: var(--text-lg);
+    }
+  }
+  @media (max-width: 1050px) {
+    .qcont {
+      max-width: 700px;
+      width: 700px;
+    }
+    .quote-text {
+      font-size: var(--header-xs);
+    }
+    .quote-content {
+      padding: 1rem 4rem;
+    }
+
+    .quote-author {
+      font-size: var(--text-base);
+    }
+    img {
+      scale: 0.8;
+    }
+  }
+  @media (max-width: 768px) {
+    h2 {
+      font-size: var(--header-sm2);
+      text-align: center;
+      line-height: var(--header-sm);
+    }
+    .qthree {
+      font-size: calc(var(--header-sm) - 0rem);
+      letter-spacing: -2px;
+    }
+    .quote-content {
+      padding: 0.5rem 2rem;
+    }
+    .qcont {
+      max-width: 80%;
+      width: 80%;
+      margin-top: 0;
+    }
+    .q {
+      padding-top: 10px;
+    }
+    .quote-text {
+      font-size: var(--text-lg);
+      letter-spacing: 1px;
+    }
+
+    .quote-author {
+      font-size: var(--text-sm);
+    }
+
+    img {
+      scale: 0.7;
+      margin-bottom: 10px;
+    }
+  }
+</style>

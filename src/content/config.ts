@@ -8,6 +8,8 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       showcased: z.boolean().default(false),
+      order: z.number().optional(),
+      icon: image().optional(),
       "card-subheadline": z.string().optional(),
       category: z.array(z.string()),
       keywords: z.array(z.string()).optional(),
@@ -22,9 +24,22 @@ const projects = defineCollection({
         .object({
           author: z.string().optional(),
           "quote-text": z.string().optional(),
+          "quote-text-landing": z.string().optional(),
+          "quote-showcased": z.boolean().default(false),
+          order: z.number().optional(),
         })
         .optional(),
     }),
 });
 
-export const collections = { projects };
+const team = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      picture: image(),
+      role: z.string(),
+    }),
+});
+
+export const collections = { projects, team };

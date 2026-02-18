@@ -4,51 +4,53 @@ import Krea from "./svg/krea.astro";
 import Stonks from "./svg/stonks.astro";
 ---
 
-<div data-section="pillars" class="container">
-  <div class="background3"></div>
-  <h2 class="header">
-    együttműködésünk <br />
-    <span class="three">három</span> pillérre épül:
-  </h2>
-  <div class="grid">
-    <div class="griditem">
-      <img
-        class="korte"
-        src="/illustrations/kreakorte.svg"
-        alt="second pillar"
-      />
-      <Krea />
-      <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
+<section>
+  <img class="background3" src="/g1.webp" />
+  <div data-section="pillars" class="container">
+    <h2 class="header">
+      együttműködésünk <br />
+      <span class="three">három</span> pillérre épül:
+    </h2>
+    <div class="grid">
+      <div class="griditem">
+        <img
+          class="korte"
+          src="/illustrations/kreakorte.svg"
+          alt="second pillar"
+        />
+        <Krea />
+        <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
+      </div>
+      <div class="griditem">
+        <img
+          class="korte"
+          src="/illustrations/precizkorte.svg"
+          alt="second pillar"
+        />
+        <Preciz />
+        <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
+      </div>
+      <div class="griditem">
+        <img
+          class="korte"
+          src="/illustrations/stonkskorte.svg"
+          alt="second pillar"
+        />
+        <Stonks />
+        <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
+      </div>
     </div>
-    <div class="griditem">
-      <img
-        class="korte"
-        src="/illustrations/precizkorte.svg"
-        alt="second pillar"
-      />
-      <Preciz />
-      <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
-    </div>
-    <div class="griditem">
-      <img
-        class="korte"
-        src="/illustrations/stonkskorte.svg"
-        alt="second pillar"
-      />
-      <Stonks />
-      <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
+    <div class="box">
+      <p class="uppercase">
+        A vízión túl a teljes márkatervezéstől, <br /> a napi megvalósításon át egészen
+        az időszerű megújulásig, <br />
+        <span class="bold"
+          >a fejlődés minden fázisában segítjük ügyfeleinket.</span
+        >
+      </p>
     </div>
   </div>
-  <div class="box">
-    <p class="uppercase">
-      A vízión túl a teljes márkatervezéstől, <br /> a napi megvalósításon át egészen
-      az időszerű megújulásig, <br />
-      <span class="bold"
-        >a fejlődés minden fázisában segítjük ügyfeleinket.</span
-      >
-    </p>
-  </div>
-</div>
+</section>
 
 <script>
   import { animate, onScroll } from "animejs";
@@ -113,7 +115,7 @@ import Stonks from "./svg/stonks.astro";
 
   svgs.forEach((svg, index) => {
     // Add staggered delay: 0ms, 200ms, 400ms
-    const delay = index * 800;
+    const delay = index * 600;
 
     const delayedObserver = new IntersectionObserver(
       (entries) => {
@@ -157,8 +159,16 @@ import Stonks from "./svg/stonks.astro";
 </script>
 
 <style>
-  .container {
+  section {
+    height: 100%;
+    position: relative;
+    z-index: 20;
     width: 100vw;
+    scrollbar-gutter: stable;
+  }
+  .container {
+    width: 1200px;
+    max-width: 1200px;
     height: 100%;
     position: relative;
     z-index: 30;
@@ -166,6 +176,7 @@ import Stonks from "./svg/stonks.astro";
     flex-direction: column;
     place-items: center;
     justify-content: start;
+    margin: 0 auto;
     /*  background-image: url("gradient.webp");
     background-size: cover; */
     color: white;
@@ -175,17 +186,18 @@ import Stonks from "./svg/stonks.astro";
   .background3 {
     position: absolute;
     width: 100vw;
-    height: 125rem;
-    top: -9.375rem;
+    height: 169%;
+    top: 0;
     left: 0;
-    background-image: url("/gradient.webp");
-    background-size: cover;
     z-index: 20;
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 18.75rem);
-    gap: 6.25rem;
+    /*  grid-template-columns: repeat(3, 18.75rem);
+    gap: 6.25rem; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8rem;
+    width: 100%;
     margin-bottom: 20px;
     z-index: 30;
   }
@@ -228,20 +240,17 @@ import Stonks from "./svg/stonks.astro";
     letter-spacing: -5px;
   }
   .box {
-    width: 50%;
+    width: 75%;
     padding: 10px 0px;
     border-radius: 30px;
-    margin-top: 20px;
+    margin-top: 40px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgb(255 255 255 / 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     color: white;
     z-index: 30;
-    border: 2px solid white;
-    box-shadow:
-      0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1); /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
-    /*  filter: drop-shadow(#333333 1rem 1rem 10px); */
+    /*  border: 2px solid white; */
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
   }
   .uppercase {
     font-size: var(--text-lg);
@@ -265,13 +274,15 @@ import Stonks from "./svg/stonks.astro";
   .bold.animate-underline {
     background-size: 100% 2px;
   }
-  @media (max-width: 1400px) {
-    .box {
-      width: 70%;
+  /* MEDIA */
+
+  @media (max-width: 1300px) {
+    .container {
+      max-width: 1000px;
     }
   }
 
-  @media (max-width: 1400px), (max-height: 800px) {
+  @media (max-width: 1300px), (max-height: 800px) {
     .box {
       width: 70%;
     }
@@ -279,46 +290,49 @@ import Stonks from "./svg/stonks.astro";
       font-size: var(--text-md);
       line-height: 27px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 200px);
-      gap: 100px;
-      margin-bottom: 20px;
-    }
+
     .korte {
       width: 100%;
     }
     h2 {
-      font-size: 40pt;
+      font-size: var(--header-md);
       text-align: center;
       line-height: 80px;
     }
     .three {
-      font-size: 60pt;
+      font-size: var(--header-lg);
     }
   }
-  @media (max-width: 1000px), (max-height: 600px) {
+
+  @media (max-width: 1050px) {
+    .container {
+      max-width: 700px;
+    }
+    .grid {
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 1050px), (max-height: 600px) {
     .box {
-      width: 70%;
-      max-width: 50rem;
+      width: 95%;
     }
     .uppercase {
       font-size: var(--text-base);
       line-height: 24px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 150px);
-      gap: 60px;
-      margin-bottom: 20px;
-    }
+
     .korte {
       width: 100%;
     }
   }
+
   @media (max-width: 768px) {
     .box {
       width: 70%;
+    }
+    .background3 {
+      height: 190%;
     }
     .uppercase {
       font-size: var(--text-base);
@@ -329,10 +343,17 @@ import Stonks from "./svg/stonks.astro";
       width: 105vw;
     }
     .grid {
-      display: grid;
-      grid-template-columns: repeat(1, 250px);
+      display: flex;
+      /*  grid-template-columns: repeat(1, 250px); */
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
       gap: 20px;
       margin-bottom: 20px;
+      align-items: center;
+    }
+    .griditem {
+      max-width: 250px;
     }
     .korte {
       width: 100%;
@@ -350,11 +371,16 @@ import Stonks from "./svg/stonks.astro";
     .container {
       height: 1300px;
       padding-top: 400px;
-      /*   margin-left: -10px;
-      width: 120vw; */
+      max-width: 100%;
+      width: 100%;
+      /*   display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; */
+      /*   padding-left: 20%; */
     }
     .box {
-      width: 70%;
+      width: 80%;
       padding: 10px 20px;
       border: none;
       /*  margin-top: ; */
@@ -367,4 +393,15 @@ import Stonks from "./svg/stonks.astro";
       font-size: var(--text-base);
     }
   }
+  /* 
+  @media (min-height: 900px) {
+    .background3 {
+      position: absolute;
+      width: 100vw;
+      height: 180%;
+      top: 0;
+      left: 0;
+      z-index: 20;
+    }
+  } */
 </style>
