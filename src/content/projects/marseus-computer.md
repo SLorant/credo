@@ -1,6 +1,6 @@
 ---
 title: Marseus Computer
-website-link: https://www.marseus.hu/
+website-link: https://www.facebook.com/MarseusComputerKft
 showcased: true
 icon: ../images/marseus_computer_logo.png
 order: 1
