@@ -37,20 +37,19 @@ project-text-2: >-
   A megoldás egy többkörös, komplex arculattervezési folyamat eredménye. A
   koncepciókat a tudatos piaci differenciálás formálta: a versenytársak elemzése
   során azonosítottuk azokat a stratégiai pontokat, amelyekkel az Omega
-  vizuálisan markánsan kiugrik a mezőnyből.
+  vizuálisan markánsan kiugrik a mezőnyből.A logótól a névjegykártyán át a
+  szolgáltatásbemutató prospektusig minden elem a strukturáltságot és a
+  technológiai hátteret hangsúlyozza. 
 
 
-  A logótól a névjegykártyán át a szolgáltatásbemutató prospektusig minden elem
-  a strukturáltságot és a technológiai hátteret hangsúlyozza. Nem egyszerű
-  takarítócégként, hanem komplex létesítménygazdálkodási partnerként definiáltuk
-  újra a márkát, amely így azonnal bizalmat ébreszt a döntéshozókban.
-
-
-  Az új arculat sikeresen megerősítette a cég szakmai hátterét a piacon. Az
-  Omega Facility Management olyan kiemelt partnerek bizalmát nyerte el, mint a
-  Budapest Liszt Ferenc Nemzetközi Repülőtér, a Biotech USA vagy a BorgWarner. A
-  professzionális megjelenés lehetővé tette, hogy versenybe szálljanak – és
-  nyerjenek – a legszigorúbb minőségi elvárásokat támasztó ipari tendereken is.
+  Nem egyszerű takarítócégként, hanem komplex létesítménygazdálkodási
+  partnerként definiáltuk újra a márkát, amely így azonnal bizalmat ébreszt a
+  döntéshozókban. Az új arculat sikeresen megerősítette a cég szakmai hátterét a
+  piacon. Az Omega Facility Management olyan kiemelt partnerek bizalmát nyerte
+  el, mint a Budapest Liszt Ferenc Nemzetközi Repülőtér, a Biotech USA vagy a
+  BorgWarner. A professzionális megjelenés lehetővé tette, hogy versenybe
+  szálljanak – és nyerjenek – a legszigorúbb minőségi elvárásokat támasztó ipari
+  tendereken is.
 quote:
   quote-showcased: false
 ---
