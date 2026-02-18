@@ -9,12 +9,15 @@ content:
     filename: '{primary}.md'
     path: 'src/content/projects'
     view:
-      fields: [ title, showcased, icon, order, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
+      fields: [ title, website-link, showcased, icon, order, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
     fields:
       - name: title
         label: Title
         type: string
         required: true
+      - name: website-link
+        label: Company website link
+        type: string
       - name: showcased
         label: Showcased on landing page
         type: boolean
