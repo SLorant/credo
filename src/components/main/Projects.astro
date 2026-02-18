@@ -30,18 +30,14 @@ const projects = loadedProjects
 
             <img
               class="mobileImg"
-              src={
-                i % 2 === 0 ? proj.data.gallery?.[0].src : proj.data.cover.src
-              }
-              alt="img1"
+              src={proj.data.cover.src}
+              alt="mobile image"
             />
 
             <img
               class="content__img"
-              src={
-                i % 2 === 0 ? proj.data.gallery?.[0].src : proj.data.cover.src
-              }
-              alt="img1"
+              src={proj.data.cover.src}
+              alt="Content image"
             />
           </a>
         ))
