@@ -1,0 +1,307 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+
+import PageLanding from "../components/general/PageLanding.astro";
+import Contact from "../components/general/Contact.astro";
+import Header from "../components/header/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Header />
+  <div class="container">
+    <div class="bg"></div>
+    <main>
+      <img class="m" src="/u1.png" />
+      <img class="m" id="parallax-hand" src="/uzletagak.webp" />
+      <img class="m" id="phone" src="/munkaink_phone.webp" />
+      <div class="head">
+        <PageLanding
+          alternate
+          subText="Üzletágaink alapja,"
+          header1="az integrált "
+          header2="megközelítés"
+          text={`A siló gondolkodás a hatékonyság csendes gyilkosa. A modern marketingben a részterületek már nem léteznek önmagukban. A legjobb kreatív is elvérzik egy lassú weboldalon, és a legprecízebb hirdetési stratégia is pénzégetés, ha a vizuális tartalom hiteltelen. Mi összefüggéseiben látjuk márkádat. Az integrált működés nálunk azt jelenti, hogy minden tevékenységünk egyetlen, koherens nyelvet beszél. Így a folyamatok nem akadályozzák, erősítik egymást.`}
+        />
+      </div>
+
+      <div class="box accordion">
+        <div class="accordion-header">
+          <h3>Job Title</h3>
+          <svg
+            class="accordion-arrow"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="grid">
+            <div class="left">Pozicio Megnevezese</div>
+            <div class="right">TervezoGrafikus</div>
+            <div class="left">Pozicio Megnevezese</div>
+            <div class="right">TervezoGrafikus</div>
+          </div>
+          <p class="uppercase">
+            A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
+            kiírt pozíciók csak a pillanatnyi állapotot tükrözik, de a
+            kiemelkedő szakmai háttérre, az ambíciózus törekvésekre mindig
+            nyitottak vagyunk. Küldd el önéletrajzodat, portfóliódat, és ha az
+            értékrendünk találkozik, megtaláljuk a közös munka kereteit.
+            <span class="bold">hello@credodigital.hu</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Lépj elő!</h3>
+        <p class="uppercase">
+          A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
+          kiírt pozíciók csak a pillanatnyi állapotot tükrözik, de a kiemelkedő
+          szakmai háttérre, az ambíciózus törekvésekre mindig nyitottak vagyunk.
+          Küldd el önéletrajzodat, portfóliódat, és ha az értékrendünk
+          találkozik, megtaláljuk a közös munka kereteit.
+          <span class="bold">hello@credodigital.hu</span>
+        </p>
+      </div>
+
+      <Contact needGradient />
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const parallaxHand = document.getElementById("parallax-hand");
+
+  document.addEventListener("mousemove", (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    if (parallaxHand) {
+      parallaxHand.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+    }
+  });
+
+  // Accordion functionality
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const accordion = header.closest(".accordion");
+      const content = accordion?.querySelector(
+        ".accordion-content",
+      ) as HTMLElement | null;
+      const arrow = header.querySelector(".accordion-arrow");
+
+      if (accordion && content && arrow) {
+        const isActive = accordion.classList.contains("active");
+
+        if (isActive) {
+          // Closing: set to current height first, then to 0
+          content.style.maxHeight = content.scrollHeight + "px";
+          requestAnimationFrame(() => {
+            content.style.maxHeight = "0";
+          });
+          accordion.classList.remove("active");
+        } else {
+          // Opening: measure and set to actual height
+          accordion.classList.add("active");
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .container {
+    width: 100%;
+    padding: 6rem 0 0 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+    position: relative;
+    z-index: 30;
+    background: rgb(0, 0, 0);
+    scrollbar-gutter: stable;
+  }
+  .bg {
+    background-image: url("/gradient__background.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .box {
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px 60px;
+    border-radius: 30px;
+    margin-top: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    z-index: 30;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
+  }
+  .uppercase {
+    font-size: var(--text-md);
+    font-family: "AktivGrotesk Light";
+    line-height: var(--30px);
+    text-transform: uppercase !important;
+  }
+  h3 {
+    font-weight: 400;
+    font-size: var(--header-sm);
+    font-family: "AktivGrotesk Light";
+    line-height: var(--30px);
+    text-transform: lowercase !important;
+    margin-top: 30px;
+  }
+  .bold {
+    font-family: "AktivGrotesk Bold";
+    color: white;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .accordion-header h3 {
+    margin: 30px 0;
+  }
+
+  .accordion-arrow {
+    color: white;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .accordion.active .accordion-arrow {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      margin-top 0.3s ease;
+    opacity: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+  .left {
+    border-bottom: 1px solid #dbe120;
+    border-right: 1px solid #dbe120;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-size: var(--text-md);
+  }
+  .right {
+    border-bottom: 1px solid #dbe120;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-right: 10px;
+    font-size: var(--text-md);
+  }
+
+  .accordion.active .accordion-content {
+    opacity: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .accordion .uppercase {
+    margin: 0;
+  }
+
+  #phone {
+    display: none;
+  }
+  .head {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .m {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
+  #parallax-hand {
+    height: 102vh;
+    top: -5vh;
+    /*    max-width: 1920px; */
+    left: 0%;
+    /*  transform: translateX(-50%); */
+    transition: transform 0.1s ease-out;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1400px) {
+    #parallax-hand {
+      left: 0%;
+      width: 120vw;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 1200px), (max-height: 800px) {
+    #parallax-hand {
+      left: -40%;
+      width: 180vw;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #parallax-hand {
+      display: none;
+    }
+    #phone {
+      height: 102vh;
+      top: -3vh;
+      left: 0;
+      transition: transform 0.1s ease-out;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover;
+      opacity: 0.8;
+      display: block;
+    }
+  }
+</style>

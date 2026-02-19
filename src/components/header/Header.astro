@@ -9,12 +9,13 @@ const { noContact } = Astro.props;
     <li><a href="/rolunk/">RÓLUNK</a></li>
     <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
     <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
-    <!--     <li><a href="/karrier" target="_self">KARRIER</a></li> -->
+    <!--  <li><a href="/karrier" target="_self">KARRIER</a></li> -->
     <li>
       <a
         class="contact"
         href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"}
-        target="_self">KAPCSOLAT</a>
+        target="_self">KAPCSOLAT</a
+      >
     </li>
   </ul>
   <button id="hamburger" class="hamburger" aria-label="Toggle menu">
@@ -38,7 +39,8 @@ const { noContact } = Astro.props;
     <!--    <li><a href="/karrier" target="_self">KARRIER</a></li> -->
     <li class="contact">
       <a href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"} target="_self"
-        >KAPCSOLAT</a>
+        >KAPCSOLAT</a
+      >
     </li>
   </ul>
   <div class="icons">
