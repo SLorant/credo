@@ -150,7 +150,10 @@ content:
       - name: sections
         label: Job sections
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true # Default collapsed state
+            summary: "{title} ({index})" # Template string using field values and {index}
         fields:
           - name: left
             label: Left side short title
