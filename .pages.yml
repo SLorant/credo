@@ -141,7 +141,7 @@ content:
     filename: '{primary}.md'
     path: 'src/content/career'
     view:
-      fields: [ name, sections ]
+      fields: [ name, sections, footer ]
     fields:
       - name: name
         label: Job Title
