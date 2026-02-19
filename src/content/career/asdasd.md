@@ -29,4 +29,39 @@ sections:
       *   Arculat, arculati elemek tervezése
           
       *   Részvétel a kreatív koncepciók kidolgozásában és ötletelésben
+  - left: FELELŐSSÉGEK
+    right: >-
+      *   A rábízott projektek vizuális minőségének és brand-hűségének
+      biztosítása
+          
+      *   Határidők betartása és proaktív kommunikáció a közvetlen vezetőkkel
+          
+      *   Nyomdai leadások hibátlan előkészítése
+          
+      *   A vizuális trendek folyamatos követése és beépítése a munkákba
+  - left: ELŐNY HA,
+    right: |-
+      *   Ismered a Figma alapjait (UI/UX látásmód)
+          
+      *   Rövid videós tartalmak (Reels, TikTok) vágása és szerkesztése
+          
+      *   Van tapasztalatod After Effects / Motion design területen
+          
+      *   Kísérletezel AI alapú képalkotó eszközökkel (Midjourney, Firefly)
+          
+      *   Jól kommunikálsz angolul szakmai anyagok értelmezéséhez
+  - left: AMIT KÍNÁLUNK
+    right: >-
+      *   Fejlődési, előrelépési lehetőség
+          
+      *   A tudásoddal és tapasztalatoddal arányos bérezés
+          
+      *   Nem "futószalag-gyár": valódi tér a kreativitás kibontakoztatására
+          
+      *   Hybrid munkavégzés: belvárosi, inspiráló iroda + heti 2 nap Home
+      Office
+          
+      *   Igény esetén céges laptop
+          
+      *   Támogató, fiatalos szakmai közeg
 ---
