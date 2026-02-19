@@ -141,7 +141,7 @@ content:
     filename: '{primary}.md'
     path: 'src/content/career'
     view:
-      fields: [ name, sections ]
+      fields: [ name, sections, footer ]
     fields:
       - name: name
         label: Job Title
@@ -150,12 +150,19 @@ content:
       - name: sections
         label: Job sections
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true # Default collapsed state
+            summary: "{fields.left} ({index})" # Template string using field values and {index}
         fields:
           - name: left
             label: Left side short title
             type: string
           - name: right
             label: Right side block, can be anything
-            description: Write / into the box to select options like bullet list, heading, etc.
+            description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
             type: rich-text
+      - name: footer
+        label: Yellow footer box at the end of the job post
+        description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
+        type: rich-text
