@@ -156,14 +156,11 @@ content:
           # Each item defines a possible block structure the user can select.
           # These typically use 'component' or define 'fields' directly.
           - name: left
-            label: Left side short text
+            label: A new block
             fields:
-              - name: text
-                label: Text Content
+              - name: left
+                label: Left side short text
                 type: string
-          - name: right
-            label: Right side block, can be anything
-            fields:
-              - name: content
-                label: Content
+              - name: right
+                label: Right side block, can be anything
                 type: rich-text
