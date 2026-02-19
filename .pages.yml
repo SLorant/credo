@@ -135,3 +135,15 @@ content:
         label: Order of the person, starting from left to right.
         type: number
         required: true
+  - name: career
+    label: Career
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/career'
+    view:
+      fields: [ name ]
+    fields:
+      - name: name
+        label: Job Title
+        type: string
+        required: true
