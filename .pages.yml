@@ -160,5 +160,5 @@ content:
             type: string
           - name: right
             label: Right side block, can be anything
-            description: Write / into the box to select options like bullet list, heading, etc.
+            description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything.
             type: rich-text
