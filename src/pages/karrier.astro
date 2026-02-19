@@ -5,6 +5,25 @@ import PageLanding from "../components/general/PageLanding.astro";
 import Contact from "../components/general/Contact.astro";
 import Header from "../components/header/Header.astro";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+
+const careers = await getCollection("career");
+
+// Helper to render markdown strings to HTML
+const renderMarkdown = (markdown: string) => {
+  return marked.parse(markdown, { async: false });
+};
+
+// Pre-process all careers data to render markdown
+const processedCareers = careers.map((job) => ({
+  ...job,
+  processedSections: job.data.sections.map((s) => ({
+    left: s.left,
+    rightHtml: renderMarkdown(s.right),
+  })),
+  processedFooter: renderMarkdown(job.data.footer),
+}));
 ---
 
 <Layout>
@@ -12,57 +31,57 @@ import Layout from "../layouts/Layout.astro";
   <div class="container">
     <div class="bg"></div>
     <main>
-      <img class="m" src="/u1.png" />
-      <img class="m" id="parallax-hand" src="/uzletagak.webp" />
-      <img class="m" id="phone" src="/munkaink_phone.webp" />
+      <img class="m" src="/u1.png" alt="Gradient" />
+      <img class="m" id="parallax-hand" src="/kapcsolat.webp" alt="Ship" />
+      <img class="m" id="phone" src="/kapcsolatphone.webp" alt="Ship" />
       <div class="head">
         <PageLanding
-          alternate
-          subText="Üzletágaink alapja,"
-          header1="az integrált "
-          header2="megközelítés"
-          text={`A siló gondolkodás a hatékonyság csendes gyilkosa. A modern marketingben a részterületek már nem léteznek önmagukban. A legjobb kreatív is elvérzik egy lassú weboldalon, és a legprecízebb hirdetési stratégia is pénzégetés, ha a vizuális tartalom hiteltelen. Mi összefüggéseiben látjuk márkádat. Az integrált működés nálunk azt jelenti, hogy minden tevékenységünk egyetlen, koherens nyelvet beszél. Így a folyamatok nem akadályozzák, erősítik egymást.`}
+          header1="csatlakoznál"
+          header2="hozzánk?"
+          text={`A Credo fedélzetén a hierarchiát a tudásvágy és a teljesítmény írja felül. Hiszünk abban, hogy egy sikeres expedícióhoz kell a <strong>pályakezdők lendülete</strong> és a tapasztaltabb kollégák <strong>stratégiai rutinja</strong> is. Ha junior vagy, nálunk nem a partvonalról nézed a vizet, hanem éles projektekben tanulod meg, hogyan lesz egy márkából piacvezető. Ha tájékozott szakértő vagy, nálunk teret és stabilitást kapsz ahhoz, hogy a tudásodat valódi üzleti eredményekre váltsd. Közös a célunk: értéket szállítani a háborgó tengeren.`}
         />
       </div>
 
-      <div class="box accordion">
-        <div class="accordion-header">
-          <h3>Job Title</h3>
-          <svg
-            class="accordion-arrow"
-            width="44"
-            height="44"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 9L12 15L18 9"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="accordion-content">
-          <div class="grid">
-            <div class="left">Pozicio Megnevezese</div>
-            <div class="right">TervezoGrafikus</div>
-            <div class="left">Pozicio Megnevezese</div>
-            <div class="right">TervezoGrafikus</div>
+      {
+        processedCareers.map((job) => (
+          <div class="box accordion">
+            <div class="accordion-header">
+              <h3>{job.data.name}</h3>
+              <svg
+                class="accordion-arrow"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="accordion-content">
+              <div class="grid">
+                {job.processedSections.map((s) => (
+                  <>
+                    <div class="left">{s.left}</div>
+                    <div class="right" set:html={s.rightHtml} />
+                  </>
+                ))}
+              </div>
+              <div class="footer">
+                <p set:html={job.processedFooter} />
+              </div>
+            </div>
           </div>
-          <p class="uppercase">
-            A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
-            kiírt pozíciók csak a pillanatnyi állapotot tükrözik, de a
-            kiemelkedő szakmai háttérre, az ambíciózus törekvésekre mindig
-            nyitottak vagyunk. Küldd el önéletrajzodat, portfóliódat, és ha az
-            értékrendünk találkozik, megtaláljuk a közös munka kereteit.
-            <span class="bold">hello@credodigital.hu</span>
-          </p>
-        </div>
-      </div>
+        ))
+      }
 
-      <div class="box">
+      <div class="box f">
         <h3>Lépj elő!</h3>
         <p class="uppercase">
           A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
@@ -74,7 +93,9 @@ import Layout from "../layouts/Layout.astro";
         </p>
       </div>
 
-      <Contact needGradient />
+      <div class="contactwrap">
+        <Contact needGradient />
+      </div>
     </main>
   </div>
 </Layout>
@@ -148,6 +169,9 @@ import Layout from "../layouts/Layout.astro";
     width: 100%;
     margin: 0 auto;
   }
+  /*  .box:first-child {
+    margin-top: 80px !important;
+  } */
   .box {
     max-width: 1200px;
     box-sizing: border-box;
@@ -166,8 +190,18 @@ import Layout from "../layouts/Layout.astro";
     font-size: var(--text-md);
     font-family: "AktivGrotesk Light";
     line-height: var(--30px);
-    text-transform: uppercase !important;
   }
+
+  .footer {
+    font-size: var(--text-md);
+    line-height: var(--30px);
+    background: #dbe120;
+    color: #1c1b22;
+    padding: 20px 80px;
+    border-radius: 33px;
+    text-align: center;
+  }
+
   h3 {
     font-weight: 400;
     font-size: var(--header-sm);
@@ -217,24 +251,53 @@ import Layout from "../layouts/Layout.astro";
   .grid {
     display: grid;
     grid-template-columns: 300px 1fr;
+    margin-bottom: 50px;
   }
+
   .left {
     border-bottom: 1px solid #dbe120;
     border-right: 1px solid #dbe120;
     padding-right: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-left: 5px;
     text-transform: uppercase;
     font-size: var(--text-md);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   }
   .right {
     border-bottom: 1px solid #dbe120;
     padding-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-right: 10px;
     font-size: var(--text-md);
+  }
+  .right:nth-child(2) {
+    padding-top: 0px !important;
+  }
+  .left:nth-last-child(2) {
+    border-bottom: none;
+  }
+  .right:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .right :global(ul) {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+  }
+  .right :global(li) {
+    margin-bottom: 0px;
+  }
+  .right :global(a) {
+    color: #dbe120;
+    text-decoration: underline;
   }
 
   .accordion.active .accordion-content {
@@ -253,6 +316,7 @@ import Layout from "../layouts/Layout.astro";
   .head {
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 100px;
   }
   .m {
     width: 100vw;
@@ -281,11 +345,58 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
+  @media (max-width: 1300px) {
+    .box {
+      max-width: 1000px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      margin-bottom: 50px;
+    }
+  }
+
   @media (max-width: 1200px), (max-height: 800px) {
     #parallax-hand {
       left: -40%;
       width: 180vw;
       transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .box {
+      max-width: 700px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      margin-bottom: 50px;
+    }
+    .uppercase {
+      font-size: var(--text-base);
+      line-height: 1.6rem;
+    }
+
+    .footer {
+      font-size: var(--text-base);
+      line-height: 1.5rem;
+      padding: 15px 40px;
+    }
+
+    .right {
+      border-bottom: 1px solid #dbe120;
+      padding-left: 30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-right: 10px;
+      font-size: var(--text-base);
+    }
+    .left {
+      font-size: var(--text-base);
+    }
+    h3 {
+      font-size: var(--header-sm2);
     }
   }
 
@@ -302,6 +413,77 @@ import Layout from "../layouts/Layout.astro";
       object-fit: cover;
       opacity: 0.8;
       display: block;
+    }
+    h3 {
+      /*       font-size: var(--header-xs); */
+      font-size: 1.4rem;
+      margin: 10px 0px !important;
+      hyphens: auto;
+    }
+    .accordion-arrow {
+      color: white;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 20px;
+      scale: 0.7;
+    }
+    .box {
+      width: 80%;
+      padding: 20px 30px;
+    }
+
+    .left {
+      border: 1px solid #dbe120;
+      padding-right: 0;
+      border-radius: 40px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 0;
+    }
+    .right {
+      border-bottom: none;
+      padding-left: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-right: 0px;
+      font-size: var(--text-sm);
+    }
+    .right:nth-child(2) {
+      padding-top: 10px !important;
+    }
+    .left:nth-last-child(2) {
+      border: 1px solid #dbe120;
+    }
+    .right:last-child {
+      border-bottom: none;
+      padding-bottom: 0px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 30px;
+    }
+    .footer {
+      font-size: var(--text-sm);
+      line-height: 1.3rem;
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+    .uppercase {
+      font-size: var(--text-sm);
+      line-height: 1.3rem;
+    }
+    .f {
+      margin-bottom: 50px !important;
+    }
+    .contactwrap {
+      position: relative;
+      z-index: 50;
+    }
+
+    .container {
+      padding: 7rem 0 0 0;
     }
   }
 </style>

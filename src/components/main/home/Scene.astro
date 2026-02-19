@@ -69,7 +69,6 @@
   }); // turn on antialias
   // Lower pixel ratio on mobile for better performance
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //set pixel ratio
-  console.log(HEIGHT, window.innerWidth);
   renderer.setSize(window.innerWidth, HEIGHT); // make it full screen
   renderer.outputColorSpace = THREE.SRGBColorSpace; // set color encoding
   container.appendChild(renderer.domElement); // add the renderer to html div

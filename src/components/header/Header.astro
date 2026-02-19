@@ -36,7 +36,7 @@ const { noContact } = Astro.props;
     <li><a href="/rolunk/">RÓLUNK</a></li>
     <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
     <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
-    <!--    <li><a href="/karrier" target="_self">KARRIER</a></li> -->
+    <!-- <li><a href="/karrier" target="_self">KARRIER</a></li> -->
     <li class="contact">
       <a href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"} target="_self"
         >KAPCSOLAT</a
@@ -206,6 +206,7 @@ const { noContact } = Astro.props;
     gap: 2.5rem;
     margin: 0;
     padding: 0;
+    padding-bottom: 40px;
   }
 
   .mobile-nav li {
@@ -240,6 +241,12 @@ const { noContact } = Astro.props;
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.4s;
+  }
+
+  .mobile-menu.active .mobile-nav li:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
   }
 
   .mobile-nav a {
@@ -286,7 +293,7 @@ const { noContact } = Astro.props;
     }
     .icons {
       position: absolute;
-      bottom: 3rem;
+      bottom: 4rem;
       display: flex;
       justify-content: center;
       place-items: center;

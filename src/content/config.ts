@@ -44,4 +44,14 @@ const team = defineCollection({
     }),
 });
 
-export const collections = { projects, team };
+const career = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/career" }),
+  schema: () =>
+    z.object({
+      name: z.string(),
+      footer: z.string(),
+      sections: z.array(z.object({ left: z.string(), right: z.string() })),
+    }),
+});
+
+export const collections = { projects, team, career };

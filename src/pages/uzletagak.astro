@@ -13,8 +13,9 @@ import Layout from "../layouts/Layout.astro";
   <div class="container">
     <!--  <div class="bgfooter"></div> -->
     <main>
-      <img class="m" src="/u1.png" />
-      <img class="m" id="parallax-hand" src="/uzletagak.webp" />
+      <img class="m" src="/u1.png" alt="Gradient" />
+      <img class="m" id="parallax-hand" src="/uzletagak.webp" alt="Gear" />
+      <img class="m" id="phone" src="/uzletagak_phone.webp" alt="Gear" />
       <div class="head">
         <PageLanding
           alternate
@@ -58,6 +59,9 @@ import Layout from "../layouts/Layout.astro";
     z-index: 30;
     background: rgb(0, 0, 0);
     scrollbar-gutter: stable;
+  }
+  #phone {
+    display: none;
   }
   .bgfooter {
     position: absolute;
@@ -112,12 +116,25 @@ import Layout from "../layouts/Layout.astro";
   }
 
   @media (max-width: 768px) {
-    #parallax-hand {
+    /*  #parallax-hand {
       left: 45%;
       top: -2%;
       width: 150vw;
       transform: translateX(-50%);
       opacity: 0.6;
+    } */
+    #parallax-hand {
+      display: none;
+    }
+    #phone {
+      height: 100vh;
+      top: -5vh;
+      left: 0;
+      transition: transform 0.1s ease-out;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover;
+      opacity: 0.8;
+      display: block;
     }
   }
 </style>

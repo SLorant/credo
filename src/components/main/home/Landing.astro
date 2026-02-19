@@ -1,5 +1,5 @@
 <div class="container" id="start">
-  <img src="/landing.gif" alt="We are credo" class="gif" />
+  <div id="lottie-animation" class="animation"></div>
 </div>
 
 <div class="footer">
@@ -34,14 +34,15 @@
     position: relative;
     z-index: 30;
   }
-  .gif {
-    width: 70%;
+  .animation {
+    max-width: 1200px;
+    width: 1200px;
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.6s ease-in-out;
-    max-width: 1200px;
+    margin-bottom: 2rem;
   }
-  .gif.fade-out {
+  .animation.fade-out {
     opacity: 0;
   }
   .icons {
@@ -83,9 +84,26 @@
     justify-content: start;
     place-items: start;
   }
+  @media (max-width: 1300px) {
+    .animation {
+      max-width: 1000px;
+      width: 1000px;
+    }
+  }
+  @media (max-width: 1050px) {
+    .animation {
+      max-width: 700px;
+      width: 700px;
+    }
+  }
   @media (max-height: 500px) {
     .hello2 {
       font-size: var(--text-md);
+    }
+
+    .animation {
+      max-width: 70%;
+      width: 70%;
     }
     .icon {
       width: 1.3rem;
@@ -98,8 +116,8 @@
     .container {
       height: 100vh;
     }
-    .gif {
-      width: 90%;
+    .animation {
+      width: 100%;
     }
     p {
       display: none;
@@ -114,22 +132,36 @@
 </style>
 
 <script>
-  const gif = document.querySelector(".gif") as HTMLImageElement;
+  import lottie from "lottie-web";
 
-  if (gif) {
+  const animationContainer = document.querySelector(
+    "#lottie-animation",
+  ) as HTMLElement;
+
+  if (animationContainer) {
+    // Load the Lottie animation
+    const animation = lottie.loadAnimation({
+      container: animationContainer,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/anim/data.json",
+    });
+
     // Set different threshold based on viewport width
-    const threshold = window.innerWidth <= 800 ? 0.5 : 1;
+    const threshold =
+      window.innerWidth <= 800 || window.innerHeight <= 800 ? 0.5 : 1;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            gif.classList.remove("fade-out");
-            // Force GIF to restart by reloading it with a timestamp to bypass cache
-            const baseSrc = gif.src.split("?")[0];
-            gif.src = baseSrc + "?t=" + new Date().getTime();
+            animationContainer.classList.remove("fade-out");
+            // Restart the animation
+            animation.goToAndStop(0, true);
+            animation.play();
           } else {
-            gif.classList.add("fade-out");
+            animationContainer.classList.add("fade-out");
           }
         });
       },
@@ -138,6 +170,6 @@
       },
     );
 
-    observer.observe(gif);
+    observer.observe(animationContainer);
   }
 </script>
