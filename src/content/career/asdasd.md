@@ -64,4 +64,7 @@ sections:
       *   Igény esetén céges laptop
           
       *   Támogató, fiatalos szakmai közeg
+footer: Látod magad a csapatban? Küldd el portfóliód a legjobb munkáiddal és
+  önéletrajzodat a [**hello@credodigital.hu**](mailto:hello@credodigital.hu)
+  címre **2026.02.28-ig**!
 ---
