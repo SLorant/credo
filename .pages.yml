@@ -155,12 +155,15 @@ content:
         blocks:
           # Each item defines a possible block structure the user can select.
           # These typically use 'component' or define 'fields' directly.
-          - name: hero
-            label: Add Hero Section
-            component: hero # Assumes a 'hero' component is defined and that its type is `object`
-          - name: text
-            label: Add Text Block
+          - name: left
+            label: Left side short text
+            fields:
+              - name: text
+                label: Text Content
+                type: string
+          - name: right
+            label: Right side block, can be anything
             fields:
               - name: content
-                label: Text Content
+                label: Content
                 type: rich-text
