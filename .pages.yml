@@ -149,6 +149,7 @@ content:
         required: true
       - name: sections
         label: Job sections
+        required: true
         type: object
         list:
           collapsible:
@@ -157,12 +158,15 @@ content:
         fields:
           - name: left
             label: Left side short title
+            required: true
             type: string
           - name: right
             label: Right side block, can be anything
+            required: true
             description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
             type: rich-text
       - name: footer
+        required: true
         label: Yellow footer box at the end of the job post
         description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
         type: rich-text
