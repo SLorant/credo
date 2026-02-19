@@ -135,3 +135,27 @@ content:
         label: Order of the person, starting from left to right.
         type: number
         required: true
+  - name: career
+    label: Career
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/career'
+    view:
+      fields: [ name, sections ]
+    fields:
+      - name: name
+        label: Job Title
+        type: string
+        required: true
+      - name: sections
+        label: Job sections
+        type: object
+        list: true
+        fields:
+          - name: left
+            label: Left side short title
+            type: string
+          - name: right
+            label: Right side block, can be anything
+            description: Write / into the box to select options like bullet list, heading, etc.
+            type: rich-text

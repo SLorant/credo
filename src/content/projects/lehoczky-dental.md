@@ -1,5 +1,6 @@
 ---
 title: Lehoczky Dental
+website-link: https://lehoczkydental.hu
 showcased: true
 icon: ../images/lehoczky_logo.png
 order: 2
