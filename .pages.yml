@@ -147,6 +147,22 @@ content:
         label: Job Title
         type: string
         required: true
+      - name: sections2
+        label: Page Sections2
+        type: object
+        list: true # Often used with type: block to allow multiple sections
+        fields:
+          # Each item defines a possible block structure the user can select.
+          # These typically use 'component' or define 'fields' directly.
+          - name: left
+            label: A new block
+            fields:
+              - name: left
+                label: Left side short text
+                type: string
+              - name: right
+                label: Right side block, can be anything
+                type: rich-text
       - name: sections
         label: Page Sections
         type: block
