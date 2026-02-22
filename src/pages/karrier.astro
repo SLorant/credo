@@ -32,8 +32,8 @@ const processedCareers = careers.map((job) => ({
     <div class="bg"></div>
     <main>
       <img class="m" src="/u1.png" alt="Gradient" />
-      <img class="m" id="parallax-hand" src="/kapcsolat.webp" alt="Ship" />
-      <img class="m" id="phone" src="/kapcsolatphone.webp" alt="Ship" />
+      <img class="m" src="/subsites/effect.webp" alt="ship" />
+      <img class="m" id="ship" src="/subsites/ship.webp" alt="ship" />
       <div class="head">
         <PageLanding
           header1="csatlakoznál"
@@ -103,16 +103,18 @@ const processedCareers = careers.map((job) => ({
 </Layout>
 
 <script>
-  const parallaxHand = document.getElementById("parallax-hand");
+  const parallaxShip = document.getElementById("ship");
 
-  document.addEventListener("mousemove", (e) => {
-    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
-    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", (e) => {
+      const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+      const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    if (parallaxHand) {
-      parallaxHand.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
-    }
-  });
+      if (parallaxShip) {
+        parallaxShip.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+      }
+    });
+  }
 
   // Accordion functionality
   const accordionHeaders = document.querySelectorAll(".accordion-header");
@@ -328,23 +330,14 @@ const processedCareers = careers.map((job) => ({
     left: 0;
     z-index: 30;
   }
-  #parallax-hand {
-    height: 102vh;
-    top: -5vh;
-    /*    max-width: 1920px; */
-    left: 0%;
-    /*  transform: translateX(-50%); */
-    transition: transform 0.1s ease-out;
-    aspect-ratio: 16 / 9 !important;
-    object-fit: cover;
-  }
 
-  @media (max-width: 1400px) {
-    #parallax-hand {
-      left: 0%;
-      width: 120vw;
-      transform: translateX(-50%);
-    }
+  #ship {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: -1vh;
+    left: auto;
+    right: 0;
   }
 
   @media (max-width: 1300px) {
@@ -355,14 +348,6 @@ const processedCareers = careers.map((job) => ({
       display: grid;
       grid-template-columns: 250px 1fr;
       margin-bottom: 50px;
-    }
-  }
-
-  @media (max-width: 1200px), (max-height: 800px) {
-    #parallax-hand {
-      left: -40%;
-      width: 180vw;
-      transform: translateX(-50%);
     }
   }
 
@@ -403,18 +388,15 @@ const processedCareers = careers.map((job) => ({
   }
 
   @media (max-width: 768px) {
-    #parallax-hand {
-      display: none;
-    }
-    #phone {
-      height: 102vh;
-      top: -3vh;
-      left: 0;
-      transition: transform 0.1s ease-out;
-      aspect-ratio: 16 / 9 !important;
-      object-fit: cover;
-      opacity: 0.8;
+    #ship {
+      height: 100vh;
+      top: 0vh;
+      left: -2%;
+      right: auto;
+      opacity: 0.6;
       display: block;
+      width: 102vw;
+      object-fit: cover;
     }
     h3 {
       /*       font-size: var(--header-xs); */

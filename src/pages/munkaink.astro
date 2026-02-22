@@ -24,8 +24,8 @@ const options = [
 
   <div class="container">
     <img class="m" src="/herogradient2.png" alt="Gradient" />
-    <img class="m" id="parallax-hand" src="/kezproba.webp" alt="Hand" />
-    <img class="m" id="phone" src="/munkaink_phone.webp" alt="Hand" />
+    <img class="m" src="/subsites/effect.webp" alt="Hand" />
+    <img class="m" id="hand" src="/subsites/hand.webp" alt="Hand" />
     <img class="m" src="/csakfekete.png" />
     <main>
       <PageLanding
@@ -220,16 +220,18 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
     }
   });
 
-  const parallaxHand = document.getElementById("parallax-hand");
+  const parallaxHand = document.getElementById("hand");
 
-  document.addEventListener("mousemove", (e) => {
-    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
-    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", (e) => {
+      const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+      const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    if (parallaxHand) {
-      parallaxHand.style.transform = ` translate(${xPos}px, ${yPos}px)`;
-    }
-  });
+      if (parallaxHand) {
+        parallaxHand.style.transform = ` translate(${xPos}px, ${yPos}px)`;
+      }
+    });
+  }
 </script>
 
 <style>
@@ -329,17 +331,14 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
     left: 0;
     overflow: hidden;
   }
-  #parallax-hand {
-    height: 102vh;
-    top: -3vh;
-    left: 0;
-    width: 100vw;
-    transition: transform 0.1s ease-out;
-    aspect-ratio: 16 / 9 !important;
-    object-fit: cover;
-  }
-  #phone {
-    display: none;
+
+  #hand {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: -1vh;
+    left: auto;
+    right: 0;
   }
 
   .cardImg {
@@ -421,13 +420,6 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
     padding-bottom: 2rem;
   }
 
-  @media (max-width: 1400px) {
-    #parallax-hand {
-      left: -20%;
-      width: 120vw;
-    }
-  }
-
   @media (max-width: 1300px) {
     .cardcont {
       max-width: 1000px;
@@ -466,14 +458,6 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
     }
   }
 
-  @media (max-width: 1200px), (max-height: 800px) {
-    #parallax-hand {
-      left: -40%;
-      width: 180vw;
-      transform: translateX(-50%);
-    }
-  }
-
   @media (max-width: 1050px) {
     .cardcont {
       max-width: 700px;
@@ -508,9 +492,6 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
   }
 
   @media (max-width: 768px) {
-    #parallax-hand {
-      display: none;
-    }
     .container {
       padding-bottom: 3rem;
     }
@@ -573,6 +554,16 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
       object-fit: cover;
       opacity: 0.8;
       display: block;
+    }
+    #hand {
+      height: 100vh;
+      top: 0vh;
+      left: -3%;
+      right: auto;
+      opacity: 0.6;
+      display: block;
+      width: 103vw;
+      object-fit: cover;
     }
   }
 

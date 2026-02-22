@@ -14,8 +14,8 @@ import Layout from "../layouts/Layout.astro";
     <!--  <div class="bgfooter"></div> -->
     <main>
       <img class="m" src="/u1.png" alt="Gradient" />
-      <img class="m" id="parallax-hand" src="/uzletagak.webp" alt="Gear" />
-      <img class="m" id="phone" src="/uzletagak_phone.webp" alt="Gear" />
+      <img class="m" src="/subsites/effect.webp" alt="Gear" />
+      <img class="m" id="gear" src="/subsites/gear.webp" alt="Gear" />
       <div class="head">
         <PageLanding
           alternate
@@ -33,23 +33,21 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
-  const parallaxHand = document.getElementById("parallax-hand");
+  const parallaxGear = document.getElementById("gear");
 
-  document.addEventListener("mousemove", (e) => {
-    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
-    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", (e) => {
+      const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+      const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    if (parallaxHand) {
-      parallaxHand.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
-    }
-  });
+      if (parallaxGear) {
+        parallaxGear.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+      }
+    });
+  }
 </script>
 
 <style>
-  /* body {
-    overflow-x: hidden;
-    overscroll-behavior: none;
-  } */
   .container {
     width: 100%;
     padding: 6rem 0 0 0;
@@ -88,53 +86,26 @@ import Layout from "../layouts/Layout.astro";
     left: 0;
     z-index: 30;
   }
-  #parallax-hand {
-    height: 102vh;
-    top: -5vh;
-    /*    max-width: 1920px; */
-    left: 0%;
-    /*  transform: translateX(-50%); */
-    transition: transform 0.1s ease-out;
-    aspect-ratio: 16 / 9 !important;
-    object-fit: cover;
-  }
 
-  @media (max-width: 1400px) {
-    #parallax-hand {
-      left: 0%;
-      width: 120vw;
-      transform: translateX(-50%);
-    }
-  }
-
-  @media (max-width: 1200px), (max-height: 800px) {
-    #parallax-hand {
-      left: -40%;
-      width: 180vw;
-      transform: translateX(-50%);
-    }
+  #gear {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: -1vh;
+    left: auto;
+    right: 0;
   }
 
   @media (max-width: 768px) {
-    /*  #parallax-hand {
-      left: 45%;
-      top: -2%;
-      width: 150vw;
-      transform: translateX(-50%);
-      opacity: 0.6;
-    } */
-    #parallax-hand {
-      display: none;
-    }
-    #phone {
+    #gear {
       height: 100vh;
-      top: -5vh;
+      top: 0vh;
       left: 0;
-      transition: transform 0.1s ease-out;
-      aspect-ratio: 16 / 9 !important;
-      object-fit: cover;
-      opacity: 0.8;
+      right: auto;
+      opacity: 0.6;
       display: block;
+      width: 100vw;
+      object-fit: cover;
     }
   }
 </style>
