@@ -26,7 +26,7 @@ const projects = loadedProjects
         projects.map((proj, i) => (
           <a class="projectBox effectlink" href={"munkaink/" + proj.id}>
             <h3>{proj.data.title}</h3>
-            <img class="icon" src={i + 1 + ".png"} alt="logo img" />
+            <img class="icon" src={proj.data.icon?.src} alt="brand logo" />
 
             <img
               class="mobileImg"
