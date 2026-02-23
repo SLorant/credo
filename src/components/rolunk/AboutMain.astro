@@ -17,7 +17,7 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
   <img class="m" src="/u1.png" alt="Gradient" />
   <img class="m" src="/subsites/effect.webp" alt="DNS" />
   <img class="m" id="dns" src="/subsites/dns.webp" alt="DNS" />
-  <main>
+  <div class="head">
     <PageLanding
       alternate
       subText="Két különböző karakter,"
@@ -25,6 +25,8 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
       header2="nevező."
       text={`Ez a mondat írja le legpontosabban a Credo DNS-ét. Alapítóink a szakma eltérő pólusairól érkeztek, de a céljuk azonos volt: választ adni a marketing klisékre, a túlhasznált panelekre és a futószalagon érkező, középszerű ötletekre. <br/> Úgy döntöttek, másképp csinálják.`}
     />
+  </div>
+  <main>
     <div class="leaders">
       <img class="lead" src="/rolunk1.png" alt="leader" />
       <img class="lead" src="/rolunk2.png" alt="leader" />
@@ -186,6 +188,14 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
     left: 0;
   }
   main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .head {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -431,12 +441,11 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
     }
   }
 
-  @media (max-width: 1050px), (max-height: 800px) {
+  @media (max-width: 1050px) {
     main {
       width: 100%;
       max-width: 700px;
     }
-
     .dome {
       height: 600px;
       padding-top: 280px;

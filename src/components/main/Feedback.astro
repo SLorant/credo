@@ -128,7 +128,7 @@ const projects = loadedProjects
     margin-top: 5px;
   }
 
-  @media (max-width: 1300px), (max-height: 800px) {
+  @media (max-width: 1300px), (max-height: 500px) {
     h2 {
       font-size: var(--header-md);
       text-align: center;
@@ -137,12 +137,15 @@ const projects = loadedProjects
     .qthree {
       font-size: var(--header-lg);
     }
+    .quote-content {
+      padding: 1rem 3rem;
+    }
     .qcont {
       max-width: 1000px;
       width: 1000px;
     }
     .quote-text {
-      font-size: var(--header-sm2);
+      font-size: calc(var(--header-sm2) - 0.3rem);
     }
 
     .quote-author {

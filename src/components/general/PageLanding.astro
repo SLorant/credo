@@ -193,4 +193,15 @@ const { header1, header2, text, alternate, subText } = Astro.props;
       max-width: 25rem;
     }
   }
+  @media (max-height: 600px) {
+    .container {
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-height: 500px) {
+    .container {
+      margin-top: 60px;
+    }
+  }
 </style>
