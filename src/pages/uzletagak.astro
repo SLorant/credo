@@ -14,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
     <!--  <div class="bgfooter"></div> -->
     <main>
       <img class="m" src="/u1.png" alt="Gradient" />
-      <img class="m" src="/subsites/effect.webp" alt="Gear" />
+      <img class="m" id="eff" src="/subsites/effect.webp" alt="Gear" />
       <img class="m" id="gear" src="/subsites/gear.webp" alt="Gear" />
       <div class="head">
         <PageLanding
@@ -85,6 +85,9 @@ import Layout from "../layouts/Layout.astro";
     top: 0;
     left: 0;
     z-index: 30;
+  }
+  #eff {
+    width: 103vw;
   }
 
   #gear {
