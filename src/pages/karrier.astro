@@ -30,10 +30,10 @@ const processedCareers = careers.map((job) => ({
   <Header />
   <div class="container">
     <div class="bg"></div>
+    <img class="m" src="/u1.png" alt="Gradient" />
+    <img class="m" id="eff" src="/subsites/effect.webp" alt="ship" />
+    <img class="m" id="ship" src="/subsites/ship.webp" alt="ship" />
     <main>
-      <img class="m" src="/u1.png" alt="Gradient" />
-      <img class="m" id="eff" src="/subsites/effect.webp" alt="ship" />
-      <img class="m" id="ship" src="/subsites/ship.webp" alt="ship" />
       <div class="head">
         <PageLanding
           header1="csatlakoznál"
@@ -156,7 +156,7 @@ const processedCareers = careers.map((job) => ({
     position: relative;
     z-index: 30;
     background: rgb(0, 0, 0);
-    scrollbar-gutter: stable;
+    overflow: hidden;
   }
   .bg {
     background-image: url("/gradient__background.webp");
@@ -172,6 +172,8 @@ const processedCareers = careers.map((job) => ({
   main {
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
+    position: relative;
   }
   /*  .box:first-child {
     margin-top: 80px !important;

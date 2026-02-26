@@ -12,10 +12,10 @@ import Layout from "../layouts/Layout.astro";
   <Header />
   <div class="container">
     <!--  <div class="bgfooter"></div> -->
+    <img class="m" src="/u1.png" alt="Gradient" />
+    <img class="m" id="eff" src="/subsites/effect.webp" alt="Gear" />
+    <img class="m" id="gear" src="/subsites/gear.webp" alt="Gear" />
     <main>
-      <img class="m" src="/u1.png" alt="Gradient" />
-      <img class="m" id="eff" src="/subsites/effect.webp" alt="Gear" />
-      <img class="m" id="gear" src="/subsites/gear.webp" alt="Gear" />
       <div class="head">
         <PageLanding
           alternate
@@ -56,7 +56,7 @@ import Layout from "../layouts/Layout.astro";
     position: relative;
     z-index: 30;
     background: rgb(0, 0, 0);
-    scrollbar-gutter: stable;
+    overflow: hidden;
   }
   #phone {
     display: none;
@@ -73,6 +73,8 @@ import Layout from "../layouts/Layout.astro";
   main {
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
+    position: relative;
   }
   .head {
     max-width: 1200px;
