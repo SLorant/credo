@@ -41,16 +41,10 @@ async function fetchPosts(apiKey: string) {
   }
 }
 
-// Usage
 const data = (await fetchPosts(
-  import.meta.env.FEEDFRAMER_API_KEY,
+  (Astro.locals as any).runtime?.env?.FEEDFRAMER_API_KEY ||
+    import.meta.env.FEEDFRAMER_API_KEY,
 )) as FeedframerResponse;
-
-/* const client = new CachedFeedframerClient(import.meta.env.FEEDFRAMER_API_KEY);
-const data = (await client.getPosts({
-  "page[size]": "3",
-  sort: "-published_at",
-})) as FeedframerResponse; */
 ---
 
 <section class="stripe-container">
