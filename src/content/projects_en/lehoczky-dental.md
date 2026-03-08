@@ -5,7 +5,7 @@ showcased: true
 icon: ../images/lehoczky_logo.png
 order: 2
 cover: ../images/lehoczky-cover-1080x1920px.webp
-card-subheadline: Digitális márkafiatalítás
+card-subheadline: Digital Brand Rejuvenation
 category:
   - Performance
   - Creative
@@ -16,57 +16,44 @@ keywords:
   - Social Media
   - Hirdetés
   - Blogírás
-project-subheadline-1: A TRADÍCIÓTÓL A DIGITÁLIS PÁCIENS-ÉLMÉNYIG
+project-subheadline-1: FROM TRADITION TO DIGITAL PATIENT EXPERIENCE
 project-text-1: >-
-  A Lehoczky Dental a szegedi fogászati piac egyik meghatározó, prémium
-  szereplője. Szakmai reputációjuk megkérdőjelezhetetlen, azonban felismerték a
-  piac változását: a mai páciensek már azelőtt döntenek, hogy belépnének a
-  rendelőbe. A korábbi, pusztán szakmai kiválóságra építő modell mellett
-  szükségessé vált egy tudatos márkafiatalítás, amely képes megszólítani a
-  tudatosabb, digitálisan aktív célcsoportot is.
+  Lehoczky Dental is a prominent, premium player in the Szeged dental market.
+  Their professional reputation is unquestionable; however, they recognized a
+  shift in the market: today’s patients make their decisions even before
+  stepping into the clinic. Alongside their previous model built solely on
+  professional excellence, a conscious brand rejuvenation became necessary to
+  reach a more informed, digitally active target audience.
 
 
-  A kihívás kettős volt: egyrészt modernizálni kellett a vizuális és
-  kommunikációs nyelvezetet anélkül, hogy sérülne a klinika komoly, orvosi
-  tekintélye. Másrészt a passzív jelenlétet egy aktív, edukációra épülő
-  stratégiára kellett váltani, hiszen a magasabb értékű kezeléseknél (pl.
-  implantáció, esztétikai fogászat) az elköteleződés alapja a megértés és a
-  bizalom.
+  The challenge was twofold: first, the visual and communication language had to
+  be modernized without compromising the clinic’s serious medical authority.
+  Second, a passive presence had to be replaced with an active, education-based
+  strategy, as understanding and trust are the foundations of commitment for
+  high-value treatments (e.g., implants, aesthetic dentistry).
 square-image: ../images/06FB_Edukáció.webp
 gallery:
   - ../images/lehoczky-slide-1080x1920px-01.webp
   - ../images/lehoczky-slide-1080x1920px-02.webp
   - ../images/lehoczky-slide-1080x1920px-03.webp
-project-subheadline-2: EDUKÁCIÓ ÉS KONVERZIÓ EGYENSÚLYA
-project-text-2: >-
-  A megoldás gerincét egy teljesen új, felhasználóbarát weboldal fejlesztése
-  adta, amely részben digitális névjegykártyaként is funkcionál, amelyet
-  partnerünk a “drag and drop” rendszernek köszönhetően akár saját maga is
-  módosíthat. A marketingkommunikációt a "push" reklámok helyett a stratégiai
-  tartalomépítésre, értékteremtésre hangoltuk: rendszeres szakmai
-  blogbejegyzésekkel, illetve részletes esettanulmányokkal edukáljuk a piacot.
-  Ezt a tartalmi stratégiát tudatos SEO és AIEO (AI Engine Optimization) elvek
-  mentén építjük fel, biztosítva, hogy a klinika a keresőmotorokban és az
-  AI-alapú válaszokban is releváns találatként jelenjen meg.
-
-
-  A social media felületeken a transzparencia a kulcs: tematikusan mutatjuk be a
-  szakorvosi csapatot, és közérthető, de profi tartalmakkal demisztifikáljuk a
-  kezeléseket, például azt, hogy pontosan mire számíthat a páciens az első
-  konzultáción. Ez a nyílt kommunikáció lebontja a szorongást és a fehér
-  köpenytől való távolságtartást. Az eredmény egy olyan digitális ökoszisztéma,
-  amely egyrészt fiatalította a márka percepcióját, másrészt mérhetően növelte a
-  minőségi, már előre edukált páciensek beáramlását.
+project-subheadline-2: BALANCE OF EDUCATION AND CONVERSION
+project-text-2: 'The backbone of the solution was the development of a
+  completely new, user-friendly website that also functions as a digital
+  business card. Instead of "push" advertising, we turned marketing
+  communication toward strategic content building and value creation: we educate
+  the market through regular professional blog posts. We build this strategy
+  along conscious SEO and AIEO (AI Engine Optimization) principles to ensure a
+  relevant search presence.'
 quote:
-  author: Lehoczky Márton - szájsebész szakorvos
-  quote-text: Megbízható, felkészült marketinges csapat, akikkel hatékony az
-    együttműködés. Gyorsan átlátják a feladatokat, érthetően kommunikálnak, és
-    betartják a megbeszélt határidőket. Szívesen dolgoznék velük a jövőben is,
-    csak ajánlani tudom őket!
-  quote-text-landing: Megbízható, felkészült marketinges csapat, akikkel hatékony
-    az együttműködés. Gyorsan átlátják a feladatokat, érthetően kommunikálnak,
-    és betartják a megbeszélt határidőket. Szívesen dolgoznék velük a jövőben
-    is, csak ajánlani tudom őket!
+  author: DR. MÁRTON LEHOCZKY – ORAL SURGEON SPECIALIST
+  quote-text: A reliable, well-prepared marketing team that makes collaboration
+    efficient. They quickly grasp tasks, communicate clearly, and meet agreed
+    deadlines. I would gladly work with them again in the future; I can only
+    recommend them!
+  quote-text-landing: A reliable, well-prepared marketing team that makes
+    collaboration efficient. They quickly grasp tasks, communicate clearly, and
+    meet agreed deadlines. I would gladly work with them again in the future; I
+    can only recommend them!
   quote-showcased: true
   order: 2
 ---
