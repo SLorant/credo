@@ -1,0 +1,476 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+
+import PageLanding from "../../components/general/PageLanding.astro";
+import Contact from "../../components/general/Contact.astro";
+import Header from "../../components/header/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+
+const careers = await getCollection("career");
+
+// Helper to render markdown strings to HTML
+const renderMarkdown = (markdown: string) => {
+  return marked.parse(markdown, { async: false });
+};
+
+// Pre-process all careers data to render markdown
+const processedCareers = careers.map((job) => ({
+  ...job,
+  processedSections: job.data.sections.map((s) => ({
+    left: s.left,
+    rightHtml: renderMarkdown(s.right),
+  })),
+  processedFooter: renderMarkdown(job.data.footer),
+}));
+---
+
+<Layout>
+  <Header />
+  <div class="container">
+    <div class="bg"></div>
+    <img class="m" src="/u1.png" alt="Gradient" />
+    <img class="m" id="eff" src="/subsites/effect.webp" alt="ship" />
+    <img class="m" id="ship" src="/subsites/ship.webp" alt="ship" />
+    <main>
+      <div class="head">
+        <PageLanding
+          header1="csatlakoznál"
+          header2="hozzánk?"
+          text={`A Credo fedélzetén a hierarchiát a tudásvágy és a teljesítmény írja felül. Hiszünk abban, hogy egy sikeres expedícióhoz kell a <strong>pályakezdők lendülete</strong> és a tapasztaltabb kollégák <strong>stratégiai rutinja</strong> is. Ha junior vagy, nálunk nem a partvonalról nézed a vizet, hanem éles projektekben tanulod meg, hogyan lesz egy márkából piacvezető. Ha tájékozott szakértő vagy, nálunk teret és stabilitást kapsz ahhoz, hogy a tudásodat valódi üzleti eredményekre váltsd. Közös a célunk: értéket szállítani a háborgó tengeren.`}
+        />
+      </div>
+
+      {
+        processedCareers.map((job) => (
+          <div class="box accordion">
+            <div class="accordion-header">
+              <h3>{job.data.name}</h3>
+              <svg
+                class="accordion-arrow"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="accordion-content">
+              <div class="grid">
+                {job.processedSections.map((s) => (
+                  <>
+                    <div class="left">{s.left}</div>
+                    <div class="right" set:html={s.rightHtml} />
+                  </>
+                ))}
+              </div>
+              <div class="footer">
+                <p set:html={job.processedFooter} />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      <div class="box f">
+        <h3>Lépj elő!</h3>
+        <p class="uppercase">
+          A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
+          kiírt pozíciók csak a pillanatnyi állapotot tükrözik, de a kiemelkedő
+          szakmai háttérre, az ambíciózus törekvésekre mindig nyitottak vagyunk.
+          Küldd el önéletrajzodat, portfóliódat, és ha az értékrendünk
+          találkozik, megtaláljuk a közös munka kereteit.
+          <a href="mailto:hello@credodigital.hu"
+            ><span class="bold">hello@credodigital.hu</span></a
+          >
+        </p>
+      </div>
+
+      <div class="contactwrap">
+        <Contact needGradient />
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const parallaxShip = document.getElementById("ship");
+
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", (e) => {
+      const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+      const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+      if (parallaxShip) {
+        parallaxShip.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+      }
+    });
+  }
+
+  // Accordion functionality
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const accordion = header.closest(".accordion");
+      const content = accordion?.querySelector(
+        ".accordion-content",
+      ) as HTMLElement | null;
+      const arrow = header.querySelector(".accordion-arrow");
+
+      if (accordion && content && arrow) {
+        const isActive = accordion.classList.contains("active");
+
+        if (isActive) {
+          // Closing: set to current height first, then to 0
+          content.style.maxHeight = content.scrollHeight + "px";
+          requestAnimationFrame(() => {
+            content.style.maxHeight = "0";
+          });
+          accordion.classList.remove("active");
+        } else {
+          // Opening: measure and set to actual height
+          accordion.classList.add("active");
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .container {
+    width: 102%;
+    padding: 6rem 0 0 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+    position: relative;
+    z-index: 30;
+    background: rgb(0, 0, 0);
+    overflow-x: hidden;
+  }
+  .bg {
+    background-image: url("/gradient__background.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  /*  .box:first-child {
+    margin-top: 80px !important;
+  } */
+
+  .box {
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px 60px;
+    border-radius: 30px;
+    margin-top: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    z-index: 30;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
+  }
+  .uppercase {
+    font-size: var(--text-md);
+    font-family: "AktivGrotesk Light";
+    line-height: var(--30px);
+  }
+
+  .footer {
+    font-size: var(--text-md);
+    line-height: var(--30px);
+    background: #dbe120;
+    color: #1c1b22;
+    padding: 20px 80px;
+    border-radius: 33px;
+    text-align: center;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: var(--header-sm);
+    font-family: "AktivGrotesk Light";
+    line-height: var(--30px);
+    text-transform: lowercase !important;
+    margin-top: 30px;
+  }
+  .bold {
+    font-family: "AktivGrotesk Bold";
+    color: white;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .accordion-header h3 {
+    margin: 30px 0;
+  }
+
+  .accordion-arrow {
+    color: white;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .accordion.active .accordion-arrow {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      margin-top 0.3s ease;
+    opacity: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    margin-bottom: 50px;
+  }
+
+  .left {
+    border-bottom: 1px solid #dbe120;
+    border-right: 1px solid #dbe120;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-size: var(--text-md);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .right {
+    border-bottom: 1px solid #dbe120;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 10px;
+    font-size: var(--text-md);
+  }
+  .right:nth-child(2) {
+    padding-top: 0px !important;
+  }
+  .left:nth-last-child(2) {
+    border-bottom: none;
+  }
+  .right:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .right :global(ul) {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+  }
+  .right :global(li) {
+    margin-bottom: 0px;
+  }
+  .right :global(a) {
+    color: #dbe120;
+    text-decoration: underline;
+  }
+
+  .accordion.active .accordion-content {
+    opacity: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .accordion .uppercase {
+    margin: 0;
+  }
+
+  #phone {
+    display: none;
+  }
+  .head {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  .m {
+    width: 103vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
+
+  #ship {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: -1vh;
+    left: auto;
+    right: 0;
+  }
+
+  @media (max-width: 1300px) {
+    .box {
+      max-width: 1000px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .box {
+      max-width: 700px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      margin-bottom: 50px;
+    }
+    .uppercase {
+      font-size: var(--text-base);
+      line-height: 1.6rem;
+    }
+
+    .footer {
+      font-size: var(--text-base);
+      line-height: 1.5rem;
+      padding: 15px 40px;
+    }
+
+    .right {
+      border-bottom: 1px solid #dbe120;
+      padding-left: 30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-right: 10px;
+      font-size: var(--text-base);
+    }
+    .left {
+      font-size: var(--text-base);
+    }
+    h3 {
+      font-size: var(--header-sm2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #ship {
+      height: 100vh;
+      top: 0vh;
+      left: -2%;
+      right: auto;
+      opacity: 0.6;
+      display: block;
+      width: 102vw;
+      object-fit: cover;
+    }
+    h3 {
+      /*       font-size: var(--header-xs); */
+      font-size: 1.4rem;
+      margin: 10px 0px !important;
+      hyphens: auto;
+    }
+    .accordion-arrow {
+      color: white;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 20px;
+      scale: 0.7;
+    }
+    .box {
+      width: 80%;
+      padding: 20px 30px;
+    }
+
+    .left {
+      border: 1px solid #dbe120;
+      padding-right: 0;
+      border-radius: 40px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 0;
+    }
+    .right {
+      border-bottom: none;
+      padding-left: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-right: 0px;
+      font-size: var(--text-sm);
+    }
+    .right:nth-child(2) {
+      padding-top: 10px !important;
+    }
+    .left:nth-last-child(2) {
+      border: 1px solid #dbe120;
+    }
+    .right:last-child {
+      border-bottom: none;
+      padding-bottom: 0px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 30px;
+    }
+    .footer {
+      font-size: var(--text-sm);
+      line-height: 1.3rem;
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+    .uppercase {
+      font-size: var(--text-sm);
+      line-height: 1.3rem;
+    }
+    .f {
+      margin-bottom: 50px !important;
+    }
+    .contactwrap {
+      position: relative;
+      z-index: 50;
+    }
+
+    .container {
+      padding: 7rem 0 0 0;
+    }
+  }
+</style>

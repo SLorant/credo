@@ -1,0 +1,113 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+
+import PageLanding from "../../components/general/PageLanding.astro";
+import Contact from "../../components/general/Contact.astro";
+import Header from "../../components/header/Header.astro";
+import Services from "../../components/services/Services.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <Header />
+  <div class="container">
+    <!--  <div class="bgfooter"></div> -->
+    <img class="m" src="/u1.png" alt="Gradient" />
+    <img class="m" id="eff" src="/subsites/effect.webp" alt="Gear" />
+    <img class="m" id="gear" src="/subsites/gear.webp" alt="Gear" />
+    <main>
+      <div class="head">
+        <PageLanding
+          alternate
+          subText="Üzletágaink alapja,"
+          header1="az integrált "
+          header2="megközelítés"
+          text={`A siló gondolkodás a hatékonyság csendes gyilkosa. A modern marketingben a részterületek már nem léteznek önmagukban. A legjobb kreatív is elvérzik egy lassú weboldalon, és a legprecízebb hirdetési stratégia is pénzégetés, ha a vizuális tartalom hiteltelen. Mi összefüggéseiben látjuk márkádat. Az integrált működés nálunk azt jelenti, hogy minden tevékenységünk egyetlen, koherens nyelvet beszél. Így a folyamatok nem akadályozzák, erősítik egymást.`}
+        />
+      </div>
+
+      <Services />
+      <Contact needGradient />
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const parallaxGear = document.getElementById("gear");
+
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", (e) => {
+      const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+      const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+      if (parallaxGear) {
+        parallaxGear.style.transform = `translateX(-0%) translate(${xPos}px, ${yPos}px)`;
+      }
+    });
+  }
+</script>
+
+<style>
+  .container {
+    width: 103%;
+    padding: 6rem 0 0 0;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+    position: relative;
+    z-index: 30;
+    background: rgb(0, 0, 0);
+    overflow: hidden;
+  }
+  #phone {
+    display: none;
+  }
+  .bgfooter {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: rgb(0, 0, 0);
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .head {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .m {
+    width: 103vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
+
+  #gear {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: -1vh;
+    left: auto;
+    right: 0;
+  }
+
+  @media (max-width: 768px) {
+    #gear {
+      height: 100vh;
+      top: 0vh;
+      left: -3vw;
+      right: auto;
+      opacity: 0.6;
+      display: block;
+      width: 103vw;
+      object-fit: cover;
+    }
+  }
+</style>

@@ -1,0 +1,15 @@
+name = "credo-rebuild-trigger"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Run every 2 hours to check for new Instagram posts
+# Adjust the cron schedule as needed:
+# "0 */2 * * *" = every 2 hours
+# "0 */1 * * *" = every hour
+# "0 0 * * *" = daily at midnight
+# "0 */6 * * *" = every 6 hours
+[triggers]
+crons = ["0 */1 * * *"]
+
+# Deploy hook URL will be stored as a secret
+# Set it with: wrangler secret put DEPLOY_HOOK_URL

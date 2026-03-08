@@ -13,4 +13,8 @@ export default defineConfig({
   server: {
     port: 4322,
   },
+  i18n: {
+    locales: ["hu", "en"],
+    defaultLocale: "hu",
+  },
 });

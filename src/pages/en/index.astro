@@ -1,0 +1,30 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+
+import Header from "../../components/header/Header.astro";
+import Scene from "../../components/main/home/Scene.astro";
+import Layout from "../../layouts/Layout.astro";
+import Landing from "../../components/main/home/Landing.astro";
+import Landing2 from "../../components/main/Landing2.astro";
+import Pillars from "../../components/main/Pillars.astro";
+import Work from "../../components/main/Work.astro";
+import Contact from "../../components/general/Contact.astro";
+import Serv from "../../components/main/Serv.astro";
+import Projects from "../../components/main/Projects.astro";
+import Insta from "../../components/main/Insta.astro";
+import Feedback from "../../components/main/Feedback.astro";
+---
+
+<Layout>
+  <Header />
+  <Scene />
+  <Landing />
+  <Landing2 />
+  <Pillars />
+  <Serv />
+  <Projects />
+  <Work />
+  <Feedback />
+  <Insta />
+  <Contact needGradient={false} />
+</Layout>
