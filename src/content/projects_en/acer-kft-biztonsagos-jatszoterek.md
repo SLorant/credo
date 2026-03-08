@@ -5,7 +5,7 @@ showcased: true
 icon: ../images/acert_logo.png
 order: 4
 cover: ../images/acer-cover-1080x1920px.webp
-card-subheadline: Lead Gen ökoszisztéma
+card-subheadline: Lead Gen ecosystem
 category:
   - Performance
   - Creative
@@ -14,57 +14,57 @@ keywords:
   - PPC
   - Social Media
   - B2G
-project-subheadline-1: A KRÍZISKEZELÉS
+project-subheadline-1: CRISIS MANAGEMENT
 project-text-1: >-
-  Az ACER Kft. profilja a közterületi és intézményi játszóterek tervezése és
-  kivitelezése. Ez a terület kiemelt felelősséggel jár: az MSZ-EN 1176
-  szabványnak való megfelelés speciális szakértelmet és naprakész
-  szabályozás-ismeretet igényel. Ügyfélkörük – dominánsan önkormányzatok és
-  oktatási intézmények – nem impulzusvásárló, hanem egy közbeszerzési, pályázati
-  logikával működő döntéshozói kör, így a hitelesség elvesztése közvetlen
-  árbevétel-kiesést jelent.
+  ACER Kft. specializes in the design and construction of public and
+  institutional playgrounds. This field carries immense responsibility:
+  compliance with the MSZ-EN 1176 standard requires specialized expertise and
+  up-to-date regulatory knowledge. Their clientele—predominantly municipalities
+  and educational institutions – are not impulse buyers but a segment of
+  decision-makers operating on procurement and tender logic; therefore, any loss
+  of credibility results in a direct loss of revenue.
 
 
-  A közös munka a hirdetési tevékenység professzionalizálása miatt indult el. A
-  cég kommunikációja és hirdetési rendszere korábban nem volt egységes
-  szerkezetbe foglalva, így az elsődleges feladatunk a fiókok technikai
-  rendbetétele, a biztonságos működés garantálása és a folyamatok átláthatóvá
-  tétele volt. Az audit strukturális problémát tárt fel: miközben a
-  versenytársak diverzifikált csatornákon hirdettek, az ACER digitális jelenléte
-  nem követte a piaci trendeket. A feladat a technikai helyreállításon túl a
-  digitális versenyképesség rendszerszintű kiépítése volt.
+  Our collaboration began with the goal of professionalizing their advertising
+  activities. Previously, the company’s communication and advertising systems
+  lacked a unified structure; thus, our primary task was the technical overhaul
+  of their accounts, ensuring secure operations, and making processes
+  transparent. The audit revealed a structural problem: while competitors were
+  advertising through diversified channels, ACER's digital presence failed to
+  keep pace with market trends. Beyond technical restoration, the challenge was
+  to build a system-level digital competitiveness.
 square-image: ../images/02FB-értéket-teremtve.webp
 gallery:
   - ../images/acer-slide-1080x1920px-01.webp
   - ../images/acer-slide-1080x1920px-02.webp
-project-subheadline-2: A MEGOLDÁS
+project-subheadline-2: THE SOLUTION
 project-text-2: >-
-  A passzív jelenlét helyett egy proaktív, adatvezérelt akvizíciós modellt
-  építettünk fel. Social media márkakommunikációjukat egy automatizált hirdetési
-  ökoszisztémával egészítettük ki, amely a hagyományos weboldali konverzión
-  túlmutatva, közvetlenül a döntéshozói szegmensből (B2G/B2B) gyűjt adatokat. A
-  folyamatot sales-oldali tanácsadással és értékesítési szövegírással támogattuk
-  meg a konverziós tölcsér maximalizálása érdekében.
+  We built a proactive, data-driven acquisition model to replace their passive
+  presence. We supplemented their social media brand communication with an
+  automated advertising ecosystem that goes beyond traditional website
+  conversions, gathering data directly from the decision-making segment
+  (B2G/B2B). To maximize the conversion funnel, we supported the process with
+  sales-side consulting and high-conversion copywriting.
 
 
-  A stratégiai váltás validációja a számokban mérhető: a rendszer rövid időn
-  belül több mint 100 minősített (pre-qualified), releváns leadet generált az
-  önkormányzati és intézményi szektorból, egy eleve előszűrt, de könnyűszerrel
-  szelektálható táblázati rendszerbe. Ezzel nemcsak a biztonsági incidenst
-  kezeltük, hanem egy fenntartható, skálázható üzletszerzési csatornát
-  integráltunk a cég működésébe.
+  The validation of this strategic shift is measurable in numbers: within a
+  short period, the system generated more than 100 pre-qualified, relevant leads
+  from the municipal and institutional sectors into a pre-filtered, easily
+  manageable database. In doing so, we not only resolved the security issues but
+  also integrated a sustainable, scalable business acquisition channel into the
+  company's core operations.
 quote:
-  author: Telegdy  Ákos - ügyvezető
-  quote-text: A közös munka során végig profi hozzáállást tapasztaltunk, a csapat
-    kreatív ötletekkel és átgondolt stratégiákkal segítette a cégünk sikerét. A
-    kommunikáció gördülékeny volt, mindig határidőre dolgoztak, és figyelembe
-    vették az ügyfél igényeit. Az elért eredmények egyértelműen bizonyítják a
-    cég szakmai felkészültségét.
-  quote-text-landing: A közös munka során végig profi hozzáállást tapasztaltunk, a
-    csapat kreatív ötletekkel és átgondolt stratégiákkal segítette a cégünk
-    sikerét. A kommunikáció gördülékeny volt, mindig határidőre dolgoztak, és
-    figyelembe vették az ügyfél igényeit. Az elért eredmények egyértelműen
-    bizonyítják a cég szakmai felkészültségét.
+  author: ÁKOS TELEGDY – MANAGING DIRECTOR
+  quote-text: We experienced a professional approach throughout our partnership;
+    the team contributed to our company’s success with creative ideas and
+    well-thought-out strategies. Communication was seamless, they always met
+    deadlines, and remained attentive to our specific needs. The results
+    achieved clearly prove the company’s professional expertise.
+  quote-text-landing: We experienced a professional approach throughout our
+    partnership; the team contributed to our company’s success with creative
+    ideas and well-thought-out strategies. Communication was seamless, they
+    always met deadlines, and remained attentive to our specific needs. The
+    results achieved clearly prove the company’s professional expertise.
   quote-showcased: true
   order: 3
 ---
