@@ -1,70 +1,70 @@
 ---
-name: Tervezőgrafikus
+name: Graphic Designer
 sections:
-  - left: IDEÁLIS JELÖLT
+  - left: IDEAL CANDIDATE
     right: >-
-      *   Releváns grafikai tapasztalat, min. 1 év (ügynökségi, céges vagy
-      szabadúszói tapasztalat)
+      *   Relevant graphic design experience, min. 1 year (agency, corporate, or
+      freelance).
           
-      *   Legalább középfokú végzettség
+      *   Minimum secondary education.
           
-      *   Adobe CC magabiztos ismerete (Kiemelten: Photoshop, Illustrator,
-      InDesign)
+      *   Expert knowledge of Adobe CC (especially Photoshop, Illustrator,
+      InDesign).
           
-      *   Erős tipográfiai érzék és vizuális látásmód
+      *   Strong sense of typography and visual vision.
           
-      *   Digitális platformismeret a hirdetési kreatívok tekintetében
+      *   Platform-specific knowledge regarding advertising creatives.
           
-      *   Jártasság a nyomdai anyagok, előkészítésben
+      *   Proficiency in prepress and print preparation.
           
-      *   Precíz, önálló munkavégzés, de csapatjátékos attitűd
-  - left: FELADATOK
+      *   Precise, independent worker with a team-player attitude.
+  - left: TASKS
     right: >-
-      *   Online marketinganyagok (social media posztok, hirdetési kreatívok,
-      bannerek) tervezése
+      *   Designing online marketing materials (social media posts, ad
+      creatives, banners).
           
-      *   Offline kiadványok, szórólapok tervezése, tördelése, nyomdai
-      előkészítése
+      *   Designing and typesetting offline publications and flyers, including
+      prepress.
           
-      *   Arculat, arculati elemek tervezése
+      *   Designing brand identities and brand elements.
           
-      *   Részvétel a kreatív koncepciók kidolgozásában és ötletelésben
-  - left: FELELŐSSÉGEK
-    right: >-
-      *   A rábízott projektek vizuális minőségének és brand-hűségének
-      biztosítása
-          
-      *   Határidők betartása és proaktív kommunikáció a közvetlen vezetőkkel
-          
-      *   Nyomdai leadások hibátlan előkészítése
-          
-      *   A vizuális trendek folyamatos követése és beépítése a munkákba
-  - left: ELŐNY HA,
+      *   Participating in creative concept development and brainstorming.
+  - left: RESPONSIBILITIES
     right: |-
-      *   Ismered a Figma alapjait (UI/UX látásmód)
+      *   Ensuring visual quality and brand consistency for assigned projects.
           
-      *   Rövid videós tartalmak (Reels, TikTok) vágása és szerkesztése
+      *   Meeting deadlines and proactive communication with direct supervisors.
           
-      *   Van tapasztalatod After Effects / Motion design területen
+      *   Flawless execution of print-ready files.
           
-      *   Kísérletezel AI alapú képalkotó eszközökkel (Midjourney, Firefly)
-          
-      *   Jól kommunikálsz angolul szakmai anyagok értelmezéséhez
-  - left: AMIT KÍNÁLUNK
+      *   Continuous monitoring and integration of visual trends.
+  - left: BONUS SKILLS
     right: >-
-      *   Fejlődési, előrelépési lehetőség
+      *   Basic knowledge of Figma (UI/UX mindset).
           
-      *   A tudásoddal és tapasztalatoddal arányos bérezés
+      *   Editing short-form video content (Reels, TikTok).
           
-      *   Nem "futószalag-gyár": valódi tér a kreativitás kibontakoztatására
+      *   Experience in After Effects / Motion design.
           
-      *   Hybrid munkavégzés: belvárosi, inspiráló iroda + heti 2 nap Home
-      Office
+      *   Experimenting with AI-based visual tools (Midjourney, Firefly).
           
-      *   Igény esetén céges laptop
+      *   Good English communication skills for interpreting professional
+      materials.
+  - left: WHAT WE OFFER
+    right: >-
+      *   Opportunities for growth and advancement.
           
-      *   Támogató, fiatalos szakmai közeg
-footer: Látod magad a csapatban? Küldd el portfóliód a legjobb munkáiddal és
-  önéletrajzodat a [**hello@credodigital.hu**](mailto:hello@credodigital.hu)
-  címre **2026.02.18-ig**!
+      *   Compensation is proportional to your knowledge and experience.
+          
+      *   Not a "conveyor-belt factory": genuine space for creative expression.
+          
+      *   Hybrid work: inspiring downtown office + 2 days of Home Office per
+      week.
+          
+      *   Company laptop upon request.
+          
+      *   Supportive, young professional environment.
+footer: Do you see yourself in the team? Send your portfolio featuring your best
+  work and your CV to [**hello@credodigital.hu**](mailto:hello@credodigital.hu)
+  by February 18, 2026!
 ---
