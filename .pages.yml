@@ -174,7 +174,7 @@ content:
     label: Projects (English)
     type: collection
     filename: '{primary}.md'
-    path: 'src/content/projects'
+    path: 'src/content/projects_en'
     view:
       fields: [ title, website-link, showcased, icon, order, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
     fields:
@@ -281,7 +281,7 @@ content:
     label: Team (English)
     type: collection
     filename: '{primary}.md'
-    path: 'src/content/team'
+    path: 'src/content/team_en'
     view:
       fields: [ name, picture, role ]
     fields:
@@ -306,7 +306,7 @@ content:
     label: Career (English)
     type: collection
     filename: '{primary}.md'
-    path: 'src/content/career'
+    path: 'src/content/career_en'
     view:
       fields: [ name, sections, footer ]
     fields:
