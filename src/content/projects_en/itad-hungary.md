@@ -13,8 +13,8 @@ keywords:
   - Social Media
   - PPC
   - Lead Gen
-  - Hirdetési stratégia
-  - Kiadványtervezés
+  - Advertising strategy
+  - Publication design
 project-subheadline-1: AT THE INTERSECTION OF DATA SECURITY AND SUSTAINABILITY
 project-text-1: >-
   ITAD Hungary is a specialist in IT Asset Disposition (ITAD). Their activities
