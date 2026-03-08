@@ -12,11 +12,11 @@ category:
   - Digital
 keywords:
   - PPC
-  - HIRDETÉSI KREATÍVOK
   - META
   - LINKEDIN
   - GOOGLE
-  - HIRDETÉSI STRATÉGIA
+  - Ad creatives
+  - Advertising Strategy
 project-subheadline-1: REDEFINING THE CONCEPT OF "USED"
 project-text-1: >-
   Since 2001, Marseus Computer Kft. has been an indispensable player in the
