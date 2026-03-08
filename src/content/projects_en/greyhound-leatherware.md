@@ -7,9 +7,9 @@ category:
   - Creative
 keywords:
   - Brandbook
-  - Tipográfia
-  - Arculattervezés
-  - Vizuális megjelenés
+  - Typography
+  - Branding
+  - Visual Design
 project-subheadline-1: FROM CONCEPT TO TANGIBLE LUXURY
 project-text-1: >-
   The essence of Greyhound Leatherware lies in its passion for detail. Its
