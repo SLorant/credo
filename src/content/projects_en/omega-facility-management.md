@@ -7,9 +7,9 @@ category:
   - Creative
 keywords:
   - Brandbook
-  - Arculattervezés
-  - Névjegykártya
-  - Levélpapír
+  - Business card
+  - Stationery
+  - Branding
 project-subheadline-1: FROM NEWCOMER TO STRATEGIC PARTNER
 project-text-1: >-
   Omega Professzionál Kft. targeted a specialized segment of facility
