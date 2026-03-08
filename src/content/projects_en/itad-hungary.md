@@ -5,7 +5,7 @@ showcased: true
 icon: ../images/itad_hungary_logo.png
 order: 3
 cover: ../images/itad-cover-1080x1920px.webp
-card-subheadline: Linkedin hirdetési stratégia
+card-subheadline: LinkedIn Ad Strategy
 category:
   - Performance
   - Creative
@@ -15,64 +15,47 @@ keywords:
   - Lead Gen
   - Hirdetési stratégia
   - Kiadványtervezés
-project-subheadline-1: AZ ADATBIZTONSÁG ÉS A FENNTARTHATÓSÁG METSZETÉBEN
+project-subheadline-1: AT THE INTERSECTION OF DATA SECURITY AND SUSTAINABILITY
 project-text-1: >-
-  Az ITAD Hungary az IT-eszközgazdálkodás (IT Asset Disposition) specialistája.
-  Tevékenységük kritikus fontosságú a vállalati szektorban: a leselejtezett
-  eszközök (PC-k, szerverek, adathordozók) biztonságos kezelését végzik. Mivel
-  az adatmegsemmisítés során az EU és az USA legszigorúbb szabványai szerint,
-  piacvezető szoftverekkel (Blancco, Certus, Securase) dolgoznak, a
-  szolgáltatásuk alapja a megkérdőjelezhetetlen bizalom.
+  ITAD Hungary is a specialist in IT Asset Disposition (ITAD). Their activities
+  are of critical importance in the corporate sector: they perform the secure
+  handling of decommissioned assets, such as PCs, servers, and data storage
+  media. Since they utilize market-leading software (Blancco, Certus, Securase)
+  in compliance with the strictest EU and US standards for data destruction,
+  their service is built upon unquestionable trust.
 
 
-  A közös munka kihívását az jelentette, hogy bár a cég technológiai
-  felkészültsége nemzetközi színvonalú, a piaci pozicionálásuk nem tükrözte ezt
-  a professzionalizmust. A feladatunk az volt, hogy a száraz "elektronikai
-  hulladékkezelés" helyett egy stratégiai partnert mutassunk be, aki nemcsak
-  biztonságot garantál, hanem a fenntarthatósági (ESG) célokat is támogatja az
-  eszközök újrahasznosításával.
+  The challenge of our collaboration was that, although the company's
+  technological preparedness is of an international standard, its market
+  positioning did not reflect this level of professionalism. Our task was to
+  present a strategic partner instead of a dry "electronic waste management"
+  provider – one who not only guarantees security but also supports
+  sustainability (ESG) goals through the recycling of assets.
 square-image: ../images/00LI-4ig.webp
 gallery:
   - ../images/itad-slide-1080x1920px-01.webp
   - ../images/itad-slide-1080x1920px-02.webp
   - ../images/itad-slide-1080x1920px-03.webp
-project-subheadline-2: LINKEDIN STRATÉGIA ÉS SALES TÁMOGATÁS
+project-subheadline-2: LINKEDIN STRATEGY AND SALES SUPPORT
 project-text-2: >-
-  A megoldás fókuszába a LinkedIn márkaépítést helyeztük, hiszen ebben a
-  szektorban itt érhetők el a vállalati döntéshozók. A kommunikációt edukatív
-  tartalmakra építettük, bemutatva az olyan egyedi megoldásokat is, amik
-  nagyvállalati körökben talán még ismeretlenek is. Ezt támogattuk meg egységes
-  online és nyomdai grafikai anyagokkal, cégbemutató prospektussal.
+  We placed LinkedIn brand building at the focus of the solution, as this is the
+  platform where corporate decision-makers in this sector can be reached. We
+  built the communication on educational content, showcasing unique solutions
+  that might still be unfamiliar even in large corporate circles. We supported
+  this with unified online and print graphic materials, including a corporate
+  brochure.
 
 
-  A vizuális és tartalmi megújulás mellett beindítottuk a PPC leadgenerálást is.
-  A hirdetési stratégiánk nem a tömegeket, hanem a hiperszegmentálásnak
-  köszönhető, releváns B2B szereplőket célozza, biztosítva, hogy a sales csapat
-  asztalára már minősített, valódi üzleti potenciállal rendelkező érdeklődők
-  kerüljenek.
+  Alongside the visual and content renewal, we also launched PPC lead
+  generation. Thanks to hyper-segmentation, our advertising strategy targets
+  relevant B2B players rather than the masses, ensuring that only pre-qualified
+  leads with real business potential reach the sales team.
 quote:
-  author: Újvári Péter - ügyvezető igazgató, tulajdonos
-  quote-text: >-
-    Hiteles, szakmai partner marketingben
-
-
-    Amikor először elkezdtünk együtt dolgozni a Credo Digital csapatával,
-    őszintén szólva nem volt még teljesen összeállva a fejemben, milyen irányba
-    szeretnénk a kampányainkat vinni. A kapcsolatfelvételük már az első perctől
-    gördülékeny volt: nem csak gyorsan válaszoltak, de tényleg értették is, amit
-    mondtunk.
-
-
-    A legjobb része az együttműködésnek, hogy nem sablonokat kaptunk, hanem
-    cégre szabott kampányokat, amelyek valóban ránk, a termékeinkre és az
-    ügyfeleinkre reflektáltak. Minden egyes ötlet mögött érezhető volt egy
-    szakértői gondolkodás — nem csak „marketinges blabla”, hanem tényleg működő,
-    gyakorlati megoldások.
-
-
-    Külön hálás vagyok azért, hogy nem hagyták, hogy elvesszünk a részletekben,
-    hanem segítettek fókuszálni, mérni és javítani. Ha marketingben keresel
-    partnert, aki nem csak beszél róla, hanem valóban ért hozzá — a CredoDigital
-    az.
+  author: PÉTER ÚJVÁRI – MANAGING DIRECTOR, OWNER
+  quote-text: "Their communication was smooth from the very first minute: they not
+    only responded quickly but truly understood what we were saying. The best
+    part of the collaboration was that we didn’t receive templates, but
+    tailor-made campaigns that truly reflected us, our products, and our
+    customers."
   quote-showcased: false
 ---
