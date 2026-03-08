@@ -11,11 +11,11 @@ category:
   - Creative
   - Digital
 keywords:
-  - Weboldalkészítés
-  - Fotózás
   - Social Media
-  - Hirdetés
-  - Blogírás
+  - Website development
+  - Photography
+  - Advertising
+  - Blog writing
 project-subheadline-1: FROM TRADITION TO DIGITAL PATIENT EXPERIENCE
 project-text-1: >-
   Lehoczky Dental is a prominent, premium player in the Szeged dental market.
