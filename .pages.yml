@@ -4,7 +4,7 @@ media:
   extensions: [ png, webp, jpeg, jpg, gif ]
 content:
   - name: projects
-    label: Projects
+    label: Projects (Hungarian)
     type: collection
     filename: '{primary}.md'
     path: 'src/content/projects'
@@ -111,7 +111,7 @@ content:
             options:
               max: 7
   - name: team
-    label: Team
+    label: Team (Hungarian)
     type: collection
     filename: '{primary}.md'
     path: 'src/content/team'
@@ -136,10 +136,177 @@ content:
         type: number
         required: true
   - name: career
-    label: Career
+    label: Career (Hungarian)
     type: collection
     filename: '{primary}.md'
     path: 'src/content/career'
+    view:
+      fields: [ name, sections, footer ]
+    fields:
+      - name: name
+        label: Job Title
+        type: string
+        required: true
+      - name: sections
+        label: Job sections
+        required: true
+        type: object
+        list:
+          collapsible:
+            collapsed: true # Default collapsed state
+            summary: "{fields.left} ({index})" # Template string using field values and {index}
+        fields:
+          - name: left
+            label: Left side short title
+            required: true
+            type: string
+          - name: right
+            label: Right side block, can be anything
+            required: true
+            description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
+            type: rich-text
+      - name: footer
+        required: true
+        label: Yellow footer box at the end of the job post
+        description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
+        type: rich-text
+  - name: projects_en
+    label: Projects (English)
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/projects_en'
+    view:
+      fields: [ title, website-link, showcased, icon, order, cover, card-subheadline, category, keywords, project-subheadline-1, project-text-1, square-image, gallery, project-subheadline-2, project-text-2, quote ]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: website-link
+        label: Company website link
+        type: string
+      - name: showcased
+        label: Showcased on landing page
+        type: boolean
+        default: false
+        required: true
+      - name: icon
+        label: Project icon or logo
+        description: This shows up on the landing page, if the project is showcased. Use transparent images with white colors. Resolution should be 150x60, the logo should fit in this.
+        type: image
+      - name: order
+        label: Project Order on landing page
+        type: number
+        description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
+        options:
+          max: 4
+      - name: cover
+        label: Cover Image
+        description: This shows up on the landing page, in the project card, and in the cover image. It is 16:9 ratio, except on larger desktop views, where it is 21:9 ratio
+        type: image
+        required: true
+      - name: card-subheadline
+        label: Card Subheadline
+        type: text
+        options:
+          maxlength: 35
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          multiple: true
+          values: [ Performance, Creative, Digital, Production ]
+      - name: keywords
+        label: Keywords
+        type: select
+        options:
+          creatable: true
+          multiple: true
+      - name: project-subheadline-1
+        label: First subheadline
+        type: text
+        required: true
+        options:
+          maxlength: 70
+      - name: project-text-1
+        label: First main text
+        type: text
+        required: true
+      - name: square-image
+        label: Square image (1:1 ratio)
+        type: image
+        required: true
+      - name: gallery
+        label: Image Gallery
+        type: image
+        options:
+          multiple:
+            max: 6
+      - name: project-subheadline-2
+        label: Second subheadline
+        type: text
+        options:
+          maxlength: 70
+      - name: project-text-2
+        label: Second main text
+        description: Enters will be separated into columns in desktop view.
+        type: text
+      - name: quote
+        label: Review
+        type: object
+        fields:
+          - name: author
+            label: Author
+            type: string
+            options:
+              maxlength: 50
+          - name: quote-text
+            label: Review Text
+            type: text
+          - name: quote-text-landing
+            label: Review Text Shown In Landing Page
+            type: text
+          - name: quote-showcased
+            label: Showcased on landing page
+            type: boolean
+            default: false
+          - name: order
+            label: Review Order on landing page
+            type: number
+            description: Only works if it is showcased on the landing page. Leave it empty if it isn't showcased.
+            options:
+              max: 7
+  - name: team_en
+    label: Team (English)
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/team_en'
+    view:
+      fields: [ name, picture, role ]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: picture
+        label: Picture
+        description: The picture of the person should be 1:1 aspect ratio, like a box. The bottom part of the picture is designed to be cut off.
+        type: image
+        required: true
+      - name: role
+        label: Job role
+        type: string
+        required: true
+      - name: order
+        label: Order of the person, starting from left to right.
+        type: number
+        required: true
+  - name: career_en
+    label: Career (English)
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/career_en'
     view:
       fields: [ name, sections, footer ]
     fields:
