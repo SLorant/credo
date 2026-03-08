@@ -136,7 +136,7 @@
   let emberkeModel: THREE.Group | null = null;
 
   // Load the korte model (for particle sampling only - not added to scene)
-  loader.load("models/korte.glb", function (gltf) {
+  loader.load("/models/korte.glb", function (gltf) {
     gltf.scene.traverse((obj) => {
       if (obj instanceof THREE.Mesh) {
         sampler = new MeshSurfaceSampler(obj).build();
@@ -147,7 +147,7 @@
   });
 
   // Load the emberke model (smaller)
-  loader.load("models/emberke.glb", function (gltf) {
+  loader.load("/models/emberke.glb", function (gltf) {
     gltf.scene.scale.set(1.0, 1.0, 1.0); // Keep emberke smaller
     gltf.scene.position.set(0, 0.1, 0); // Center it at the same position
 
