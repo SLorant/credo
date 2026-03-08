@@ -3,7 +3,7 @@ title: AMBROSSI Eyewear
 website-link: https://www.instagram.com/ambrossi_eyewear
 showcased: false
 cover: ../images/ambrossi-cover-1080x1920px.png
-card-subheadline: Hirdetés, social stratégia, fotózás
+card-subheadline: "Ad & Social Strategy, Photography "
 category:
   - Performance
   - Creative
@@ -15,13 +15,14 @@ keywords:
   - Hirdetési stratégia
   - Social media
   - PPC
-project-subheadline-1: A MAGYAR SZEMÜVEGMÁRKA
+project-subheadline-1: THE HUNGARIAN EYEWEAR BRAND
 project-text-1: >-
-  Az AMBROSSI Eyewear egy keceli házaspár "közös gyermekeként" született
-  2005-ben. A névválasztásnál a dinamizmus és a vidámság volt a fő szempont,
-  olyan márkát álmodtak, amelynek titka és íze van. Közel két évtized alatt a
-  cég stabil szereplővé vált, ám a kommunikációjuk egy idő után már nem tükrözte
-  azt a frissességet, amit a nevük ígért.
+  AMBROSSI Eyewear was born in 2005 as the "joint venture" of a married couple
+  from Kecel. When choosing the name, dynamism and cheerfulness were the main
+  considerations; they dreamed of a brand with its own secret and flavor. Over
+  nearly two decades, the company became a stable market player, but after a
+  while, their communication no longer reflected the freshness promised by their
+  name.
 
 
   A feladatunk egy átfogó márkafiatalítás (rebranding) volt. A divatiparban – és
@@ -35,26 +36,27 @@ gallery:
   - ../images/ambrossi-slide-1080x1920px-01.webp
   - ../images/ambrossi-slide-1080x1920px-02.webp
   - ../images/ambrossi-slide-1080x1920px-03.webp
-project-subheadline-2: FÓKUSZBAN A VIZUÁLIS STORYTELLING
+project-subheadline-2: FOCUS ON VISUAL STORYTELLING
 project-text-2: >-
-  A megoldás kulcsa a vizuális kommunikáció teljes újrapozicionálásában rejlett.
-  Mivel a szemüveg öltöztet, a stratégiánk alapja a magas minőségű
-  tartalomgyártás lett: professzionális modell-, és termékfotózással, valamint
-  életérzést közvetítő imázsvideókkal töltöttük meg a márka csatornáit. A "csak
-  egy keret" bemutatása helyett stílust és hangulatot kezdtünk el árulni.
+  The key to the solution lay in the complete repositioning of visual
+  communication. Since glasses are an accessory, our strategy was based on
+  high-quality content production: we filled the brand's channels with
+  professional model and product photography, as well as brand videos conveying
+  a specific lifestyle. Instead of presenting "just a frame," we began selling
+  style and mood.
 
 
-  A social media felületeken egy új, dinamikus hangvételt vezettünk be, amelyet
-  a vizuális tartalommal szinkronban lévő, közvetlen szövegírás támogat. A
-  stratégiaváltás validációjára és az új márkahang (tone of voice)
-  berobbantására egy célzott nyereményjátékot indítottunk. Ennek célja a
-  követőszerzés mellett a közösségi elköteleződés (engagement) maximalizálása
-  volt. Az eredmények magukért beszélnek: a hirdetési túlsúlyt leszámítva,
-  organikusan értünk el több mint 120.000 felhasználót, a játékban pedig 1.600
-  fő vett részt aktívan. A kampány erejét mutatja, hogy a sorsoló-videónk
-  önmagában közel 100.000 (98.000) emberhez jutott el nem fizetett módon,
-  bizonyítva, hogy az “megújult” AMBROSSI márka képes megszólítani és
-  aktivizálni a digitálisan tudatos, fiatalabb közönséget is.
+  We introduced a new, dynamic voice on social media platforms, supported by
+  approachable copywriting in sync with the visual content. To validate the
+  strategic shift and launch the new tone of voice, we initiated a targeted
+  giveaway. In addition to gaining followers, the goal was to maximize social
+  engagement. The results speak for themselves: excluding the advertising
+  weight, we organically reached more than 120,000 users, and 1,600 people
+  participated actively in the giveaway. The strength of the campaign is shown
+  by the fact that our prize draw video alone reached nearly 100,000 (98,000)
+  people through non-paid means, proving that the "rejuvenated" AMBROSSI brand
+  is capable of addressing and activating a digitally conscious, younger
+  audience as well.
 quote:
   quote-showcased: false
 ---
