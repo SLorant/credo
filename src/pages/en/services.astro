@@ -4,12 +4,12 @@ export const prerender = true; // Makes this page static for better SEO and perf
 import PageLanding from "../../components/general/PageLanding.astro";
 import Contact from "../../components/general/Contact.astro";
 import Header from "../../components/header/Header.astro";
-import Services from "../../components/services/Services.astro";
+import ServicesSection from "../../components/services/Services.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout>
-  <Header />
+  <Header en />
   <div class="container">
     <!--  <div class="bgfooter"></div> -->
     <img class="m" src="/u1.png" alt="Gradient" />
@@ -19,15 +19,15 @@ import Layout from "../../layouts/Layout.astro";
       <div class="head">
         <PageLanding
           alternate
-          subText="Üzletágaink alapja,"
-          header1="az integrált "
-          header2="megközelítés"
-          text={`A siló gondolkodás a hatékonyság csendes gyilkosa. A modern marketingben a részterületek már nem léteznek önmagukban. A legjobb kreatív is elvérzik egy lassú weboldalon, és a legprecízebb hirdetési stratégia is pénzégetés, ha a vizuális tartalom hiteltelen. Mi összefüggéseiben látjuk márkádat. Az integrált működés nálunk azt jelenti, hogy minden tevékenységünk egyetlen, koherens nyelvet beszél. Így a folyamatok nem akadályozzák, erősítik egymást.`}
+          subText="THE BASE OF OUR SERVICES,"
+          header1="integrated"
+          header2="approach"
+          text={`Silo thinking is the silent killer of efficiency. In modern marketing, individual departments no longer exist in isolation. Even the best creative will fail on a slow website, and the most precise advertising strategy is just burning money if the visual content lacks credibility. We view your brand through its interconnections. For us, integrated operations mean that every activity speaks a single, coherent language. This way, processes don't hinder each other, they amplify one another.`}
         />
       </div>
 
-      <Services />
-      <Contact needGradient />
+      <ServicesSection en />
+      <Contact needGradient en />
     </main>
   </div>
 </Layout>

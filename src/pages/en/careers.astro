@@ -8,7 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
 
-const careers = await getCollection("career");
+const careers = await getCollection("career_en");
 
 // Helper to render markdown strings to HTML
 const renderMarkdown = (markdown: string) => {
@@ -27,7 +27,7 @@ const processedCareers = careers.map((job) => ({
 ---
 
 <Layout>
-  <Header />
+  <Header en />
   <div class="container">
     <div class="bg"></div>
     <img class="m" src="/u1.png" alt="Gradient" />
@@ -36,9 +36,9 @@ const processedCareers = careers.map((job) => ({
     <main>
       <div class="head">
         <PageLanding
-          header1="csatlakoznál"
-          header2="hozzánk?"
-          text={`A Credo fedélzetén a hierarchiát a tudásvágy és a teljesítmény írja felül. Hiszünk abban, hogy egy sikeres expedícióhoz kell a <strong>pályakezdők lendülete</strong> és a tapasztaltabb kollégák <strong>stratégiai rutinja</strong> is. Ha junior vagy, nálunk nem a partvonalról nézed a vizet, hanem éles projektekben tanulod meg, hogyan lesz egy márkából piacvezető. Ha tájékozott szakértő vagy, nálunk teret és stabilitást kapsz ahhoz, hogy a tudásodat valódi üzleti eredményekre váltsd. Közös a célunk: értéket szállítani a háborgó tengeren.`}
+          header1="want to "
+          header2="join us?"
+          text={`At Credo, hierarchy is secondary to a thirst for knowledge and high performance. We believe a successful expedition requires both the energy of fresh talent and the strategic routine of experienced professionals. If you are a junior, you won't be watching from the sidelines; you'll learn how to turn a brand into a market leader through live projects. If you are an established expert, we provide the space and stability you need to translate your expertise into real business results. Our goal is shared: delivering value across choppy waters.`}
         />
       </div>
 
@@ -82,13 +82,11 @@ const processedCareers = careers.map((job) => ({
       }
 
       <div class="box f">
-        <h3>Lépj elő!</h3>
+        <h3>STEP UP!</h3>
         <p class="uppercase">
-          A legjobb együttműködések gyakran egy spontán e-maillel indulnak. A
-          kiírt pozíciók csak a pillanatnyi állapotot tükrözik, de a kiemelkedő
-          szakmai háttérre, az ambíciózus törekvésekre mindig nyitottak vagyunk.
-          Küldd el önéletrajzodat, portfóliódat, és ha az értékrendünk
-          találkozik, megtaláljuk a közös munka kereteit.
+          The best collaborations often start with a spontaneous email. Open
+          positions only reflect the current status, but we are always open to
+          outstanding professional backgrounds and ambitious aspirations.
           <a href="mailto:hello@credodigital.hu"
             ><span class="bold">hello@credodigital.hu</span></a
           >
@@ -96,7 +94,7 @@ const processedCareers = careers.map((job) => ({
       </div>
 
       <div class="contactwrap">
-        <Contact needGradient />
+        <Contact needGradient en />
       </div>
     </main>
   </div>

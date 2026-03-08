@@ -1,23 +1,140 @@
 ---
-const { noContact } = Astro.props;
+const { en, noContact }: { en?: boolean; noContact?: boolean } = Astro.props;
+
+// Get current path to construct language-switched URL
+const currentPath = Astro.url.pathname;
+
+// Route mapping between Hungarian and English
+const routeMap: Record<string, string> = {
+  "/": "/en/",
+  "/rolunk/": "/en/about/",
+  "/rolunk": "/en/about/",
+  "/uzletagak": "/en/services",
+  "/uzletagak/": "/en/services/",
+  "/munkaink": "/en/portfolio",
+  "/munkaink/": "/en/portfolio/",
+  "/karrier": "/en/careers",
+  "/karrier/": "/en/careers/",
+  "/adatkezeles": "/en/privacy-policy",
+  "/adatkezeles/": "/en/privacy-policy/",
+  // English to Hungarian (reverse mapping)
+  "/en/": "/",
+  "/en": "/",
+  "/en/about/": "/rolunk/",
+  "/en/about": "/rolunk/",
+  "/en/services": "/uzletagak",
+  "/en/services/": "/uzletagak/",
+  "/en/portfolio": "/munkaink",
+  "/en/portfolio/": "/munkaink/",
+  "/en/careers": "/karrier",
+  "/en/careers/": "/karrier/",
+  "/en/privacy-policy": "/adatkezeles",
+  "/en/privacy-policy/": "/adatkezeles/",
+};
+
+// Get the alternative language URL
+const getAltLangUrl = (currentPath: string, isEnglish: boolean): string => {
+  // Check if exact path exists in mapping
+  if (routeMap[currentPath]) {
+    return routeMap[currentPath];
+  }
+
+  // If on a specific project/portfolio page
+  if (currentPath.startsWith("/munkaink/")) {
+    const slug = currentPath.replace("/munkaink/", "").replace("/", "");
+    return `/en/portfolio/${slug}`;
+  }
+  if (currentPath.startsWith("/en/portfolio/")) {
+    const slug = currentPath.replace("/en/portfolio/", "").replace("/", "");
+    return `/munkaink/${slug}`;
+  }
+
+  // Default fallback
+  return isEnglish ? "/" : "/en/";
+};
+
+const altLangUrl = getAltLangUrl(currentPath, en || false);
 ---
 
 <nav>
   <div class="navbg"></div>
-  <a href="/"><img class="logo logo2" src="/logo.png" alt="logo" /></a>
-  <ul id="nav-menu">
-    <li><a href="/rolunk/">RÓLUNK</a></li>
-    <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
-    <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
-    <li><a href="/karrier" target="_self">KARRIER</a></li>
-    <li>
-      <a
-        class="contact"
-        href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"}
-        target="_self">KAPCSOLAT</a
-      >
-    </li>
-  </ul>
+  <a href={en ? "/en" : "/"}
+    ><img class="logo logo2" src="/logo.png" alt="logo" /></a
+  >
+  {
+    en ? (
+      <ul id="nav-menu">
+        <li>
+          <a href="/en/about/">ABOUT US</a>
+        </li>
+        <li>
+          <a href="/en/services" target="_self">
+            SERVICES
+          </a>
+        </li>
+        <li>
+          <a href="/en/portfolio" target="_self">
+            PORTFOLIO
+          </a>
+        </li>
+        <li>
+          <a href="/en/careers" target="_self">
+            CAREERS
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact"
+            href={noContact ? "/en/portfolio#contact" : "#contact"}
+            target="_self"
+          >
+            CONTACT
+          </a>
+        </li>
+        <li>
+          <a class="lang" href={altLangUrl} target="_self">
+            HU
+          </a>
+        </li>
+      </ul>
+    ) : (
+      <ul id="nav-menu">
+        <li>
+          <a href="/rolunk/">RÓLUNK</a>
+        </li>
+        <li>
+          <a href="/uzletagak" target="_self">
+            ÜZLETÁGAK
+          </a>
+        </li>
+        <li>
+          <a href="/munkaink" target="_self">
+            MUNKÁINK
+          </a>
+        </li>
+        <li>
+          <a href="/karrier" target="_self">
+            KARRIER
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact"
+            href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"}
+            target="_self"
+          >
+            KAPCSOLAT
+          </a>
+        </li>
+        <li>
+          <a class="lang" href={altLangUrl} target="_self">
+            EN
+          </a>
+        </li>
+      </ul>
+    )
+  }
+
   <button id="hamburger" class="hamburger" aria-label="Toggle menu">
     <span></span>
     <span></span>
@@ -26,23 +143,87 @@ const { noContact } = Astro.props;
 </nav>
 
 <div id="mobile-menu" class="mobile-menu">
-  <a href="/" class="mobile-logo">
+  <a href={en ? "/en" : "/"} class="mobile-logo">
     <img src="/logo.png" alt="logo" class="logo" /></a
   >
   <button id="close-menu" class="close-btn" aria-label="Close menu">
     <span>&times;</span>
   </button>
-  <ul class="mobile-nav">
-    <li><a href="/rolunk/">RÓLUNK</a></li>
-    <li><a href="/uzletagak" target="_self">ÜZLETÁGAK</a></li>
-    <li><a href="/munkaink" target="_self">MUNKÁINK</a></li>
-    <li><a href="/karrier" target="_self">KARRIER</a></li>
-    <li class="contact">
-      <a href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"} target="_self"
-        >KAPCSOLAT</a
-      >
-    </li>
-  </ul>
+
+  {
+    en ? (
+      <ul id="mobile-nav-en" class="mobile-nav">
+        <li>
+          <a href="/en/about/">ABOUT US</a>
+        </li>
+        <li>
+          <a href="/en/services" target="_self">
+            SERVICES
+          </a>
+        </li>
+        <li>
+          <a href="/en/portfolio" target="_self">
+            PORTFOLIO
+          </a>
+        </li>
+        <li>
+          <a href="/en/careers" target="_self">
+            CAREERS
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact"
+            href={noContact ? "/en/portfolio#contact" : "#contact"}
+            target="_self"
+          >
+            CONTACT
+          </a>
+        </li>
+        <li>
+          <a class="lang" href={altLangUrl} target="_self">
+            HU
+          </a>
+        </li>
+      </ul>
+    ) : (
+      <ul id="mobile-nav" class="mobile-nav">
+        <li>
+          <a href="/rolunk/">RÓLUNK</a>
+        </li>
+        <li>
+          <a href="/uzletagak" target="_self">
+            ÜZLETÁGAK
+          </a>
+        </li>
+        <li>
+          <a href="/munkaink" target="_self">
+            MUNKÁINK
+          </a>
+        </li>
+        <li>
+          <a href="/karrier" target="_self">
+            KARRIER
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact"
+            href={noContact ? "/munkaink#kapcsolat" : "#kapcsolat"}
+            target="_self"
+          >
+            KAPCSOLAT
+          </a>
+        </li>
+        <li>
+          <a class="lang" href={altLangUrl} target="_self">
+            EN
+          </a>
+        </li>
+      </ul>
+    )
+  }
+
   <div class="icons">
     <a href="https://www.instagram.com/weare_credo/" target="_blank"
       ><img class="icon" src="/icons/instagram.svg" alt="instagram" /></a
@@ -81,6 +262,13 @@ const { noContact } = Astro.props;
     border-bottom: #dbe120 2px solid;
     padding-bottom: 1px;
   }
+
+  .lang {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 1px 8px;
+  }
+
   .navbg {
     position: absolute;
     top: -30px;
@@ -249,6 +437,12 @@ const { noContact } = Astro.props;
     transition-delay: 0.5s;
   }
 
+  .mobile-menu.active .mobile-nav li:nth-child(6) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+
   .mobile-nav a {
     text-decoration: none;
     color: white;
@@ -259,9 +453,9 @@ const { noContact } = Astro.props;
     color: #dbe120;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1050px) {
     nav {
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
   }
 

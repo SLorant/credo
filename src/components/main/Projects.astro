@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import ArrowButton from "../general/ArrowButton.astro";
 
+const { en }: { en?: boolean } = Astro.props;
+
 const loadedProjects = await getCollection("projects");
 
 const projects = loadedProjects
@@ -14,8 +16,8 @@ const projects = loadedProjects
 <div class="contcont">
   <div class="container">
     <h2 class="pheader">
-      kiemelt
-      <span class="pthree">munkáink</span>
+      {en ? "featured" : "kiemelt"}
+      <span class="pthree">{en ? "projects" : "munkáink"}</span>
     </h2>
     <div class="achibg"></div>
     <div class="achibg2">
@@ -24,7 +26,10 @@ const projects = loadedProjects
     <div class="projectOuter grid">
       {
         projects.map((proj, i) => (
-          <a class="projectBox effectlink" href={"munkaink/" + proj.id}>
+          <a
+            class="projectBox effectlink"
+            href={en ? "/en/portfolio/" + proj.id : "munkaink/" + proj.id}
+          >
             <h3>{proj.data.title}</h3>
             <img class="icon" src={proj.data.icon?.src} alt="brand logo" />
 
@@ -44,8 +49,8 @@ const projects = loadedProjects
       }
     </div>
     <div class="bt">
-      <a href="/munkaink">
-        <ArrowButton text="NÉZD MEG MUNKÁINK" />
+      <a href={en ? "/en/portfolio" : "/munkaink"}>
+        <ArrowButton text={en ? "VIEW OUR PORTFOLIO" : "NÉZD MEG MUNKÁINK"} />
       </a>
     </div>
   </div>

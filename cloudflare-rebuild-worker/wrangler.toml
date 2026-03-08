@@ -9,7 +9,7 @@ compatibility_date = "2024-01-01"
 # "0 0 * * *" = daily at midnight
 # "0 */6 * * *" = every 6 hours
 [triggers]
-crons = ["0 */1 * * *"]
+crons = ["0 */12 * * *"]
 
 # Deploy hook URL will be stored as a secret
 # Set it with: wrangler secret put DEPLOY_HOOK_URL

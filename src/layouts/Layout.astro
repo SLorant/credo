@@ -3,35 +3,61 @@ export const prerender = true; // Makes this page static for better SEO and perf
 import CookieConsent from "../components/general/CookieConsent.astro";
 import { SEO } from "astro-seo";
 
+// Get current locale from URL
+const currentLocale = Astro.currentLocale || "en";
+const isEnglish = currentLocale === "en";
+
+// Language-specific content
+const seoContent = {
+  hu: {
+    title: "Credo Digital",
+    description:
+      "Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés.",
+    keywords:
+      "integrált marketing ügynökség, digitális marketing, performance marketing, growth marketing, kreatív ügynökség",
+    language: "Hungarian",
+    ogLocale: "hu_HU",
+  },
+  en: {
+    title: "Credo Digital",
+    description:
+      "Results-oriented, integrated marketing agency in Szeged. Comprehensive digital strategies, creative execution, brand building.",
+    keywords:
+      "integrated marketing agency, digital marketing, performance marketing, growth marketing, creative agency",
+    language: "English",
+    ogLocale: "en_US",
+  },
+};
+
+const content =
+  seoContent[currentLocale as keyof typeof seoContent] || seoContent.hu;
 const siteUrl = Astro.site || new URL(Astro.url.href);
 ---
 
 <!doctype html>
-<html lang="hu">
+<html lang={currentLocale}>
   <head>
     <SEO
-      title={"Credo Digital"}
-      description={"Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés."}
+      title={content.title}
+      description={content.description}
       charset="UTF-8"
       openGraph={{
         basic: {
-          title: "Credo Digital",
+          title: content.title,
           type: "website",
           image: "/brand.webp",
           url: siteUrl.href,
         },
         optional: {
-          description:
-            "Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés.",
+          description: content.description,
           siteName: "Credo Digital",
-          locale: "hu_HU",
+          locale: content.ogLocale,
         },
       }}
       twitter={{
         card: "summary_large_image",
-        title: "Credo Digital",
-        description:
-          "Eredményorientált, integrált marketing ügynökség Szegeden. Teljes körű digitális stratégiák, kreatív kivitelezés, márkaépítés.",
+        title: content.title,
+        description: content.description,
         image: "/brand.webp",
       }}
       extend={{
@@ -64,20 +90,19 @@ const siteUrl = Astro.site || new URL(Astro.url.href);
           { name: "generator", content: Astro.generator },
           {
             name: "keywords",
-            content:
-              "integrált marketing ügynökség, digitális marketing, performance marketing, growth marketing, kreatív ügynökség",
+            content: content.keywords,
           },
           { name: "author", content: "Credo Digital" },
           { name: "robots", content: "index, follow" },
           {
             name: "language",
-            content: "Hungarian",
+            content: content.language,
           },
           { name: "revisit-after", content: "7 days" },
           { name: "rating", content: "general" },
           { name: "distribution", content: "global" },
           { name: "theme-color", content: "#1c1b22" },
-          { property: "og:locale", content: "hu_HU" },
+          { property: "og:locale", content: content.ogLocale },
           { property: "og:site_name", content: "Credo Digital" },
         ],
       }}
@@ -86,7 +111,7 @@ const siteUrl = Astro.site || new URL(Astro.url.href);
   <body>
     <slot />
 
-    <CookieConsent />
+    <CookieConsent en={isEnglish} />
   </body>
 </html>
 

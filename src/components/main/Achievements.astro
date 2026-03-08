@@ -1,3 +1,7 @@
+---
+const { en }: { en?: boolean } = Astro.props;
+---
+
 <div class="contcont">
   <!--   <div class="topgradient"></div> -->
 
@@ -6,8 +10,8 @@
     <!--  <div class="achibg2">
       <img class="achibgimg" src="/illustrations/pattern.webp" alt="" />
     </div> -->
-    <h2 class="achiheader">kiemelt</h2>
-    <h2 class="achiheader2">mérföldköveink</h2>
+    <h2 class="achiheader">{en ? "key" : "kiemelt"}</h2>
+    <h2 class="achiheader2">{en ? "milestones" : "mérföldköveink"}</h2>
 
     <div class="slider-container">
       <div class="slider-track"></div>
@@ -16,37 +20,56 @@
         <div class="slider-point" data-index="0">
           <div class="tooltip">
             <p>
-              <span class="bold">2025. február</span>
-              <br /> Elindultunk. Megszületett a Credo, és vele együtt az elhatározás,
-              hogy minőséget hozunk a piacra.
+              <span class="bold">{en ? "FEBRUARY 2025" : "2025. február"}</span>
+              <br />
+              {
+                en
+                  ? "We launched. Credo was born, along with the determination to bring true quality to the market."
+                  : "Elindultunk. Megszületett a Credo, és vele együtt az elhatározás, hogy minőséget hozunk a piacra."
+              }
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="1">
           <div class="tooltip">
             <p>
-              <span class="bold">2025. szeptember</span>
-              <br /> Fél év alatt elértük, hogy már 5 állandó partnerrel dolgozunk
-              együtt napi szinten, közös célokért.
+              <span class="bold"
+                >{en ? "SEPTEMBER 2025" : "2025. szeptember"}</span
+              >
+              <br />
+              {
+                en
+                  ? "In just six months, we reached the milestone of working with 5 permanent partners on a daily basis toward shared goals."
+                  : "Fél év alatt elértük, hogy már 5 állandó partnerrel dolgozunk együtt napi szinten, közös célokért."
+              }
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="2">
           <div class="tooltip">
             <p>
-              <span class="bold">2025. december </span>
+              <span class="bold"
+                >{en ? "DECEMBER 2025" : "2025. december"}
+              </span>
               <br />
-              Kinőttük a kereteket, így csapatunk 5 főre bővült. Több kéz, több szem,
-              nagyobb kapacitás, több szakértelem.
+              {
+                en
+                  ? "We outgrew our initial framework, and our team expanded to 5 people. More hands, more eyes, greater capacity, and more expertise."
+                  : "Kinőttük a kereteket, így csapatunk 5 főre bővült. Több kéz, több szem, nagyobb kapacitás, több szakértelem."
+              }
             </p>
           </div>
         </div>
         <div class="slider-point" data-index="3">
           <div class="tooltip">
             <p>
-              <span class="bold">2026. február</span>
-              <br /> Saját bázis Szeged szívében. Beköltöztünk a Tímár utcai irodánkba,
-              hogy végre egy helyen alkothassunk.
+              <span class="bold">{en ? "FEBRUARY 2026" : "2026. február"}</span>
+              <br />
+              {
+                en
+                  ? "Our own home in the heart of Szeged. We moved into our Tímár Street office so we can finally create together in one place."
+                  : "Saját bázis Szeged szívében. Beköltöztünk a Tímár utcai irodánkba, hogy végre egy helyen alkothassunk."
+              }
             </p>
           </div>
         </div>
@@ -65,12 +88,24 @@
     </div>
 
     <div class="achibox">
-      <p class="uppercase">
-        Szakterületeink ereje új irodánkban adódik össze, <br />
-        <span class="bold"
-          >hogy a legnehezebb kihívásokra is naprakész megoldást adjunk.</span
-        >
-      </p>
+      {
+        en ? (
+          <p class="uppercase">
+            THE STRENGTH OF OUR SPECIALIZED FIELDS CONVERGES IN OUR NEW OFFICE
+            <br />
+            <span class="bold">
+              TO PROVIDE UP-TO-DATE SOLUTIONS FOR EVEN THE TOUGHEST CHALLENGES.
+            </span>
+          </p>
+        ) : (
+          <p class="uppercase">
+            Szakterületeink ereje új irodánkban adódik össze, <br />
+            <span class="bold">
+              hogy a legnehezebb kihívásokra is naprakész megoldást adjunk.
+            </span>
+          </p>
+        )
+      }
     </div>
   </div>
 </div>

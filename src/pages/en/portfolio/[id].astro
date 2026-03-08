@@ -1,0 +1,461 @@
+---
+export const prerender = true; // Makes this page static for better SEO and performance
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/header/Header.astro";
+import { Image } from "astro:assets";
+import "@splidejs/splide/css/core";
+import Quote from "../../../components/general/Quote.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const projects = await getCollection("projects_en");
+
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { project }: { project: any } = Astro.props;
+const keywords = [...(project.data.keywords || [])];
+
+const splitTextIntoFlex = (text: string) => {
+  if (!text) return null;
+  const [col1, ...rest] = text.split(/\n/);
+  const col2 = rest.join("\n");
+  return { col1, col2 };
+};
+---
+
+<Layout>
+  <Header noContact en />
+  <div class="container">
+    <main>
+      <Image
+        class={"cover"}
+        alt={"Cover"}
+        src={project.data.cover}
+        layout="full-width"
+      />
+      {
+        project.data["website-link"] &&
+        project.data["website-link"].length > 0 ? (
+          <a
+            href={project.data["website-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h1 class="clickable">{project.data["title"]}</h1>
+          </a>
+        ) : (
+          <h1 class="nolink">{project.data["title"]}</h1>
+        )
+      }
+
+      <div class="keywords" id="keywords-container">
+        {keywords.map((k) => <div class="keyword">{k}</div>)}
+      </div>
+      <section class="firstSection">
+        <div class="left">
+          <h2>{project.data["project-subheadline-1"]}</h2>
+          <p
+            class="firstP"
+            set:html={project.data["project-text-1"].replace(/\n/g, "<br />")}
+          />
+        </div>
+
+        <Image
+          alt={"Side Image"}
+          src={project.data["square-image"]}
+          layout="constrained"
+          class={"sideImg"}
+        />
+      </section>
+      {
+        project.data.gallery && project.data.gallery.length > 0 ? (
+          <section class="splide" aria-label="Image Gallery">
+            <div class="splide__track">
+              <ul class="splide__list">
+                {project.data.gallery?.map((pic: any) => (
+                  <li class="splide__slide">
+                    <Image
+                      alt={"Cover"}
+                      class={"sliderImg"}
+                      src={pic}
+                      layout="full-width"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null
+      }
+
+      <section class="lastSection">
+        <div class="full">
+          <h2 class="lasth2">{project.data["project-subheadline-2"]}</h2>
+          {
+            (() => {
+              if (!project.data["project-text-2"]) return null;
+              const flex = splitTextIntoFlex(project.data["project-text-2"]);
+              if (!flex) return null;
+              return (
+                <div class="two-col-flex">
+                  <p class="firstP">{flex.col1}</p>
+                  <p class="firstP">{flex.col2}</p>
+                </div>
+              );
+            })()
+          }
+        </div>
+      </section>
+      <Image
+        alt={"Side Image"}
+        src={project.data["square-image"]}
+        layout="constrained"
+        class={"mobileImg"}
+      />
+      {
+        project.data["quote"]?.["quote-text"] &&
+        project.data["quote"]?.["quote-text"].length > 0 ? (
+          <Quote
+            text={project.data.quote["quote-text"]}
+            author={project.data.quote["author"]}
+          />
+        ) : null
+      }
+    </main>
+  </div>
+</Layout>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  new Splide(".splide").mount();
+</script>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding: 6rem 0;
+    padding-bottom: 6rem;
+    color: white;
+    font-family: "AktivGrotesk Regular";
+  }
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    word-wrap: break-word;
+  }
+  h1 {
+    font-size: var(--header-lg);
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+    line-height: 6rem;
+  }
+  .nolink {
+    margin: 30px auto;
+  }
+  a {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration: none;
+    color: inherit;
+    margin: 30px auto;
+  }
+
+  .clickable {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .clickable::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -2.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dbe120' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'/%3E%3Cpath d='M7 7h10v10'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .clickable:hover::after {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+    margin: 0;
+    text-align: left;
+    font-family: "AktivGrotesk Medium";
+    font-weight: 400;
+    margin: 0px 0px 30px 0px;
+  }
+  .lasth2 {
+    margin: 0px 0px 20px 0px;
+  }
+
+  .firstSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    gap: 30px;
+  }
+  .left {
+    width: 50%;
+  }
+  .firstP {
+    width: 100%;
+    font-size: var(--text-md);
+    line-height: 1.7rem;
+    text-wrap: pretty !important;
+  }
+  .sideImg {
+    width: 50%;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 40px;
+    height: auto;
+    align-self: flex-start;
+  }
+  .mobileImg {
+    display: none;
+  }
+  .lastSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+  }
+  .full {
+    width: 100%;
+  }
+  .two-col-flex {
+    display: flex;
+    gap: 30px;
+  }
+  .two-col-flex .firstP {
+    width: 50%;
+  }
+  /* IMG */
+  .cover {
+    border-radius: 40px;
+    aspect-ratio: 21 / 9 !important;
+    height: auto;
+  }
+  :where([data-astro-image]) {
+    object-fit: var(--fit);
+    object-position: var(--pos);
+  }
+  :where([data-astro-image="full-width"]) {
+    width: 100%;
+  }
+  :where([data-astro-image="constrained"]) {
+    max-width: 100%;
+  }
+  .sliderImg {
+    aspect-ratio: 16 / 9 !important;
+    height: auto;
+  }
+  /* ---------------------- */
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 15px;
+    opacity: 1;
+    justify-content: center;
+    overflow: auto;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .keyword {
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    border: 1px solid white;
+    text-transform: uppercase;
+    font-size: var(--text-base);
+  }
+
+  @media (max-width: 1300px) {
+    main {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .firstP {
+      font-size: var(--text-base);
+      line-height: 1.6rem;
+    }
+  }
+  @media (max-width: 1050px) {
+    main {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: var(--header-sm2);
+      text-align: center;
+      font-weight: 400;
+      margin: 0;
+      line-height: 3rem;
+    }
+    a {
+      margin: 30px auto;
+    }
+    .clickable::after {
+      width: 1.4rem;
+      height: 1.4rem;
+      right: -1.6rem;
+    }
+    h2 {
+      font-size: var(--text-base);
+      margin: 0px 0px 30px 0px;
+    }
+    .firstP {
+      font-size: var(--text-sm);
+      line-height: 1.4rem;
+      width: 100% !important;
+    }
+    .firstSection {
+      margin-top: 60px;
+    }
+
+    .cover {
+      border-radius: 40px;
+      aspect-ratio: 16 / 9 !important;
+      height: auto;
+    }
+    .keywords {
+      gap: 10px 10px;
+    }
+    .keyword {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid white;
+      font-size: var(--text-sm);
+    }
+  }
+  @media (max-width: 768px) {
+    main {
+      max-width: auto;
+      padding: 0 8%;
+      margin: 0 auto;
+    }
+    .clickable::after {
+      width: 1.4rem;
+      height: 1.4rem;
+      right: -1.6rem;
+    }
+    .sideImg {
+      display: none;
+    }
+    .left {
+      width: 100%;
+    }
+    .firstSection {
+      flex-direction: column-reverse;
+
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .lastSection {
+      margin-top: 40px;
+    }
+    .cover {
+      border-radius: 0px;
+      margin-left: -10%;
+      margin-right: -10%;
+      width: 120%;
+    }
+
+    .two-col-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 0rem;
+    }
+
+    .mobileImg {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 40px;
+      height: auto;
+      margin-top: 20px;
+      max-width: 450px;
+      margin: 20px auto;
+    }
+  }
+</style>
+
+<style is:global>
+  /* -------------------------------------- */
+  /* OVERWRITING SLIDE */
+  .splide__arrows {
+    display: none !important;
+  }
+
+  .splide__track {
+    border-radius: 40px;
+  }
+
+  .splide__pagination {
+    margin-top: 30px;
+    padding-inline-start: 0px;
+  }
+  .splide__pagination button {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+  .splide__pagination button[aria-selected="true"] {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  @media (max-width: 768px) {
+    .splide__track {
+      border-radius: 20px;
+    }
+    .splide__pagination {
+      margin-top: 25px;
+    }
+    .splide__pagination button {
+      border-radius: 10px;
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+      margin-left: 4px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+  }
+  /* -------------------------------------- */
+</style>

@@ -2,14 +2,27 @@
 import Preciz from "./svg/preciz.astro";
 import Krea from "./svg/krea.astro";
 import Stonks from "./svg/stonks.astro";
+
+const { en }: { en?: boolean } = Astro.props;
 ---
 
 <section>
   <img class="background3" src="/g1.webp" alt="gradient" />
   <div data-section="pillars" class="container">
     <h2 class="header">
-      együttműködésünk <br />
-      <span class="three">három</span> pillérre épül:
+      {en ? "our collaboration" : "együttműködésünk"}
+      <br />
+      {
+        en ? (
+          <>
+            is built on <span class="three">three </span> pillars:
+          </>
+        ) : (
+          <>
+            <span class="three">három</span> pillérre épül:
+          </>
+        )
+      }
     </h2>
     <div class="grid">
       <div class="griditem">
@@ -19,7 +32,13 @@ import Stonks from "./svg/stonks.astro";
           alt="second pillar"
         />
         <Krea />
-        <p class="info">Kiemelkedő vizuális világra és kreatív koncepcióra.</p>
+        <p class="info">
+          {
+            en
+              ? "Outstanding visual identity and creative concepts."
+              : "Kiemelkedő vizuális világra és kreatív koncepcióra."
+          }
+        </p>
       </div>
       <div class="griditem">
         <img
@@ -28,7 +47,13 @@ import Stonks from "./svg/stonks.astro";
           alt="second pillar"
         />
         <Preciz />
-        <p class="info">Adatalapú, precíz, valamint hatékony kivitelezésre.</p>
+        <p class="info">
+          {
+            en
+              ? "Data-driven, precise, and efficient execution."
+              : "Adatalapú, precíz, valamint hatékony kivitelezésre."
+          }
+        </p>
       </div>
       <div class="griditem">
         <img
@@ -37,16 +62,37 @@ import Stonks from "./svg/stonks.astro";
           alt="second pillar"
         />
         <Stonks />
-        <p class="info">És a stratégia vezette, hosszú távú növekedésre.</p>
+        <p class="info">
+          {
+            en
+              ? "And strategy-led, long-term business growth."
+              : "És a stratégia vezette, hosszú távú növekedésre."
+          }
+        </p>
       </div>
     </div>
     <div class="box">
       <p class="uppercase">
-        A vízión túl a teljes márkatervezéstől, <br /> a napi megvalósításon át egészen
-        az időszerű megújulásig, <br />
-        <span class="bold"
-          >a fejlődés minden fázisában segítjük ügyfeleinket.</span
-        >
+        {
+          en ? (
+            <>
+              BEYOND THE VISION, WE SUPPORT OUR CLIENTS <br />
+              THROUGH EVERY STAGE OF GROWTH. FROM COMPLETE
+              <br />
+              <span class="bold">
+                BRAND DESIGNS AND DAILY OPERATIONS TO TIMELY REBRANDING.
+              </span>
+            </>
+          ) : (
+            <>
+              A vízión túl a teljes márkatervezéstől, <br /> a napi
+              megvalósításon át egészen az időszerű megújulásig, <br />
+              <span class="bold">
+                a fejlődés minden fázisában segítjük ügyfeleinket.
+              </span>
+            </>
+          )
+        }
       </p>
     </div>
   </div>

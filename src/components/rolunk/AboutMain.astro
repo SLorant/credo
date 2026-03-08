@@ -7,7 +7,11 @@ import Team from "./Team.astro";
 import { getCollection } from "astro:content";
 import Achievements from "../main/Achievements.astro";
 
-const loadedTeam = await getCollection("team");
+const { en }: { en?: boolean } = Astro.props;
+
+const loadedTeamHu = await getCollection("team");
+const loadedTeamEn = await getCollection("team_en");
+const loadedTeam = en ? loadedTeamEn : loadedTeamHu;
 
 const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
 ---
@@ -20,16 +24,26 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
   <div class="head">
     <PageLanding
       alternate
-      subText="Két különböző karakter,"
-      header1="egy közös"
-      header2="nevező."
-      text={`Ez a mondat írja le legpontosabban a Credo DNS-ét. Alapítóink a szakma eltérő pólusairól érkeztek, de a céljuk azonos volt: választ adni a marketing klisékre, a túlhasznált panelekre és a futószalagon érkező, középszerű ötletekre. <br/> Úgy döntöttek, másképp csinálják.`}
+      subText={en ? "Two Different Characters" : "Két különböző karakter,"}
+      header1={en ? "one common" : "egy közös"}
+      header2={en ? "denominator" : "nevező."}
+      text={en
+        ? "This sentence perfectly captures the DNA of Credo. Our founders came from opposite ends of the industry with a shared goal: to provide an alternative to marketing clichés, overused templates, and the conveyor belt of mediocre ideas. They decided to do things differently."
+        : `Ez a mondat írja le legpontosabban a Credo DNS-ét. Alapítóink a szakma eltérő pólusairól érkeztek, de a céljuk azonos volt: választ adni a marketing klisékre, a túlhasznált panelekre és a futószalagon érkező, középszerű ötletekre. <br/> Úgy döntöttek, másképp csinálják.`}
     />
   </div>
   <main>
     <div class="leaders">
-      <img class="lead" src="/rolunk1.png" alt="leader" />
-      <img class="lead" src="/rolunk2.png" alt="leader" />
+      <img
+        class="lead"
+        src={en ? "/rolunk1_en.png" : "/rolunk1.png"}
+        alt="leader"
+      />
+      <img
+        class="lead"
+        src={en ? "/rolunk2_en.png" : "/rolunk2.png"}
+        alt="leader"
+      />
     </div>
     <div class="people">
       {
@@ -59,14 +73,34 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
       </div>
     </div>
     <div class="righttext">
-      <p class="p1">Nem hiszünk a varázspirulákban.</p>
-      <p class="p2">
-        Munkamódszerünk egyet jelent az értékalapú, transzparens marketinggel.
-        Szegedi alapítású, integrált ügynökségként olyan nézőpont szerint
-        alakítjuk folyamatainkat, ahol nincsenek dobozos megoldások. Minden
-        márkára individuális, fenntartható, illetve skálázható stratégiát
-        építünk, ami mögé egy összeszokott szakértői csapat sorakozik fel.
+      <p class="p1">
+        {
+          en
+            ? "WE DON'T BELIEVE IN MAGIC PILLS."
+            : "Nem hiszünk a varázspirulákban."
+        }
       </p>
+      {
+        en ? (
+          <p class="p2">
+            Our methodology is synonymous with value-based, transparent
+            marketing. As an integrated agency founded in Szeged, we shape our
+            processes with the belief that "off-the-shelf" solutions don't
+            exist. We build individual, sustainable, and scalable strategies for
+            every brand, backed by a tightly-knit team of experts.
+          </p>
+        ) : (
+          <p class="p2">
+            Munkamódszerünk egyet jelent az értékalapú, transzparens
+            marketinggel. Szegedi alapítású, integrált ügynökségként olyan
+            nézőpont szerint alakítjuk folyamatainkat, ahol nincsenek dobozos
+            megoldások. Minden márkára individuális, fenntartható, illetve
+            skálázható stratégiát építünk, ami mögé egy összeszokott szakértői
+            csapat sorakozik fel.
+          </p>
+        )
+      }
+
       <br />
     </div>
   </div>
@@ -75,27 +109,69 @@ const team = loadedTeam.sort((p, p2) => p.data.order - p2.data.order);
       <Team />
     </div>
     <p class="righttext lasttext">
-      <span class="p1">
-        A modern marketing túl komplex ahhoz, hogy egyetlen ember a kezében
-        tartsa.</span
-      >
+      {
+        en ? (
+          <>
+            <span class="p1">
+              MODERN MARKETING IS TOO COMPLEX FOR A SINGLE PERSON TO MANAGE.
+            </span>
+            <br />
+            <br /> While an outstanding player counts for a lot, if you want to
+            win a championship, you need a well-coordinated team. We provide
+            this backbone. <br /> We place a team of experienced experts at your
+            disposal who know every facet of the industry and use their
+            knowledge to provide tangible support, from the domestic SME sector
+            to large corporate partners.
+            <br />
+            <br />
+          </>
+        ) : (
+          <>
+            <span class="p1">
+              A modern marketing túl komplex ahhoz, hogy egyetlen ember a
+              kezében tartsa.
+            </span>
+            <br />
+            <br /> Bár egy kimagasló játékos sokat számít, ha bajnokságot akarsz
+            nyerni, egy összeszokott csapatra van szükséged. Mi ezt a
+            hátországot biztosítjuk. Olyan tapasztalt szakértői gárdát adunk a
+            kezed alá, akik a szakma minden oldalát ismerik, és tudásukat arra
+            használják, hogy kézzelfogható segítséget nyújtsanak, a hazai
+            KKV-szektortól a nagyvállalati partnerekig.
+            <br />
+            <br />
+          </>
+        )
+      }
+
       <br />
-      <br /> Bár egy kimagasló játékos sokat számít, ha bajnokságot akarsz nyerni,
-      egy összeszokott csapatra van szükséged. Mi ezt a hátországot biztosítjuk. Olyan
-      tapasztalt szakértői gárdát adunk a kezed alá, akik a szakma minden oldalát
-      ismerik, és tudásukat arra használják, hogy kézzelfogható segítséget nyújtsanak,
-      a hazai KKV-szektortól a nagyvállalati partnerekig. <br /><br />
-      <br />
-      <span class="p1"> Stratégiai élesség, kreatív lendület. </span><br /><br
-      /> Akár most kezded a történeted, akár már hosszú évek óta formálod a vállalkozásod,
-      mi nem egy külső beszállítóként, hanem a belső csapatod meghosszabbított kezeként
-      szállunk be a munkába.
+      {
+        en ? (
+          <>
+            <span class="p1"> STRATEGIC SHARPNESS, CREATIVE MOMENTUM. </span>
+            <br />
+            <br />
+            Whether you are just starting your story or have been shaping your
+            business for years, we join the work not as an external vendor, but
+            as an extended arm of your internal team.
+          </>
+        ) : (
+          <>
+            <span class="p1"> Stratégiai élesség, kreatív lendület. </span>
+            <br />
+            <br />
+            Akár most kezded a történeted, akár már hosszú évek óta formálod a
+            vállalkozásod, mi nem egy külső beszállítóként, hanem a belső
+            csapatod meghosszabbított kezeként szállunk be a munkába.
+          </>
+        )
+      }
     </p>
   </div>
 </div>
-<Achievements />
+<Achievements en />
 
-<Contact />
+<Contact en />
 
 <script>
   const isScreenSmall = window.innerHeight < 800;

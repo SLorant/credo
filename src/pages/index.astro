@@ -28,3 +28,18 @@ import Feedback from "../components/main/Feedback.astro";
   <Insta />
   <Contact needGradient={false} />
 </Layout>
+
+<script>
+  // Client-side language detection and redirect
+  // Only redirect on first visit to avoid redirect loops
+  if (!sessionStorage.getItem("lang_checked")) {
+    sessionStorage.setItem("lang_checked", "true");
+
+    const browserLang = navigator.language || navigator.languages?.[0];
+
+    // Check if browser language is English
+    if (browserLang && !browserLang.toLowerCase().startsWith("hu")) {
+      window.location.href = "/en";
+    }
+  }
+</script>

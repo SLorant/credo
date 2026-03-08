@@ -1,14 +1,19 @@
 ---
 import ArrowButton from "../general/ArrowButton.astro";
 import cardData from "./utils/cardData";
+import cardData_en from "./utils/cardData_en";
+
+const { en }: { en?: boolean } = Astro.props;
+
+const cardsData = en ? cardData_en : cardData;
 ---
 
-<div class="services-wrapper" id="services-wrapper">
+<div class="services-wrapper" id="services-wrapper" data-en={en}>
   <div class="background"></div>
 
   <div class="services-container" id="uzletagak">
     {
-      cardData.map((card) => (
+      cardsData.map((card) => (
         <div class="card" data-card={card.id}>
           <div class="info2">
             <h2 class="cardheader" id={card.title.split(" ")[1]}>
@@ -43,9 +48,19 @@ import cardData from "./utils/cardData";
               </div>
             )}
             <div class="btcont">
-              <button class="toggle-button">Bővebben</button>
-              <a href={`/munkaink?filter=${card.title.split(" ")[1]}`}>
-                <button class="link-button">KAPCSOLÓDÓ MUNKÁINK</button>
+              <button class="toggle-button">
+                {en ? "LEARN MORE" : "Bővebben"}
+              </button>
+              <a
+                href={
+                  en
+                    ? `/en/portfolio?filter=${card.title.split(" ")[1]}`
+                    : `/munkaink?filter=${card.title.split(" ")[1]}`
+                }
+              >
+                <button class="link-button">
+                  {en ? "RELATED PROJECTS" : "KAPCSOLÓDÓ MUNKÁINK"}
+                </button>
               </a>
             </div>
           </div>
@@ -70,14 +85,17 @@ import cardData from "./utils/cardData";
   import { handleButtons } from "./utils/handleButtons";
   import cardData from "./utils/cardData";
 
+  const wrapper = document.getElementById("services-wrapper");
+  const en = wrapper?.dataset.en === "true";
+
   cardAnimations();
 
   imageAnimations();
 
-  handleButtons();
+  handleButtons(en);
 
   // Hide background when Contact section is in view
-  const background = document.querySelector(".background") as HTMLElement;
+  const background = document.querySelector(".background");
   const contactSection = document.getElementById("kapcsolat");
 
   // Handle anchor links to specific cards

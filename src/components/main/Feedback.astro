@@ -2,7 +2,11 @@
 import "@splidejs/splide/css/core";
 import { getCollection } from "astro:content";
 
-const loadedProjects = await getCollection("projects");
+const { en }: { en?: boolean } = Astro.props;
+
+const loadedProjectsEn = await getCollection("projects_en");
+const loadedProjectsHu = await getCollection("projects");
+const loadedProjects = en ? loadedProjectsEn : loadedProjectsHu;
 
 const projects = loadedProjects
   .filter(

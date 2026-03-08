@@ -1,22 +1,28 @@
 ---
 import ArrowButton from "../general/ArrowButton.astro";
+
+const { en }: { en?: boolean } = Astro.props;
 ---
 
 <div class="container">
   <main class="mobileanim">
-    <h2 class="first animate-header">hitvallásunk</h2>
-    <h2 class="second animate-header">a marketing.</h2>
+    <h2 class="first animate-header">{en ? "marketing" : "hitvallásunk"}</h2>
+    <h2 class="second animate-header">
+      {en ? "is our credo." : "a marketing."}
+    </h2>
     <p class="animate-text">
-      Hiszünk abban, hogy a marketingkommunikáció valódi partnerséget jelent.
-      Olyan kiszámítható megoldásokat kínálunk vállalkozások számára, amelyek
-      hosszú távon segítik márkájuk üzleti növekedését.
+      {
+        en
+          ? "We believe that marketing communication is a true partnership. We provide businesses with predictable solutions that drive long-term sustainable growth for their brands."
+          : "Hiszünk abban, hogy a marketingkommunikáció valódi partnerséget jelent. Olyan kiszámítható megoldásokat kínálunk vállalkozások számára, amelyek hosszú távon segítik márkájuk üzleti növekedését."
+      }
     </p>
     <div class="buttoncontainer">
-      <a class="buttonlanding" href="/uzletagak/">
-        <ArrowButton text="SZOLGÁLTATÁSAINK" />
+      <a class="buttonlanding" href={en ? "/en/services/" : "/uzletagak/"}>
+        <ArrowButton text={en ? "OUR SERVICES" : "SZOLGÁLTATÁSAINK"} />
       </a>
-      <a class="buttonlanding" href="/rolunk/">
-        <ArrowButton text="ISMERJ MEG MINKET" />
+      <a class="buttonlanding" href={en ? "/en/about/" : "/rolunk/"}>
+        <ArrowButton text={en ? "GET TO KNOW US" : "ISMERJ MEG MINKET"} />
       </a>
     </div>
   </main>

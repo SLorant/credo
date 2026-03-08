@@ -1,30 +1,59 @@
 ---
-const options = [
-  "PPC Kampánykezelés",
-  "Email marketing",
-  "Stratégiai tanácsadás",
-  "Arculattervezés",
-  "Szövegírás",
-  "Közösségi média menedzsment",
-  "Weboldal fejlesztés",
-  "Imázsfotózás",
-  "Videó-produkció",
-  "Egyéb",
-];
+const { needGradient, en }: { en?: boolean; needGradient?: boolean } =
+  Astro.props;
 
-const { needGradient } = Astro.props;
+const options = en
+  ? [
+      "PPC Campaign Management",
+      "Email marketing",
+      "Strategic Consulting",
+      "Branding & Identity Design",
+      "Copywriting",
+      "Social Media Management",
+      "Web Development",
+      "Commercial Photography",
+      "Video Production",
+      "Other",
+    ]
+  : [
+      "PPC Kampánykezelés",
+      "Email marketing",
+      "Stratégiai tanácsadás",
+      "Arculattervezés",
+      "Szövegírás",
+      "Közösségi média menedzsment",
+      "Weboldal fejlesztés",
+      "Imázsfotózás",
+      "Videó-produkció",
+      "Egyéb",
+    ];
 ---
 
 <div class="contcont">
-  <div class={`container ${needGradient ? "with-image" : ""}`} id="kapcsolat">
+  <div
+    class={`container ${needGradient ? "with-image" : ""}`}
+    id={en ? "contact" : "kapcsolat"}
+  >
     <img class="wearecredo" src="/icons/wearecredo.png" alt="we are credo" />
     <div class="contactbg"></div>
     <div class="contactbox" id="contactbox">
-      <h2 class="contactheader">Lépj velünk kapcsolatba!</h2>
-      <p class="subheader">
-        Kapcsolatfelvétel. Megbeszélés. Ajánlattervezés. Rendszerépítés.
-        Megvalósítás. Eredmény. <span>Ez a sorrend nálunk.</span>
-      </p>
+      <h2 class="contactheader">
+        {en ? "Get in touch with us!" : "Lépj velünk kapcsolatba!"}
+      </h2>
+      {
+        en ? (
+          <p class="subheader">
+            Inquiry. Discussion. Proposal. System building. Execution. Results.
+            <span>This is our workflow.</span>
+          </p>
+        ) : (
+          <p class="subheader">
+            Kapcsolatfelvétel. Megbeszélés. Ajánlattervezés. Rendszerépítés.
+            Megvalósítás. Eredmény. <span>Ez a sorrend nálunk.</span>
+          </p>
+        )
+      }
+
       <div class="options" id="options-container">
         {
           options.map((opt) => (
@@ -40,14 +69,14 @@ const { needGradient } = Astro.props;
           <input
             type="text"
             name="name"
-            placeholder="Név"
+            placeholder={en ? "Name" : "Név"}
             class="form-input"
             required
           />
           <input
             type="text"
             name="company"
-            placeholder="Cégnév"
+            placeholder={en ? "Company Name" : "Cégnév"}
             class="form-input"
             required
           />
@@ -56,14 +85,14 @@ const { needGradient } = Astro.props;
           <input
             type="tel"
             name="phone"
-            placeholder="Telefonszám"
+            placeholder={en ? "Phone Number" : "Telefonszám"}
             class="form-input"
             required
           />
           <input
             type="email"
             name="email"
-            placeholder="E-mail cím"
+            placeholder={en ? "Email Address" : "E-mail cím"}
             class="form-input"
             required
           />
@@ -71,11 +100,13 @@ const { needGradient } = Astro.props;
         <div class="form-row">
           <textarea
             name="message"
-            placeholder="Üzenet"
+            placeholder={en ? "Message" : "Üzenet"}
             class="form-input"
             required></textarea>
         </div>
-        <button type="submit" class="submit-button">KÜLDÉS</button>
+        <button type="submit" class="submit-button"
+          >{en ? "SEND" : "KÜLDÉS"}</button
+        >
       </form>
       <div id="form-message" class="form-message"></div>
     </div>
@@ -100,7 +131,13 @@ const { needGradient } = Astro.props;
         <a href="tel:+36202930657">+36 20 293 0657</a>
         <p>6721 Szeged, Tímár utca 7.</p>
         <p class="copy">Copyright © 2026 Credo Digital</p>
-        <a href="/adatkezeles/">Adatkezelési szabályzat</a>
+        {
+          en ? (
+            <a href="/en/privacy-policy/">Privacy Policy</a>
+          ) : (
+            <a href="/adatkezeles/">Adatkezelési szabályzat</a>
+          )
+        }
       </div>
     </div>
   </div>

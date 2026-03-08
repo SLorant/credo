@@ -1,4 +1,4 @@
-export const handleButtons = () => {
+export const handleButtons = (en?: boolean) => {
   // Function to sync mobile close button position with mobile button
   const syncMobileCloseButtonPosition = () => {
     const cards = document.querySelectorAll(".card");
@@ -7,7 +7,7 @@ export const handleButtons = () => {
       const mobileButton =
         card.querySelector<HTMLButtonElement>(".mobilebutton");
       const mobileCloseButton = card.querySelector<HTMLButtonElement>(
-        ".mobile-close-button"
+        ".mobile-close-button",
       );
 
       if (mobileButton && mobileCloseButton) {
@@ -48,9 +48,9 @@ export const handleButtons = () => {
 
           // Update button text
           if (overlayBox.classList.contains("active")) {
-            button.textContent = "Bezárás";
+            button.textContent = en ? "CLOSE" : "Bezárás";
           } else {
-            button.textContent = "Bővebben";
+            button.textContent = en ? "LEARN MORE" : "Bővebben";
           }
         }
       }
@@ -96,7 +96,7 @@ export const handleButtons = () => {
         const toggleButton =
           card.querySelector<HTMLButtonElement>(".toggle-button");
         if (toggleButton) {
-          toggleButton.textContent = "Bővebben";
+          toggleButton.textContent = en ? "LEARN MORE" : "Bővebben";
         }
       }
     });
@@ -104,7 +104,7 @@ export const handleButtons = () => {
 
   // Handle mobile close button clicks
   const mobileCloseButtons = document.querySelectorAll<HTMLButtonElement>(
-    ".mobile-close-button"
+    ".mobile-close-button",
   );
 
   mobileCloseButtons.forEach((closeBtn) => {

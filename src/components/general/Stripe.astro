@@ -1,55 +1,24 @@
+---
+const { en }: { en?: boolean } = Astro.props;
+---
+
 <div class="stripe">
   <div class="stripe-content">
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
-    <span
-      >felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;<span
-        class="highlight">ismétlünk.</span
-      >&nbsp;&nbsp;&nbsp;</span
-    >
+    {
+      Array.from({ length: 10 }).map(() =>
+        en ? (
+          <span>
+            assess.&nbsp;&nbsp;&nbsp;plan.&nbsp;&nbsp;&nbsp;create.&nbsp;&nbsp;&nbsp;test.&nbsp;&nbsp;&nbsp;optimize.&nbsp;&nbsp;&nbsp;
+            <span class="highlight">repeat.</span>&nbsp;&nbsp;&nbsp;
+          </span>
+        ) : (
+          <span>
+            felmérünk.&nbsp;&nbsp;&nbsp;tervezünk.&nbsp;&nbsp;&nbsp;alkotunk.&nbsp;&nbsp;&nbsp;tesztelünk.&nbsp;&nbsp;&nbsp;optimalizálunk.&nbsp;&nbsp;&nbsp;
+            <span class="highlight">ismétlünk.</span>&nbsp;&nbsp;&nbsp;
+          </span>
+        ),
+      )
+    }
   </div>
 </div>
 

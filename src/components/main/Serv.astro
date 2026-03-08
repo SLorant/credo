@@ -1,26 +1,35 @@
 ---
 import ArrowButton from "../general/ArrowButton.astro";
+const { en }: { en?: boolean } = Astro.props;
 
 const services = [
   {
     header: "credo performance",
-    text: "Adatvezérelt növekedési stratégiát és mérhető kampányokat építünk, hogy a piaci jelenléted látható és eredményes is legyen.",
+    text: en
+      ? "Data-driven growth strategies and measurable campaigns built to ensure your market presence is both visible and effective."
+      : "Adatvezérelt növekedési stratégiát és mérhető kampányokat építünk, hogy a piaci jelenléted látható és eredményes is legyen.",
     icon: "/icons/services/performance.svg",
   },
   {
     header: "credo creative",
-    text: "A stratégiai gondolkodást fordítjuk le a design nyelvére, egységes és felismerhető márkaidentitást teremtve az online és offline térben egyaránt.",
+    text: en
+      ? "Translating strategic thinking into the language of design, creating a consistent and recognizable brand identity across both online and offline spaces."
+      : "A stratégiai gondolkodást fordítjuk le a design nyelvére, egységes és felismerhető márkaidentitást teremtve az online és offline térben egyaránt.",
     icon: "/icons/services/creative.svg",
   },
   {
     header: "credo digital",
-    text: "Stabil és skálázható digitális ökoszisztémákat fejlesztünk, amelyek technológiai, hiteles hátteret biztosítanak a zavartalan ügyfélélményhez.",
+    text: en
+      ? "Developing stable and scalable digital ecosystems that provide a technologically sound and credible foundation for a seamless customer experience."
+      : "Stabil és skálázható digitális ökoszisztémákat fejlesztünk, amelyek technológiai, hiteles hátteret biztosítanak a zavartalan ügyfélélményhez.",
     icon: "/icons/services/digital.svg",
   },
 
   {
     header: "credo production",
-    text: "A vizuális tartalomgyártás teljes spektrumát lefedjük a koncepciótól a kivitelezésig, hogy a márkád története kompromisszumok nélküli minőségben keljen életre.",
+    text: en
+      ? "Covering the full spectrum of visual content production from concept to delivery, ensuring your brand story comes to life with uncompromising quality."
+      : "A vizuális tartalomgyártás teljes spektrumát lefedjük a koncepciótól a kivitelezésig, hogy a márkád története kompromisszumok nélküli minőségben keljen életre.",
     icon: "/icons/services/production.svg",
   },
 ];
@@ -37,8 +46,16 @@ const services = [
               <img class="icon" src={s.icon} alt="" />
               <h2>{s.header}</h2>
               <p>{s.text}</p>
-              <a href={"/uzletagak#" + s.header.split(" ")[1]}>
-                <ArrowButton text="Tovább az üzletághoz" />
+              <a
+                href={
+                  en
+                    ? "/en/services#" + s.header.split(" ")[1]
+                    : "/uzletagak#" + s.header.split(" ")[1]
+                }
+              >
+                <ArrowButton
+                  text={en ? "VISIT OUR BRANCHES" : "Tovább az üzletághoz"}
+                />
               </a>
             </div>
           </div>
@@ -48,7 +65,7 @@ const services = [
   </div>
 </section>
 
-<script>
+<script define:vars={{ en }}>
   function updateButtonText() {
     const buttons = document.querySelectorAll(
       ".card-content button .button-text",
@@ -56,7 +73,13 @@ const services = [
     const isMobile = window.innerWidth < 1050;
 
     buttons.forEach((textElement) => {
-      textElement.textContent = isMobile ? "Tovább" : "Tovább az üzletághoz";
+      textElement.textContent = isMobile
+        ? en
+          ? "Visit branches"
+          : "Tovább"
+        : en
+          ? "VISIT OUR BRANCHES"
+          : "Tovább az üzletághoz";
     });
   }
 

@@ -23,6 +23,8 @@ interface FeedframerResponse {
   };
 }
 
+const { en }: { en?: boolean } = Astro.props;
+
 async function fetchPosts(apiKey: string) {
   try {
     const response = await fetch(
@@ -108,7 +110,7 @@ const data = (await fetchPosts(
     )
   }
 
-  <Stripe />
+  <Stripe en={en} />
 </section>
 
 <script>

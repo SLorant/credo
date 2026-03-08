@@ -9,9 +9,9 @@ import ArrowButton from "../../components/general/ArrowButton.astro";
 import PageLanding from "../../components/general/PageLanding.astro";
 import Contact from "../../components/general/Contact.astro";
 
-const projects = await getCollection("projects");
+const projects = await getCollection("projects_en");
 const options = [
-  "Mutasd mindet",
+  "Show all",
   "Performance",
   "Creative",
   "Digital",
@@ -20,7 +20,7 @@ const options = [
 ---
 
 <Layout>
-  <Header />
+  <Header en />
 
   <div class="container">
     <img class="m" src="/herogradient2.png" alt="Gradient" />
@@ -28,17 +28,16 @@ const options = [
     <img class="m" id="hand" src="/subsites/hand.webp" alt="Hand" />
     <img class="m" src="/csakfekete.png" />
     <main>
-      <PageLanding
-        header1="kiemelt"
-        header2="munkáink"
-        text={`Minden partnerünk más iparágból érkezik, de a kihívás közös: érvényesülni
-a zajban. Tudjuk, hogy a stratégia csak hipotézis az éles bevetésig, és
-a versenyben ma már nem a leghangosabb nyer, hanem a leghitelesebb.
+      <div style="margin-left: 30px;">
+        <PageLanding
+          header1="featured"
+          header2="projects"
+          text={`Every partner of our clients comes from a different industry, but the challenge remains the same: standing out in the noise. We know that a strategy is merely a hypothesis until it's deployed in the field; in today’s competition, it’s no longer the loudest who wins, but the most authentic.
 <br/><br/>
-Portfóliónk darabjai egyedi válaszok a speciális piaci helyzetekre, melyeket
-a stratégiai élesség és a gondos, kreatív kivitelezés köt össze. Így válnak
-a brandek egyszerű felületekből emlékezetes élménnyé.`}
-      />
+Each piece of our portfolio is a unique response to specific market situations, tied together by strategic sharpness and meticulous, creative execution. This is how brands evolve from simple interfaces into memorable experiences.`}
+        />
+      </div>
+
       <div class="options" id="filteroptions-container">
         {
           options.map((opt) => (
@@ -59,8 +58,8 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
                 <h2>{project.data.title}</h2>
                 <div class="up">
                   <p>{project.data["card-subheadline"]}</p>
-                  <a href={`/munkaink/${project.id}`}>
-                    <ArrowButton text="NÉZD MEG!" />
+                  <a href={`/en/portfolio/${project.id}`}>
+                    <ArrowButton text="VIEW PROJECT" />
                   </a>
                 </div>
               </div>
@@ -77,7 +76,7 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
       </div>
     </main>
   </div>
-  <Contact />
+  <Contact en />
 </Layout>
 
 <script>
@@ -85,7 +84,7 @@ a brandek egyszerű felületekből emlékezetes élménnyé.`}
 
   const optionsContainer = document.getElementById("filteroptions-container");
   const selectedOptions = new Set<string>();
-  const showAll = "Mutasd mindet";
+  const showAll = "Show all";
 
   // Check URL for filter parameter
   const urlParams = new URLSearchParams(window.location.search);

@@ -1,48 +1,112 @@
+---
+const { en }: { en?: boolean } = Astro.props;
+---
+
 <div class="container work-container">
-  <h2 class="workheader">
-    Miért érdemes <br />
-    <span class="workheader2">velünk</span> dolgoznod?
-  </h2>
+  {
+    en ? (
+      <h2 class="workheader">
+        Why partner <br /> with us?
+      </h2>
+    ) : (
+      <h2 class="workheader">
+        Miért érdemes <br />
+        <span class="workheader2">velünk</span> dolgoznod?
+      </h2>
+    )
+  }
+
   <p class="workp">
-    A Credo nem zsákbamacskát árul. Tapasztalat, rendszerben való stratégiai
-    gondolkodás, vállalkozói szemlélet, pontos kivitelezés, és egy nagy kalap
-    kreativitás.
+    {
+      en
+        ? "At Credo, what you see is what you get. We combine experience, systemic strategic thinking, an entrepreneurial mindset, and precise execution with a healthy dose of creativity."
+        : "A Credo nem zsákbamacskát árul. Tapasztalat, rendszerben való stratégiai gondolkodás, vállalkozói szemlélet, pontos kivitelezés, és egy nagy kalap kreativitás."
+    }
   </p>
   <div class="holder">
     <div class="notus">
-      <div class="notbutton">
-        Amivel nálunk <br />
-        <span class="bold">NEM</span> találkozhatsz:
-      </div>
+      {
+        en ? (
+          <div class="notbutton">
+            What you <br />
+            <span class="bold">WON'T</span> find here:
+          </div>
+        ) : (
+          <div class="notbutton">
+            Amivel nálunk <br />
+            <span class="bold">NEM</span> találkozhatsz:
+          </div>
+        )
+      }
+
       <div class="no">
-        <p>Folyamatos csúszás</p>
-        <p>Elszürkülő figyelem</p>
-        <p>Középszerű ötletek</p>
-        <p>Légből kapott javaslatok</p>
+        {
+          en ? (
+            <>
+              <p>Continuous delays</p>
+              <p>Fading attention</p>
+              <p>Mediocre ideas</p>
+              <p>Unfounded recommendations</p>
+            </>
+          ) : (
+            <>
+              <p>Folyamatos csúszás</p>
+              <p>Elszürkülő figyelem</p>
+              <p>Középszerű ötletek</p>
+              <p>Légből kapott javaslatok</p>
+            </>
+          )
+        }
       </div>
     </div>
 
     <div class="yesus">
-      <div class="yesbutton">
-        Amivel viszont
-        <span class="bold">GARANTÁLTAN:</span>
-      </div>
+      {
+        en ? (
+          <div class="yesbutton">
+            What we
+            <span class="bold">GUARANTEE:</span>
+          </div>
+        ) : (
+          <div class="yesbutton">
+            Amivel viszont
+            <span class="bold">GARANTÁLTAN:</span>
+          </div>
+        )
+      }
+
       <div class="no">
         <div>
-          <img src="/icons/yes1.svg" alt="yes1" /> Stratégiai gondolkodás – már az
-          első megbeszéléstől fogva
+          <img src="/icons/yes1.svg" alt="yes1" />
+          {
+            en
+              ? "Strategic thinking – from the very first meeting."
+              : "Stratégiai gondolkodás – már az első megbeszéléstől fogva"
+          }
         </div>
         <div>
           <img src="/icons/yes2.svg" alt="yes2" />
-          Analitikus szemlélet – mert minden, amit csinálunk, mérhetően működik
+          {
+            en
+              ? "Analytical mindset – because everything we do is measurable."
+              : "Analitikus szemlélet – mert minden, amit csinálunk, mérhetően működik."
+          }
         </div>
         <div>
           <img src="/icons/yes3.svg" alt="yes3" />
-          Megvalósítási fegyelem – pontos határidők, kiszámíthatóság, tervezhetőség
+          {
+            en
+              ? "Execution discipline – strict deadlines, predictability, and planning."
+              : "Megvalósítási fegyelem – pontos határidők, kiszámíthatóság, tervezhetőség."
+          }
         </div>
         <div>
           <img src="/icons/yes4.svg" alt="yes4" />
-          Proaktív, ügyfélcentrikus hozzáállás – kommunikációs partner az üzleti problémákra
+          {
+            en
+              ? "Proactive, client-centric approach – a communication partner for your business challenges."
+              : "Proaktív, ügyfélcentrikus hozzáállás – kommunikációs partner az üzleti problémákra"
+          }
         </div>
       </div>
     </div>

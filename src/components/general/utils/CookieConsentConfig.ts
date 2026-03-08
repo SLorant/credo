@@ -163,7 +163,7 @@ export const config: CookieConsentConfig = {
     },
   },
   language: {
-    default: "hu",
+    default: "en",
     autoDetect: "browser",
     translations: {
       hu: {
@@ -220,6 +220,64 @@ export const config: CookieConsentConfig = {
               description: `A cookie-k (sütik) kis méretű szöveges fájlok, amelyek a meglátogatott webhelyeken keresztül kerülnek a böngészésre használt eszközre. Alkalmazásuk a hatékony navigációt és egyes funkciók végrehajtását szolgálja. A weboldal megfelelő működéséhez elengedhetetlen sütik külön hozzájárulás nélkül is elhelyezhetők, míg minden egyéb típusú süti használatához, illetve böngészőben való tárolásához előzetes jóváhagyás szükséges.
                           <br/>  <br/>Az Adatvédelmi szabályzat oldalon bármikor megváltoztathatja a sütik használatához való hozzájárulását.
                            <br/>A reklámaink személyre szabása és hatékonyságának mérése érdekében sütiket is használunk. További részletekért látogasson el a Google Adatvédelmi irányelvek oldalra.`,
+            },
+          ],
+        },
+      },
+      en: {
+        consentModal: {
+          title: "Our website uses cookies",
+          description:
+            "This website uses cookies to personalize content and ads, and to analyze traffic.",
+          acceptAllBtn: "Accept all",
+          acceptNecessaryBtn: "Reject all",
+          showPreferencesBtn: "Customize",
+          footer:
+            '<a href="/en/privacy-policy" style="margin: 4px 0px;">Privacy Policy</a>',
+        },
+        preferencesModal: {
+          title: "Customize cookies",
+          acceptAllBtn: "Accept all",
+          acceptNecessaryBtn: "Reject all",
+          savePreferencesBtn: "Save and close",
+          closeIconLabel: "Close",
+          serviceCounterLabel: "service|services",
+          sections: [
+            {
+              title: "Cookie Statement",
+              description:
+                "This website uses cookies to personalize content and ads, and to analyze traffic. Information about your use of the website is shared with advertising and analytics partners, who may combine it with other information collected during their services or previously provided by you to the partners.",
+            },
+            {
+              title:
+                'Strictly Necessary <span class="pm__badge">Always enabled</span>',
+              description:
+                "Strictly necessary cookies enable core website functionality such as user login and account management. The website cannot function properly without strictly necessary cookies.",
+              linkedCategory: "necessary",
+            },
+            {
+              title: "Performance",
+              description:
+                "Performance cookies, such as analytics cookies, are used to track how visitors use the website. These cookies cannot be used to directly identify a particular visitor.",
+              linkedCategory: "analytics",
+            },
+            {
+              title: "Targeting",
+              description:
+                "Targeting cookies are used to identify visitors across different websites, such as content partners and banner networks. These cookies may be used by companies to build a profile of visitor interests or show relevant ads on other websites.",
+              linkedCategory: "marketing",
+            },
+            /*  {
+              title: "Functionality",
+              description:
+                "Functionality cookies are used to remember visitor data such as language, time zone, and enhanced content.",
+              linkedCategory: "functionality",
+            }, */
+            {
+              title: "About cookies",
+              description: `Cookies are small text files that are placed on your device through the websites you visit. They are used for efficient navigation and to perform certain functions. Cookies that are essential for the proper functioning of the website can be placed without separate consent, while all other types of cookies require prior approval for use and storage in your browser.
+                          <br/>  <br/>You can change your consent to the use of cookies at any time on the Privacy Policy page.
+                           <br/>We also use cookies to personalize our ads and measure their effectiveness. For more details, please visit the Google Privacy Policy page.`,
             },
           ],
         },
