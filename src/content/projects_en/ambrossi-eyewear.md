@@ -9,12 +9,12 @@ category:
   - Creative
   - Production
 keywords:
-  - Márkafotózás
-  - Imázsfotózás
-  - Grafikai tervezés
-  - Hirdetési stratégia
   - Social media
   - PPC
+  - Brand photography
+  - Image photography
+  - Graphic design
+  - Advertising strategy
 project-subheadline-1: THE HUNGARIAN EYEWEAR BRAND
 project-text-1: >-
   AMBROSSI Eyewear was born in 2005 as the "joint venture" of a married couple
