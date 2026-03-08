@@ -1,6 +1,6 @@
 ---
 name: Prokai Luca
 picture: ../images/Luca.png
-role: Tervezőgrafikus
+role: Graphic Designer
 order: 2
 ---
