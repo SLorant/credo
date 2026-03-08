@@ -2,7 +2,7 @@
 title: Greyhound Leatherware
 showcased: false
 cover: ../images/gh-cover-1080x1920px.webp
-card-subheadline: Arculattervezés
+card-subheadline: Brand Identity Design
 category:
   - Creative
 keywords:
