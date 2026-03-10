@@ -1,6 +1,7 @@
 ---
 title: Omega Facility Management
 showcased: false
+icon: ../images/omega_logo.png
 cover: ../images/omega-cover-1080x1920px.webp
 card-subheadline: Arculattervezés
 category:
@@ -51,5 +52,53 @@ project-text-2: >-
   szálljanak – és nyerjenek – a legszigorúbb minőségi elvárásokat támasztó ipari
   tendereken is.
 quote:
-  quote-showcased: false
+  author: Bene Orsolya - Stratégiai igazgató
+  quote-text: >-
+    A Credo Digital csapatával az első pillanattól kezdve rendkívül pozitív
+    tapasztalatunk volt. A cégünk arculatát gyakorlatilag a nulláról építették
+    fel: a koncepcióalkotástól a végső vizuális megjelenésig minden lépést
+    közösen, alaposan átgondolva dolgoztunk ki.
+
+
+
+    A folyamat során nemcsak a saját elképzeléseinket vették figyelembe, hanem a
+    piacot és a versenykörnyezetet is alaposan feltérképezték. Fontos volt
+    számukra, hogy az arculat egyszerre illeszkedjen a szakmai környezethez,
+    ugyanakkor egyedi és kiemelkedő legyen a piacon.
+
+
+
+    A közös munka során rengeteg egyeztetés történt, több körben finomítottuk az
+    elképzeléseket, és minden apró részletre nyitottan, türelmesen reagáltak.
+    Kifejezetten értékeltük, hogy nem sablonmegoldásokban gondolkodtak, hanem
+    valóban arra törekedtek, hogy a végeredmény pontosan tükrözze a cégünk
+    működését, értékeit és hosszú távú céljait.
+
+
+
+    Az elkészült arculatra építve megszületett a teljes vizuális megjelenésünk
+    is: névjegykártya, levélpapír és bemutatkozó prospektus készült, amelyek
+    egységesen képviselik a vállalkozásunkat. Külön öröm számunkra, hogy a piaci
+    szereplők és partnereink részéről is sok pozitív visszajelzést kaptunk a
+    logóra és az arculatra.
+
+
+
+    A Credo Digital szakmai felkészültsége, kreativitása és stratégiai
+    szemlélete végig meghatározta a projektet. Az eredmény egy olyan átgondolt
+    és erős arculat lett, amely nemcsak vizuálisan igényes, hanem a piacon is
+    jól pozicionálja a vállalkozásunkat.
+
+    Őszintén ajánljuk őket mindenkinek, aki átgondolt, professzionális és
+    valóban személyre szabott arculati megoldásokat keres.
+  quote-text-landing: >-
+    A Credo Digital szakmai felkészültsége, kreativitása és stratégiai
+    szemlélete végig meghatározta a projektet. Az eredmény egy olyan átgondolt
+    és erős arculat lett, amely nemcsak vizuálisan igényes, hanem a piacon is
+    jól pozicionálja a vállalkozásunkat.
+
+    Őszintén ajánljuk őket mindenkinek, aki átgondolt, professzionális és
+    valóban személyre szabott arculati megoldásokat keres.
+  quote-showcased: true
+  order: 4
 ---
