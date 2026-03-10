@@ -51,5 +51,41 @@ project-text-2: >-
   to compete—and win—in industrial tenders with the strictest quality
   requirements.
 quote:
+  author: Orsolya Bene - Strategic Director
+  quote-text: >-
+    Working with the Credo Digital team has been an exceptionally positive
+    experience from day one. They built our brand identity practically from the
+    ground up: from initial concept development to the final visual execution,
+    every step was a collaborative and deeply thought-out process.
+
+
+    Throughout the project, they didn't just listen to our ideas—they conducted
+    a thorough analysis of the market and the competitive landscape. Their goal
+    was clear: to create an identity that fits seamlessly into our professional
+    environment while remaining unique and standing out from the crowd.
+
+
+    The process involved extensive consultation and several rounds of
+    refinement. They remained open-minded and patient with every minor detail.
+    We particularly valued their rejection of "cookie-cutter" solutions;
+    instead, they genuinely strived to ensure the final result perfectly
+    reflected our operations, values, and long-term objectives.
+
+
+    Based on this foundation, they developed our complete visual suite,
+    including business cards, letterheads, and corporate brochures, all of which
+    represent our business with absolute consistency. It has been a pleasure to
+    receive so much positive feedback on our logo and branding from partners and
+    market players alike.
+
+
+    The project was defined by Credo Digital’s professionalism, creativity, and
+    strategic mindset. The result is a sophisticated, robust brand identity that
+    is not only visually stunning but also positions our company effectively in
+    the market.
+
+
+    We wholeheartedly recommend them to anyone seeking thoughtful, professional,
+    and truly tailor-made branding solutions.
   quote-showcased: false
 ---
