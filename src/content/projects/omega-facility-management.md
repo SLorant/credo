@@ -59,10 +59,12 @@ quote:
     közösen, alaposan átgondolva dolgoztunk ki.
 
 
+
     A folyamat során nemcsak a saját elképzeléseinket vették figyelembe, hanem a
     piacot és a versenykörnyezetet is alaposan feltérképezték. Fontos volt
     számukra, hogy az arculat egyszerre illeszkedjen a szakmai környezethez,
     ugyanakkor egyedi és kiemelkedő legyen a piacon.
+
 
 
     A közös munka során rengeteg egyeztetés történt, több körben finomítottuk az
@@ -71,11 +73,14 @@ quote:
     valóban arra törekedtek, hogy a végeredmény pontosan tükrözze a cégünk
     működését, értékeit és hosszú távú céljait.
 
+
+
     Az elkészült arculatra építve megszületett a teljes vizuális megjelenésünk
     is: névjegykártya, levélpapír és bemutatkozó prospektus készült, amelyek
     egységesen képviselik a vállalkozásunkat. Külön öröm számunkra, hogy a piaci
     szereplők és partnereink részéről is sok pozitív visszajelzést kaptunk a
     logóra és az arculatra.
+
 
 
     A Credo Digital szakmai felkészültsége, kreativitása és stratégiai
