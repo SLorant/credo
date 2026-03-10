@@ -1,6 +1,7 @@
 ---
 title: Omega Facility Management
 showcased: false
+icon: ../images/omega_logo.png
 cover: ../images/omega-cover-1080x1920px.webp
 card-subheadline: Arculattervezés
 category:
@@ -90,5 +91,14 @@ quote:
 
     Őszintén ajánljuk őket mindenkinek, aki átgondolt, professzionális és
     valóban személyre szabott arculati megoldásokat keres.
-  quote-showcased: false
+  quote-text-landing: >-
+    A Credo Digital szakmai felkészültsége, kreativitása és stratégiai
+    szemlélete végig meghatározta a projektet. Az eredmény egy olyan átgondolt
+    és erős arculat lett, amely nemcsak vizuálisan igényes, hanem a piacon is
+    jól pozicionálja a vállalkozásunkat.
+
+    Őszintén ajánljuk őket mindenkinek, aki átgondolt, professzionális és
+    valóban személyre szabott arculati megoldásokat keres.
+  quote-showcased: true
+  order: 4
 ---
