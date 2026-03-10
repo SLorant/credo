@@ -1,6 +1,7 @@
 ---
 title: Omega Facility Management
 showcased: false
+icon: ../images/omega_logo.png
 cover: ../images/omega-cover-1080x1920px.webp
 card-subheadline: Brand Identity Design
 category:
@@ -87,5 +88,14 @@ quote:
 
     We wholeheartedly recommend them to anyone seeking thoughtful, professional,
     and truly tailor-made branding solutions.
-  quote-showcased: false
+  quote-text-landing: >-
+    The project was defined by Credo Digital’s professionalism, creativity, and
+    strategic mindset. The result is a sophisticated, robust brand identity that
+    is not only visually stunning but also positions our company effectively in
+    the market.
+
+    We wholeheartedly recommend them to anyone seeking thoughtful, professional,
+    and truly tailor-made branding solutions.
+  quote-showcased: true
+  order: 4
 ---
