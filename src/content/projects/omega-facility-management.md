@@ -38,7 +38,7 @@ project-text-2: >-
   A megoldás egy többkörös, komplex arculattervezési folyamat eredménye. A
   koncepciókat a tudatos piaci differenciálás formálta: a versenytársak elemzése
   során azonosítottuk azokat a stratégiai pontokat, amelyekkel az Omega
-  vizuálisan markánsan kiugrik a mezőnyből.A logótól a névjegykártyán át a
+  vizuálisan markánsan kiugrik a mezőnyből. A logótól a névjegykártyán át a
   szolgáltatásbemutató prospektusig minden elem a strukturáltságot és a
   technológiai hátteret hangsúlyozza. 
 
