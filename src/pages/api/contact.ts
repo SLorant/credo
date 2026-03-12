@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       import.meta.env.RECIPIENT_EMAIL ||
       "your-email@example.com";
     const emailResponse = await resend.emails.send({
-      from: "hello@credodigital.hu", // You'll need to change this to your verified domain
+      from: "Credo Digital <noreply@mail.credodigital.hu>", // Use subdomain
       to: recipientEmail,
       subject: `Credo weboldal új kapcsolatfelvétel: ${name}`,
       html: `
@@ -52,7 +52,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Email sending error:", error);
@@ -66,7 +66,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   }
 };
