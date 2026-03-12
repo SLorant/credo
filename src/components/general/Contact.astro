@@ -29,7 +29,7 @@ const options = en
     ];
 ---
 
-<div class="contcont">
+<div class="contcont" id="contactcont" data-en={en}>
   <div
     class={`container ${needGradient ? "with-image" : ""}`}
     id={en ? "contact" : "kapcsolat"}
@@ -648,6 +648,9 @@ const options = en
 <script>
   import { animate, onScroll } from "animejs";
 
+  const wrapper = document.getElementById("contactcont");
+  const en = wrapper?.dataset.en === "true";
+
   if (window.innerWidth < 768) {
     animate(".wearecredo", {
       opacity: [0, 0.2],
@@ -719,7 +722,7 @@ const options = en
     ) as HTMLButtonElement;
     const originalText = submitButton.textContent;
     submitButton.disabled = true;
-    submitButton.textContent = "KÜLDÉS...";
+    submitButton.textContent = en ? "SENDING..." : "KÜLDÉS...";
 
     try {
       const response = await fetch("/api/contact", {
@@ -735,8 +738,9 @@ const options = en
 
       if (response.ok) {
         if (messageDiv) {
-          messageDiv.textContent =
-            "Köszönjük, megkaptuk üzeneted! Megkeresésedre tulajdonosaink válaszolnak, legkésőbb 24 órán belül. Hamarosan jelentkezünk!";
+          messageDiv.textContent = en
+            ? "Thank you, we have received your message! Our owners will respond to your inquiry within 24 hours at the latest. We’ll be in touch soon!"
+            : "Köszönjük, megkaptuk üzeneted! Megkeresésedre tulajdonosaink válaszolnak, legkésőbb 24 órán belül. Hamarosan jelentkezünk!";
           messageDiv.className = "form-message show success";
           form.classList.add("hidden");
           optionsContainer?.classList.add("hidden");

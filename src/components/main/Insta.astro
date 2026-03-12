@@ -28,15 +28,39 @@ const { en }: { en?: boolean } = Astro.props;
 async function fetchPosts(apiKey: string) {
   try {
     const response = await fetch(
-      `https://feedframer.com/api/v1/me?api_key=${apiKey}&page[size]=3&sort=-published_at`,
+      `https://feedframer.com/api/v1/me?api_key=${apiKey}&page[size]=3&sort=-published_at&filter[type]=IMAGE`,
     );
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status} ${JSON.stringify(response)}`);
     }
 
+    const response2 = await fetch(
+      `https://feedframer.com/api/v1/me?api_key=${apiKey}&page[size]=3&sort=-published_at&filter[type]=CAROUSEL_ALBUM`,
+    );
+
+    if (!response2.ok) {
+      throw new Error(`HTTP ${response.status} ${JSON.stringify(response)}`);
+    }
+
     const data: FeedframerResponse = await response.json();
-    return data;
+    const data2: FeedframerResponse = await response2.json();
+
+    // Combine posts from both queries
+    const allPosts = [...data.posts, ...data2.posts];
+
+    // Sort by timestamp (most recent first) and take only the first 3
+    const sortedPosts = allPosts
+      .sort(
+        (a, b) =>
+          new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+      )
+      .slice(0, 3);
+
+    return {
+      ...data,
+      posts: sortedPosts,
+    };
   } catch (error) {
     console.error("Error fetching posts:", error);
     return [];
