@@ -47,9 +47,9 @@ project-text-2: >-
   facility management partner, which inspires immediate trust in
   decision-makers. The new identity successfully reinforced the company’s
   professional background in the market. Omega Facility Management has earned
-  the trust of prominent partners such as Budapest Liszt Ferenc International
-  Airport, BioTechUSA, and BorgWarner. The professional appearance allowed them
-  to compete—and win—in industrial tenders with the strictest quality
+  the trust of prominent office buildings, factory buildings, and branch
+  networks through its assignments. The professional appearance allowed them to
+  compete - and win - in industrial tenders with the strictest quality
   requirements.
 quote:
   author: Orsolya Bene - Strategic Director
