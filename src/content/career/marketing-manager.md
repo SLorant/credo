@@ -4,7 +4,7 @@ sections:
   - left: IDEÁLIS JELÖLT
     right: >-
       *   Releváns marketing tapasztalat, min. 1 év (ügynökségi vagy brand
-      oldali tapasztalat)
+      oldali)
           
       *   Legalább középfokú végzettség (Szakirányú felsőfokú végzettség vagy
       annak folyamatban lévősége előny)
@@ -77,7 +77,7 @@ sections:
       *   Szakmai megbecsültség: nálunk az ötleteidnek valódi teret adunk
           
       *   Támogató, fiatal, de tapasztalt kollégákból álló szakmai közeg
-footer: Látod magad a csapatban? Küldd el önéletrajzodat **2026. 03. 31-ig**, és
-  – ha van – néhány korábbi referenciádat a
+footer: Látod magad a csapatban? Küldd el önéletrajzodat **2026\. 03. 31-ig**,
+  és – ha van – néhány korábbi referenciádat a
   [hello@credodigital.hu](mailto:hello@credodigital.hu) címre!
 ---
