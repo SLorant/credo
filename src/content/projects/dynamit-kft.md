@@ -2,6 +2,7 @@
 title: Dynamit Kft.
 website-link: https://www.facebook.com/inyencekkonyhaja
 showcased: false
+icon: ../images/dynamit_logo.png
 cover: ../images/dynamit-cover 1920x1080.webp
 card-subheadline: STRATÉGIAI TERVEZÉS, MENEDZSMENT
 category:
