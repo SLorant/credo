@@ -1,7 +1,7 @@
 ---
 title: Dynamit Kft.
 website-link: https://www.facebook.com/inyencekkonyhaja
-showcased: true
+showcased: false
 icon: ../images/dynamit_logo.png
 order: 2
 cover: ../images/dynamit-cover 1920x1080.webp
