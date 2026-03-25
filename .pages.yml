@@ -60,6 +60,8 @@ content:
         options:
           collection: keywords
           multiple: true
+          value: "{primary}"
+          label: "{primary}"
           min: 1
           max: 20
       - name: project-subheadline-1
