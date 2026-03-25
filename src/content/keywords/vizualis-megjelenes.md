@@ -1,0 +1,3 @@
+---
+title: Vizuális megjelenés
+---
