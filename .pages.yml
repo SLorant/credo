@@ -223,10 +223,14 @@ content:
           values: [ Performance, Creative, Digital, Production ]
       - name: keywords
         label: Keywords
-        type: select
+        type: reference
         options:
-          creatable: true
+          collection: keywords
           multiple: true
+          value: "{primary}"
+          label: "{primary}"
+          min: 1
+          max: 20
       - name: project-subheadline-1
         label: First subheadline
         type: text
