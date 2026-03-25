@@ -54,8 +54,14 @@ content:
         label: Keywords
         type: select
         options:
-          creatable: true
           multiple: true
+      - name: keyword
+        type: reference
+        options:
+          collection: keywords
+          multiple: true
+          min: 1
+          max: 20
       - name: project-subheadline-1
         label: First subheadline
         type: text
