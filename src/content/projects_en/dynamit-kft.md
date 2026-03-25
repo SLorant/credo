@@ -1,8 +1,9 @@
 ---
 title: Dynamit Kft.
 website-link: https://www.facebook.com/inyencekkonyhaja
-showcased: false
+showcased: true
 icon: ../images/dynamit_logo-1.png
+order: 2
 cover: ../images/dynamit-cover 1920x1080-1.webp
 card-subheadline: STRATEGIC PLANNING, MANAGEMENT
 category:
