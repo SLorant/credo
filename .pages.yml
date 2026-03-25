@@ -50,12 +50,8 @@ content:
         options:
           multiple: true
           values: [ Performance, Creative, Digital, Production ]
-      - name: keywords2
-        label: Keywords
-        type: select
-        options:
-          multiple: true
       - name: keywords
+        label: Keywords
         type: reference
         options:
           collection: keywords
