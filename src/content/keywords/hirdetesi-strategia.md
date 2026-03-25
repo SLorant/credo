@@ -1,3 +1,3 @@
 ---
-title: Hirdetési Stratégia
+title: Hirdetési stratégia
 ---
