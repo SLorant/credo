@@ -1,9 +1,8 @@
 ---
 title: Acer Kft.
 website-link: https://www.facebook.com/biztonsagosjatszoterek
-showcased: true
+showcased: false
 icon: ../images/acert_logo.png
-order: 4
 cover: ../images/acer-cover-1080x1920px.webp
 card-subheadline: Lead Gen ökoszisztéma
 category:
