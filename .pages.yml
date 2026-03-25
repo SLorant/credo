@@ -55,10 +55,10 @@ content:
         type: select
         options:
           multiple: true
-      - name: keyword
+      - name: keywords
         type: reference
         options:
-          collection: keywords
+          collection: projects
           multiple: true
           min: 1
           max: 20
