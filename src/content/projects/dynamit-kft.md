@@ -11,6 +11,10 @@ category:
   - Creative
 keywords:
   - Hirdetési kreatívok
+  - Google
+  - Hirdetési stratégia
+  - Social media
+  - PPC
 project-subheadline-1: A STRATÉGIAI TERVEZÉSTŐL A POLCOKIG
 project-text-1: >-
   A Dynamit Kft. az FMCG szektor egyik meghatározó szereplője, olyan globális
