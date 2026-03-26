@@ -9,6 +9,8 @@ card-subheadline: STRATEGIC PLANNING, MANAGEMENT
 category:
   - Performance
   - Creative
+keywords:
+  - PPC
 project-subheadline-1: FROM STRATEGIC PLANNING TO THE SHELVES
 project-text-1: >-
   Dynamit Kft. is a leading player in the FMCG sector and the domestic
@@ -32,7 +34,7 @@ project-text-1: >-
 square-image: ../images/dynamit-post 1080x1080-1.webp
 gallery:
   - ../images/dynamit-slide1 1920x1080-1.webp
-  - ../images/dynamit-slide2 1920x1080-1.webp
+  - ../images/11-1.webp
 project-subheadline-2: GLOBAL BRANDS, LOCALIZED
 project-text-2: >-
   The solution was an integrated working model that spans all business units. At
