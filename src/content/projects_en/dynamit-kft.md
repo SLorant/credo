@@ -10,7 +10,9 @@ category:
   - Performance
   - Creative
 keywords:
+  - Social media
   - PPC
+  - Google
 project-subheadline-1: FROM STRATEGIC PLANNING TO THE SHELVES
 project-text-1: >-
   Dynamit Kft. is a leading player in the FMCG sector and the domestic
