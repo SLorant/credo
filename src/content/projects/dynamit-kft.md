@@ -9,6 +9,8 @@ card-subheadline: STRATÉGIAI TERVEZÉS, MENEDZSMENT
 category:
   - Performance
   - Creative
+keywords:
+  - Hirdetési kreatívok
 project-subheadline-1: A STRATÉGIAI TERVEZÉSTŐL A POLCOKIG
 project-text-1: >-
   A Dynamit Kft. az FMCG szektor egyik meghatározó szereplője, olyan globális
@@ -32,7 +34,7 @@ project-text-1: >-
 square-image: ../images/dynamit-post 1080x1080.webp
 gallery:
   - ../images/dynamit-slide1 1920x1080.webp
-  - ../images/dynamit-slide2 1920x1080.webp
+  - ../images/11.webp
 project-subheadline-2: GLOBÁLIS MÁRKÁK, LOKALIZÁLVA
 project-text-2: >
   A megoldás egy minden üzletágat érintő, integrált munkamodell lett. A Credo
