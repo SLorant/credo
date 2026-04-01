@@ -1,6 +1,6 @@
 ---
 name: Bodré Szonja
 picture: ../images/szonja.png
-role: Social Media Manager
+role: Social Media Menedzser
 order: 3
 ---
