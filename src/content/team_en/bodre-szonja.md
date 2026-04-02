@@ -1,6 +1,6 @@
 ---
-name: Bodré Szonja
+name: Szonja Bodré
 picture: ../images/szonja.png
 role: Social Media Manager
-order: 1
+order: 3
 ---

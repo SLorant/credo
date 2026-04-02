@@ -12,9 +12,9 @@ keywords:
   - Márkafotózás
   - Imázsfotózás
   - Grafikai tervezés
-  - Hirdetési stratégia
-  - Social media
   - PPC
+  - Social Media
+  - Hirdetési Stratégia
 project-subheadline-1: A MAGYAR SZEMÜVEGMÁRKA
 project-text-1: >-
   Az AMBROSSI Eyewear egy keceli házaspár "közös gyermekeként" született

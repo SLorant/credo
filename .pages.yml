@@ -52,10 +52,14 @@ content:
           values: [ Performance, Creative, Digital, Production ]
       - name: keywords
         label: Keywords
-        type: select
+        type: reference
         options:
-          creatable: true
+          collection: keywords
           multiple: true
+          value: "{primary}"
+          label: "{primary}"
+          min: 1
+          max: 20
       - name: project-subheadline-1
         label: First subheadline
         type: text
@@ -219,10 +223,14 @@ content:
           values: [ Performance, Creative, Digital, Production ]
       - name: keywords
         label: Keywords
-        type: select
+        type: reference
         options:
-          creatable: true
+          collection: keywords
           multiple: true
+          value: "{primary}"
+          label: "{primary}"
+          min: 1
+          max: 20
       - name: project-subheadline-1
         label: First subheadline
         type: text
@@ -337,3 +345,12 @@ content:
         label: Yellow footer box at the end of the job post
         description: Write / into the box to select options like bullet list, heading, etc. You can also copy paste formatted text from Google Docs or anything. If you write any text then double click on it, you can style it (bold italic etc.)
         type: rich-text
+  - name: keywords
+    label: Keywords
+    type: collection
+    filename: '{primary}.md'
+    path: 'src/content/keywords'
+    fields:
+      - name: title
+        label: Keyword name
+        type: string

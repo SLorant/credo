@@ -1,6 +1,6 @@
 ---
-name: Hidvégi Bettina
+name: Bettina Hidvégi
 picture: ../images/Betti javított.webp
-role: Junior Sales Manager
-order: 3
+role: Project and Sales Manager
+order: 1
 ---

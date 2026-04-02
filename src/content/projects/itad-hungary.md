@@ -3,18 +3,18 @@ title: ITAD Hungary
 website-link: https://www.linkedin.com/company/itad-hungary
 showcased: true
 icon: ../images/itad_hungary_logo.png
-order: 3
+order: 4
 cover: ../images/itad-cover-1080x1920px.webp
 card-subheadline: Linkedin hirdetési stratégia
 category:
   - Performance
   - Creative
 keywords:
-  - Social Media
   - PPC
   - Lead Gen
   - Hirdetési stratégia
   - Kiadványtervezés
+  - Social media
 project-subheadline-1: AZ ADATBIZTONSÁG ÉS A FENNTARTHATÓSÁG METSZETÉBEN
 project-text-1: >-
   Az ITAD Hungary az IT-eszközgazdálkodás (IT Asset Disposition) specialistája.
