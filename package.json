@@ -4,10 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "dev:mobile": "astro dev --host & node -e \"setTimeout(() => require('ngrok').connect(4321).then(url => console.log('\\n\\n🔗 Mobile URL:', url, '\\n\\n')), 3000)\"",
     "build": "astro build",
     "preview": "astro preview",
-    "preview:mobile": "astro preview --host & node -e \"setTimeout(() => require('ngrok').connect(4321).then(url => console.log('\\n\\n🔗 Mobile URL:', url, '\\n\\n')), 3000)\"",
     "astro": "astro"
   },
   "dependencies": {
@@ -32,7 +30,6 @@
   },
   "devDependencies": {
     "@types/imagesloaded": "^4.1.7",
-    "@types/three": "^0.182.0",
-    "ngrok": "^5.0.0-beta.2"
+    "@types/three": "^0.182.0"
   }
 }
