@@ -1,6 +1,6 @@
 ---
-name: Szonja Bodré
-picture: ../images/szonja.png
-role: Social Media Manager
+name: Virág Tallós
+picture: ../images/Virág-1.webp
+role: Marketing Manager
 order: 3
 ---
