@@ -35,7 +35,7 @@ project-text-1: >-
   adaptálni. A feladatunk az volt, hogy a Dynamit Kft. külső
   marketingosztályaként vegyük át a teljes operatív és stratégiai irányítást,
   kivitelezést egy rendkívül átfogó koncepciótervet követően.
-square-image: ../images/dynamit-post 1080x1080.webp
+square-image: ../images/7.webp
 gallery:
   - ../images/dynamit-slide1 1920x1080.webp
   - ../images/11.webp
