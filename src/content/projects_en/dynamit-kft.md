@@ -33,7 +33,7 @@ project-text-1: >-
   habits. Our task was to take over full operational and strategic management
   and execution as the external marketing department of Dynamit Kft., following
   an extremely comprehensive concept plan.
-square-image: ../images/dynamit-post 1080x1080-1.webp
+square-image: ../images/7-1.webp
 gallery:
   - ../images/dynamit-slide1 1920x1080-1.webp
   - ../images/11-1.webp
