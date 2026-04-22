@@ -93,4 +93,5 @@ footer: >-
 
   Send your CV and a short portfolio (or 3-5 of your favorite previous works) to
   **[hello@credodigital.hu](mailto:hello@credodigital.hu)** by **May 5th 2026**!
+createdAt: 2026-04-21
 ---
