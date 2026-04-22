@@ -87,8 +87,13 @@ sections:
 
       - Támogató, fiatalos szakmai közeg, ahol számít a véleményed
 
-footer: Látod magad a csapatban? Küldd el önéletrajzod és egy rövid portfóliót
-  (vagy 3-5 kedvenc korábbi munkád) a
-  [hello@credodigital.hu](mailto:hello@credodigital.hu) címre 2026. május 5-ig
-  bezárólag!
+footer: >-
+  Látod magad a csapatban? 
+
+
+
+
+  Küldd el önéletrajzod és egy rövid portfóliót (vagy 3-5 kedvenc korábbi
+  munkád) a [hello@credodigital.hu](mailto:hello@credodigital.hu) címre 2026.
+  május 5-ig bezárólag!
 ---
