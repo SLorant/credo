@@ -87,5 +87,5 @@ sections:
 footer: Think you’re a fit for the team? Send your CV and any relevant
   references to [hello@credodigital.hu](mailto:hello@credodigital.hu) **by March
   31, 2026**!
-createdAt: 2026-02-04
+createdAt: 2026-03-04
 ---
