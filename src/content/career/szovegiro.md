@@ -62,7 +62,7 @@ sections:
       - Otthonosan mozogsz a B2B és B2C kommunikációban egyaránt
 
       - Kísérletezel AI alapú szövegíró eszközökkel (pl. Claude, Manus AI) a
-      munkafolyamatok struktúrálása érdekében gyorsítására
+      munkafolyamatok struktúrálása érdekében 
 
       - Jól kommunikálsz angolul, és képes vagy angol nyelvű anyagok
       értelmezésére vagy írására
