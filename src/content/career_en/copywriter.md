@@ -76,10 +76,10 @@ sections:
 
       - **Competitive compensation** proportional to your skills and experience.
 
-      - **No "conveyor-belt" environment:** Real space for creativity and
+      - **No "conveyor-belt" environment:** real space for creativity and
       individual ideas.
 
-      - **Hybrid work model:** An inspiring downtown office in **Szeged** + Home
+      - **Hybrid work model:** an inspiring downtown office in **Szeged** + Home
       Office options.
 
       - A **supportive, youthful professional environment** where your opinion
