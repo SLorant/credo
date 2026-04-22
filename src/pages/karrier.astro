@@ -7,8 +7,30 @@ import Header from "../components/header/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
+import { statSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
 const careers = await getCollection("career");
+
+// Get the directory where this file is located to resolve paths correctly
+const __dirname = dirname(
+  fileURLToPath((Astro.locals as any).runtime?.url || import.meta.url),
+);
+/* const contentDir = join(__dirname, "../content/career"); */
+
+// Sort careers by file creation date (newest first)
+const sortedCareers = careers.sort((a, b) => {
+  try {
+    const pathA = join(__dirname, "../..", a.filePath!);
+    const pathB = join(__dirname, "../..", b.filePath!);
+    const statsA = statSync(pathA);
+    const statsB = statSync(pathB);
+    return statsB.birthtimeMs - statsA.birthtimeMs;
+  } catch (error) {
+    return 0;
+  }
+});
 
 // Helper to render markdown strings to HTML
 const renderMarkdown = (markdown: string) => {
@@ -16,7 +38,7 @@ const renderMarkdown = (markdown: string) => {
 };
 
 // Pre-process all careers data to render markdown
-const processedCareers = careers.map((job) => ({
+const processedCareers = sortedCareers.map((job) => ({
   ...job,
   processedSections: job.data.sections.map((s) => ({
     left: s.left,
