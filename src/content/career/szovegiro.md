@@ -44,7 +44,7 @@ sections:
 
   - left: FELELŐSSÉGEK
     right: >+
-      - A rábízott ügyfelek és projektek szöveges kommunikációjának magas
+      - A rádbízott ügyfelek és projektek szöveges kommunikációjának magas
       szakmai színvonala
 
       - A márkák egyedi hangvételének (tone of voice) következetes képviselete
