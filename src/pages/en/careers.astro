@@ -7,29 +7,14 @@ import Header from "../../components/header/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
-import { statSync } from "fs";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
 
 const careers = await getCollection("career_en");
 
-// Get the directory where this file is located to resolve paths correctly
-const __dirname = dirname(
-  fileURLToPath((Astro.locals as any).runtime?.url || import.meta.url),
-);
-/* const contentDir = join(__dirname, "../content/career"); */
-
-// Sort careers by file creation date (newest first)
+// Sort careers by createdAt date field (newest first)
 const sortedCareers = careers.sort((a, b) => {
-  try {
-    const pathA = join(__dirname, "../../..", a.filePath!);
-    const pathB = join(__dirname, "../../..", b.filePath!);
-    const statsA = statSync(pathA);
-    const statsB = statSync(pathB);
-    return statsB.birthtimeMs - statsA.birthtimeMs;
-  } catch (error) {
-    return 0;
-  }
+  const dateA = a.data.createdAt ? new Date(a.data.createdAt).getTime() : 0;
+  const dateB = b.data.createdAt ? new Date(b.data.createdAt).getTime() : 0;
+  return dateB - dateA;
 });
 
 // Helper to render markdown strings to HTML

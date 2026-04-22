@@ -44,6 +44,7 @@ const createCareerSchema = () =>
     name: z.string(),
     footer: z.string(),
     sections: z.array(z.object({ left: z.string(), right: z.string() })),
+    createdAt: z.date(),
   });
 
 // Hungarian collections
