@@ -3,8 +3,8 @@ name: Szövegíró
 sections:
   - left: IDEÁLIS JELÖLT
     right: >+
-      - Releváns szövegírói (copywriter) tapasztalat, min. 1 év (ügynökségi,
-      céges vagy szabadúszói háttér)
+      - Releváns **szövegírói** (copywriter) **tapasztalat**, **min. 1 év**
+      (ügynökségi, céges vagy szabadúszói háttér)
 
       - Kiváló helyesírás, fogalmazási készség és stílusérzék
 
@@ -88,12 +88,12 @@ sections:
       - Támogató, fiatalos szakmai közeg, ahol számít a véleményed
 
 footer: >-
-  Látod magad a csapatban? 
+  **Látod magad a csapatban?** 
 
 
 
 
   Küldd el önéletrajzod és egy rövid portfóliót (vagy 3-5 kedvenc korábbi
-  munkád) a [hello@credodigital.hu](mailto:hello@credodigital.hu) címre 2026.
-  május 5-ig bezárólag!
+  munkád) a [hello@credodigital.hu](mailto:hello@credodigital.hu) címre **2026.
+  május 5-ig** bezárólag!
 ---
