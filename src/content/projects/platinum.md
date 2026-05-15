@@ -1,5 +1,5 @@
 ---
-title: PLATINUM
+title: PLATINUM Magyarország
 website-link: https://www.facebook.com/platinumnaturalmagyarorszag
 showcased: true
 icon: ../images/platinum_cover 1080x1920.webp
