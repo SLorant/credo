@@ -37,6 +37,7 @@ project-text-2: >-
   borítóképeket terveztünk, lehetőséget teremtve a prémium érzet elősegítéséhez
   az első kattintástól.
 
+
   A bizalmi tőke és az ügyfélélettartam-érték növelése érdekében a
   tartalomgyártás során kiemelt figyelmet fordítottunk a meglévő csatornák
   optimalizálására: a hírlevél csatornán következetesen vittük tovább a márkára
