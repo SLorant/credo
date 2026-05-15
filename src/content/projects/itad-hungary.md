@@ -1,9 +1,8 @@
 ---
 title: ITAD Hungary
 website-link: https://www.linkedin.com/company/itad-hungary
-showcased: true
+showcased: false
 icon: ../images/itad_hungary_logo.png
-order: 4
 cover: ../images/itad-cover-1080x1920px.webp
 card-subheadline: Linkedin hirdetési stratégia
 category:
