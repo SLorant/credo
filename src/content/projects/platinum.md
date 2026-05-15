@@ -35,16 +35,13 @@ project-text-2: >-
   projekt egy izgalmas kampány kivitelezésével indult, amelynek exkluzív
   ajándékcsomag-promóciójához konverzióra optimalizált weboldali bannereket és
   borítóképeket terveztünk, lehetőséget teremtve a prémium érzet elősegítéséhez
-  az első kattintástól.
-
-
-  A bizalmi tőke és az ügyfélélettartam-érték növelése érdekében a
-  tartalomgyártás során kiemelt figyelmet fordítottunk a meglévő csatornák
-  optimalizálására: a hírlevél csatornán következetesen vittük tovább a márkára
-  jellemző edukációs irányvonalat, releváns válaszokat adva a gazdik valós
-  problémáira. Ezzel párhuzamosan a TikTok-menedzsment során a termékbemutató
-  videókat szórakoztató tartalmakkal ötvöztük, hogy közvetlenebb kapcsolatot
-  építsünk ki a közönséggel.
+  az első kattintástól. A bizalmi tőke és az ügyfélélettartam-érték növelése
+  érdekében a tartalomgyártás során kiemelt figyelmet fordítottunk a meglévő
+  csatornák optimalizálására: a hírlevél csatornán következetesen vittük tovább
+  a márkára jellemző edukációs irányvonalat, releváns válaszokat adva a gazdik
+  valós problémáira. Ezzel párhuzamosan a TikTok-menedzsment során a
+  termékbemutató videókat szórakoztató tartalmakkal ötvöztük, hogy közvetlenebb
+  kapcsolatot építsünk ki a közönséggel.
 
 
   A vizuális és tartalmi pilléreket adatvezérelt hirdetéskezeléssel tettük
