@@ -13,6 +13,7 @@ keywords:
   - Hirdetési kreatívok
   - Social media
   - PPC
+  - Hírlevél
 project-subheadline-1: PIACI DIFFERENCIÁLÁS A PRÉMIUM ÁLLATELEDEL-SZEGMENSBEN
 project-text-1: "A PLATINUM az európai állateledel-piac egyik legmeghatározóbb
   szereplője, akiknek szakmai hitelessége a rendhagyó gyártástechnológián (FSG)
