@@ -2,7 +2,7 @@
 title: PLATINUM Magyarország
 website-link: https://www.facebook.com/platinumnaturalmagyarorszag
 showcased: true
-icon: ../images/platinum_cover 1080x1920.webp
+icon: ../images/4_platinum-logo_weiss.png
 order: 4
 cover: ../images/platinum_cover 1080x1920.webp
 card-subheadline: "DIFFERENCIÁLÁS, KAMPÁNYMENEDZSMENT "
