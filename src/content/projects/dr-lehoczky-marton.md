@@ -17,6 +17,7 @@ keywords:
   - Meta
   - Hirdetési kreatívok
   - Fotózás
+  - Google
 project-subheadline-1: A SZAKMAI TEKINTÉLYTŐL A DIGITÁLIS PIACVEZETÉSIG
 project-text-1: "A szájsebészeti piacon a szakmai kiválóság alapfeltétel, de
   önmagában már nem elegendő a dominanciához. Dr. Lehoczky Márton esetében a fő
