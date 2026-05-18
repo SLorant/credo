@@ -32,6 +32,7 @@ project-text-1: "A szájsebészeti piacon a szakmai kiválóság alapfeltétel, 
   a valós tudásának megfelelő színvonalon emeli ki őt a piaci környezetből."
 square-image: ../images/márton_web 1080x1080.webp
 gallery:
+  - ../images/márton_slide 1 1920x1080.webp
   - ../images/márton_slide 2 1920x1080.webp
 project-subheadline-2: KONVERZIÓRA OPTIMALIZÁLT JELENLÉT ÉS EDUKÁCIÓS DINAMIKA
 project-text-2: >-
