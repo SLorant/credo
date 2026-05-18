@@ -8,12 +8,15 @@ card-subheadline: Linkedin hirdetési stratégia
 category:
   - Performance
   - Creative
+  - Production
 keywords:
   - PPC
   - Lead Gen
   - Hirdetési stratégia
   - Kiadványtervezés
   - Social media
+  - Fotózás
+  - Linkedin
 project-subheadline-1: AZ ADATBIZTONSÁG ÉS A FENNTARTHATÓSÁG METSZETÉBEN
 project-text-1: >-
   Az ITAD Hungary az IT-eszközgazdálkodás (IT Asset Disposition) specialistája.
