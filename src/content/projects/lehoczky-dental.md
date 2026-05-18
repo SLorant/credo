@@ -58,7 +58,7 @@ project-text-2: >-
   amely egyrészt fiatalította a márka percepcióját, másrészt mérhetően növelte a
   minőségi, már előre edukált páciensek beáramlását.
 quote:
-  author: Lehoczky Márton - szájsebész szakorvos
+  author: Dr. Lehoczky Márton - szájsebész szakorvos
   quote-text: Megbízható, felkészült marketinges csapat, akikkel hatékony az
     együttműködés. Gyorsan átlátják a feladatokat, érthetően kommunikálnak, és
     betartják a megbeszélt határidőket. Szívesen dolgoznék velük a jövőben is,
