@@ -10,13 +10,14 @@ category:
   - Performance
   - Creative
   - Digital
+  - Production
 keywords:
   - PPC
   - Hirdetési kreatívok
   - Google
-  - Linkedin
   - Meta
   - Hirdetési stratégia
+  - Fotózás
 project-subheadline-1: A "HASZNÁLT" FOGALMÁNAK ÚJRADEFINIÁLÁSA
 project-text-1: >-
   A Marseus Computer Kft. 2001 óta a hazai informatikai piac egyik
