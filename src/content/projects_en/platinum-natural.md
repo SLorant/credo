@@ -14,6 +14,7 @@ keywords:
   - Social media
   - Meta
   - Newsletter
+  - Ad creatives
 project-subheadline-1: MARKET DIFFERENTIATION IN THE PREMIUM PET FOOD SEGMENT
 project-text-1: PLATINUM is one of the most dominant players in the European pet
   food market, with a professional credibility built on a unique manufacturing
