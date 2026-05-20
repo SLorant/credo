@@ -14,6 +14,7 @@ keywords:
   - Meta
   - PPC
   - Social media
+  - Lead Gen
 project-subheadline-1: "A KANÁRI-SZIGETEKRŐL A MAGYAR VIZEKRE: AZ INTELLIGENS LUXUS ÚTJA"
 project-text-1: A Pascal Boats története a Kanári-szigeteken vette kezdetét
   azzal a küldetéssel, hogy a modern luxust és a prémium hajózási élményt
