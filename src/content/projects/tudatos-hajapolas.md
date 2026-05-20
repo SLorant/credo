@@ -14,6 +14,7 @@ keywords:
   - Hirdetési kreatívok
   - Meta
   - PPC
+  - Digitális analitika
 project-subheadline-1: PRECÍZIÓS MARKETING A TUDATOS HAJÁPOLÁS VILÁGÁBAN
 project-text-1: A tudatoshajapolas.hu a hazai szépségápolási piac meghatározó
   edukációs platformja és webshopja, amely a haj- és fejbőrápolás területén
