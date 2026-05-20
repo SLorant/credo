@@ -13,6 +13,7 @@ keywords:
   - Ad creatives
   - Meta
   - PPC
+  - Digital Analytics
 project-subheadline-1: PRECISION MARKETING IN THE CONSCIOUS HAIRCARE SECTOR
 project-text-1: "Tudatoshajapolas.hu is a leading educational platform and
   e-commerce store in the Hungarian beauty market, providing scientifically
