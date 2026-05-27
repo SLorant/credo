@@ -14,6 +14,8 @@ keywords:
   - Meta
   - Google
   - PPC
+  - Influencerkampány
+  - Short videók
 project-subheadline-1: PIACI ÁTTÖRÉS A SZÉPSÉGIPARBAN
 project-text-1: "A HAIRBOOM a hazai beauty-szektor egyik legdinamikusabban
   növekvő szereplője. Termékpalettájuk fókuszában a hajvitaminok, a
