@@ -15,6 +15,7 @@ keywords:
   - Google
   - Influencer campaign
   - Short videos
+  - Ad strategy
 project-subheadline-1: MARKET BREAKTHROUGH IN THE BEAUTY INDUSTRY
 project-text-1: >-
   HAIRBOOM is one of the most dynamically growing players in the domestic beauty
