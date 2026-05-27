@@ -31,15 +31,18 @@ gallery:
   - ../images/fitrade_slide 2 1920x1080-1.webp
   - ../images/fitrade_slide 1 1920x1080.webp
 project-subheadline-2: STRATÉGIAI INTEGRÁCIÓ ÉS TUDATOS MÁRKAÉPÍTÉSI DINAMIKA
-project-text-2: "Belső integrált partnerként csatlakoztunk a márkához,
-  performance tanácsadással és proaktív hirdetéskezeléssel támogatva a
-  szintlépést. A megoldás fókuszába a folyamatos, értékközpontú jelenlétet és a
-  hirdetési rendszerek precíz üzemeltetését helyeztük. A stratégia részeként a
-  folytonos tartalomgyártásra és a tudatos hirdetési kiemelésekre alapoztunk,
-  ami segített a fogyasztói elköteleződés elmélyítésében. A vásárlói tölcsér
-  optimalizálása során a hangsúlyt a bizalmi tőke és az üzleti célok
-  egyensúlyára fektettük, biztosítva a stabil digitális jelenlétet és a hosszú
-  távú versenyelőnyt a sportitalok szegmensében. "
+project-text-2: >-
+  Belső integrált partnerként csatlakoztunk a márkához, performance
+  tanácsadással és proaktív hirdetéskezeléssel támogatva a szintlépést. A
+  megoldás fókuszába a folyamatos, értékközpontú jelenlétet és a hirdetési
+  rendszerek precíz üzemeltetését helyeztük. A stratégia részeként a folytonos
+  tartalomgyártásra és a tudatos hirdetési kiemelésekre alapoztunk, ami segített
+  a fogyasztói elköteleződés elmélyítésében. 
+
+
+  A vásárlói tölcsér optimalizálása során a hangsúlyt a bizalmi tőke és az
+  üzleti célok egyensúlyára fektettük, biztosítva a stabil digitális jelenlétet
+  és a hosszú távú versenyelőnyt a sportitalok szegmensében. 
 quote:
   quote-showcased: false
 ---
