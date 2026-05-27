@@ -51,19 +51,18 @@ project-text-2: >-
   mérhető hatékonyságát. A stratégia vizuális áttörését a saját berkeinken belül
   megvalósított, UGC-jellegű short-form videókoncepcióink hozták meg, amelyek a
   szépségápolási piacon kulcsfontosságú bizalmi tőkét dinamikus, edukatív és
-  esztétikailag prémium megvalósítással építik fel. Ezeket a koncepciókat
-  ügynökségi szinten, házon belül gyártjuk le, így a kreatívok a naprakész
-  trendkövetés mellett valódi, konverzióra optimalizált marketingeszközként
-  támogatják az értékesítést. 
+  esztétikailag prémium megvalósítással építik fel. 
 
 
-  A közösségi média kampányokat a háttérben robusztus Meta és Google Ads
-  hirdetési menedzsment egészíti ki. A teljesítményalapú marketinget szoros
-  szimbiózisba hoztuk az ügyfél webshop-víziójával. Hirdetési struktúránkat
-  rugalmasan az üzleti célokhoz igazítjuk, miközben folyamatosan optimalizáljuk
-  a felhasználói útvonalat. Ez a fajta digitális jelenlét a garancia arra, hogy
-  a márka szakmai értékei és a piaci növekedés hosszú távon is egymást
-  erősítsék. 
+  Ezeket a koncepciókat ügynökségi szinten, házon belül gyártjuk le, így a
+  kreatívok a naprakész trendkövetés mellett valódi, konverzióra optimalizált
+  marketingeszközként támogatják az értékesítést. A közösségi média kampányokat
+  a háttérben robusztus Meta és Google Ads hirdetési menedzsment egészíti ki. A
+  teljesítményalapú marketinget szoros szimbiózisba hoztuk az ügyfél
+  webshop-víziójával. Hirdetési struktúránkat rugalmasan az üzleti célokhoz
+  igazítjuk, miközben folyamatosan optimalizáljuk a felhasználói útvonalat. Ez a
+  fajta digitális jelenlét a garancia arra, hogy a márka szakmai értékei és a
+  piaci növekedés hosszú távon is egymást erősítsék. 
 quote:
   quote-showcased: false
 ---
