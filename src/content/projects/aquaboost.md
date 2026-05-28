@@ -26,14 +26,17 @@ square-image: ../images/aquaboost_web 1080x1080.webp
 gallery:
   - ../images/aquaboost_slide 1920x1080.webp
 project-subheadline-2: STRATÉGIAI TARTALOMDISZTRIBÚCIÓ
-project-text-2: "Az Aquaboost belső marketing-motorjaként a teljes hirdetési
-  ökoszisztéma felügyeletét átvettük, a hangsúlyt a skálázható
-  performance-szemléletre helyezve. Stratégiánk alapkövét a tartalomvezérelt
-  növekedés jelenti: a hirdetési rendszerekben az elérések generálása mellett
-  releváns, szakmai alapokon nyugvó üzeneteket juttatunk el a célcsoporthoz. Ez
-  a módszertan lehetővé teszi, hogy az ízesített, vitaminokkal dúsított
+project-text-2: >-
+  Az Aquaboost belső marketing-motorjaként a teljes hirdetési ökoszisztéma
+  felügyeletét átvettük, a hangsúlyt a skálázható performance-szemléletre
+  helyezve. Stratégiánk alapkövét a tartalomvezérelt növekedés jelenti: a
+  hirdetési rendszerekben az elérések generálása mellett releváns, szakmai
+  alapokon nyugvó üzeneteket juttatunk el a célcsoporthoz. 
+
+
+  Ez a módszertan lehetővé teszi, hogy az ízesített, vitaminokkal dúsított
   tabletták előnyeit egyfajta digitális tárlatvezetésként mutassuk be,
-  folyamatosan fenntartva az érdeklődést és a márka iránti vágyat. "
+  folyamatosan fenntartva az érdeklődést és a márka iránti vágyat. 
 quote:
   quote-showcased: false
 ---
