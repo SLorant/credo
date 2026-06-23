@@ -61,5 +61,9 @@ project-text-2: >-
   rendkívül költséghatékony üzletszerzési csatornát integráltunk a Pascal Boats
   működésébe.
 quote:
-  quote-showcased: false
+  author: Szabó Szabolcs - tulajdonos
+  quote-text: Profi csapat!
+  quote-text-landing: Profi csapat!
+  quote-showcased: true
+  order: 5
 ---
