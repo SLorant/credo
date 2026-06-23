@@ -58,5 +58,9 @@ project-text-2: >-
   Hungarian market; we integrated a scalable, highly cost-efficient business
   development channel into the core operations of Pascal Boats. 
 quote:
-  quote-showcased: false
+  author: Szabolcs Szabó - owner
+  quote-text: Professional team!
+  quote-text-landing: Professional team!
+  quote-showcased: true
+  order: 5
 ---
