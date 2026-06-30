@@ -62,11 +62,16 @@ sections:
 
       &nbsp;
   - left: WHAT WE OFFER
-    right: |+
+    right: >+
       - Opportunities for professional growth and career advancement
+
       - A salary commensurate with your knowledge and experience
+
       - No "assembly-line" work: genuine room to unleash your creativity
-      - An inspiring downtown office + 1 day/week home office (by agreement)
+
+      - An inspiring office in downtown Szeged + 1 day of remote work per week
+      (as agreed)
+
       - A supportive, youthful, and professional work environment
 
 footer: >-
