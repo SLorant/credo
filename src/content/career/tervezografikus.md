@@ -47,11 +47,16 @@ sections:
       - Jól kommunikálsz angolul szakmai anyagok értelmezéséhez
 
   - left: AMIT KÍNÁLUNK
-    right: |+
+    right: >+
       - Fejlődési, előrelépési lehetőség
+
       - A tudásoddal és tapasztalatoddal arányos bérezés
+
       - Nem "futószalag-gyár": valódi tér a kreativitás kibontakoztatására
-      - Belvárosi, inspiráló iroda + heti 1 nap Home Office megbeszélés szerint
+
+      - Szegedi belvárosi, inspiráló iroda + heti 1 nap Home Office megbeszélés
+      szerint
+
       - Támogató, fiatalos szakmai közeg
 
 footer: >-
