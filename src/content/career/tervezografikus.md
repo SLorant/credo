@@ -34,35 +34,24 @@ sections:
   - left: FELELŐSSÉGEK
     right: |+
       - A rábízott projektek vizuális minőségének és brand-hűségének biztosítása
-
       - Határidők betartása és proaktív kommunikáció a közvetlen vezetőkkel
-
       - Nyomdai leadások hibátlan előkészítése
-
       - A vizuális trendek folyamatos követése és beépítése a munkákba
 
   - left: ELŐNY HA,
     right: |+
       - Ismered a Figma alapjait (UI/UX látásmód)
-
       - Rövid videós tartalmak (Reels, TikTok) vágása és szerkesztése
-
       - Van tapasztalatod After Effects / Motion design területen
-
       - Kísérletezel AI alapú képalkotó eszközökkel (Midjourney, Firefly)
-
       - Jól kommunikálsz angolul szakmai anyagok értelmezéséhez
 
   - left: AMIT KÍNÁLUNK
     right: |+
       - Fejlődési, előrelépési lehetőség
-
       - A tudásoddal és tapasztalatoddal arányos bérezés
-
       - Nem "futószalag-gyár": valódi tér a kreativitás kibontakoztatására
-
       - Belvárosi, inspiráló iroda + heti 1 nap Home Office megbeszélés szerint
-
       - Támogató, fiatalos szakmai közeg
 
 footer: >-
@@ -71,6 +60,6 @@ footer: >-
 
   Küldd el portfóliód a legjobb munkáiddal és önéletrajzodat a
   **[hello@credodigital.hu]([mailto:hello@credodigital.hu)** címre
-  **2026.06.19-ig**!
+  **2026.07.07-ig**!
 createdAt: 2026-06-01
 ---
