@@ -44,7 +44,7 @@ sections:
       your work
 
   - left: Nice to have
-    right: >+
+    right: >-
       - You know the basics of Figma (UI/UX mindset)
 
       - You can cut and edit short-form video content (Reels, TikTok)
@@ -59,6 +59,8 @@ sections:
 
 
 
+
+      &nbsp;
   - left: WHAT WE OFFER
     right: |+
       - Opportunities for professional growth and career advancement
@@ -72,7 +74,7 @@ footer: >-
 
 
   Send your CV and a portfolio of your best work to
-  **[hello@credodigital.hu](mailto:hello@credodigital.hu)** by **June 19,
+  **[hello@credodigital.hu](mailto:hello@credodigital.hu)** by **July 07,
   2026**!
 createdAt: 2026-06-01
 ---
