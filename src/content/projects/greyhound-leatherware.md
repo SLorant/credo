@@ -1,5 +1,6 @@
 ---
 title: Greyhound Leatherware
+website-link: https://greyhoundleatherware.com
 showcased: false
 cover: ../images/gh-cover-1080x1920px.webp
 card-subheadline: Arculattervezés
