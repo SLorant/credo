@@ -87,6 +87,6 @@ footer: >-
 
 
   **Send your CV with a photo to
-  [hello@credodigital.hu](mailto:hello@credodigital.hu) by July 20, 2026!**
+  [hello@credodigital.hu](mailto:hello@credodigital.hu) by July 31, 2026!**
 createdAt: 2026-07-08
 ---
