@@ -88,6 +88,6 @@ footer: >-
 
 
   **Küldd el fényképes önéletrajzodat a
-  [hello@credodigital.hu](mailto:hello@credodigital.hu) címre 2026.07.20-ig!**
+  [hello@credodigital.hu](mailto:hello@credodigital.hu) címre 2026.07.31-ig!**
 createdAt: 2026-07-08
 ---
