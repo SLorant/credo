@@ -1,5 +1,5 @@
 ---
-name: SHORT-FORM CAMERA OPERATOR AND VIDEO EDITOR
+name: SHORT-FORM VIDEOGRAPHER
 sections:
   - left: IDEAL CANDIDATE
     right: >+
