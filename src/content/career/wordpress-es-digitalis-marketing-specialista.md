@@ -1,5 +1,5 @@
 ---
-name: WORDPRESS ÉS DIGITÁLIS MARKETING SPECIALISTA
+name: WORDPRESS SPECIALISTA
 sections:
   - left: IDEÁLIS JELÖLT
     right: >+
