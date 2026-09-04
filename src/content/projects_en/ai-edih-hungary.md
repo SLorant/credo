@@ -3,6 +3,7 @@ title: AI EDIH Hungary
 website-link: https://aiedih.hu
 showcased: false
 cover: ../images/Header (webp)-1.webp
+card-subheadline: AI Services One-Pager
 category:
   - Digital
 keywords:
