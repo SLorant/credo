@@ -2,6 +2,7 @@
 title: AI EDIH Hungary
 website-link: https://aiedih.hu
 showcased: false
+icon: ../images/ai_edih_logo.png
 cover: ../images/Header (webp).webp
 card-subheadline: AI-szolgáltatások egy oldalon
 category:
