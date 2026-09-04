@@ -66,5 +66,6 @@ quote:
     SEO optimalizálásában és folyamatos karbantartásában is kiemelkedő munkát
     végez. Mindig naprakész tájékoztatást kapunk a folyamatokról, a kommunikáció
     gyors és egyértelmű, a határidőket pedig következetesen tartják.
-  quote-showcased: false
+  quote-showcased: true
+  order: 6
 ---
