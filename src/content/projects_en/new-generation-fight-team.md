@@ -3,6 +3,7 @@ title: New Generation Fight Team
 website-link: https://newgenerationft.hu/
 showcased: false
 cover: ../images/New_Gen_Header.webp
+card-subheadline: FIGHTING FOR AN ONLINE PRESENCE
 category:
   - Creative
   - Digital
