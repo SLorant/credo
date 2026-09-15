@@ -14,6 +14,7 @@ keywords:
   - Meta
   - PPC
   - Website building
+  - Editorial Design
 project-subheadline-1: "FIGHTING FOR AN ONLINE PRESENCE: FROM THE GYM TO THE DIGITAL MARKET"
 project-text-1: "The operations of the Szeged-based New Generation Fight Team
   are built on combat sports instruction and functional performance enhancement.
