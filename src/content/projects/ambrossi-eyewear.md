@@ -2,6 +2,7 @@
 title: AMBROSSI Eyewear
 website-link: https://www.instagram.com/ambrossi_eyewear
 showcased: false
+icon: ../images/Ambrossi logó.png
 cover: ../images/ambrossi-cover-1080x1920px.png
 card-subheadline: Hirdetés, social stratégia, fotózás
 category:
