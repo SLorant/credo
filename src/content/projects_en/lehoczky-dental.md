@@ -3,7 +3,6 @@ title: Lehoczky Dental
 website-link: https://lehoczkydental.hu
 showcased: false
 icon: ../images/lehoczky_logo.png
-order: 2
 cover: ../images/lehoczky-cover-1080x1920px.webp
 card-subheadline: Digital Brand Rejuvenation
 category:
