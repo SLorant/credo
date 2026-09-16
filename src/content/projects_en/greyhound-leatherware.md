@@ -2,6 +2,7 @@
 title: Greyhound Leatherware
 website-link: https://greyhoundleatherware.com
 showcased: false
+icon: ../images/Greyhound logó-1.png
 cover: ../images/gh-cover-1080x1920px.webp
 card-subheadline: Brand Identity Design
 category:
