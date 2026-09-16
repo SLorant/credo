@@ -4,7 +4,7 @@ website-link: https://pietrodapomozzi.com
 showcased: true
 icon: ../images/pietro_do_pomozzi-1.png
 order: 3
-cover: ../images/Pietro_Header-2.webp
+cover: ../images/Pietro_Header 2-1.webp
 card-subheadline: RESHAPING A LUXURY FASHION BRAND
 category:
   - Performance
@@ -31,7 +31,7 @@ project-text-1: "Pietro da Pomozzi is an exclusive fashion salon specializing in
   consultations, which we achieved through sophisticated visual and textual
   content evoking the exclusive atmosphere of top fashion magazines, combined
   with a consciously structured online customer acquisition funnel. "
-square-image: ../images/Pietro_Tartalom-1.webp
+square-image: ../images/Pietro_Tartalom 2-1.webp
 gallery:
   - ../images/Pietro_Footer-1.webp
 project-subheadline-2: CONTENT-DRIVEN BRAND BUILDING AND QUALITY AD OPTIMIZATION
