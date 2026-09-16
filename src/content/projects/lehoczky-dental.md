@@ -1,7 +1,7 @@
 ---
 title: Lehoczky Dental
 website-link: https://lehoczkydental.hu
-showcased: true
+showcased: false
 icon: ../images/lehoczky_logo.png
 order: 3
 cover: ../images/lehoczky-cover-1080x1920px.webp
