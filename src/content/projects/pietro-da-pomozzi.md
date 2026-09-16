@@ -2,6 +2,7 @@
 title: Pietro da Pomozzi
 website-link: https://pietrodapomozzi.com
 showcased: false
+icon: ../images/pietro_do_pomozzi.png
 cover: ../images/Pietro_Header.webp
 card-subheadline: LUXUS DIVATMÁRKA ÚJJÁSZABÁSA
 category:
