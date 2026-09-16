@@ -1,8 +1,9 @@
 ---
 title: Pietro da Pomozzi
 website-link: https://pietrodapomozzi.com
-showcased: false
+showcased: true
 icon: ../images/pietro_do_pomozzi-1.png
+order: 3
 cover: ../images/Pietro_Header-2.webp
 card-subheadline: RESHAPING A LUXURY FASHION BRAND
 category:
