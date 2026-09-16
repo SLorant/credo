@@ -1,6 +1,6 @@
 ---
 name: Lőrincz Patrik
-picture: ../images/10.webp
+picture: ../images/21.webp
 role: PPC Menedzser
 order: 4
 ---
