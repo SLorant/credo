@@ -1,6 +1,6 @@
 ---
-name: Virág Tallós
-picture: ../images/Virág-1.webp
+name: Gellért Sóti
+picture: ../images/001-1.webp
 role: Marketing Manager
-order: 3
+order: 1
 ---
