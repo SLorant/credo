@@ -2,7 +2,7 @@
 title: Holistodent
 website-link: https://www.holistodent.hu
 showcased: false
-icon: ../images/Header -1.png
+icon: ../images/holsitodent.png
 cover: ../images/Header .png
 card-subheadline: BIZALOMÉPÍTÉS AZ EGÉSZSÉGÜGYBEN
 category:
