@@ -2,6 +2,7 @@
 title: Holistodent
 website-link: https://www.holistodent.hu
 showcased: false
+icon: ../images/holsitodent-1.png
 cover: ../images/Header .png
 card-subheadline: BUILDING TRUST IN HEALTHCARE
 category:
