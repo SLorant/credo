@@ -2,6 +2,7 @@
 title: New Generation Fight Team
 website-link: https://newgenerationft.hu
 showcased: false
+icon: ../images/new_generation_fight_team.png
 cover: ../images/New_Gen_Header-1.webp
 card-subheadline: KIHARCOLT ONLINE JELENLÉT
 category:
