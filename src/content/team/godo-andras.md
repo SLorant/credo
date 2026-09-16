@@ -1,6 +1,6 @@
 ---
-name: Godó András
-picture: ../images/andris.webp
+name: Lőrincz Patrik
+picture: ../images/patrik.webp
 role: PPC Menedzser
 order: 4
 ---
