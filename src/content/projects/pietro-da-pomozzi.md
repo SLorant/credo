@@ -4,7 +4,7 @@ website-link: https://pietrodapomozzi.com
 showcased: true
 icon: ../images/pietro_do_pomozzi.png
 order: 3
-cover: ../images/Pietro_Header.webp
+cover: ../images/Pietro_Header 2.webp
 card-subheadline: LUXUS DIVATMÁRKA ÚJJÁSZABÁSA
 category:
   - Performance
@@ -33,7 +33,7 @@ project-text-1: "A Pietro da Pomozzi az egyedi tervezésű alkalmi és esküvői
   határoztuk meg, amelyet a legnevesebb divatlapok exkluzív hangulatát idéző,
   kifinomult képi és szöveges tartalmakkal, valamint egy tudatosan felépített
   online vevőszerzési folyamattal valósítottunk meg. "
-square-image: ../images/Pietro_Tartalom.webp
+square-image: ../images/Pietro_Tartalom 2.webp
 gallery:
   - ../images/Pietro_Footer.webp
 project-subheadline-2: TARTALOMVEZÉRELT MÁRKAÉPÍTÉS ÉS MINŐSÉGI HIRDETÉS-OPTIMALIZÁLÁS
