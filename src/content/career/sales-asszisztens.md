@@ -21,7 +21,7 @@ sections:
       pontosan kommunikálsz és igényesen fogalmazol írásban
 
   - left: FELADATOK
-    right: >+
+    right: >-
       - Az értékesítési folyamatok operatív támogatása és a kapcsolódó teendők
       nyomon követése 
 
@@ -33,20 +33,24 @@ sections:
       - Leadek kezelése: az érdeklődők és a megkeresések státuszának követése, a
       következő lépések rögzítése 
 
-      - KPI-ok monitorozása, az eredmények összesítése és riportok készítése 
+      - KPI-ok monitorozása, az eredmények összesítése és riportok készítése
 
+
+
+
+      &nbsp;
   - left: FELELŐSSÉGEK
     right: >+
-      - számítunk rád abban, hogy az értékesítési adatok mindig naprakészek
+      - Számítunk rád abban, hogy az értékesítési adatok mindig naprakészek
       legyenek,
 
-      - a megkeresések pontosan és igényesen készüljenek el,
+      - A megkeresések pontosan és igényesen készüljenek el,
 
-      - a feladatok és következő lépések jól követhetők maradjanak,
+      - A feladatok és következő lépések jól követhetők maradjanak,
 
-      - észrevedd az adatokban rejlő új üzleti lehetőségeket,
+      - Észrevedd az adatokban rejlő új üzleti lehetőségeket,
 
-      - jelezd a kollégáknak, ha egy folyamatban elakadást vagy fejlesztési
+      - Jelezd a kollégáknak, ha egy folyamatban elakadást vagy fejlesztési
       lehetőséget látsz
 
   - left: AMIT KÍNÁLUNK
