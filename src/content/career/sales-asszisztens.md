@@ -21,7 +21,7 @@ sections:
       pontosan kommunikálsz és igényesen fogalmazol írásban
 
   - left: FELADATOK
-    right: >-
+    right: >+
       - Az értékesítési folyamatok operatív támogatása és a kapcsolódó teendők
       nyomon követése 
 
@@ -35,10 +35,6 @@ sections:
 
       - KPI-ok monitorozása, az eredmények összesítése és riportok készítése
 
-
-
-
-      &nbsp;
   - left: FELELŐSSÉGEK
     right: >+
       - Számítunk rád abban, hogy az értékesítési adatok mindig naprakészek
