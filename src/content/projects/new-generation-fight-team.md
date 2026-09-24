@@ -55,5 +55,11 @@ project-text-2: >-
   el az oldalt, biztosítva a magas elköteleződést, valamint a logikusan
   felépített értékesítési tölcsért a kosárelhagyás minimalizálása érdekében. 
 quote:
-  quote-showcased: false
+  author: Herman Krisztofer - Alapító, vezető edző
+  quote-text: Naprakészen, fiatalos lendülettel, de megfelelő megfontoltsággal
+    kezelik ügyfeleiket és a projekteket! 💪🏼
+  quote-text-landing: Naprakészen, fiatalos lendülettel, de megfelelő
+    megfontoltsággal kezelik ügyfeleiket és a projekteket! 💪🏼
+  quote-showcased: true
+  order: 7
 ---
