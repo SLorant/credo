@@ -57,5 +57,11 @@ project-text-2: >-
   tailored to the relevant target audiences, ensuring high engagement and a
   logically structured sales funnel to minimize cart abandonment.
 quote:
-  quote-showcased: false
+  author: Krisztofer Herman - Founder, Head Coach
+  quote-text: They handle clients and projects with an up-to-date, dynamic
+    approach, balanced by careful consideration! 💪🏼
+  quote-text-landing: They handle clients and projects with an up-to-date, dynamic
+    approach, balanced by careful consideration! 💪🏼
+  quote-showcased: true
+  order: 7
 ---
